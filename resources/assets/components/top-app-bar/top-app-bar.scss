@@ -1,0 +1,112 @@
+.top-app-bar {
+    z-index: 3;
+}
+
+.mdc-top-app-bar--fixed-adjust {
+    animation: FadeInFromBottom .2s linear;
+}
+
+.top-app-bar-surface {
+    background-color: $mdc-theme-primary;
+    position: relative;
+}
+
+.top-app-bar-surface--min-height {
+    min-height: 100px;
+}
+
+.top-app-bar-surface--expanded {
+    padding-bottom: 120px;
+
+    & + .layout-grid--with-form,
+    & + .layout-grid--with-form-small {
+        margin-top: -140px;
+        position: relative;
+    }
+}
+
+// Row tabs
+.top-app-bar__row--tabs {
+
+    & .top-app-bar__section {
+        padding-bottom: 0;
+        margin-bottom: -1px;
+    }
+}
+
+@media (max-width: 599px) {
+    .mdc-top-app-bar--fixed-adjust {
+        margin-top: 0
+    }
+    .mdc-top-app-bar--fixed-adjust {
+        padding-top: 56px;
+    }
+}
+
+// ----------------------------------------
+// Top App Bar With Search
+// ----------------------------------------
+.top-app-bar--with-search {
+    & .top-app-bar__row {
+        display: flex;
+    }
+    // Busca escondida por padrão.
+    & .top-app-bar__row--search {
+        display: none;
+    }
+
+    // Botão de abrir busca.
+    // & .top-app-bar__action-open-search {
+    //     animation: FadeInFromBottom .175s linear;
+    // }    
+
+    // Botão de fechar busca.
+    & .top-app-bar__action-close-search {
+        animation: Rotate90 .175s linear;
+    }
+
+    // Linha da busca.
+    & .top-app-bar__row--search {
+        // Fundo branco.
+        @include mdc-top-app-bar-icon-ink-color(#222);
+        @include mdc-top-app-bar-fill-color(#ffffff);    
+        padding-left: 32px;
+        align-items: center;
+    }
+    
+    // Quando a busca está ativa.
+    &.top-app-bar--with-search-active {
+        // Escode a linha padrão.
+        & .top-app-bar__row {
+            display: none;
+        }
+        // Mostra a linha de busca.
+        & .top-app-bar__row--search {
+            display: flex;
+            animation: FadeInFromBottom 175ms ease-out;
+        }
+    }
+
+    // Campo de busca.
+    & .text-field--top-app-bar-search {
+        border-bottom: none!important;
+        
+        & .text-field__input {
+            background-color: transparent;
+            font-size: 1.25rem;
+        }
+    }    
+}
+
+// ----------------------------------------
+// Top App Bar Breadcrumbs
+// ----------------------------------------
+.top-app-bar--breadcrumbs {
+    @include mdc-top-app-bar-ink-color($mdc-theme-primary);
+    @include mdc-top-app-bar-icon-ink-color($mdc-theme-primary);
+    @include mdc-top-app-bar-fill-color($mdc-theme-background);
+
+    // & .breadcrumbs {
+    //     color: inherit;
+    // }
+}

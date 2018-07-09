@@ -1,0 +1,15 @@
+.drawer__header-content {
+  background-color: $mdc-theme-primary;
+  color: white;
+  flex-flow: column;
+  align-items: flex-start!important;
+  justify-content: flex-end;
+
+  .drawer__header-content-secondary {
+    opacity: .84;
+  }
+
+  & > * {
+    margin: 0;
+  }
+}

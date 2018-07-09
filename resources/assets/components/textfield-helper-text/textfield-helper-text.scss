@@ -1,0 +1,13 @@
+// Cor da mensagem de validação. 
+.mdc-text-field:not(.mdc-text-field--disabled) + .mdc-text-field-helper-text--validation-msg {
+  color: #d50000;
+}
+
+.select + .mdc-text-field-helper-text {
+  margin-right: 16px;
+  margin-left: 16px;
+
+  &.mdc-text-field-helper-text--validation-msg {
+    color: #d50000;
+  }
+}

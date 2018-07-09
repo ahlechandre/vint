@@ -1,0 +1,11 @@
+.linear-progress--global {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  display: none;
+  // @include mdc-linear-progress-bar-color($mdc-theme-secondary);
+
+  &.linear-progress--active {
+    display: block;
+  }
+}

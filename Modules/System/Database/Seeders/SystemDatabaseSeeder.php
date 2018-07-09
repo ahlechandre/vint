@@ -1,0 +1,24 @@
+<?php
+
+namespace Modules\System\Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Model;
+
+class SystemDatabaseSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $this->call([
+            ResourcesTableSeeder::class,            
+            MethodsTableSeeder::class,            
+            RolesTableSeeder::class,            
+            AbilitiesTableSeeder::class,            
+        ]);
+    }
+}

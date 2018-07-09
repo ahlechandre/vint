@@ -1,0 +1,25 @@
+.resource-filter__label {
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(0, 0, 0, .1);
+  padding-bottom: 12px;
+  font-size: 14px;
+}
+
+.resource-filter__navigation {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.resource-filter__navigation-item {
+  padding: 6px 0;
+  color: rgba(0, 0, 0, .6);
+
+  &.resource-filter__navigation-item--activated, &:hover {
+    color: #222;
+  }
+}
+
+.resource-filter__navigation-icon {
+  font-size: 14px;
+  vertical-align: middle;
+}

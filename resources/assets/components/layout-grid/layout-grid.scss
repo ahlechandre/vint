@@ -1,0 +1,26 @@
+.layout-grid-surface {
+    width: 100%;
+    height: 200px;
+    background-color: $mdc-theme-primary;
+
+    &+.layout-grid--with-form {
+        margin-top: -170px;
+        margin-bottom: 48px;
+    }
+}
+
+.layout-grid--dense {
+    max-width: 900px;
+}
+
+.layout-grid--with-form {
+    max-width: 640px;
+}
+
+.layout-grid--with-form-large {
+    max-width: 900px;
+}
+
+.layout-grid--with-form-small {
+    max-width: 450px;
+}

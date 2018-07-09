@@ -1,0 +1,25 @@
+@keyframes FadeInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.expandable.expandable--activated {
+    & .expandable__content {
+        animation: FadeInFromTop .1s linear;
+        display: block;
+    }
+}
+
+.expandable {
+    & .expandable__content {
+        display: none;
+    }
+}
+

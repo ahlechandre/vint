@@ -1,0 +1,58 @@
+@keyframes FadeFromTop {
+  0% {
+    top: 75px;
+    transform: translate(-10px, -30px);
+    transform: scale(.8, .5);
+    opacity: 0;
+  }
+
+  100% {
+    top: 80px;
+    opacity: 1;
+  }
+}
+
+.mdc-autocomplete {
+  position: relative;
+  outline: none;
+
+  // Chips
+  & .mdc-autocomplete__chips {
+    & .mdc-chip {
+      margin-top: 4px;
+      margin-right: 4px;
+    }
+  }
+  // Resultados
+  & .mdc-autocomplete__data {    
+    &:not(:focus-within) {
+
+      & .mdc-autocomplete__results {
+        display: none;
+      }
+    }
+  }
+
+  & .mdc-autocomplete__results {
+    animation: FadeFromTop .125s linear;
+    position: absolute;
+    display: initial;
+    z-index: 2;
+    top: 80px;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: white;
+    @include mdc-elevation(1, #222, 0);
+  }
+  
+}
+
+.mdc-autocomplete-list-item {
+  cursor: pointer;
+
+  &.mdc-autocomplete-list-item--selected {
+    cursor: initial;
+    opacity: .5;
+  }
+}

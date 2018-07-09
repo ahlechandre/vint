@@ -1,0 +1,7 @@
+.page-title {
+    margin-bottom: 8px;
+
+    & + .page-subtitle {
+        margin-top: 0;
+    }
+}

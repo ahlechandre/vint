@@ -1,0 +1,76 @@
+.ss-count {
+  background-color: white;
+  border-radius: 2px;
+  @include mdc-elevation(2, #333, 0.05);
+  padding: 12px;
+  border-left: 3px solid $mdc-theme-primary;
+
+  // Up
+  &.ss-count--trending-up {
+    border-left-color: $md-color-green-500;
+    
+    & .ss-count__trending {
+      color: $md-color-green-500;
+    }
+  }
+
+  // Down
+  &.ss-count--trending-down {
+    border-left-color: $md-color-red-500;
+    
+    & .ss-count__trending {
+      color: $md-color-red-500;
+    }
+  }
+
+  // Flat
+  &.ss-count--trending-flat {
+    border-left-color: $md-color-blue-500;
+    
+    & .ss-count__trending {
+      color: $md-color-blue-500;
+    }
+  }
+
+  // Warn
+  &.ss-count--trending-warn {
+    border-left-color: $md-color-amber-500;
+    
+    & .ss-count__trending {
+      color: $md-color-amber-500;
+    }
+  }  
+}
+
+.ss-count__primary {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.ss-count__value {
+  margin: 6px 0;
+  font-size: 2rem;
+  font-weight: 100;
+}
+
+.ss-count__title {
+  color: rgba(0, 0, 0, .7);
+  margin: 6px 0;
+}
+
+.ss-count__icon {
+  font-size: 2rem;
+  color: rgba(0, 0, 0, .2);
+}
+
+.ss-count__body {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between; 
+}
+
+.ss-count__actions {
+  border-top: 1px solid rgba(0, 0, 0, .1);
+  margin-top: 12px;
+  padding-top: 12px;
+}

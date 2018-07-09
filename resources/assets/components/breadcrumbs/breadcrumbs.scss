@@ -1,0 +1,27 @@
+.breadcrumbs__list {
+  padding-left: 20px;
+  font-size: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;  
+}
+
+.breadcrumbs__crumb {
+  color: inherit;
+
+  &:not(:last-child):after {
+    content: '>';
+    left: -2px;
+    margin: 0 .5em;
+    position: relative;
+    opacity: 0.5;
+  }
+}
+
+.breadcrumbs__crumb-link {
+  color: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 20px;
+}

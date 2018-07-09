@@ -1,0 +1,163 @@
+<?php
+
+return [
+    'status' => [
+        403 => 'Permissão negada',
+    ],
+    'attrs' => [
+        'empty' => 'Não indicado'
+    ],
+    'roles' => [
+        'index' => 'Lista de papéis de usuários mais recentes no sistema.',
+        'create' => 'Adicione um novo papel ao sistema.',
+        'edit' => 'Atualize as informações do papel no sistema.',
+        'created' => 'Papel criado',
+        'updated' => 'Papel atualizado',
+        'new' => 'Novo papel',
+    ],
+    'users' => [
+        'new' => 'Novo usuário',
+        'index' => 'Lista de usuários mais recentes no sistema.',
+        'create' => 'Adicione um novo usuário ao sistema.',
+        'edit' => 'Atualize as informações do usuário no sistema.',
+        'created' => 'Usuário criado',
+        'updated' => 'Usuário atualizado',
+        'about' => 'Informação gerais sobre o usuário no sistema.',
+    ],
+    'affiliates' => [
+        'new' => 'Nova filial',
+        'index' => 'Lista de filiais mais recentes no sistema.',
+        'create' => 'Adicione uma nova filial ao sistema.',
+        'edit' => 'Atualize as informações da filial no sistema.',
+        'created' => 'Filial criada',
+        'updated' => 'Filial atualizada',
+        'about' => 'Informação gerais sobre a filial no sistema.',
+    ],    
+    'clients' => [
+        'new' => 'Novo cliente',
+        'index' => 'Lista de clientes mais recentes no sistema.',
+        'create' => 'Adicione um novo cliente ao sistema.',
+        'edit' => 'Atualize as informações do cliente no sistema.',
+        'created' => 'Cliente criado',
+        'updated' => 'Cliente atualizado',
+        'about' => 'Informação gerais sobre o cliente no sistema.',
+    ],    
+    'drivers' => [
+        'about' => 'Informação específicas do usuário motorista.',
+        'updated' => 'Motorista atualizado',
+        'edit' => 'Atualize as informações de motorista do usuário.'
+    ],
+    'user_phones' => [
+        'index' => 'Lista de números associados ao usuário',
+        'created' => 'Telefone adicionado',
+        'deleted' => 'Telefone removido',
+        'updated' => 'Telefone atualizado',
+    ],
+    'affiliate_phones' => [
+        'index' => 'Lista de números associados à filial',
+        'created' => 'Telefone adicionado',
+        'deleted' => 'Telefone removido',
+        'updated' => 'Telefone atualizado',
+    ],    
+    'phones' => [
+        'new' => 'Novo telefone',
+        'delete' => 'Remover telefone',
+        'create' => 'Adicionar telefone',
+        'edit' => 'Editar telefone',
+        'updated' => 'Telefone atualizado',
+        'created' => 'Telefone adicionado',
+        'deleted' => 'Telefone removido'
+    ],
+    'auth' => [
+        'index' => 'Informação utilizada para login o usuário no sistema.',
+        'edit' => 'Altere a senha de autenticação.',
+        'updated' => 'Senha atualizada',
+    ],
+    'user_affiliates' => [
+        'updated' => 'Filiais do usuário atualizadas',
+        'edit' => 'Atualize as filiais relacionadas ao usuário.'
+    ],
+    'places' => [
+        'new' => 'Novo local',
+        'index' => 'Lista de locais mais recentes no sistema.',
+        'create' => 'Adicione um novo local ao sistema.',
+        'edit' => 'Atualize as informações do local no sistema.',
+        'created' => 'Local criado',
+        'updated' => 'Local atualizado',
+        'about' => 'Informação gerais sobre o local no sistema.',
+    ],
+    'cities' => [
+        'new' => 'Nova cidade',
+        'index' => 'Lista de cidades mais recentes no sistema.',
+        'create' => 'Adicione uma nova cidade ao sistema.',
+        'edit' => 'Atualize as informações da cidade no sistema.',
+        'created' => 'Cidade criada',
+        'updated' => 'Cidade atualizada',
+        'about' => 'Informação gerais sobre a cidade no sistema.',
+    ],
+    'vehicle_types' => [
+        'new' => 'Novo tipo de veículo',
+        'show' => 'Mostrar tipo de veículo',
+        'index' => 'Lista de tipos de veículo mais recentes no sistema.',
+        'create' => 'Adicione um novo tipo de veículo ao sistema.',
+        'edit' => 'Atualize as informações do tipo de veículo no sistema.',
+        'created' => 'Tipo de veículo criado',
+        'updated' => 'Tipo de veículo atualizado',
+        'about' => 'Informação gerais sobre o tipo de veículo no sistema.',
+    ],
+    'vehicle_body_types' => [
+        'new' => 'Novo tipo de carroceria',
+        'show' => 'Mostrar tipo de carroceria',
+        'index' => 'Lista de tipos de carroceria mais recentes no sistema.',
+        'create' => 'Adicione um novo tipo de carroceria ao sistema.',
+        'edit' => 'Atualize as informações do tipo de carroceria no sistema.',
+        'created' => 'Tipo de carroceria criado',
+        'updated' => 'Tipo de carroceria atualizado',
+        'about' => 'Informação gerais sobre o tipo de carroceria no sistema.',
+    ],
+    'freights' => [
+        'new' => 'Novo frete',
+        'show' => 'Mostrar frete',
+        'index' => 'Lista de fretes mais recentes no sistema.',
+        'create' => 'Adicione um novo frete ao sistema.',
+        'edit' => 'Atualize as informações do frete no sistema.',
+        'created' => 'Frete criado',
+        'updated' => 'Frete atualizado',
+        'about' => 'Informação gerais sobre o frete no sistema.',
+        'route' => 'Rota de locais do frete.',
+    ],
+    'travels' => [
+        'new' => 'Nova viagem',
+        'show' => 'Mostrar viagem',
+        'index' => 'Lista de viagens mais recentes no sistema.',
+        'create' => 'Adicione uma nova viagem ao sistema.',
+        'edit' => 'Atualize as informações da viagem no sistema.',
+        'created' => 'Viagem criada',
+        'updated' => 'Viagem atualizada',
+        'about' => 'Informação gerais sobre a viagem no sistema.'
+    ],
+    'receipts' => [
+        'new' => 'Novo comprovante',
+        'show' => 'Mostrar comprovante',
+        'index' => 'Lista de comprovantes mais recentes na viagem.',
+        'create' => 'Adicione um novo comprovante na viagem.',
+        'edit' => 'Atualize as informações do comprovante.',
+        'created' => 'Comprovante criada',
+        'updated' => 'Comprovante atualizada',
+        'about' => 'Informação gerais sobre o comprovante na viagem.',
+        'delete' => 'Remover o comprovante.',
+        'deleted' => 'Comprovante removido'
+    ],
+    'localizations' => [
+        'new' => 'Nova localização',
+        'show' => 'Mostrar localização',
+        'index' => 'Lista de localizações mais recentes na viagem.',
+        'create' => 'Adicione uma nova localização na viagem.',
+        'edit' => 'Atualize as informações da localização.',
+        'created' => 'Localização criada',
+        'updated' => 'Localização atualizada',
+        'about' => 'Informação gerais sobre a localização na viagem.',
+        'delete' => 'Remover a localização.',
+        'deleted' => 'Localização removida'
+    ],
+];

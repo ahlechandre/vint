@@ -1,0 +1,64 @@
+.chart {
+  font-family: 'Roboto', sans-serif;
+
+  // Line
+  & .ct-chart-line {
+
+    & .ct-series-a .ct-area {
+      fill: $mdc-theme-primary-light;
+    }
+
+    & .ct-series-a .ct-line {
+      stroke: $mdc-theme-primary;
+    }
+
+    & .ct-series-a .ct-point {
+      stroke: $mdc-theme-primary-dark;
+    }
+
+  }
+
+  // Pie
+  & .ct-chart-pie {
+
+    & .ct-series-a .ct-slice-pie {
+      fill: $mdc-theme-primary;
+    }
+
+    & .ct-series-b .ct-slice-pie {
+      fill: $mdc-theme-primary-dark;
+    }
+
+    & .ct-label {
+      fill: white;
+      font-size: 16px;
+    }
+  }
+
+  // Tooltip
+  & .chart__tooltip {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    background-color: rgba(0, 0, 0, .6)!important;
+    color: white!important;
+
+    // & .chartist-tooltip-meta {}
+
+    & .chartist-tooltip-value {
+      font-weight: bold;
+    }
+
+    &::before {
+      // content: "";
+      // position: absolute;
+      // top: 100%;
+      // left: 50%;
+      // width: 0;
+      // height: 0;
+      // margin-left: -15px;
+      // border: 15px solid transparent;
+      // border-top-color: #F4C63D;
+      border-top-color: rgba(0, 0, 0, .6)!important;
+    }
+  }
+}

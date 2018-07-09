@@ -1,0 +1,31 @@
+.top-app-bar--with-tabs {
+
+  & + .mdc-top-app-bar--fixed-adjust {
+    padding-top: 120px;
+  }
+
+  & .mdc-tab-bar-scroller {
+    margin-top: 6px;
+
+    &.mdc-tab-bar--icons-with-text {
+        height: auto;
+
+        & .mdc-tab {
+          padding-top: 12px;          
+        }              
+    }
+
+    & .material-icons {
+      color: white;
+    }
+
+    & .mdc-tab {
+      color: white;
+      @include mdc-states-base-color(#fff);
+    }
+    @include mdc-tab-ink-color(#fff);
+    @include mdc-tab-icon-ink-color(#fff);
+    @include mdc-tab-label-ink-color(#fff);  
+    @include mdc-tab-bar-indicator-ink-color(#fff);    
+  }
+}

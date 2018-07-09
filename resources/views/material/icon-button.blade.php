@@ -1,0 +1,1 @@
+<button class="material-icons mdc-icon-button{{ setModifiers($modifiers ?? null) }}" {{ setAttributes($attrs ?? []) }}>{{ $icon }}</button>
