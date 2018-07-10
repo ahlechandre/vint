@@ -18,7 +18,6 @@ class UsersTableSeeder extends Seeder
             'name' => 'System Administrator',
             'email' => 'admin@admin.com',
             'password' => '##admin##',
-            'identification_number' => '1',
         ],
     ];
 
