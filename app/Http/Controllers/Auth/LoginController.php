@@ -58,14 +58,13 @@ class LoginController extends Controller
     public function authenticate(Request $request) 
     {
         $credentials = [
-            'identification_number' => $request->get('identification_number'),
+            'email' => $request->get('email'),
             'password' => $request->get('password'),
         ];
         $remember = $request->get('remember_me') ? true : false;
 
         // Tenta autenticar o usuário com as credenciais fornecidas.
         if (Auth::attempt($credentials, $remember)) {
-
             return redirect($this->redirectTo);
         }
 

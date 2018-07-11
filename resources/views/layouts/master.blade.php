@@ -61,83 +61,11 @@
           ],
         ],
         [
-          'text' => __('resources.roles'),
-          'icon' => material_icon('roles'),
-          'isActive' => isActivePage('roles'),
-          'attrs' => [
-            'href' => url('/roles'),
-          ],
-        ],
-        [
           'text' => __('resources.users'),
           'icon' => material_icon('users'),
           'isActive' => isActivePage('users'),
           'attrs' => [
             'href' => url('/users'),
-          ],
-        ],
-        [
-          'text' => __('resources.affiliates'),
-          'icon' => material_icon('affiliates'),
-          'isActive' => isActivePage('affiliates'),
-          'attrs' => [
-            'href' => url('/affiliates'),
-          ],
-        ],
-        [
-          'text' => __('resources.clients'),
-          'icon' => material_icon('clients'),
-          'isActive' => isActivePage('clients'),
-          'attrs' => [
-            'href' => url('/clients'),
-          ],
-        ],
-        [
-          'text' => __('resources.cities'),
-          'icon' => material_icon('cities'),
-          'isActive' => isActivePage('cities'),
-          'attrs' => [
-            'href' => url('/cities'),
-          ],
-        ],
-        [
-          'text' => __('resources.places'),
-          'icon' => material_icon('places'),
-          'isActive' => isActivePage('places'),
-          'attrs' => [
-            'href' => url('/places'),
-          ],
-        ], 
-        [
-          'text' => __('resources.vehicle_types'),
-          'icon' => material_icon('vehicle_types'),
-          'isActive' => isActivePage('vehicle-types'),
-          'attrs' => [
-            'href' => url('/vehicle-types'),
-          ],
-        ],
-        [
-          'text' => __('resources.vehicle_body_types'),
-          'icon' => material_icon('vehicle_body_types'),
-          'isActive' => isActivePage('vehicle-body-types'),
-          'attrs' => [
-            'href' => url('/vehicle-body-types'),
-          ],
-        ],
-        [
-          'text' => __('resources.freights'),
-          'icon' => material_icon('freights'),
-          'isActive' => isActivePage('freights'),
-          'attrs' => [
-            'href' => url('/freights'),
-          ],
-        ],
-        [
-          'text' => __('resources.travels'),
-          'icon' => material_icon('travels'),
-          'isActive' => isActivePage('travels'),
-          'attrs' => [
-            'href' => url('/travels'),
           ],
         ],
         [

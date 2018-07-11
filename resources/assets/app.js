@@ -10,12 +10,6 @@ import { ChartContainer } from './components/chart'
 import { TabBarScrollerContainer } from './components/tab-bar-scroller'
 import { ExpandableContainer } from './components/expandable'
 import { DialogContainer } from './components/dialog'
-// Forms
-import { AffiliateFormContainer } from './forms/affiliate'
-import { UserFormContainer } from './forms/users'
-import { LocalizationFormContainer } from './forms/localization'
-import { FreightFormContainer } from './forms/freight'
-import { TravelFormContainer } from './forms/travel'
 
 /**
  * Inicializa automaticamente todos os componentes indicados.
@@ -48,13 +42,7 @@ const autoInit = () => {
       container().init(elements[i])
     }  
   })
-  const formsContainer = [
-    AffiliateFormContainer,
-    UserFormContainer,
-    LocalizationFormContainer,
-    FreightFormContainer,
-    TravelFormContainer
-  ]
+  const formsContainer = []
   // Inicializa os formulários.
   formsContainer.map(forms => {
     forms().map(form => {

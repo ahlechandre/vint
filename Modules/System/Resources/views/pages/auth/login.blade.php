@@ -12,96 +12,76 @@
       ]
     ]) @endcomponent
     
-    @component('material.layout-grid-with-inner', [
+    @layoutGridWithInner([
       'modifiers' => ['layout-grid--with-form-small']
     ])
-
-      @component('material.cell', [
-        'when' => [
-          'default' => 12
-        ],
-      ])        
-        @component('material.card', [
-          'title' => 'Log In',
-          'subtitle' => 'Ir para o Sistema',
-          'actions' => [
-            [
-              'type' => 'button',
-              'props' => [
-                'text' => 'Esqueceu sua senha?',
-                'attrs' => [
-                ],
-              ],
-            ],
-          ],
+        @cell([
+        'when' => ['default' => 12],
         ])
-          @component('components.form', [
-            'action' => url('/login'),
-            'method' => 'post',
-            'inputs' => [
-              [
-                'when' => [
-                  'default' => 12,
+            @card([
+                'title' => 'Log In',
+                'subtitle' => 'Ir para o Sistema',
+                'actions' => [
+                    [
+                        'type' => 'button',
+                        'props' => [
+                            'text' => 'Esqueceu sua senha?',
+                            'attrs' => [
+                            ],
+                        ],
+                    ],
                 ],
-                'material' => 'textfield',
-                'props' => [
-                  'label' => __('columns.user.identification_number'),
-                  'attrs' => [
-                    'type' => 'text',
-                    'name' => 'identification_number',
-                    'required' => '',
-                    'id' => 'textfield-identification-number',
-                  ],
-                  'helperText' => [
-                    'isValidation' => true,
-                    'isPersistent' => $errors->has('auth'),
-                    'message' => $errors->get('auth')[0] ?? null,
-                  ],
-                ],
-              ],
-              [
-                'when' => [
-                  'default' => 12,
-                ],
-                'material' => 'textfield',
-                'props' => [
-                  'label' => __('columns.password'),
-                  'attrs' => [
-                    'type' => 'password',
-                    'required' => '',
-                    'autocomplete' => 'off',
-                    'name' => 'password',
-                    'id' => 'textfield-password',
-                  ],
-                ],
-              ],
-              [
-                'when' => [
-                  'default' => 12,
-                ],
-                'material' => 'checkbox',
-                'props' => [
-                  'label' => 'Lembrar-me',
-                  'attrs' => [
-                    'name' => 'remember_me',
-                    'id' => 'checkbox-remember-me',
-                    'checked' => true,
-                  ],
-                ],
-              ],            
-            ],
-            'submit' => [
-              'text' => 'Entrar',
-              'modifiers' => ['mdc-button--unelevated'],
-              'attrs' => [
-                'type' => 'submit'
-              ],
-            ],        
-          ]) @endcomponent
-        @endcomponent
-
-      @endcomponent
-    @endcomponent
+            ])
+                @form([
+                    'action' => url('/login'),
+                    'method' => 'post',
+                    'inputs' => [
+                        [
+                            'when' => ['default' => 12,],
+                            'material' => 'textfield',
+                            'props' => [
+                                'label' => __('columns.email'),
+                                'attrs' => [
+                                    'type' => 'email',
+                                    'name' => 'email',
+                                    'required' => '',
+                                    'id' => 'textfield-email',
+                                ],
+                                'helperText' => [
+                                    'isValidation' => true,
+                                    'isPersistent' => $errors->has('auth'),
+                                    'message' => $errors->get('auth')[0] ?? null,
+                                ],
+                            ],
+                        ],
+                        [
+                            'when' => [
+                                'default' => 12,
+                            ],
+                            'material' => 'textfield',
+                            'props' => [
+                                'label' => __('columns.password'),
+                                'attrs' => [
+                                    'type' => 'password',
+                                    'required' => '',
+                                    'autocomplete' => 'off',
+                                    'name' => 'password',
+                                    'id' => 'textfield-password',
+                                ],
+                            ],
+                        ],           
+                    ],
+                    'submit' => [
+                        'text' => 'Entrar',
+                        'modifiers' => ['mdc-button--unelevated'],
+                        'attrs' => [
+                            'type' => 'submit'
+                        ],
+                    ],        
+                  ]) @endform              
+            @endcard
+        @endcell
+    @endlayoutGridWithInner
   
   @endcomponent
 @endsection 
