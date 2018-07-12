@@ -21,18 +21,9 @@ Route::middleware('auth')
         Route::get('/dashboard', 'DashboardController@index');
         /**
          * ----------------------------------------
-         * Usuário / Senha
-         * ----------------------------------------
-         */
-        Route::get('users/{id}/password', 'UserController@editPassword');
-        Route::put('users/{id}/password', 'UserController@updatePassword');
-        /**
-         * ----------------------------------------
          * Usuários 
          * ----------------------------------------
          */
         Route::resource('users', 'UserController')
-            ->except([
-                'destroy'
-            ]);
+            ->except(['destroy']);
     });

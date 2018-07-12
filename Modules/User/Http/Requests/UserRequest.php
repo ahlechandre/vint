@@ -17,28 +17,33 @@ class UserRequest extends FormRequest
     public function rules()
     {
         $isUpdate = $this->method() === 'PUT';
-        $default = [
+
+        return [
             'name' => 'required|string|min:2',
-            'identification_number' => [
+            'username' => [
                 'required',
-                'digits:11',
+                'regex:/' . __('patterns.username') . '/',
                 $isUpdate ?
-                    Rule::unique('users')->ignore($this->user) :
-                    'unique:users'
+                   Rule::unique('users')
+                       ->ignore($this->user) :
+                   'unique:users'
             ],
-            'email' => 'nullable|email',
-            'password' => [
+            'email' => [
+                'required',
+                'email',
                 $isUpdate ?
-                    'nullable' :
-                    'required',
+                Rule::unique('users')
+                    ->ignore($this->user) :
+                'unique:users'
+            ],
+            'password' => [
+                $isUpdate ? 'nullable' : 'required',
                 'string',
                 'min:6',
                 'max:24'
             ],
             'role_id' => 'required|integer',
         ];
-
-        return array_merge($default);
     }
 
     /**
@@ -50,6 +55,7 @@ class UserRequest extends FormRequest
         return [
             'required' => __('validations.required'),
             'unique' => __('validations.unique'),
+            'regex' => __('validations.regex'),
             'digits' => __('validations.digits'),
             'email' => __('validations.email'),
             'min' => __('validations.strings.min'),
@@ -67,10 +73,11 @@ class UserRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => __('columns.name'),
-            'email' => __('columns.email'),
-            'identification_number' => __('columns.user.identification_number'),
-            'password' => __('columns.password'),
+            'name' => __('attrs.name'),
+            'email' => __('attrs.email'),
+            'identification_number' => __('attrs.user.identification_number'),
+            'password' => __('attrs.password'),
+            'username' => __('attrs.username'),
             'role_id' => __('resources.role'),
         ];
     }
@@ -82,8 +89,16 @@ class UserRequest extends FormRequest
     public function sanitize()
     {
         $inputs = $this->all();
+        $isUpdate = $this->method() === 'PUT';
         $inputs['is_active'] = sanitize_is_active($inputs);
         
+        // Ao atualizar, remove o campo de senha pois
+        // ele é "fillable". A atualização de senha deve ser feita
+        // por outra requisição.
+        if ($isUpdate) {
+            unset($inputs['password']);
+        }
+
         return $inputs;
     } 
 

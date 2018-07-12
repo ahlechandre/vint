@@ -14,6 +14,7 @@ return [
     'affiliate.identification_number' => 'CNPJ',
     'client.identification_number' => 'CNPJ',
     'email' => 'E-mail',
+    'username' => 'Nome de usuário',
     'password' => 'Senha',
     'password_new' => 'Nova senha',
     'password_confirmation' => 'Confirmação da nova senha',

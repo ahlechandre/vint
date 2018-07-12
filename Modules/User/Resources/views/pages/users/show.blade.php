@@ -22,30 +22,7 @@
                     'href' => url("/users/{$userToShow->id}?section=about")
                 ],
             ],
-            [
-                'text' => __('resources.phones'),
-                'isActive' => $section === 'phones',
-                'attrs' => [
-                    'href' => url("/users/{$userToShow->id}?section=phones")
-                ],
-            ]
-        ], $userToShow->isDriver() ? [
-            [
-                'text' => __('resources.driver'),
-                'isActive' => $section === 'driver',
-                'attrs' => [
-                    'href' => url("/users/{$userToShow->id}?section=driver")
-                ],
-            ]
-        ] : [], $userToShow->isAffiliateUser() ? [
-            [
-                'text' => __('resources.affiliates'),
-                'isActive' => $section === 'affiliates',
-                'attrs' => [
-                    'href' => url("/users/{$userToShow->id}?section=affiliates")
-                ],
-            ]
-        ] : [], $user->can('update', $userToShow) ? [
+        ], $user->can('update', $userToShow) ? [
             [
                 'text' => __('headlines.security'),
                 'isActive' => $section === 'security',
@@ -68,22 +45,6 @@
             @if ($section === 'about')
                 @component('user::pages.users.sections.about', [
                     'userToShow' => $userToShow
-                ]) @endcomponent
-            @elseif ($section === 'affiliates')
-                @component('user::pages.users.sections.affiliates', [
-                    'userToShow' => $userToShow,
-                    'affiliates' => $userToShow->affiliates()
-                        ->simplePaginate(10),
-                ]) @endcomponent
-            @elseif ($section === 'driver')
-                @component('user::pages.users.sections.driver', [
-                    'userToShow' => $userToShow
-                ]) @endcomponent 
-            @elseif ($section === 'phones')
-                @component('user::pages.users.sections.phones', [
-                    'userToShow' => $userToShow,
-                    'phoneTypes' => $phoneTypes,
-                    'telecommunicationCompanies' => $telecommunicationCompanies
                 ]) @endcomponent
             @elseif ($section === 'security')
                 @component('user::pages.users.sections.security', [

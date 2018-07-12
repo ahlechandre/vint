@@ -17,6 +17,7 @@ class UsersTableSeeder extends Seeder
         [
             'name' => 'System Administrator',
             'email' => 'admin@admin.com',
+            'username' => 'admin',
             'password' => '##admin##',
         ],
     ];

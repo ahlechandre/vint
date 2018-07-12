@@ -40,7 +40,7 @@
                             'when' => ['default' => 12,],
                             'material' => 'textfield',
                             'props' => [
-                                'label' => __('columns.email'),
+                                'label' => __('attrs.email'),
                                 'attrs' => [
                                     'type' => 'email',
                                     'name' => 'email',
@@ -60,7 +60,7 @@
                             ],
                             'material' => 'textfield',
                             'props' => [
-                                'label' => __('columns.password'),
+                                'label' => __('attrs.password'),
                                 'attrs' => [
                                     'type' => 'password',
                                     'required' => '',

@@ -16,10 +16,9 @@ class UserRepository
      * @param  \Modules\User\Entities\User  $user
      * @param  null|int  $perPage
      * @param  null|string  $filter
-     * @param  null|array  $queries
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function index(User $user, $perPage = null, $filter = null, $queries = null)
+    public function index(User $user, $perPage = null, $filter = null)
     {
         // Verifica se o usuário pode realizar.
         if ($user->cant('index', User::class)) {
@@ -32,15 +31,8 @@ class UserRepository
                 ['name', 'like', $filterLike],
             ]);
         };
-        $role = isset($queries['role']) ?
-            Role::where('slug', $queries['role'])
-                ->firstOrFail() :
-            null;
-        // Escopo por papel.
-        $scope = $role ?
-            User::where('role_id', $role->id)
-                ->orderBy('created_at', 'desc') :
-            User::orderBy('created_at', 'desc');
+        // Escopo.
+        $scope = User::orderBy('created_at', 'desc');
         // Escopo por filtro.
         $query = $filter ?
             $search($filter, $scope) :
@@ -72,26 +64,14 @@ class UserRepository
         }
         $store = function () use ($user, $inputs, &$userCreated) {
             $role = Role::ofUser($user)
-                ->active()
+                ->forUsersForm()
                 ->findOrFail($inputs['role_id']);
             $userCreated = $role->users()
-                ->create($inputs);
-            
-            if ($userCreated->isDriver()) {
-                // Cria o registro específico de motorista.
-                return $userCreated->driver()
-                    ->create($inputs['driver'] ?? []);
-            }
-
-            if ($userCreated->isAffiliateUser()) {       
-                // Sincroniza as filiais do usuário.
-                return $userCreated->affiliates()
-                    ->sync($inputs['affiliates'] ?? []);
-            }
+                ->create($inputs);       
         };
 
         try {
-            // Tenta criar o usuário.
+            // Tenta criar.
             DB::transaction($store);
         } catch (Exception $exception) {
             return api_response(500);
@@ -120,25 +100,13 @@ class UserRepository
         }
         $update = function () use ($user, $inputs, $userToUpdate) {
             $role = Role::ofUser($user)
-                ->active()
+                ->forUsersForm()
                 ->findOrFail($inputs['role_id']);
             $userToUpdate->update($inputs);
-
-            if ($userToUpdate->isDriver() && isset($inputs['driver'])) {
-                // Atualiza o registro específico de motorista.
-                return $userToUpdate->driver()
-                    ->update($inputs['driver']);
-            }
-
-            if ($userToUpdate->isAffiliateUser() && isset($inputs['affiliates'])) {
-                // Sincroniza as filiais do usuário.
-                return $userToUpdate->affiliates()
-                    ->sync($inputs['affiliates']);
-            }
         };
 
         try {
-            // Tenta atualizar o usuário.
+            // Tenta atualizar.
             DB::transaction($update);
         } catch (Exception $exception) {
             return api_response(500);

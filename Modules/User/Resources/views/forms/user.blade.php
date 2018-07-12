@@ -26,12 +26,13 @@
             [
                 'material' => 'textfield',
                 'when' => [
-                    'desktop' => 12,
-                    'tablet' => 8,
+                    'desktop' => 8,
+                    'tablet' => 4,
+                    'phone' => 4
                 ],
                 'validation' => $validations['name'] ?? null,
                 'props' => [
-                    'label' => __('columns.name'),
+                    'label' => __('attrs.name'),
                     'attrs' => [
                         'type' => 'text',
                         'name' => 'name',
@@ -44,11 +45,12 @@
             [
                 'material' => 'select',
                 'when' => [
-                    'desktop' => 6,
-                    'tablet' => 8,
+                    'desktop' => 4,
+                    'tablet' => 4,
+                    'phone' => 4
                 ],
                 'props' => [
-                    'label' => __('columns.role'),
+                    'label' => __('attrs.role'),
                     'attrs' => [
                         'name' => 'role_id',
                         'id' => 'select-user-role',
@@ -71,43 +73,46 @@
                         ],
                     ])
                 ],
-            ],            
-            [
-                'material' => 'textfield',
-                'when' => [
-                    'desktop' => 6,
-                    'tablet' => 8,
-                ],
-                'validation' => $validations['identification_number'] ?? null,
-                'props' => [
-                    'label' => __('columns.user.identification_number'),
-                    'helperText' => [
-                        'isValidation' => false,
-                        'isPersistent' => true,
-                        'message' => 'Exemplo: 12345678901',
-                    ],
-                    'attrs' => [
-                        'name' => 'identification_number',
-                        'id' => 'textfield-user-identification_number',
-                        'required' => '',
-                        'minlength' => 11,
-                        'maxlength' => 11,
-                        'value' => $values['identification_number'],
-                    ],
-                ],
             ],
             [
                 'material' => 'textfield',
                 'when' => [
-                    'desktop' => 6,
-                    'tablet' => 8,
+                    'desktop' => 4,
+                    'tablet' => 4,
+                    'phone' => 4
+                ],
+                'validation' => $validations['username'] ?? null,
+                'props' => [
+                    'label' => __('attrs.username'),
+                    'helperText' => [
+                        'isPersistent' => true,
+                        'isValidation' => false,
+                        'message' => 'Por exemplo: alexandre_thebaldi.',
+                    ],
+                    'attrs' => [
+                        'type' => 'text',
+                        'name' => 'username',
+                        'required' => '',
+                        'pattern' => __('patterns.username'),
+                        'id' => 'textfield-user-username',
+                        'value' => $values['username']
+                    ],
+                ],
+            ],            
+            [
+                'material' => 'textfield',
+                'when' => [
+                    'desktop' => 8,
+                    'tablet' => 4,
+                    'phone' => 4
                 ],
                 'validation' => $validations['email'] ?? null,
                 'props' => [
-                    'label' => __('columns.email'),
+                    'label' => __('attrs.email'),
                     'attrs' => [
                         'type' => 'email',
                         'name' => 'email',
+                        'required' => '',
                         'id' => 'textfield-user-email',
                         'value' => $values['email'],
                     ],
@@ -117,17 +122,23 @@
                 'ignore' => $formMethod === 'put',
                 'material' => 'textfield',
                 'when' => [
-                    'desktop' => 6,
+                    'desktop' => 12,
                     'tablet' => 8,
                 ],
                 'validation' => $validations['password'] ?? null,
                 'props' => [
-                    'label' => __('columns.password'),
+                    'label' => __('attrs.password'),
+                    'helperText' => [
+                        'isPersistent' => true,
+                        'isValidation' => false,
+                        'message' => 'No mínimo 6 caracteres.',
+                    ],
                     'attrs' => [
                         'type' => 'password',
                         'name' => 'password',
                         'id' => 'textfield-user-password',
                         'required' => '',
+                        'minlength' => 6,
                         'value' => $values['password'] ?? null,
                     ],
                 ],
@@ -139,87 +150,14 @@
                     'tablet' => 8,
                 ],
                 'props' => [
-                    'label' => __('columns.is_active_switch'),
+                    'label' => __('attrs.is_active_switch'),
                     'attrs' => [
                         'name' => 'is_active',
                         'id' => 'textfield-user-is-active',
                         'checked' => $values['is_active'] ? true : false,
-                    ],
-                ],
-            ],
-        ],
-        // 'inputsGroups' => array_merge([], $props['role']->isAffiliateUser() ? [
-        //     [
-        //         'title' => 'Filial',
-        //         'subtitle' => 'Indique os dados específicos do usuário de filial',
-        //         'inputs' => [
-        //             [
-        //                 'material' => 'autocomplete',
-        //                 'when' => [
-        //                     'desktop' => 12,
-        //                     'tablet' => 8,
-        //                 ],
-        //                 'validation' => $validations['affiliates'],
-        //                 'props' => [
-        //                     'isMultiple' => true,
-        //                     'attrs' => [
-        //                         'id' => 'autocomplete-user-affiliates',
-        //                     ],
-        //                     'textfield' => [
-        //                         'label' => 'Filiais',
-        //                         'attrs' => [
-        //                             'type' => 'text',
-        //                             'autocomplete' => 'nope', 
-        //                             'id' => 'autocomplete-user-affiliates-textfield', 
-        //                         ],
-        //                     ]
-        //                 ],
-        //             ],
-        //         ],
-        //     ]
-        // ] : [], $props['role']->isDriver() ? [
-        //     [
-        //         'title' => 'Motorista',
-        //         'subtitle' => 'Indique os dados específicos do usuário motorista',
-        //         'inputs' => [
-        //             [
-        //                 'when' => [
-        //                     'desktop' => 6,
-        //                     'tablet' => 8,
-        //                 ],
-        //                 'material' => 'textfield',
-        //                 'props' => [
-        //                     'label' => __('columns.plate'),
-        //                     'validations' => $validations['driver']['plate'],
-        //                     'attrs' => [
-        //                         'type' => 'text',
-        //                         'name' => 'driver[plate]',
-        //                         'id' => 'textfield-user-driver-plate',
-        //                         'required' => '',
-        //                         'value' => $values['driver']['plate'],
-        //                     ],
-        //                 ]
-        //             ],
-        //             [
-        //                 'when' => [
-        //                     'desktop' => 6,
-        //                     'tablet' => 8,
-        //                 ],
-        //                 'material' => 'textfield',
-        //                 'props' => [
-        //                     'label' => __('columns.points'),
-        //                     'validations' => $validations['driver']['plate'],
-        //                     'attrs' => [
-        //                         'type' => 'number',
-        //                         'name' => 'driver[points]',
-        //                         'id' => 'textfield-user-driver-points',
-        //                         'min' => 0,
-        //                         'value' => $values['driver']['points'],
-        //                     ],
-        //                 ]
-        //             ]
-        //         ],
-        //     ]            
-        // ] : []),
-    ],
+                    ]
+                ]
+            ]
+        ]
+    ]
 ]) @endformWithCard

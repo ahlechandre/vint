@@ -21,9 +21,7 @@ Route::middleware('auth:api')
          * ---------------------------------------------------
          */
         Route::resource('users', 'UserController')
-            ->except([
-                'destroy', 'create', 'edit'
-            ]);
+            ->except(['destroy', 'create', 'edit']);
         /**
          * ---------------------------------------------------
          * Exemplo de API para gráficos

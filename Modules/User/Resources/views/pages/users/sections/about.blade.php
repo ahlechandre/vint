@@ -9,28 +9,32 @@
             'modifiers' => ['mdc-card--outlined']
         ])
             @listTwoLine([
-                'modifiers' => ['mdc-list--non-interactive'],
                 'items' => [
                     [
                         'icon' => material_icon('name'),
-                        'text' => __('columns.name'),
+                        'text' => __('attrs.name'),
                         'secondaryText' => $userToShow->name
                     ],
                     [
                         'icon' => material_icon('role'),
-                        'text' => __('columns.role'),
+                        'text' => __('attrs.role'),
                         'secondaryText' => $userToShow->role->name
                     ],
                     [
-                        'icon' => material_icon('identification_number'),
-                        'text' => __('columns.user.identification_number'),
-                        'secondaryText' => $userToShow->identification_number
+                        'icon' => material_icon('username'),
+                        'text' => __('attrs.username'),
+                        'secondaryText' => $userToShow->username
                     ],
                     [
                         'icon' => material_icon('email'),
-                        'text' => __('columns.email'),
-                        'secondaryText' => $userToShow->email ?? __('messages.attrs.empty')
+                        'text' => __('attrs.email'),
+                        'secondaryText' => $userToShow->email
                     ],
+                    [
+                        'icon' => material_icon('is_active'),
+                        'text' => __('attrs.is_active'),
+                        'secondaryText' => __("messages.is_active.{$userToShow->is_active}")
+                    ],                    
                 ]
             ]) @endlistTwoLine
         @endcard

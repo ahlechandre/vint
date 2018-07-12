@@ -48,8 +48,8 @@ class RoleRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => __('columns.name'),
-            'description' => __('columns.description'),
+            'name' => __('attrs.name'),
+            'description' => __('attrs.description'),
             'abilities' => __('resources.abilities'),
             'abilities.*' => __('resources.ability'),
         ];

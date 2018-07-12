@@ -91,15 +91,16 @@ class Role extends Model
     }
 
     /**
-     *
+     * Escopo de papéis permitidos em formulário genérico de usuários.
+     * 
      * @param  \Illuminate\Database\Query\Builder  $query
      * @return Builder
      */
-    public function scopeActive($query) 
+    public function scopeForUsersForm($query) 
     {
-        return $query->where('is_active', 1);
-    } 
-    
+        return $query->where('slug', '!=', self::MEMBER_SLUG);
+    }
+
     /**
      *
      * @return bool

@@ -11,7 +11,7 @@
             'attrs' => [
                 'href' => url('/users/create')
             ]
-        ]        
+        ]
     ],
 ])
 @section('title', __('resources.users') . ' / ' . __('actions.create'))
@@ -38,8 +38,8 @@
                 }, $errors->toArray()),
                 'values' => [
                     'name' => old('name'),
-                    'identification_number' => old('identification_number'),
                     'email' => old('email'),
+                    'username' => old('username'),
                     'password' => old('password'),
                     'is_active' => true,
                     'role_id' => old('role_id')

@@ -24,7 +24,7 @@
               'when' => ['default' => 12],
               'validation' => $errors->get('name')[0] ?? null,
               'props' => [
-                  'label' => __('columns.name'),
+                  'label' => __('attrs.name'),
                   'attrs' => [
                       'name' => 'name',
                       'value' => $values['name'],
@@ -38,7 +38,7 @@
               'when' => ['default' => 12],
               'validation' => $errors->get('description')[0] ?? null,
               'props' => [
-                  'label' => __('columns.description'),
+                  'label' => __('attrs.description'),
                   'attrs' => [
                       'name' => 'description',
                       'value' => $values['description'],

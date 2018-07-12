@@ -4,6 +4,10 @@ return [
     'status' => [
         403 => 'Permissão negada',
     ],
+    'is_active' => [
+        0 => 'Não',
+        1 => 'Sim',
+    ],
     'attrs' => [
         'empty' => 'Não indicado'
     ],

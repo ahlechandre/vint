@@ -44,7 +44,7 @@
                 }, $errors->toArray()),
                 'values' => [
                     'name' => $userToEdit->name,
-                    'identification_number' => $userToEdit->identification_number,
+                    'username' => $userToEdit->username,
                     'email' => $userToEdit->email,
                     'is_active' => $userToEdit->is_active ? true : false,
                     'role_id' => $userToEdit->role_id

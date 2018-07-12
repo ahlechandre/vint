@@ -2,28 +2,28 @@
     'items' => [
         [
             'icon' => material_icon('name'),
-            'text' => __('columns.name'),
+            'text' => __('attrs.name'),
             'secondaryText' => $role->name,
         ],
         [
             'icon' => material_icon('description'),
-            'text' => __('columns.description'),
+            'text' => __('attrs.description'),
             'secondaryText' => $role->description ?? 'Sem descrição'
         ],
         [
             'icon' => material_icon('is_active'),
-            'text' => __('columns.is_active'),
+            'text' => __('attrs.is_active'),
             'secondaryText' => $role->is_active ? 'Sim' : 'Não',
         ],
         [
             'icon' => material_icon('created_at'),
-            'text' => __('columns.created_at'),
+            'text' => __('attrs.created_at'),
             'secondaryText' => $role->created_at
                 ->format(__('dates.format')),
         ],
         [
             'icon' => material_icon('updated_at'),
-            'text' => __('columns.updated_at'),
+            'text' => __('attrs.updated_at'),
             'secondaryText' => $role->updated_at
                 ->format(__('dates.format')),
         ],
