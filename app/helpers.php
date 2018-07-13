@@ -136,34 +136,6 @@ function isActivePage($paths)
 }
 
 /**
- * Retorna o nome do ícone, dado o seu indexador.
- *
- * @param  string  $name
- * @return null|string
- */
-function material_icon($name)
-{
-    $icons = [
-        'users' => 'person',
-        'user' => 'person',
-        'roles' => 'account_circle',
-        'role' => 'account_circle',
-        'name' => 'text_format',
-        'is_active' => 'check_circle_outline',
-        'description' => 'description',
-        'created_at' => 'add_box',
-        'updated_at' => 'edit',
-        'forward' => 'arrow_forward',
-        'password' => 'vpn_key',
-        'email' => 'mail_outline',
-        'id' => 'details',
-        'username' => 'alternate_email',
-    ];
-
-    return isset($icons[$name]) ? $icons[$name] : null;
-}
-
-/**
  *
  * @param array $inputs
  * @return boolean

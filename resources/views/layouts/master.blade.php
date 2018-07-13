@@ -57,15 +57,23 @@
           'icon' => 'dashboard',
           'isActive' => isActivePage('dashboard'),
           'attrs' => [
-            'href' => url('/dashboard'),
+            'href' => url('dashboard'),
           ],
         ],
         [
           'text' => __('resources.users'),
-          'icon' => material_icon('users'),
+          'icon' => __('material_icons.users'),
           'isActive' => isActivePage('users'),
           'attrs' => [
-            'href' => url('/users'),
+            'href' => url('users'),
+          ],
+        ],
+        [
+          'text' => __('resources.groups'),
+          'icon' => __('material_icons.groups'),
+          'isActive' => isActivePage('groups'),
+          'attrs' => [
+            'href' => url('groups'),
           ],
         ],
         [
@@ -73,7 +81,7 @@
           'icon' => 'exit_to_app',
           'isActive' => false,
           'attrs' => [
-            'href' => url('/logout'),
+            'href' => url('logout'),
           ],
         ],        
       ], 

@@ -30,7 +30,7 @@
                 'collection' => $roles,
                 'items' => $roles->map(function ($role) {
                     return [
-                        'icon' => material_icon('roles'),
+                        'icon' => __('material_icons.roles'),
                         'text' => $role->name,
                         'secondaryText' => $role->name,
                         'attrs' => [

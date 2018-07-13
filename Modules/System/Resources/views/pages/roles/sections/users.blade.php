@@ -2,7 +2,7 @@
     'collection' => $users,
     'items' => $users->map(function ($userToShow) {
         return [
-            'icon' => material_icon('users'),
+            'icon' => __('material_icons.users'),
             'text' => $userToShow->name,
             'secondaryText' => $userToShow->created_at
                 ->diffForHumans(),
@@ -10,7 +10,7 @@
                 'href' => url("/users/{$userToShow->id}")
             ],
             'meta' => [
-                'icon' => material_icon('forward')
+                'icon' => __('material_icons.forward')
             ]
         ];
     }),

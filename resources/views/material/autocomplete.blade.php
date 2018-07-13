@@ -38,7 +38,7 @@
     ],
     'textfield' => [
       'label' => 'Produtores',
-      'icon' => material_icon('producer'),
+      'icon' => __('material_icons.producer'),
       'attrs' => [
         'type' => 'search',
         'autocomplete' => 'off', 
