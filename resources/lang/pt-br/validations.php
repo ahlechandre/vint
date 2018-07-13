@@ -2,6 +2,7 @@
 
 return [
     'required' => 'O campo :attribute é obrigatório.',
+    'confirmed' => 'A confirmação de :attribute não corresponde.',
     'string' => 'O campo :attribute deve ser uma cadeia de caracteres.',
     'unique' => 'O :attribute já está em uso.',
     'regex' => 'O formato de :attribute está inválido.',

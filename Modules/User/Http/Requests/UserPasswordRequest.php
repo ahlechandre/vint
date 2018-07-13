@@ -27,10 +27,10 @@ class UserPasswordRequest extends FormRequest
     public function messages()
     {
         return [
-            'unique' => 'O :attribute já está em uso',
-            'required' => 'O campo :attribute é obrigatório',
-            'min' => 'O campo :attribute requer, no mínimo, :min caracteres',
-            'max' => 'O campo :attribute requer, no máximo, :max caracteres',
+            'required' => __('validations.required'),
+            'min' => __('validations.min'),
+            'max' => __('validations.max'),
+            'confirmed' => __('validations.confirmed'),
         ];
     }
 
@@ -41,10 +41,8 @@ class UserPasswordRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => 'nome',
-            'email' => 'e-mail',
-            'password' => 'senha',
-            'role_id' => 'papel',
+            'password' => __('attrs.password_new'),
+            'password_confirmation' => __('attrs.password_confirmation')
         ];
     }
 

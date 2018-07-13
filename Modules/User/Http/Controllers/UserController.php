@@ -55,11 +55,9 @@ class UserController extends Controller
         if (!$index->success) {
             return abort($index->status);
         }
-        $roles = Role::active()->get();
 
         return view('user::pages.users.index', [
-            'users' => $index->data['users'],
-            'roles' => $roles
+            'users' => $index->data['users']
         ]);
     }
 
@@ -78,7 +76,7 @@ class UserController extends Controller
             return abort(403);
         }
         $roles = Role::ofUser($user)
-            ->active()
+            ->forUsersForm()
             ->get();
 
         return view('user::pages.users.create', [
@@ -147,6 +145,7 @@ class UserController extends Controller
             return abort(403);
         }
         $roles = Role::ofUser($user)
+            ->forUsersForm()
             ->get();
 
         return view('user::pages.users.edit', [
