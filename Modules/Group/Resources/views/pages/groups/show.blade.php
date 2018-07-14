@@ -28,7 +28,28 @@
                 'attrs' => [
                     'href' => url("/groups/{$group->id}?section=members")
                 ],
-            ]             
+            ],
+            [
+                'text' => __('resources.programs'),
+                'isActive' => $section === 'programs',
+                'attrs' => [
+                    'href' => url("/groups/{$group->id}?section=programs")
+                ],
+            ],
+            [
+                'text' => __('resources.projects'),
+                'isActive' => $section === 'projects',
+                'attrs' => [
+                    'href' => url("/groups/{$group->id}?section=projects")
+                ],
+            ],
+            [
+                'text' => __('resources.invites'),
+                'isActive' => $section === 'invites',
+                'attrs' => [
+                    'href' => url("/groups/{$group->id}?section=invites")
+                ],
+            ]                         
         ]
     ],
 ])
@@ -49,6 +70,10 @@
                 @component('group::pages.groups.sections.members', [
                     'group' => $group
                 ]) @endcomponent                
+            @elseif ($section === 'invites')
+                @component('group::pages.groups.sections.invites', [
+                    'group' => $group
+                ]) @endcomponent
             @endif
         @endcell
     @endlayoutGridWithInner

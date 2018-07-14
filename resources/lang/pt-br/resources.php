@@ -28,4 +28,10 @@ return [
     'group' => 'Grupo',
     'invites' => 'Convites',
     'invite' => 'Convite',
+    'members' => 'Membros',
+    'member' => 'Membro',
+    'programs' => 'Programas',
+    'program' => 'Programa',
+    'projects' => 'Projetos',
+    'project' => 'Projeto',
 ];

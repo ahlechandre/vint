@@ -12,7 +12,7 @@
 
     {{-- Content --}}
     <div class="card__body">
-        @component('components.form', $form) @endcomponent
+        @form($form) @endform
     </div>
 
     {{-- Actions --}}
