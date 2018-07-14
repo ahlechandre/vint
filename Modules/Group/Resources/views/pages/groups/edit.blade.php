@@ -1,26 +1,26 @@
 @extends('layouts.master', [
     'breadcrumbs' => [
         [
-            'text' => __('resources.users'),
+            'text' => __('resources.groups'),
             'attrs' => [
-                'href' => url('/users')
+                'href' => url('groups')
             ]
         ],
         [
-            'text' => $userToEdit->name,
+            'text' => $group->name,
             'attrs' => [
-                'href' => url("/users/{$userToEdit->id}")
+                'href' => url("/groups/{$group->id}")
             ],
         ],
         [
             'text' => __('actions.edit'),
             'attrs' => [
-                'href' => url("/users/{$userToEdit->id}/edit")
+                'href' => url("/groups/{$group->id}/edit")
             ]
         ]
     ],
 ])
-@section('title', __('resources.users') . " / {$userToEdit->name} / " . __('actions.edit'))
+@section('title', __('resources.groups') . " / {$group->name} / " . __('actions.edit'))
 
 @section('main')
     @layoutGridWithInner([
@@ -30,24 +30,19 @@
             'when' => ['default' => 12] 
         ])
             {{-- Formulário de criação. --}}
-            @component('user::forms.user', [
-                'title' => $userToEdit->name,
-                'subtitle' => __('messages.users.edit'),
-                'formAction' => url("/users/{$userToEdit->id}"),
+            @component('group::forms.group', [
+                'title' => $group->name,
+                'subtitle' => __('messages.groups.edit'),
+                'formAction' => url("/groups/{$group->id}"),
                 'formMethod' => 'put',
-                'formCancelUrl' => url("/users/{$userToEdit->id}"),
-                'props' => [
-                    'roles' => $roles
-                ],
+                'formCancelUrl' => url("/groups/{$group->id}"),
                 'validations' => array_map(function ($error) {
                     return $error[0] ?? null;
                 }, $errors->toArray()),
                 'values' => [
-                    'name' => $userToEdit->name,
-                    'username' => $userToEdit->username,
-                    'email' => $userToEdit->email,
-                    'is_active' => $userToEdit->is_active ? true : false,
-                    'role_id' => $userToEdit->role_id
+                    'name' => $group->name,
+                    'description' => $group->description,
+                    'is_active' => $group->is_active ? true : false,
                 ],
             ]) @endcomponent
         @endcell

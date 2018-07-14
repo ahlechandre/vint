@@ -55,18 +55,14 @@ class GroupRepository
      */
     public function store(User $user, array $inputs)
     {
-        $userCreated = null;
+        $group = null;
 
         // Verifica se o usuário pode realizar.
-        if ($user->cant('create', User::class)) {
+        if ($user->cant('create', Group::class)) {
             return api_response(403);
         }
-        $store = function () use ($user, $inputs, &$userCreated) {
-            $role = Role::ofUser($user)
-                ->forUsersForm()
-                ->findOrFail($inputs['role_id']);
-            $userCreated = $role->users()
-                ->create($inputs);       
+        $store = function () use ($user, $inputs, &$group) {
+            $group = Group::create($inputs);       
         };
 
         try {
@@ -76,8 +72,8 @@ class GroupRepository
             return api_response(500);
         }
 
-        return api_response(200, __('messages.users.created'), [
-            'userCreated' => $userCreated
+        return api_response(200, __('messages.groups.created'), [
+            'group' => $group
         ]);
     }
 
@@ -91,17 +87,14 @@ class GroupRepository
      */
     public function update(User $user, $id, array $inputs)
     {
-        $userToUpdate = User::findOrFail($id);
+        $group = Group::findOrFail($id);
 
         // Verifica se o usuário pode realizar.
-        if ($user->cant('update', $userToUpdate)) {
+        if ($user->cant('update', $group)) {
             return api_response(403);
         }
-        $update = function () use ($user, $inputs, $userToUpdate) {
-            $role = Role::ofUser($user)
-                ->forUsersForm()
-                ->findOrFail($inputs['role_id']);
-            $userToUpdate->update($inputs);
+        $update = function () use ($user, $inputs, $group) {
+            $group->update($inputs);
         };
 
         try {
@@ -111,8 +104,8 @@ class GroupRepository
             return api_response(500);
         }
 
-        return api_response(200, __('messages.users.updated'), [
-            'userUpdated' => $userToUpdate
+        return api_response(200, __('messages.groups.updated'), [
+            'group' => $group
         ]);
     }
 

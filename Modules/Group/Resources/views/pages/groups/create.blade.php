@@ -1,20 +1,20 @@
 @extends('layouts.master', [
     'breadcrumbs' => [
         [
-            'text' => __('resources.users'),
+            'text' => __('resources.groups'),
             'attrs' => [
-                'href' => url('/users')
+                'href' => url('groups')
             ]
         ],
         [
             'text' => __('actions.create'),
             'attrs' => [
-                'href' => url('/users/create')
+                'href' => url('/groups/create')
             ]
         ]
     ],
 ])
-@section('title', __('resources.users') . ' / ' . __('actions.create'))
+@section('title', __('resources.groups') . ' / ' . __('actions.create'))
 
 @section('main')
     @layoutGridWithInner([
@@ -24,25 +24,19 @@
             'when' => ['default' => 12] 
         ])
             {{-- Formulário de criação. --}}
-            @component('user::forms.user', [
-                'title' => __('resources.users'),
-                'subtitle' => __('messages.users.create'),
-                'formAction' => url('/users'),
+            @component('group::forms.group', [
+                'title' => __('resources.groups'),
+                'subtitle' => __('messages.groups.create'),
+                'formAction' => url('groups'),
                 'formMethod' => 'post',
-                'formCancelUrl' => url('/users'),
-                'props' => [
-                    'roles' => $roles
-                ],
+                'formCancelUrl' => url('users'),
                 'validations' => array_map(function ($error) {
                     return $error[0] ?? null;
                 }, $errors->toArray()),
                 'values' => [
                     'name' => old('name'),
-                    'email' => old('email'),
-                    'username' => old('username'),
-                    'password' => old('password'),
-                    'is_active' => true,
-                    'role_id' => old('role_id')
+                    'description' => old('description'),
+                    'is_active' => true
                 ],
             ]) @endcomponent
         @endcell

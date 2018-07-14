@@ -4,8 +4,8 @@
         'when' => ['desktop' => 12]
     ])
         @card([
-            'title' => __('headlines.personal'),
-            'subtitle' => __('messages.users.about'),
+            'title' => __('resources.group'),
+            'subtitle' => __('messages.groups.about'),
             'modifiers' => ['mdc-card--outlined']
         ])
             @listTwoLine([
@@ -13,41 +13,31 @@
                     [
                         'icon' => __('material_icons.name'),
                         'text' => __('attrs.name'),
-                        'secondaryText' => $userToShow->name
+                        'secondaryText' => $group->name
                     ],
                     [
-                        'icon' => __('material_icons.role'),
-                        'text' => __('attrs.role'),
-                        'secondaryText' => $userToShow->role->name
-                    ],
-                    [
-                        'icon' => __('material_icons.username'),
-                        'text' => __('attrs.username'),
-                        'secondaryText' => $userToShow->username
-                    ],
-                    [
-                        'icon' => __('material_icons.email'),
-                        'text' => __('attrs.email'),
-                        'secondaryText' => $userToShow->email
+                        'icon' => __('material_icons.description'),
+                        'text' => __('attrs.description'),
+                        'secondaryText' => $group->description
                     ],
                     [
                         'icon' => __('material_icons.is_active'),
                         'text' => __('attrs.is_active'),
-                        'secondaryText' => __("messages.is_active.{$userToShow->is_active}")
+                        'secondaryText' => __("messages.is_active.{$group->is_active}")
                     ],                    
                 ]
             ]) @endlistTwoLine
         @endcard
 
-        @if ($user->can('update', $userToShow))
+        @if ($user->can('update', $group))
             @fab([
                 'icon' => 'edit',
-                'label' => __('messages.users.edit'),
+                'label' => __('messages.groups.edit'),
                 'modifiers' => ['fab--fixed'],
                 'attrs' => [
-                    'href' => url("/users/{$userToShow->id}/edit"),
-                    'title' => __('messages.users.edit'),
-                    'alt' => __('messages.users.edit'),
+                    'href' => url("/groups/{$group->id}/edit"),
+                    'title' => __('messages.groups.edit'),
+                    'alt' => __('messages.groups.edit'),
                 ],
             ]) @endfab        
         @endif

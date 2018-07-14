@@ -20,6 +20,8 @@ class CreateGroupsTable extends Migration
                 ->unique();
             $table->text('description')
                 ->nullable();
+            $table->boolean('is_active')
+                ->default(true);
             $table->softDeletes();
             $table->timestamps();
         });

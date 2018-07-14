@@ -21,6 +21,17 @@ class Group extends Model
 
     /**
      *
+     * @param  string  $value
+     * @return void
+     */
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = $value;
+        $this->attributes['slug'] = str_slug($value, '-');
+    }
+    
+    /**
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function users()

@@ -4,6 +4,7 @@ namespace Modules\Group\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Group\Entities\Group;
 use Illuminate\Routing\Controller;
 use Modules\Group\Http\Requests\GroupRequest;
 use Modules\Group\Repositories\GroupRepository;
@@ -69,16 +70,11 @@ class GroupController extends Controller
         $user = $request->user();
 
         // Verifica se o usuário pode realizar.
-        if ($user->cant('create', group::class)) {
+        if ($user->cant('create', Group::class)) {
             return abort(403);
         }
-        $roles = Role::ofUser($user)
-            ->forgroupsForm()
-            ->get();
 
-        return view('group::pages.groups.create', [
-            'roles' => $roles
-        ]);
+        return view('group::pages.groups.create');
     }
 
     /**
@@ -94,7 +90,7 @@ class GroupController extends Controller
         $store = $this->groups
             ->store($user, $inputs);
         $redirectTo = 'groups/' . (
-            $store->data['userCreated']->id ?? null
+            $store->data['group']->id ?? null
         );
 
         return redirect($redirectTo)
@@ -111,16 +107,16 @@ class GroupController extends Controller
     public function show(Request $request, $id)
     {
         $user = $request->user();
-        $userToShow = group::findOrFail($id);
+        $group = Group::findOrFail($id);
 
         // Verifica se usuário pode realizar.
-        if ($user->cant('view', $userToShow)) {
+        if ($user->cant('view', $group)) {
             return abort(403);
         }
         $section = $request->query('section', 'about');
         
         return view('group::pages.groups.show', [
-            'userToShow' => $userToShow,
+            'group' => $group,
             'section' => $section
         ]);
     }
@@ -135,19 +131,15 @@ class GroupController extends Controller
     public function edit(Request $request, $id)
     {
         $user = $request->user();
-        $userToEdit = group::findOrFail($id);
+        $group = Group::findOrFail($id);
 
         // Verifica se o usuário pode realizar.
-        if ($user->cant('update', $userToEdit)) {
+        if ($user->cant('update', $group)) {
             return abort(403);
         }
-        $roles = Role::ofUser($user)
-            ->forgroupsForm()
-            ->get();
 
         return view('group::pages.groups.edit', [
-            'userToEdit' => $userToEdit,
-            'roles' => $roles,
+            'group' => $group
         ]);
     }
 

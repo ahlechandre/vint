@@ -1,39 +1,38 @@
 @extends('layouts.master', [
     'breadcrumbs' => [
         [
-            'text' => __('resources.users'),
+            'text' => __('resources.groups'),
             'attrs' => [
-                'href' => url('/users')
+                'href' => url('groups')
             ]
         ],
         [
-            'text' => $userToShow->name,
+            'text' => $group->name,
             'attrs' => [
-                'href' => url("/users/{$userToShow->id}")
+                'href' => url("groups/{$group->id}")
             ]
         ],
     ],    
     'topAppBarTabs' => [
-        'tabs' => array_merge([
+        'tabs' => [
             [
                 'text' => __('headlines.about'),
                 'isActive' => $section === 'about',
                 'attrs' => [
-                    'href' => url("/users/{$userToShow->id}?section=about")
+                    'href' => url("/groups/{$group->id}?section=about")
                 ],
             ],
-        ], $user->can('update', $userToShow) ? [
             [
-                'text' => __('headlines.security'),
-                'isActive' => $section === 'security',
+                'text' => __('resources.members'),
+                'isActive' => $section === 'members',
                 'attrs' => [
-                    'href' => url("/users/{$userToShow->id}?section=security")
+                    'href' => url("/groups/{$group->id}?section=members")
                 ],
-            ]            
-        ] : [])
+            ]             
+        ]
     ],
 ])
-@section('title', __('resources.users') . " / {$userToShow->name}")
+@section('title', __('resources.groups') . " / {$group->name}")
 
 @section('main')
     @layoutGridWithInner([
@@ -43,13 +42,13 @@
             'when' => ['default' => 12]
         ])
             @if ($section === 'about')
-                @component('user::pages.users.sections.about', [
-                    'userToShow' => $userToShow
+                @component('group::pages.groups.sections.about', [
+                    'group' => $group
                 ]) @endcomponent
-            @elseif ($section === 'security')
-                @component('user::pages.users.sections.security', [
-                    'userToShow' => $userToShow
-                ]) @endcomponent
+            @elseif ($section === 'members')
+                @component('group::pages.groups.sections.members', [
+                    'group' => $group
+                ]) @endcomponent                
             @endif
         @endcell
     @endlayoutGridWithInner
