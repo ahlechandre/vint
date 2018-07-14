@@ -29,18 +29,23 @@
         @cell([
             'when' => ['default' => 12] 
         ])
-            {{-- Formulário de criação. --}}
-            @component('user::forms.user-password', [
-                'title' => "{$userToEdit->name} / " . __('headlines.password'),
-                'subtitle' => __('messages.auth.edit'),
-                'formAction' => url("/users/{$userToEdit->id}/password"),
-                'formMethod' => 'put',
-                'formCancelUrl' => url("/users/{$userToEdit->id}/password"),
-                'validations' => [
-                    'password' => $errors->get('password')[0] ?? null,
-                    'password_confirmation' => $errors->get('password_confirmation')[0] ?? null,
-                ],
-            ]) @endcomponent
+            @cardWithForm([
+                'title' => $userToEdit->name,
+                'subtitle' => __('messages.users.edit-password'),
+            ])
+                @form([
+                    'action' => url("users/{$userToEdit->id}/password"),
+                    'method' => 'put',
+                    'attrs' => [
+                        'id' => 'form-user-password'
+                    ],
+                    'withCancel' => true,
+                    'withSubmit' => true,                
+                    'inputs' => [
+                        '__view' => 'user::inputs.user-password'
+                    ]
+                ]) @endform
+            @endcard        
         @endcell
     @endlayoutGridWithInner
 @endsection

@@ -23,28 +23,31 @@
         @cell([
             'when' => ['default' => 12] 
         ])
-            {{-- Formulário de criação. --}}
-            @component('user::forms.user', [
+            @cardWithForm([
                 'title' => __('resources.users'),
                 'subtitle' => __('messages.users.create'),
-                'formAction' => url('/users'),
-                'formMethod' => 'post',
-                'formCancelUrl' => url('/users'),
-                'props' => [
-                    'roles' => $roles
-                ],
-                'validations' => array_map(function ($error) {
-                    return $error[0] ?? null;
-                }, $errors->toArray()),
-                'values' => [
-                    'name' => old('name'),
-                    'email' => old('email'),
-                    'username' => old('username'),
-                    'password' => old('password'),
-                    'is_active' => true,
-                    'role_id' => old('role_id')
-                ],
-            ]) @endcomponent
+            ])
+                @form([
+                    'action' => url('users'),
+                    'method' => 'post',
+                    'attrs' => [
+                        'id' => 'form-user'
+                    ],
+                    'withCancel' => true,
+                    'withSubmit' => true,                
+                    'inputs' => [
+                        '__view' => 'user::inputs.user',
+                        'props' => [
+                            'name' => old('name'),
+                            'roleId' => old('role_id'),
+                            'username' => old('username'),
+                            'email' => old('email'),
+                            'isActive' => true,
+                            'roles' => $roles,
+                        ],
+                    ]
+                ]) @endform            
+            @endcard
         @endcell
     @endlayoutGridWithInner
 @endsection

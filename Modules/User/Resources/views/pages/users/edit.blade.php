@@ -29,27 +29,31 @@
         @cell([
             'when' => ['default' => 12] 
         ])
-            {{-- Formulário de criação. --}}
-            @component('user::forms.user', [
+            @cardWithForm([
                 'title' => $userToEdit->name,
                 'subtitle' => __('messages.users.edit'),
-                'formAction' => url("/users/{$userToEdit->id}"),
-                'formMethod' => 'put',
-                'formCancelUrl' => url("/users/{$userToEdit->id}"),
-                'props' => [
-                    'roles' => $roles
-                ],
-                'validations' => array_map(function ($error) {
-                    return $error[0] ?? null;
-                }, $errors->toArray()),
-                'values' => [
-                    'name' => $userToEdit->name,
-                    'username' => $userToEdit->username,
-                    'email' => $userToEdit->email,
-                    'is_active' => $userToEdit->is_active ? true : false,
-                    'role_id' => $userToEdit->role_id
-                ],
-            ]) @endcomponent
+            ])
+                @form([
+                    'action' => url("users/{$userToEdit->id}"),
+                    'method' => 'put',
+                    'attrs' => [
+                        'id' => 'form-user'
+                    ],
+                    'withCancel' => true,
+                    'withSubmit' => true,                
+                    'inputs' => [
+                        '__view' => 'user::inputs.user',
+                        'props' => [
+                            'name' => $userToEdit->name,
+                            'roleId' => $userToEdit->role_id,
+                            'username' => $userToEdit->username,
+                            'email' => $userToEdit->email,
+                            'isActive' => $userToEdit->is_active,
+                            'roles' => $roles
+                        ],
+                    ]
+                ]) @endform
+            @endcard
         @endcell
     @endlayoutGridWithInner
 @endsection

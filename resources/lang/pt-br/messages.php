@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'helpers' => [
+        'username' => 'Por exemplo: nome_de_usuário.',
+        'password' => 'No mínimo 6 caracteres.',
+    ],
     'status' => [
         403 => 'Permissão negada',
     ],

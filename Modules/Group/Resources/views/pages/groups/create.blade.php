@@ -23,22 +23,28 @@
         @cell([
             'when' => ['default' => 12] 
         ])
-            {{-- Formulário de criação. --}}
-            @component('group::forms.group', [
+            @cardWithForm([
                 'title' => __('resources.groups'),
                 'subtitle' => __('messages.groups.create'),
-                'formAction' => url('groups'),
-                'formMethod' => 'post',
-                'formCancelUrl' => url('users'),
-                'validations' => array_map(function ($error) {
-                    return $error[0] ?? null;
-                }, $errors->toArray()),
-                'values' => [
-                    'name' => old('name'),
-                    'description' => old('description'),
-                    'is_active' => true
-                ],
-            ]) @endcomponent
+            ])
+                @form([
+                    'action' => url('groups'),
+                    'method' => 'post',
+                    'attrs' => [
+                        'id' => 'form-group'
+                    ],
+                    'withCancel' => true,
+                    'withSubmit' => true,                
+                    'inputs' => [
+                        '__view' => 'group::inputs.group',
+                        'props' => [
+                            'name' => old('name'),
+                            'description' => old('description'),
+                            'isActive' => true,
+                        ],
+                    ]
+                ]) @endform
+            @endcard
         @endcell
     @endlayoutGridWithInner
 @endsection

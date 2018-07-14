@@ -80,7 +80,12 @@ function setMaterialCells($cells)
     unset($cells['default']);
   
     foreach ($cells as $device => $cols) {
-        $classes .= " {$prefix}{$cols}-{$device}";
+        $deviceTrans = $device === 'd' ? 'desktop' : (
+            $device === 't' ? 'tablet' : (
+                $device === 'p' ? 'phone' : $device
+            )
+        );
+        $classes .= " {$prefix}{$cols}-{$deviceTrans}";
     }
   
     return $classes;
@@ -105,7 +110,12 @@ function setMaterialCellsWhen($when)
     unset($when['default']);
   
     foreach ($when as $device => $cols) {
-        $classes .= " {$prefix}{$cols}-{$device}";
+        $deviceTrans = $device === 'd' ? 'desktop' : (
+            $device === 't' ? 'tablet' : (
+                $device === 'p' ? 'phone' : $device
+            )
+        );
+        $classes .= " {$prefix}{$cols}-{$deviceTrans}";
     }
   
     return $classes;
