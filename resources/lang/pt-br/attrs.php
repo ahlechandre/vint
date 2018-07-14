@@ -6,6 +6,7 @@ return [
     'slug' => 'Slug',
     'description' => 'Descrição',
     'is_active' => 'Está ativo',
+    'expires_at' => 'Expira em',
     'is_active_switch' => 'Inativo/ativo',
     'deleted_at' => 'Removido em',
     'created_at' => 'Adicionado em',

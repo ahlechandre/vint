@@ -34,8 +34,8 @@ class Group extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function users()
+    public function invites()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(Invite::class);
     }
 }
