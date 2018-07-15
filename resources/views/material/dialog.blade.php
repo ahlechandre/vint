@@ -15,13 +15,15 @@
             {{ $slot }}
         </section>
         <footer class="mdc-dialog__footer">
-            @component('material.button', array_merge($cancel, [
-                'modifiers' => [
-                    'mdc-dialog__footer__button',
-                    'mdc-dialog__footer__button--cancel'
-                ]
-            ])) @endcomponent
-
+            @if ($cancel ?? false)
+                @component('material.button', array_merge($cancel, [
+                    'modifiers' => [
+                        'mdc-dialog__footer__button',
+                        'mdc-dialog__footer__button--cancel'
+                    ]
+                ])) @endcomponent            
+            @endif
+            
             @component('material.button', array_merge($accept, [
                 'modifiers' => [
                     'mdc-dialog__footer__button',

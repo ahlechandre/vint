@@ -10,12 +10,22 @@
             'modifiers' => ['mdc-card--outlined'],
         ])
             @listTwoLine([
-                'items' => $group->invites->map(function ($invite, $index) {
+                'items' => $group->invites
+                    ->sortBy('expires_at')
+                    ->map(function ($invite, $index) {
                     return [
                         'icon' => __('material_icons.invite'), 
-                        'text' => __('resources.invite') . ' #' . ($index + 1), 
-                        'secondaryText' => $invite->id,
+                        'text' => __('attrs.expires_at') . ' ' . $invite->expires_at->diffForHumans(), 
+                        'secondaryText' => $invite->url,
                         'metas' => [
+                            [
+                                'icon' => 'details',
+                                'attrs' => [
+                                    'href' => '#',
+                                    'title' => __('actions.details'),
+                                    'id' => "dialog-activation-details-invite-{$invite->id}"
+                                ],
+                            ],    
                             [
                                 'icon' => 'edit',
                                 'attrs' => [
@@ -25,7 +35,7 @@
                                 ],
                             ],
                             [
-                                'icon' => 'close',
+                                'icon' => 'delete_outline',
                                 'attrs' => [
                                     'href' => '#',
                                     'title' => __('actions.delete'),
@@ -43,25 +53,100 @@
 
 
 {{-- Invite Create Dialog --}}
-<form action="{{ url("groups/{$group->id}/invites") }}" method="post">
-    @csrf
+@form([
+    'action' => url("groups/{$group->id}/invites"),
+    'method' => 'post',
+    'inputs' => [
+        '__view' => 'group::inputs.invite',
+        'props' => [
+            'title' => __('messages.invites.create'),
+            'description' => __('messages.invites.description_on_create'),
+            'activation' => 'dialog-activation-create-invite',
+            'dialogId' => 'dialog-create-invite',
+            'acceptText' => __('actions.create'),
+            'expiresAt' => Carbon\Carbon::now()
+                ->addYears(1)
+                ->format('Y-m-d')
+        ]
+    ]
+]) @endform
 
+{{-- Invite Edit Dialogs --}}
+@foreach($group->invites as $invite)
+    @form([
+        'action' => url("groups/{$group->id}/invites/{$invite->id}"),
+        'method' => 'put',
+        'inputs' => [
+            '__view' => 'group::inputs.invite',
+            'props' => [
+                'title' => __('messages.invites.edit'),
+                'description' => __('messages.invites.description_on_edit'),
+                'activation' => "dialog-activation-edit-invite-{$invite->id}",
+                'dialogId' => "dialog-edit-invite-{$invite->id}",
+                'acceptText' => __('actions.edit'),
+                'expiresAt' => $invite->expires_at
+                    ->format('Y-m-d')
+            ]
+        ]
+    ]) @endform
+@endforeach
+
+{{-- Invite Destroy Dialogs --}}
+@foreach($group->invites as $invite)
+    @form([
+        'action' => url("groups/{$group->id}/invites/{$invite->id}"),
+        'method' => 'delete'
+    ])
+        @dialog([
+            'activation' => "dialog-activation-destroy-invite-{$invite->id}",
+            'title' => __('messages.invites.destroy'),
+            'attrs' => [
+                'id' => "dialog-destroy-invite-{$invite->id}",
+            ],
+            'cancel' => [
+                'text' => __('actions.cancel'),
+                'attrs' => [
+                    'type' => 'button'
+                ],
+            ],
+            'accept' => [
+                'text' => __('actions.delete'),
+                'attrs' => [
+                    'type' => 'submit'
+                ],
+            ],        
+        ])
+            @layoutGridInner
+                {{-- Descrição --}}
+                @cell([
+                    'when' => [
+                        'desktop' => 12,
+                        'tablet' => 8,
+                    ]
+                ])
+                    <p class="mdc-typography--subtitle1">
+                        {{ __('messages.invites.description_on_destroy') }}
+                    </p>
+                @endcell
+            @endlayoutGridInner
+        @enddialog  
+    @endform
+@endforeach
+
+{{-- Invite Details Dialogs --}}
+@foreach($group->invites as $invite)
     @dialog([
-        'activation' => 'dialog-activation-create-invite',
-        'title' => __('messages.invites.create'),
+        'activation' => "dialog-activation-details-invite-{$invite->id}",
+        'title' => __('messages.invites.details'),
         'attrs' => [
-            'id' => 'dialog-create-invite',
-        ],
-        'cancel' => [
-            'text' => __('actions.cancel'),
-            'attrs' => [],
+            'id' => "dialog-details-invite-{$invite->id}",
         ],
         'accept' => [
-            'text' => __('actions.create'),
+            'text' => __('actions.ok'),
             'attrs' => [
-                'type' => 'submit'
+                'type' => 'button'
             ],
-        ],        
+        ],
     ])
         @layoutGridInner
             {{-- Descrição --}}
@@ -71,34 +156,37 @@
                     'tablet' => 8,
                 ]
             ])
-                <p class="mdc-typography--subtitle1">
-                    {{ __('messages.invites.description') }}
-                </p>
+                @listTwoLine([
+                    'items' => [
+                        [
+                            'icon' => __('material_icons.user'),
+                            'text' => __('attrs.creator'),
+                            'secondaryText' => $invite->user->name,
+                        ],
+                        [
+                            'icon' => __('material_icons.expires_at'),
+                            'text' => __('attrs.expires_at'),
+                            'secondaryText' => $invite->expires_at
+                                ->format('d/m/Y à\s H:i'),
+                        ],
+                        [
+                            'icon' => __('material_icons.created_at'),
+                            'text' => __('attrs.created_at'),
+                            'secondaryText' => $invite->created_at
+                                ->format('d/m/Y à\s H:i'),
+                        ],
+                        [
+                            'icon' => __('material_icons.updated_at'),
+                            'text' => __('attrs.updated_at'),
+                            'secondaryText' => $invite->updated_at
+                                ->format('d/m/Y à\s H:i'),
+                        ]
+                    ]
+                ]) @endlistTwoLine
             @endcell
-
-            {{-- Expira em --}}
-            @cell([
-                'when' => [
-                    'desktop' => 6,
-                    'tablet' => 8,
-                ]
-            ])
-                @textfield([
-                    'label' => __('attrs.expires_at'),
-                    'attrs' => [
-                        'type' => 'date',
-                        'name' => 'expires_at',
-                        'required' => '',
-                        'value' => Carbon\Carbon::now()->addYears(1)
-                            ->format('Y-m-d'),
-                        'id' => 'textfield-group-invite-expires-at',
-                    ],
-                ]) @endtextfield
-            @endcell
-
         @endlayoutGridInner
-    @enddialog
-</form>
+    @enddialog  
+@endforeach
 
 @fab([
     'icon' => 'add',

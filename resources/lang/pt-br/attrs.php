@@ -3,6 +3,7 @@
 return [
     'id' => 'Identificador',
     'name' => 'Nome',
+    'creator' => 'Criador',
     'slug' => 'Slug',
     'description' => 'Descrição',
     'is_active' => 'Está ativo',

@@ -20,4 +20,11 @@ Route::middleware('auth')
          */
         Route::resource('groups', 'GroupController')
             ->except(['destroy']);
+        /**
+         * ----------------------------------------
+         * Convites
+         * ----------------------------------------
+         */
+        Route::resource('groups/{group}/invites', 'InviteController')
+            ->only(['store', 'update', 'destroy']);
     });

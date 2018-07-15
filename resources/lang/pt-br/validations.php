@@ -11,6 +11,7 @@ return [
     'digits' => 'O :attribute deve possuir :digits dígitos.',
     'email' => 'O :attribute deve ser um e-mail válido.',
     'numeric' => 'O :attribute deve ser númerico.',
+    'after' => ':attribute deve ser após :date.',
     'strings' => [
         'max' => 'O :attribute deve ter, no máximo, :max caracteres.',
         'min' => 'O :attribute deve ter, no mínimo, :min caracteres.',

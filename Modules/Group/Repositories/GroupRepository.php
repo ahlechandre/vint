@@ -108,38 +108,4 @@ class GroupRepository
             'group' => $group
         ]);
     }
-
-    /**
-     * Tenta atualizar a senha de um usuário.
-     *
-     * @param  \Modules\User\Entities\User  $user
-     * @param  int  $id
-     * @param  array  $inputs
-     * @return stdClass
-     */
-    public function updatePassword(User $user, $id, array $inputs)
-    {
-        $userToUpdate = User::findOrFail($id);
-
-        // Verifica se o usuário pode realizar.
-        if ($user->cant('update', $userToUpdate)) {
-            return api_response(403);
-        }
-        $update = function () use ($user, $inputs, $userToUpdate) {
-            $userToUpdate->update([
-                'password' => $inputs['password']
-            ]);
-        };
-
-        try {
-            // Tenta atualizar o usuário.
-            DB::transaction($update);
-        } catch (Exception $exception) {
-            return api_response(500);
-        }
-
-        return api_response(200, __('messages.auth.updated'), [
-            'userUpdated' => $userToUpdate
-        ]);
-    }
 }

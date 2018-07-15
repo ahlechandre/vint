@@ -12,4 +12,6 @@ return [
     'open_in_new' => 'Abrir em nova janela',
     'logout' => 'Sair',
     'login' => 'Entrar',
+    'details' => 'Ver detalhes',
+    'ok' => 'OK',
 ];

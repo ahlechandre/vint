@@ -20,6 +20,22 @@ class Invite extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $dates = [
+        'deleted_at', 'expires_at'
+    ];
+
+    /**
+     * 
+     * @return string
+     */
+    public function getUrlAttribute()
+    {
+        return url("invites?token={$this->token}");
+    }
+
+    /**
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

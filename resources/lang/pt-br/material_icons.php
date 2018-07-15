@@ -17,4 +17,7 @@ return [
     'username' => 'alternate_email',
     'groups' => 'group', 
     'group' => 'group', 
+    'invites' => 'link', 
+    'invite' => 'link', 
+    'expires_at' => 'insert_invitation', 
 ];

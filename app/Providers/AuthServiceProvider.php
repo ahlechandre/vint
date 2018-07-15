@@ -5,8 +5,10 @@ namespace App\Providers;
 use Laravel\Passport\Passport;
 use Modules\User\Entities\User;
 use Modules\Group\Entities\Group;
+use Modules\Group\Entities\Invite;
 use Modules\User\Policies\UserPolicy;
 use Modules\Group\Policies\GroupPolicy;
+use Modules\Group\Policies\InvitePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -19,6 +21,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         User::class => UserPolicy::class,
         Group::class => GroupPolicy::class,
+        Invite::class => InvitePolicy::class,
     ];
 
     /**
