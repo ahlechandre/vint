@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Modules\System\Database\Seeders\SystemDatabaseSeeder;
 use Modules\User\Database\Seeders\UserDatabaseSeeder;
+use Modules\Group\Database\Seeders\GroupDatabaseSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             SystemDatabaseSeeder::class,
             UserDatabaseSeeder::class,
+            GroupDatabaseSeeder::class,
         ]);
     }
 }

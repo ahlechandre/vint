@@ -32,7 +32,7 @@ class Invite extends Model
      */
     public function getUrlAttribute()
     {
-        return url("invites?token={$this->token}");
+        return url("register?invite={$this->token}");
     }
 
     /**
@@ -51,5 +51,15 @@ class Invite extends Model
     public function group()
     {
         return $this->belongsTo(Group::class);
-    }    
+    }
+
+    /**
+     *
+     * @param  \Illuminate\Database\Query\Builder  $query
+     * @return \Illuminate\Database\Query\Builder
+     */
+    public function scopeNotExpired($query)
+    {
+        return $query->whereDate('expires_at', '>=', now());
+    }
 }

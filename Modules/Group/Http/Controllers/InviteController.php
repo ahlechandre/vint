@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Group\Http\Requests\InviteRequest;
 use Modules\Group\Repositories\InviteRepository;
+use Modules\Group\Entities\Invite;
 
 class InviteController extends Controller
 {
@@ -97,5 +98,5 @@ class InviteController extends Controller
 
         return redirect("groups/{$groupId}?section=invites")
             ->with('snackbar', $update->message);
-    }    
+    }
 }

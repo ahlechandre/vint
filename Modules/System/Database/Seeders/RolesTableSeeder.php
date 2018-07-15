@@ -16,17 +16,17 @@ class RolesTableSeeder extends Seeder
     protected $roles = [
         [
             'name' => 'Administrador',
-            'slug' => 'admin',
+            'slug' => Role::ADMIN_SLUG,
             'description' => 'Papel destinado aos usuários administradores do sistema',
         ],
         [
             'name' => 'Gerente',
-            'slug' => 'manager',
+            'slug' => Role::MANAGER_SLUG,
             'description' => 'Papel destinado aos usuários gerentes do sistema',
         ],
         [
             'name' => 'Membro',
-            'slug' => 'member',
+            'slug' => Role::MEMBER_SLUG,
             'description' => 'Papel destinado aos usuários membros de grupos de pesquisa e extensão',
         ],
     ];
