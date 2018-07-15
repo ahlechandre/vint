@@ -19,6 +19,14 @@
         'actionText' => 'OK',
       ]) @endcomponent
     @endif
+
+    {{-- Validation --}}
+    @if ($errors->any()) 
+      @component('material.snackbar', [
+        'message' => $errors->first(),
+        'actionText' => 'OK',
+      ]) @endcomponent
+    @endif    
   
     <script src="{{ asset('js/material-components-web.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>

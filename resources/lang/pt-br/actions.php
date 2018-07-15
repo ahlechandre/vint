@@ -11,4 +11,5 @@ return [
     'delete' => 'Remover',
     'open_in_new' => 'Abrir em nova janela',
     'logout' => 'Sair',
+    'login' => 'Entrar',
 ];

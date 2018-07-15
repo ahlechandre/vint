@@ -2,10 +2,10 @@
 @section('title', 'Login')
 
 @section('main')
-  @component('components.page', [
+  @component('components.ui.page', [
     'modifiers' => ['page-login']
   ])
-    @component('components.top-app-bar-surface', [
+    @component('components.ui.top-app-bar-surface', [
       'modifiers' => [
         'top-app-bar-surface--expanded',
         'top-app-bar-surface--min-height',
@@ -27,6 +27,7 @@
                         'props' => [
                             'text' => 'Esqueceu sua senha?',
                             'attrs' => [
+                                'disabled' => ''
                             ],
                         ],
                     ],
@@ -36,48 +37,11 @@
                     'action' => url('/login'),
                     'method' => 'post',
                     'inputs' => [
-                        [
-                            'when' => ['default' => 12,],
-                            'material' => 'textfield',
-                            'props' => [
-                                'label' => __('attrs.email'),
-                                'attrs' => [
-                                    'type' => 'email',
-                                    'name' => 'email',
-                                    'required' => '',
-                                    'id' => 'textfield-email',
-                                ],
-                                'helperText' => [
-                                    'isValidation' => true,
-                                    'isPersistent' => $errors->has('auth'),
-                                    'message' => $errors->get('auth')[0] ?? null,
-                                ],
-                            ],
-                        ],
-                        [
-                            'when' => [
-                                'default' => 12,
-                            ],
-                            'material' => 'textfield',
-                            'props' => [
-                                'label' => __('attrs.password'),
-                                'attrs' => [
-                                    'type' => 'password',
-                                    'required' => '',
-                                    'autocomplete' => 'off',
-                                    'name' => 'password',
-                                    'id' => 'textfield-password',
-                                ],
-                            ],
-                        ],           
-                    ],
-                    'submit' => [
-                        'text' => 'Entrar',
-                        'modifiers' => ['mdc-button--unelevated'],
-                        'attrs' => [
-                            'type' => 'submit'
-                        ],
-                    ],        
+                        '__view' => 'system::inputs.login',
+                        'props' => [
+                            'email' => old('email')
+                        ] 
+                    ]        
                   ]) @endform              
             @endcard
         @endcell
