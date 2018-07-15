@@ -20,4 +20,7 @@ return [
     'invites' => 'link', 
     'invite' => 'link', 
     'expires_at' => 'insert_invitation', 
+    'servant' => 'supervisor_account', 
+    'student' => 'school', 
+    'collaborator' => 'sentiment_satisfied_alt', 
 ];

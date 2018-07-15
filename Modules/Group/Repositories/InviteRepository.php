@@ -29,7 +29,7 @@ class InviteRepository
             return api_response(403);
         }
         $store = function () use ($user, $inputs, $group, &$invite) {
-            $token = Str::random(16);
+            $token = Str::random(Invite::TOKEN_LENGTH);
             $invite = $group->invites()
                 ->create(array_merge($inputs, [
                     'token' => $token,

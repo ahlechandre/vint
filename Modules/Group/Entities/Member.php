@@ -11,6 +11,16 @@ class Member extends Model
     use SoftDeletes;
 
     /**
+     * @var string
+     */
+    protected $primaryKey = 'user_id';
+
+    /**
+     * @var bool
+     */
+    public $incrementing = false;
+    
+    /**
      * @var array
      */
     protected $fillable = [
@@ -45,4 +55,30 @@ class Member extends Model
         return $this->belongsTo(User::class);
     }
 
+    /**
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function servant()
+    {
+        return $this->hasOne(Servant::class);
+    }
+
+    /**
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function student()
+    {
+        return $this->hasOne(Student::class);
+    }
+
+    /**
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function collaborator()
+    {
+        return $this->hasOne(Collaborator::class);
+    }    
 }

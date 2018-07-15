@@ -8,7 +8,7 @@ use Modules\Group\Entities\Group;
 use Illuminate\Routing\Controller;
 use Modules\Group\Entities\Invite;
 use Modules\Group\Http\Requests\RegisterRequest;
-use Modules\Group\Repositories\MemberRepository;
+use Modules\Group\Repositories\RegisterRepository;
 use Modules\Group\Entities\MemberType;
 
 class RegisterController extends Controller
@@ -16,19 +16,19 @@ class RegisterController extends Controller
     /**
      * Repositório de dados.
      *
-     * @var \Modules\Group\Repositories\MemberRepository
+     * @var \Modules\Group\Repositories\RegisterRepository
      */
-    protected $members;
+    protected $registers;
 
     /**
      * Inicializa o controlador com a instância do repositório de dados.
      *
-     * @param \Modules\User\Repositories\MemberRepository $members
+     * @param \Modules\Group\Repositories\RegisterRepository $members
      * @return void
      */
-    public function __construct(MemberRepository $members)
+    public function __construct(RegisterRepository $registers)
     {
-        $this->members = $members;
+        $this->registers = $registers;
     }
 
     /**
@@ -73,17 +73,19 @@ class RegisterController extends Controller
      * @param  \Modules\User\Http\Requests\MemberRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(MemberRequest $request)
+    public function store(RegisterRequest $request)
     {
         $user = $request->user();
         $inputs = $request->sanitize();
-        $store = $this->members
-            ->store($user, $inputs);
-        $redirectTo = 'members/' . (
-            $store->data['group']->id ?? null
-        );
+        $store = $this->registers
+            ->store($inputs);
 
-        return redirect($redirectTo)
+        if ($store->success) {
+            return redirect('login')
+                ->with('snackbar', $store->message);
+        }
+
+        return back()->withInput()
             ->with('snackbar', $store->message);
     }
 }

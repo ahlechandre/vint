@@ -4,6 +4,12 @@ return [
     'helpers' => [
         'username' => 'Por exemplo: nome_de_usuário.',
         'password' => 'No mínimo 6 caracteres.',
+        'member' => [
+            'description' => 'Descreva sobre você no grupo.',
+        ],
+        'cpf' => 'Indique o seu número de CPF.',
+        'rga' => 'Indique o seu número de RGA.',
+        'siape' => 'Indique o seu número de SIAPE.',
     ],
     'status' => [
         403 => 'Permissão negada',

@@ -3,7 +3,7 @@
     height: 200px;
     background-color: $mdc-theme-primary;
 
-    &+.layout-grid--with-form {
+    & + .layout-grid--with-form, & + .layout-grid--dense {
         margin-top: -170px;
         margin-bottom: 48px;
     }

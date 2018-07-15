@@ -10,6 +10,8 @@ class Invite extends Model
 {
     use SoftDeletes;
 
+    const TOKEN_LENGTH = 16;
+
     /**
      * @var array
      */

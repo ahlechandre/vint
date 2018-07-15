@@ -43,4 +43,8 @@ return [
     'cte' => 'CTE',
     'fare_price' => 'Preço de tarifa',
     'file' => 'Arquivo',
+    'cpf' => 'CPF',
+    'siape' => 'SIAPE',
+    'is_professor' => 'É professor?',
+    'rga' => 'RGA',
 ];

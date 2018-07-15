@@ -21,15 +21,11 @@ class CreateServantsTable extends Migration
                 ->references('user_id')
                 ->on('members');
             $table->primary('member_user_id');
-            // Servant type relation.
-            $table->integer('servant_type_id')
-                ->unsigned();
-            $table->foreign('servant_type_id')
-                ->references('id')
-                ->on('servant_types');            
             // Other attributes.
             $table->string('siape')
                 ->unique();
+            $table->boolean('is_professor')
+                ->default(true);
             $table->softDeletes();
             $table->timestamps();
         });

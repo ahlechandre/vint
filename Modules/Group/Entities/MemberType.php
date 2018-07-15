@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class MemberType extends Model
 {
     use SoftDeletes;
+
     const SERVANT_SLUG = 'servant';
     const STUDENT_SLUG = 'student';
     const COLLABORATOR_SLUG = 'collaborator';
@@ -40,19 +41,25 @@ class MemberType extends Model
      * @return bool
      */
     public function isServant()
-    {}
+    {
+        return $this->slug === self::SERVANT_SLUG;
+    }
 
     /**
      *
      * @return bool
      */
-    public function isStudant()
-    {}
+    public function isStudent()
+    {
+        return $this->slug === self::STUDENT_SLUG;
+    }
 
     /**
      *
      * @return bool
      */
     public function isCollaborator()
-    {}
+    {
+        return $this->slug === self::COLLABORATOR_SLUG;
+    }
 }
