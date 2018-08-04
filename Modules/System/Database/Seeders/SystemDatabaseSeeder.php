@@ -15,10 +15,9 @@ class SystemDatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            ResourcesTableSeeder::class,            
-            MethodsTableSeeder::class,            
-            RolesTableSeeder::class,            
-            AbilitiesTableSeeder::class,            
+            ResourcesTableSeeder::class,
+            ActionsTableSeeder::class,
+            PermissionsTableSeeder::class,
         ]);
     }
 }

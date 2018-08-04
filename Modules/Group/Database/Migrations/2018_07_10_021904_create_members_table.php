@@ -27,12 +27,12 @@ class CreateMembersTable extends Migration
             $table->foreign('group_id')
                 ->references('id')
                 ->on('groups');
-            // Member type relation.
-            $table->integer('member_type_id')
+            // Role relation.
+            $table->integer('role_id')
                 ->unsigned();
-            $table->foreign('member_type_id')
+            $table->foreign('role_id')
                 ->references('id')
-                ->on('member_types');
+                ->on('roles');
             // Other attributes.
             $table->string('cpf')
                 ->unique();

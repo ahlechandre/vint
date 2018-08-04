@@ -5,7 +5,7 @@ namespace Modules\User\Database\Seeders;
 use DB;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use Modules\System\Entities\Role;
+use Modules\User\Entities\UserType;
 
 class UsersTableSeeder extends Seeder
 {
@@ -15,8 +15,8 @@ class UsersTableSeeder extends Seeder
      */
     protected $admins = [
         [
-            'name' => 'System Administrator',
-            'email' => 'admin@admin.com',
+            'name' => 'Administrador Vint',
+            'email' => 'admin@vint.com',
             'username' => 'admin',
             'password' => '##admin##',
         ],
@@ -30,9 +30,10 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::transaction(function () {
-            $role = Role::admin()->first();
-            $seed = function ($admin) use ($role) {
-                return $role->users()
+            $userType = UserType::admin()
+                ->first();
+            $seed = function ($admin) use ($userType) {
+                return $userType->users()
                     ->create($admin);
             };
             array_map($seed, $this->admins);

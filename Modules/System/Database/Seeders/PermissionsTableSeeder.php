@@ -4,10 +4,10 @@ namespace Modules\System\Database\Seeders;
 
 use DB;
 use Illuminate\Database\Seeder;
-use Modules\System\Entities\Method;
+use Modules\System\Entities\Action;
 use Modules\System\Entities\Resource;
 
-class AbilitiesTableSeeder extends Seeder
+class PermissionsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,16 +17,16 @@ class AbilitiesTableSeeder extends Seeder
     public function run()
     {
         DB::transaction(function () {
-            $abilities = Method::all()
-                ->map(function ($method) {
+            $actions = Action::all()
+                ->map(function ($action) {
                     return [
-                        'method_id' => $method->id,
+                        'action_id' => $action->id,
                     ];
                 })->toArray();
             $resources = Resource::all()
-                ->map(function ($resource) use ($abilities) {
-                    return $resource->abilities()
-                        ->createMany($abilities);
+                ->map(function ($resource) use ($actions) {
+                    return $resource->permissions()
+                        ->createMany($actions);
                 });
         });
     }

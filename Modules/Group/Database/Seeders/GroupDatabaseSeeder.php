@@ -15,7 +15,7 @@ class GroupDatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            MemberTypesTableSeeder::class
+            RolesTableSeeder::class
         ]);
     }
 }

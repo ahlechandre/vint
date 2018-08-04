@@ -5,7 +5,7 @@ namespace Modules\System\Entities;
 use Modules\User\Entities\User;
 use Illuminate\Database\Eloquent\Model;
 
-class Method extends Model
+class Action extends Model
 {
     /**
      * @var array

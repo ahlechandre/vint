@@ -15,6 +15,7 @@ class UserDatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            UserTypesTableSeeder::class,
             UsersTableSeeder::class,
         ]);
     }

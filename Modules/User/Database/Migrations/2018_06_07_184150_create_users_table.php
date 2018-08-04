@@ -16,11 +16,11 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             // Role relation.
-            $table->integer('role_id')
+            $table->integer('user_type_id')
                 ->unsigned();
-            $table->foreign('role_id')
+            $table->foreign('user_type_id')
                 ->references('id')
-                ->on('roles');
+                ->on('user_types');
             // Attributes.
             $table->string('name');
             $table->string('username')

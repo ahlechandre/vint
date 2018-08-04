@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAbilitiesTable extends Migration
+class CreatePermissionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAbilitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('abilities', function (Blueprint $table) {
+        Schema::create('permissions', function (Blueprint $table) {
             $table->increments('id');
             // Resource.
             $table->integer('resource_id')->unsigned();
@@ -21,11 +21,11 @@ class CreateAbilitiesTable extends Migration
                 ->references('id')
                 ->on('resources');
             // Method.
-            $table->integer('method_id')->unsigned();
-            $table->foreign('method_id')
+            $table->integer('action_id')->unsigned();
+            $table->foreign('action_id')
                 ->references('id')
-                ->on('methods');
-            $table->unique(['resource_id', 'method_id']);
+                ->on('actions');
+            $table->unique(['resource_id', 'action_id']);
             $table->timestamps();
         });
     }
@@ -37,6 +37,6 @@ class CreateAbilitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('abilities');
+        Schema::dropIfExists('permissions');
     }
 }

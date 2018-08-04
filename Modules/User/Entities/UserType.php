@@ -1,12 +1,11 @@
 <?php
 
-namespace Modules\System\Entities;
+namespace Modules\User\Entities;
 
-use Modules\User\Entities\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Role extends Model
+class UserType extends Model
 {
     use SoftDeletes;
 
@@ -18,10 +17,7 @@ class Role extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
-        'slug',
-        'description',
-        'is_active'
+        'name', 'slug', 'description'
     ];
 
     /**
@@ -31,16 +27,6 @@ class Role extends Model
     public function users()
     {
         return $this->hasMany(User::class);
-    }
-
-    /**
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function abilities()
-    {
-        return $this->belongsToMany(Ability::class)
-            ->withTimestamps();
     }
 
     /**
@@ -126,5 +112,5 @@ class Role extends Model
     public function isMember()
     {
         return $this->slug === self::MEMBER_SLUG;
-    }    
+    }
 }

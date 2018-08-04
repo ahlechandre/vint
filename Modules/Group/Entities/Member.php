@@ -41,9 +41,9 @@ class Member extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function memberType()
+    public function role()
     {
-        return $this->belongsTo(MemberType::class);
+        return $this->belongsTo(Role::class);
     }
 
     /**
@@ -80,5 +80,5 @@ class Member extends Model
     public function collaborator()
     {
         return $this->hasOne(Collaborator::class);
-    }    
+    }
 }

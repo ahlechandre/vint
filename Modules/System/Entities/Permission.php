@@ -5,13 +5,13 @@ namespace Modules\System\Entities;
 use Modules\User\Entities\User;
 use Illuminate\Database\Eloquent\Model;
 
-class Ability extends Model
+class Permission extends Model
 {
     /**
      * @var array
      */
     protected $fillable = [
-        'resource_id', 'method_id'
+        'resource_id', 'action_id'
     ];
 
     /**
@@ -27,18 +27,8 @@ class Ability extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function method()
+    public function action()
     {
-        return $this->belongsTo(Method::class);
-    }
-
-    /**
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class)
-            ->withTimestamps();
+        return $this->belongsTo(Action::class);
     }
 }

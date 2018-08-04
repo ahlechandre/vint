@@ -5,7 +5,7 @@ namespace Modules\Group\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class MemberType extends Model
+class Role extends Model
 {
     use SoftDeletes;
 

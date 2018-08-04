@@ -18,8 +18,8 @@ class Resource extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function abilities()
+    public function permissions()
     {
-        return $this->hasMany(Ability::class);
+        return $this->hasMany(Permission::class);
     }
 }
