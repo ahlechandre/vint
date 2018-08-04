@@ -16,9 +16,9 @@
                         'secondaryText' => $userToShow->name
                     ],
                     [
-                        'icon' => __('material_icons.role'),
-                        'text' => __('attrs.role'),
-                        'secondaryText' => $userToShow->role->name
+                        'icon' => __('material_icons.user_type'),
+                        'text' => __('resources.user_type'),
+                        'secondaryText' => $userToShow->userType->name
                     ],
                     [
                         'icon' => __('material_icons.username'),

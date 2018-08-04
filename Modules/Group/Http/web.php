@@ -19,6 +19,7 @@ Route::middleware('unauth')
          * ----------------------------------------
          */
         Route::get('register', 'RegisterController@create');        
+        Route::get('register/success', 'RegisterController@success');
         Route::post('register', 'RegisterController@store');        
     });
 

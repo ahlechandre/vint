@@ -39,11 +39,11 @@
                         '__view' => 'user::inputs.user',
                         'props' => [
                             'name' => old('name'),
-                            'roleId' => old('role_id'),
+                            'userTypeId' => old('user_type_id'),
                             'username' => old('username'),
                             'email' => old('email'),
                             'isActive' => true,
-                            'roles' => $roles,
+                            'userTypes' => $userTypes,
                         ],
                     ]
                 ]) @endform            

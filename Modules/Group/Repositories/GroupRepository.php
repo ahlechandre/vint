@@ -6,6 +6,8 @@ use Exception;
 use Modules\User\Entities\User;
 use Modules\Group\Entities\Group;
 use Illuminate\Support\Facades\DB;
+use Modules\Group\Entities\Role;
+use Modules\Group\Entities\GroupRole;
 
 class GroupRepository
 {
@@ -62,7 +64,13 @@ class GroupRepository
             return api_response(403);
         }
         $store = function () use ($user, $inputs, &$group) {
-            $group = Group::create($inputs);       
+            $group = Group::create($inputs);
+            // Associa os papéis ao grupo.
+            $groupRoles = Role::all()->map(function ($role) {
+                return new GroupRole(['role_id' => $role->id]);
+            });
+            $group->groupRoles()
+                ->saveMany($groupRoles);
         };
 
         try {

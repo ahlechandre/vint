@@ -29,7 +29,7 @@ class Group extends Model
         $this->attributes['name'] = $value;
         $this->attributes['slug'] = str_slug($value, '-');
     }
-    
+        
     /**
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -37,5 +37,14 @@ class Group extends Model
     public function invites()
     {
         return $this->hasMany(Invite::class);
+    }
+
+    /**
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function groupRoles()
+    {
+        return $this->hasMany(GroupRole::class);
     }
 }

@@ -28,7 +28,7 @@
                     'inputs' => [
                         '__view' => 'group::inputs.register',
                         'props' => [
-                            'memberType' => $memberType,
+                            'role' => $role,
                             'invite' => $invite,
                             'name' => old('name'),
                             'username' => old('username'),

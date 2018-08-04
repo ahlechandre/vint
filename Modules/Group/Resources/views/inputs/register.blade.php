@@ -1,6 +1,6 @@
 {{-- Inputs escondidos --}}
 <input type="hidden" name="invite_token" value="{{ $invite->token }}">
-<input type="hidden" name="member[member_type_id]" value="{{ $memberType->id }}">
+<input type="hidden" name="member[role_id]" value="{{ $role->id }}">
 
 @layoutGridInner
     {{-- Nome --}}
@@ -124,8 +124,8 @@
         ]) @endtextarea
     @endcell
 
-    {{-- Campos que variam de acordo com o tipo --}}
-    @if ($memberType->isServant())
+    {{-- Campos que variam de acordo com o papel --}}
+    @if ($role->isServant())
         {{-- SIAPE --}}
         @cell([
             'when' => ['d' => 12, 't' => 8, 'p' => 4]
@@ -162,7 +162,7 @@
                 ]
             ]) @endcheckbox
         @endcell
-    @elseif ($memberType->isStudent())
+    @elseif ($role->isStudent())
         {{-- RGA --}}
         @cell([
             'when' => ['d' => 12, 't' => 8, 'p' => 4]

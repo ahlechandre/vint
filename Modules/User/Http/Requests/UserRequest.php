@@ -42,7 +42,7 @@ class UserRequest extends FormRequest
                 'min:6',
                 'max:24'
             ],
-            'role_id' => 'required|integer',
+            'user_type_id' => 'required|integer',
         ];
     }
 

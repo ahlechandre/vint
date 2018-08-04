@@ -18,25 +18,26 @@
         'when' => ['default' => 12],
         ])
             @card([
-                'title' => 'Tipo de membro',
-                'subtitle' => 'Escolha o seu tipo de membro',
+                'title' => 'Papel',
+                'subtitle' => "Indique o seu papel no grupo {$group->name}.",
             ])
                 @listTwoLineWithLink([
-                    'items' => $memberTypes->map(function ($memberType) {
+                    'items' => $roles->map(function ($role) {
                         return [
-                            'text' => $memberType->name,
-                            'secondaryText' => $memberType->description,
-                            'icon' => __("material_icons.{$memberType->slug}"),
+                            'text' => $role->name,
+                            'secondaryText' => $role->description,
+                            'icon' => __("material_icons.{$role->slug}"),
                             'attrs' => [
+                                'title' => $role->description,
                                 'href' => request()->fullUrlWithQuery([
-                                    'member-type' => $memberType->slug
+                                    'role' => $role->slug
                                 ])
                             ],
                             'meta' => [
                                 'icon' => __('material_icons.forward'),
                                 'attrs' => [
                                     'href' => request()->fullUrlWithQuery([
-                                        'member-type' => $memberType->slug
+                                        'role' => $role->slug
                                     ])
                                 ],
                             ]

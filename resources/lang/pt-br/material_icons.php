@@ -3,8 +3,8 @@
 return [
     'users' => 'person',
     'user' => 'person',
-    'roles' => 'account_circle',
-    'role' => 'account_circle',
+    'user_types' => 'account_circle',
+    'user_type' => 'account_circle',
     'name' => 'text_format',
     'is_active' => 'check_circle_outline',
     'description' => 'description',
@@ -23,4 +23,5 @@ return [
     'servant' => 'supervisor_account', 
     'student' => 'school', 
     'collaborator' => 'sentiment_satisfied_alt', 
+    'login' => 'exit_to_app', 
 ];

@@ -10,6 +10,8 @@ use Modules\Group\Entities\Invite;
 use Modules\Group\Http\Requests\RegisterRequest;
 use Modules\Group\Repositories\RegisterRepository;
 use Modules\Group\Entities\MemberType;
+use Modules\Group\Entities\Role;
+use Modules\Group\Entities\Member;
 
 class RegisterController extends Controller
 {
@@ -47,23 +49,24 @@ class RegisterController extends Controller
         $invite = Invite::notExpired()
             ->where('token', $token)
             ->firstOrFail();
-        $memberTypeSlug = $request->query('member-type');
+        $roleSlug = $request->query('role');
         
-        if (!$memberTypeSlug) {
-            $memberTypes = MemberType::all();
+        if (!$roleSlug) {
+            $roles = Role::all();
 
-            // Membro deve definir o seu tipo.
-            return view('group::pages.register.member_types', [
-                'memberTypes' => $memberTypes
+            // Membro deve definir o seu papel.
+            return view('group::pages.register.roles', [
+                'roles' => $roles,
+                'group' => $invite->group,
             ]);
         }
-        $memberType = MemberType::where('slug', $memberTypeSlug)
+        $role = Role::where('slug', $roleSlug)
             ->firstOrFail();
 
-        // Caso o membro já tenha definido o seu tipo.
+        // Caso o membro já tenha definido o seu papel.
         return view('group::pages.register.member', [
             'invite' => $invite,
-            'memberType' => $memberType
+            'role' => $role
         ]);
     }
 
@@ -81,11 +84,32 @@ class RegisterController extends Controller
             ->store($inputs);
 
         if ($store->success) {
-            return redirect('login')
-                ->with('snackbar', $store->message);
+            return redirect('register/success')
+                ->with([
+                    'snackbar' => $store->message,
+                    'memberUserId' => $store->data['member']->user_id
+                ]);
         }
 
         return back()->withInput()
             ->with('snackbar', $store->message);
+    }
+
+    /**
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function success()
+    {
+        // Se a requisição não for de um membro recém criado.
+        if (!session()->get('memberUserId')) {
+            return abort('404');
+        }
+        $member = Member::with('user')
+            ->findOrFail(session()->get('memberUserId'));
+
+        return view('group::pages.register.success', [
+            'member' => $member,
+        ]);
     }
 }

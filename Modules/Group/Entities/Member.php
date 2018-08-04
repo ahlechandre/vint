@@ -25,7 +25,7 @@ class Member extends Model
      */
     protected $fillable = [
         'group_id',
-        'member_type_id',
+        'role_id',
         'cpf',
         'description'
     ];

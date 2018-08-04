@@ -3,7 +3,6 @@
 namespace Modules\User\Entities;
 
 use Hash;
-use Modules\System\Entities\Role;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -40,9 +39,9 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function role()
+    public function userType()
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsTo(UserType::class);
     }
 
     /**
@@ -71,7 +70,7 @@ class User extends Authenticatable
      */
     public function isAdmin()
     {
-        return $this->role->isAdmin();
+        return $this->userType->isAdmin();
     }
 
     /**
@@ -81,7 +80,7 @@ class User extends Authenticatable
      */
     public function isManager()
     {
-        return $this->role->isManager();
+        return $this->userType->isManager();
     }
 
     /**
@@ -91,6 +90,6 @@ class User extends Authenticatable
      */
     public function isMember()
     {
-        return $this->role->isMember();
+        return $this->userType->isMember();
     }    
 }

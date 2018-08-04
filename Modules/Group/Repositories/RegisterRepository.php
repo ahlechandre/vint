@@ -4,9 +4,10 @@ namespace Modules\Group\Repositories;
 
 use Exception;
 use Modules\User\Entities\User;
+use Modules\Group\Entities\Role;
 use Illuminate\Support\Facades\DB;
 use Modules\Group\Entities\Invite;
-use Modules\System\Entities\Role;
+use Modules\User\Entities\UserType;
 use Modules\Group\Entities\MemberType;
 
 class RegisterRepository
@@ -25,15 +26,15 @@ class RegisterRepository
             ->firstOrFail();
         $member = null;
         $store = function () use ($inputs, $invite, &$member) {
-            // Papel de membro.
-            $role = Role::member()
+            // Tipo de usuário membro.
+            $userType = UserType::member()
                 ->first();
-            // Tipo do novo membro.
-            $memberType = MemberType::findOrFail(
-                $inputs['member']['member_type_id']
+            // Papel do novo membro.
+            $role = Role::findOrFail(
+                $inputs['member']['role_id']
             );
             // Cria o usuário do membro.
-            $user = $role->users()
+            $user = $userType->users()
                 ->create($inputs);
             // Cria o membro no grupo do convite.
             $member = $user->member()
@@ -45,27 +46,27 @@ class RegisterRepository
                 ));
 
             // Se o novo membro é servidor.
-            if ($memberType->isServant()) {
+            if ($role->isServant()) {
                 return $member->servant()
                     ->create($inputs['servant']);
             }
 
             // Se o novo membro é aluno.
-            if ($memberType->isStudent()) {
+            if ($role->isStudent()) {
                 return $member->student()
                     ->create($inputs['student']);
             }
 
             // Se o novo membro é colaborador.
-            if ($memberType->isCollaborator()) {
+            if ($role->isCollaborator()) {
                 return $member->collaborator()
                     ->create();
             }
         };
 
+        DB::transaction($store);
         try {
             // Tenta criar.
-            DB::transaction($store);
         } catch (Exception $exception) {
             return api_response(500);
         }

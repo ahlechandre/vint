@@ -21,19 +21,19 @@
         'when' => ['d' => 4, 't' => 4, 'p' => 4]
     ])
         @select([
-            'label' => __('attrs.role'),
-            'helperText' => $validations['role_id'] ?? null,
+            'label' => __('resources.user_type'),
+            'helperText' => $validations['user_type_id'] ?? null,
             'attrs' => [
-                'name' => 'role_id',
-                'id' => 'select-user-role',
+                'name' => 'user_type_id',
+                'id' => 'select-user-type',
                 'required' => '',
             ],
-            'options' => $roles->map(function ($role) use ($roleId) {
+            'options' => $userTypes->map(function ($userType) use ($userTypeId) {
                 return [
-                    'text' => $role->name,
+                    'text' => $userType->name,
                     'attrs' => [
-                        'value' => $role->id,
-                        'selected' => $roleId == $role->id,
+                        'value' => $userType->id,
+                        'selected' => $userTypeId == $userType->id,
                     ],
                 ];
             })->prepend([

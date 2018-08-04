@@ -1,6 +1,12 @@
 <?php
 
 return [
+    'register' => [
+        'congrats' => 'Parabéns, :name!',
+        'success' => 'Aliqua anim aliqua culpa voluptate ad id anim consequat dolor ipsum. Adipisicing exercitation non exercitation mollit labore pariatur. Reprehenderit ullamco velit ipsum minim dolore nostrud consequat.
+        
+        Veniam ad anim voluptate sit velit officia anim Lorem elit adipisicing fugiat. Labore irure pariatur exercitation et veniam elit elit eiusmod aliqua esse id elit. Cupidatat pariatur qui Lorem magna aliqua tempor commodo dolor. Voluptate nostrud Lorem do amet irure exercitation. Cillum sit quis amet et proident sunt nisi adipisicing consectetur nostrud sit do consequat.'
+    ],
     'helpers' => [
         'username' => 'Por exemplo: nome_de_usuário.',
         'password' => 'No mínimo 6 caracteres.',

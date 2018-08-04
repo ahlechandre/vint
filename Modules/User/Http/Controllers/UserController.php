@@ -5,7 +5,7 @@ namespace Modules\User\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\User\Entities\User;
-use Modules\System\Entities\Role;
+use Modules\User\Entities\UserType;
 use Illuminate\Routing\Controller;
 use Modules\User\Http\Requests\UserRequest;
 use Modules\User\Repositories\UserRepository;
@@ -75,12 +75,12 @@ class UserController extends Controller
         if ($user->cant('create', User::class)) {
             return abort(403);
         }
-        $roles = Role::ofUser($user)
+        $userTypes = UserType::ofUser($user)
             ->forUsersForm()
             ->get();
 
         return view('user::pages.users.create', [
-            'roles' => $roles
+            'userTypes' => $userTypes
         ]);
     }
 
@@ -144,13 +144,13 @@ class UserController extends Controller
         if ($user->cant('update', $userToEdit)) {
             return abort(403);
         }
-        $roles = Role::ofUser($user)
+        $userTypes = UserType::ofUser($user)
             ->forUsersForm()
             ->get();
 
         return view('user::pages.users.edit', [
             'userToEdit' => $userToEdit,
-            'roles' => $roles,
+            'userTypes' => $userTypes,
         ]);
     }
 

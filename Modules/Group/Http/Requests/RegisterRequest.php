@@ -4,15 +4,15 @@ namespace Modules\Group\Http\Requests;
 
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
-use Modules\Group\Entities\MemberType;
+use Modules\Group\Entities\Role;
 use Modules\Group\Entities\Invite;
 
 class RegisterRequest extends FormRequest
 {
     /**
-     * @var \Modules\Group\Entities\MemberType
+     * @var \Modules\Group\Entities\Role
      */
-    protected $memberType;
+    protected $role;
 
     /**
      * Get the validation rules that apply to the request.
@@ -39,16 +39,16 @@ class RegisterRequest extends FormRequest
                 'digits:11',
                 'unique:members,cpf'
             ],
-            'member.member_type_id' => 'required|integer',
+            'member.role_id' => 'required|integer',
             'member.description' => 'nullable|string'
         ];
         // Tipo do novo membro.
-        $this->memberType = MemberType::findOrFail(
-            $this->input('member.member_type_id')
+        $this->role = Role::findOrFail(
+            $this->input('member.role_id')
         );
 
         // Verifica se é um novo servidor.
-        if ($this->memberType->isServant()) {
+        if ($this->role->isServant()) {
             $servant = [
                 'servant.siape' => [
                     'required',
@@ -61,7 +61,7 @@ class RegisterRequest extends FormRequest
         }
 
         // Verifica se é um novo aluno.
-        if ($this->memberType->isStudent()) {
+        if ($this->role->isStudent()) {
             $student = [
                 'student.rga' => [
                     'required',
@@ -117,7 +117,7 @@ class RegisterRequest extends FormRequest
     {
         $inputs = $this->all();
         
-        if ($this->memberType->isServant()) {
+        if ($this->role->isServant()) {
             $inputs['servant']['is_professor'] = isset($inputs['servant']['is_professor']) && $inputs['servant']['is_professor'];
         }
 

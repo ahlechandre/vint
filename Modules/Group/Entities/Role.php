@@ -38,6 +38,15 @@ class Role extends Model
 
     /**
      *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function groupRoles()
+    {
+        return $this->hasMany(GroupRole::class);
+    }
+    
+    /**
+     *
      * @return bool
      */
     public function isServant()

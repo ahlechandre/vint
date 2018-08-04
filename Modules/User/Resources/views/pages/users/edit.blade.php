@@ -45,11 +45,11 @@
                         '__view' => 'user::inputs.user',
                         'props' => [
                             'name' => $userToEdit->name,
-                            'roleId' => $userToEdit->role_id,
+                            'userTypeId' => $userToEdit->user_type_id,
                             'username' => $userToEdit->username,
                             'email' => $userToEdit->email,
                             'isActive' => $userToEdit->is_active,
-                            'roles' => $roles
+                            'userTypes' => $userTypes
                         ],
                     ]
                 ]) @endform

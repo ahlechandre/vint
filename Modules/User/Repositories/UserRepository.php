@@ -3,10 +3,10 @@
 namespace Modules\User\Repositories;
 
 use Exception;
-use Modules\System\Entities\Role;
 use Modules\User\Entities\User;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use Modules\User\Entities\UserType;
 
 class UserRepository
 {
@@ -63,9 +63,9 @@ class UserRepository
             return api_response(403);
         }
         $store = function () use ($user, $inputs, &$userCreated) {
-            $role = Role::ofUser($user)
+            $role = UserType::ofUser($user)
                 ->forUsersForm()
-                ->findOrFail($inputs['role_id']);
+                ->findOrFail($inputs['user_type_id']);
             $userCreated = $role->users()
                 ->create($inputs);       
         };
@@ -99,10 +99,14 @@ class UserRepository
             return api_response(403);
         }
         $update = function () use ($user, $inputs, $userToUpdate) {
-            $role = Role::ofUser($user)
+            $userType = UserType::ofUser($user)
                 ->forUsersForm()
-                ->findOrFail($inputs['role_id']);
+                ->findOrFail($inputs['user_type_id']);
             $userToUpdate->update($inputs);
+            // Atualiza o tipo sem "mass assignament".
+            $userToUpdate->userType()
+                ->associate($userType)
+                ->save();
         };
 
         try {

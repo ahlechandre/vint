@@ -45,6 +45,6 @@ return [
     'file' => 'Arquivo',
     'cpf' => 'CPF',
     'siape' => 'SIAPE',
-    'is_professor' => 'É professor?',
+    'is_professor' => 'Sou professor(a)',
     'rga' => 'RGA',
 ];

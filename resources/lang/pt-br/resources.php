@@ -17,6 +17,8 @@ return [
      * User.
      * --------------------------------------
      */
+    'user_types' => 'Tipos de usuário',
+    'user_type' => 'Tipo de usuário',
     'users' => 'Usuários',
     'user' => 'Usuário',
     /**
