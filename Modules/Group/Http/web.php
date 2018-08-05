@@ -39,4 +39,11 @@ Route::middleware('auth')
          */
         Route::resource('groups/{group}/invites', 'InviteController')
             ->only(['store', 'update', 'destroy']);
+        /**
+         * ----------------------------------------
+         * Papéis no grupo
+         * ----------------------------------------
+         */
+        Route::resource('groups/{group}/group-roles', 'GroupRoleController')
+            ->only(['update']);
     });

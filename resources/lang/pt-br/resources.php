@@ -6,12 +6,12 @@ return [
      * System.
      * --------------------------------------
      */
-    'roles' => 'Papéis',
-    'role' => 'Papel',
     'resources' => 'Recursos',
     'resource' => 'Recurso',
-    'abilities' => 'Habilidades',
-    'ability' => 'Habilidade',
+    'actions' => 'Ações',
+    'action' => 'Ação',
+    'permissions' => 'Permissões',
+    'permission' => 'Permissão',
     /**
      * --------------------------------------
      * User.
@@ -28,6 +28,10 @@ return [
      */
     'groups' => 'Grupos',
     'group' => 'Grupo',
+    'roles' => 'Papéis',
+    'role' => 'Papel',
+    'group_roles' => 'Papéis no grupo',
+    'group_role' => 'Papel no grupo',
     'invites' => 'Convites',
     'invite' => 'Convite',
     'members' => 'Membros',

@@ -3,6 +3,7 @@
 namespace Modules\Group\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Modules\System\Entities\Permission;
 
 class GroupRole extends Model
 {
@@ -29,5 +30,14 @@ class GroupRole extends Model
     public function role()
     {
         return $this->belongsTo(Role::class);
+    }
+
+    /**
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class);
     }
 }

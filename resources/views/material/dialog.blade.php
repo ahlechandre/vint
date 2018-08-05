@@ -11,7 +11,8 @@
                 {{ $title }}
             </h2>
         </header>
-        <section id="{{ $attrs['id'] }}-description" class="mdc-dialog__body">
+    <section id="{{ $attrs['id'] }}-description"
+        class="mdc-dialog__body{{ isset($isScrollable) && $isScrollable ? ' mdc-dialog__body--scrollable' : '' }}">
             {{ $slot }}
         </section>
         <footer class="mdc-dialog__footer">

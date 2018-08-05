@@ -10,6 +10,8 @@ use Modules\User\Policies\UserPolicy;
 use Modules\Group\Policies\GroupPolicy;
 use Modules\Group\Policies\InvitePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Modules\Group\Entities\GroupRole;
+use Modules\Group\Policies\GroupRolePolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -21,6 +23,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         User::class => UserPolicy::class,
         Group::class => GroupPolicy::class,
+        GroupRole::class => GroupRolePolicy::class,
         Invite::class => InvitePolicy::class,
     ];
 

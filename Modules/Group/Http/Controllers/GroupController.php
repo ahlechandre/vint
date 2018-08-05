@@ -8,6 +8,7 @@ use Modules\Group\Entities\Group;
 use Illuminate\Routing\Controller;
 use Modules\Group\Http\Requests\GroupRequest;
 use Modules\Group\Repositories\GroupRepository;
+use Modules\System\Entities\Permission;
 
 class GroupController extends Controller
 {
@@ -114,7 +115,19 @@ class GroupController extends Controller
             return abort(403);
         }
         $section = $request->query('section', 'about');
-        
+    
+        if ($section === 'group-roles') {
+            // Carrega as permissões caso a seção seja de papéis.
+            $permissions = Permission::with('action', 'resource')
+                ->get();
+
+            return view('group::pages.groups.show', [
+                'group' => $group,
+                'permissions' => $permissions,
+                'section' => $section
+            ]);    
+        }
+
         return view('group::pages.groups.show', [
             'group' => $group,
             'section' => $section

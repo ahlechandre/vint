@@ -17,6 +17,9 @@ return [
         'rga' => 'Indique o seu número de RGA.',
         'siape' => 'Indique o seu número de SIAPE.',
     ],
+    'permissions' => [
+        'edit' => 'Editar permissões'
+    ],
     'status' => [
         403 => 'Permissão negada',
     ],
@@ -34,6 +37,15 @@ return [
         'created' => 'Papel criado',
         'updated' => 'Papel atualizado',
         'new' => 'Novo papel',
+    ],
+    'group_roles' => [
+        'index' => 'Lista de papéis no grupo e suas permissões.',
+        'edit' => 'Atualize as permissões do papel no grupo.',
+        'updated' => 'Papel atualizado',
+        'role' => 'Permissões do papel de :role.',
+        'description' => 'Pariatur incididunt dolore sit consequat. Tempor pariatur nulla veniam cillum consequat. Qui duis ex quis commodo do. Tempor in ullamco sit nostrud. Non non laborum consequat elit eiusmod. Reprehenderit tempor ea fugiat tempor ullamco exercitation laboris ullamco eu cillum commodo. Labore mollit proident dolor sunt irure officia adipisicing ipsum quis ea reprehenderit.
+        
+        Qui veniam ut adipisicing exercitation amet laborum Lorem. Laboris culpa non tempor commodo mollit eu laborum nulla tempor mollit. Velit voluptate officia dolor anim incididunt exercitation velit eiusmod id ipsum do amet.',
     ],
     'users' => [
         'new' => 'Novo usuário',

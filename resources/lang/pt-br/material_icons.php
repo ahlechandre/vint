@@ -24,4 +24,5 @@ return [
     'student' => 'school', 
     'collaborator' => 'sentiment_satisfied_alt', 
     'login' => 'exit_to_app', 
+    'permissions' => 'vpn_key', 
 ];

@@ -49,7 +49,14 @@
                 'attrs' => [
                     'href' => url("/groups/{$group->id}?section=invites")
                 ],
-            ]                         
+            ],
+            [
+                'text' => __('resources.roles'),
+                'isActive' => $section === 'group-roles',
+                'attrs' => [
+                    'href' => url("/groups/{$group->id}?section=group-roles")
+                ],
+            ]            
         ]
     ],
 ])
@@ -63,17 +70,26 @@
             'when' => ['default' => 12]
         ])
             @if ($section === 'about')
+                {{-- "Sobre" --}}
                 @component('group::pages.groups.sections.about', [
                     'group' => $group
                 ]) @endcomponent
             @elseif ($section === 'members')
+                {{-- "Membros" --}}
                 @component('group::pages.groups.sections.members', [
                     'group' => $group
-                ]) @endcomponent                
+                ]) @endcomponent
             @elseif ($section === 'invites')
+                {{-- "Convites" --}}
                 @component('group::pages.groups.sections.invites', [
                     'group' => $group
                 ]) @endcomponent
+            @elseif ($section === 'group-roles')
+                {{-- "Papéis" --}}
+                @component('group::pages.groups.sections.group-roles', [
+                    'group' => $group,
+                    'permissions' => $permissions
+                ]) @endcomponent                
             @endif
         @endcell
     @endlayoutGridWithInner
