@@ -6,8 +6,5 @@ return [
     'personal' => 'Pessoal',
     'auth' => 'Autenticação',
     'password' => 'Senha',
-    'origin' => 'Origem',
-    'destination' => 'Destino',
-    'map' => 'Mapa',
-    'route' => 'Rota'
+    'requests' => 'Solicitações',
 ];

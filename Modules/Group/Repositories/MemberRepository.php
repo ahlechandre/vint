@@ -35,6 +35,7 @@ class MemberRepository
         };
         // Escopo.
         $scope = Member::approved()
+            ->with('user')
             ->orderBy('created_at', 'desc');
         // Escopo por filtro.
         $query = $filter ?

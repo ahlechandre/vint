@@ -34,6 +34,7 @@ return [
     'rga' => 'perm_identity',
     'siape' => 'perm_identity',
     'cpf' => 'perm_identity',
+    'member' => 'person',
     /**
      * Actions 
      */

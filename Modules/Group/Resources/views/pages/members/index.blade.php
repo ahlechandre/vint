@@ -26,26 +26,30 @@
             ]) @endarticle
         @endcell
 
-        {{-- Ações --}}
-        @cell([
-            'when' => ['default' => 12],
-            'modifiers' => ['mdc-layout-grid--align-right']
-        ])
+        {{-- Mostra se o usuário pode aprovar ou recursar membros --}}
+        @if ($user->can('approve', \Modules\Group\Entities\Member::class) || $user->can('deny', \Modules\Group\Entities\Member::class))
+            
             {{-- Solicitações de membro --}}
-            @buttonLink([
-                'text' => __('messages.members.actions.requests') . (
-                    $memberRequestsCount ? (
-                        $memberRequestsCount < 99 ?
-                            " ({$memberRequestsCount})" : ' (+99)'
-                    ) : ''
-                ),
-                'modifiers' => ['mdc-button--raised'],
-                'attrs' => [
-                    'href' => url('member-requests')
-                ],
-            ]) @endbuttonLink
-        @endcell        
+            @cell([
+                'when' => ['default' => 12],
+                'modifiers' => ['mdc-layout-grid--align-right']
+            ])
+                {{-- Solicitações de membro --}}
+                @buttonLink([
+                    'text' => __('headlines.requests') . (
+                        $memberRequestsCount ? (
+                            $memberRequestsCount < 99 ?
+                                " ({$memberRequestsCount})" : ' (+99)'
+                        ) : ''
+                    ),
+                    'modifiers' => ['mdc-button--unelevated'],
+                    'attrs' => [
+                        'href' => url('member-requests')
+                    ],
+                ]) @endbuttonLink
+            @endcell
         
+        @endif        
         {{-- Lista de recursos --}}
         @cell([
             'when' => ['default' => 12]
@@ -54,7 +58,7 @@
             'collection' => $members,
             'items' => $members->map(function ($member) {
                 return [
-                    'icon' => __('material-icons.user'),
+                    'icon' => __('material_icons.member'),
                     'meta' => [
                         'icon' => 'arrow_forward',
                     ],
@@ -62,7 +66,7 @@
                     'secondaryText' => $member->created_at
                         ->diffForHumans(),
                     'attrs' => [
-                        'href' => url("/groups/{$member->id}"),
+                        'href' => url("/members/{$member->user_id}"),
                     ]
                 ];
             }),

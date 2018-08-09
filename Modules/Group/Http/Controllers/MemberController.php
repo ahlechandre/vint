@@ -56,8 +56,7 @@ class MemberController extends Controller
         }
 
         return view('group::pages.members.index', [
-            'members' => $index->data['members']
-                ->load('user'),
+            'members' => $index->data['members'],
             'memberRequestsCount' => $index->data['memberRequestsCount']
         ]);
     }
