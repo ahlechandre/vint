@@ -81,4 +81,51 @@ class Member extends Model
     {
         return $this->hasOne(Collaborator::class);
     }
+
+    /**
+     *
+     * @param  \Illuminate\Database\Query\Builder  $query
+     * @return \Illuminate\Database\Query\Builder
+     */
+    public function scopeApproved($query)
+    {
+        return $query->where('is_approved', 1);
+    }
+
+    /**
+     *
+     * @param  \Illuminate\Database\Query\Builder  $query
+     * @return \Illuminate\Database\Query\Builder
+     */
+    public function scopeNotApproved($query)
+    {
+        return $query->where('is_approved', 0);
+    }
+
+    /**
+     *
+     * @return bool
+     */
+    public function isServant()
+    {
+        return $this->role->isServant();
+    }
+
+    /**
+     *
+     * @return bool
+     */
+    public function isStudent()
+    {
+        return $this->role->isStudent();
+    }
+
+    /**
+     *
+     * @return bool
+     */
+    public function isCollaborator()
+    {
+        return $this->role->isCollaborator();
+    }
 }

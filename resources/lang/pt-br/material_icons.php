@@ -25,4 +25,20 @@ return [
     'collaborator' => 'sentiment_satisfied_alt', 
     'login' => 'exit_to_app', 
     'permissions' => 'vpn_key', 
+    'member_requests' => 'check_circle_outline', 
+    /**
+     * Group
+     */
+    'roles' => 'account_circle',
+    'role' => 'account_circle',
+    'rga' => 'perm_identity',
+    'siape' => 'perm_identity',
+    'cpf' => 'perm_identity',
+    /**
+     * Actions 
+     */
+    'approve' => 'check',
+    'approve_all' => 'check',
+    'deny' => 'close',
+    'deny_all' => 'close',
 ];

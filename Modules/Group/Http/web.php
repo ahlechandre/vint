@@ -46,4 +46,20 @@ Route::middleware('auth')
          */
         Route::resource('groups/{group}/group-roles', 'GroupRoleController')
             ->only(['update']);
+        /**
+         * ----------------------------------------
+         * Membros
+         * ----------------------------------------
+         */
+        Route::resource('members', 'MemberController')->only([
+            'index', 'show'
+        ]);
+        /**
+         * ----------------------------------------
+         * Membros / Requisições
+         * ----------------------------------------
+         */
+        Route::get('member-requests', 'MemberController@requests');
+        Route::put('member-requests/{member?}', 'MemberController@approve');
+        Route::delete('member-requests/{member?}', 'MemberController@deny');
     });

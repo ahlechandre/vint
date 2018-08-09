@@ -30,6 +30,13 @@ return [
     'attrs' => [
         'empty' => 'Não indicado'
     ],
+    'members' => [
+        'actions' => [
+            'requests' => 'Solicitações de membro',
+            'approve_all' => 'Aprovar todos',
+            'destroy_all' => 'Remover todos',
+        ]
+    ],
     'roles' => [
         'index' => 'Lista de papéis de usuários mais recentes no sistema.',
         'create' => 'Adicione um novo papel ao sistema.',

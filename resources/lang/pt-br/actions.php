@@ -14,4 +14,9 @@ return [
     'login' => 'Entrar',
     'details' => 'Ver detalhes',
     'ok' => 'OK',
+    'approve' => 'Aprovar',
+    'approve_all' => 'Aprovar todos',
+    'deny' => 'Recusar',
+    'deny_all' => 'Recusar todos',
+    'confirm' => 'Confirmar',
 ];

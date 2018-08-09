@@ -77,6 +77,14 @@
           ],
         ],
         [
+          'text' => __('resources.members'),
+          'icon' => __('material_icons.members'),
+          'isActive' => isActivePage('members'),
+          'attrs' => [
+            'href' => url('members'),
+          ],
+        ],
+        [
           'text' => __('actions.logout'),
           'icon' => 'exit_to_app',
           'isActive' => false,

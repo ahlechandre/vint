@@ -31,6 +31,10 @@ trait BladeUtils
         'material.fab' => 'fab',
         'material.autocomplete' => 'autocomplete',
         /**
+         * Cards
+         */
+        'components.cards.card-member-request' => 'cardMemberRequest',
+        /**
          * Forms.
          */
         'components.forms.form' => 'form',

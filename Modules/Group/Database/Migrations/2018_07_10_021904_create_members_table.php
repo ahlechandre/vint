@@ -38,6 +38,8 @@ class CreateMembersTable extends Migration
                 ->unique();
             $table->text('description')
                 ->nullable();
+            $table->boolean('is_approved')
+                ->default(false);
             $table->softDeletes();
             $table->timestamps();
         });

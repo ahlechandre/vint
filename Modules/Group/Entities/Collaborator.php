@@ -10,6 +10,16 @@ class Collaborator extends Model
     use SoftDeletes;
 
     /**
+     * @var string
+     */
+    protected $primaryKey = 'member_user_id';
+
+    /**
+     * @var bool
+     */
+    public $incrementing = false;
+
+    /**
      * @var array
      */
     protected $fillable = [];
