@@ -40,4 +40,6 @@ return [
     'program' => 'Programa',
     'projects' => 'Projetos',
     'project' => 'Projeto',
+    'publications' => 'Publicações',
+    'publication' => 'Publicação',
 ];

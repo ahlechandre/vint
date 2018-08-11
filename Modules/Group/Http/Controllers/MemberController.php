@@ -4,11 +4,13 @@ namespace Modules\Group\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Group\Entities\Role;
 use Modules\Group\Entities\Group;
 use Illuminate\Routing\Controller;
+use Modules\Group\Entities\Member;
 use Modules\Group\Http\Requests\MemberRequest;
 use Modules\Group\Repositories\MemberRepository;
-use Modules\Group\Entities\Member;
+use Modules\Group\Http\Requests\MemberRoleRequest;
 
 class MemberController extends Controller
 {
@@ -62,75 +64,27 @@ class MemberController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Request $request)
-    {
-        $user = $request->user();
-
-        // Verifica se o usuário pode realizar.
-        if ($user->cant('create', Member::class)) {
-            return abort(403);
-        }
-
-        return view('group::pages.members.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Modules\User\Http\Requests\MemberRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(MemberRequest $request)
-    {
-        $user = $request->user();
-        $inputs = $request->sanitize();
-        $store = $this->members
-            ->store($user, $inputs);
-        $redirectTo = 'members/' . (
-            $store->data['group']->id ?? null
-        );
-
-        return redirect($redirectTo)
-            ->with('snackbar', $store->message);
-    }
-
-    /**
      * Show the specified resource.
      *
      * @param   \Illuminate\Http\Request  $request
-     * @param   string  $id
+     * @param   string  $userId
      * @return  \Illuminate\Http\Response
      */
-    public function show(Request $request, $id)
+    public function show(Request $request, $userId)
     {
         $user = $request->user();
-        $group = Member::findOrFail($id);
+        // Apenas membros aprovados.
+        $member = Member::approved()
+            ->findOrFail($userId);
 
         // Verifica se usuário pode realizar.
-        if ($user->cant('view', $group)) {
+        if ($user->cant('view', $member)) {
             return abort(403);
         }
         $section = $request->query('section', 'about');
     
-        if ($section === 'group-roles') {
-            // Carrega as permissões caso a seção seja de papéis.
-            $permissions = Permission::with('action', 'resource')
-                ->get();
-
-            return view('group::pages.members.show', [
-                'group' => $group,
-                'permissions' => $permissions,
-                'section' => $section
-            ]);    
-        }
-
         return view('group::pages.members.show', [
-            'group' => $group,
+            'member' => $member,
             'section' => $section
         ]);
     }
@@ -139,21 +93,25 @@ class MemberController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  string  $id
+     * @param  string  $userId
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, $id)
+    public function edit(Request $request, $userId)
     {
         $user = $request->user();
-        $group = Member::findOrFail($id);
+        // Apenas aprovados.
+        $member = Member::approved()
+            ->findOrFail($userId);
 
         // Verifica se o usuário pode realizar.
-        if ($user->cant('update', $group)) {
+        if ($user->cant('update', $member)) {
             return abort(403);
         }
-
+        $roles = Role::all();
+        
         return view('group::pages.members.edit', [
-            'group' => $group
+            'member' => $member,
+            'roles' => $roles
         ]);
     }
 
@@ -161,18 +119,41 @@ class MemberController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Modules\User\Http\Requests\MemberRequest  $request
-     * @param  string  $id
+     * @param  string  $userId
      * @return \Illuminate\Http\Response
      */
-    public function update(MemberRequest $request, $id)
+    public function update(MemberRequest $request, $userId)
     {
         $user = $request->user();
         $inputs = $request->sanitize();
         $update = $this->members
-            ->update($user, (int) $id, $inputs);
+            ->update($user, $userId, $inputs);
 
-        return redirect("members/{$id}")
+        return redirect("members/{$userId}")
             ->with('snackbar', $update->message);
+    }
+
+    /**
+     *
+     * @param  \Modules\Group\Http\Requests\MemberRoleRequest  $request
+     * @param  string  $userId
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function role(MemberRoleRequest $request, $userId, $id)
+    {
+        $user = $request->user();
+        $inputs = $request->sanitize();
+        $role = $this->members
+            ->role(
+                $user,
+                $userId,
+                $id,
+                $inputs
+            );
+
+        return redirect("members/{$userId}")
+            ->with('snackbar', $role->message);
     }
 
     /**

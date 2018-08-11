@@ -36,7 +36,7 @@
                     'withCancel' => true,
                     'withSubmit' => true,                
                     'inputs' => [
-                        '__view' => 'user::inputs.user',
+                        'view' => 'user::inputs.user',
                         'props' => [
                             'name' => old('name'),
                             'userTypeId' => old('user_type_id'),

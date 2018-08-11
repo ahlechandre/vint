@@ -57,7 +57,7 @@
     'action' => url("groups/{$group->id}/invites"),
     'method' => 'post',
     'inputs' => [
-        '__view' => 'group::inputs.invite',
+        'view' => 'group::inputs.invite',
         'props' => [
             'title' => __('messages.invites.create'),
             'description' => __('messages.invites.description_on_create'),
@@ -77,7 +77,7 @@
         'action' => url("groups/{$group->id}/invites/{$invite->id}"),
         'method' => 'put',
         'inputs' => [
-            '__view' => 'group::inputs.invite',
+            'view' => 'group::inputs.invite',
             'props' => [
                 'title' => __('messages.invites.edit'),
                 'description' => __('messages.invites.description_on_edit'),

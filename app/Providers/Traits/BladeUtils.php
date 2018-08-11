@@ -30,6 +30,9 @@ trait BladeUtils
         'material.list-two-line-with-link' => 'listTwoLineWithLink',
         'material.fab' => 'fab',
         'material.autocomplete' => 'autocomplete',
+        'material.menu' => 'menu',
+        'material.menu-anchor' => 'menuAnchor',
+        'material.menu-item' => 'menuItem',
         /**
          * Cards
          */

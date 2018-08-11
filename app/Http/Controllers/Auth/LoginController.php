@@ -60,6 +60,7 @@ class LoginController extends Controller
         $credentials = [
             'email' => $request->get('email'),
             'password' => $request->get('password'),
+            'is_active' => 1
         ];
         $remember = $request->get('remember_me') ? true : false;
 

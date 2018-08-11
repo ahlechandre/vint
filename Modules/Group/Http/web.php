@@ -52,8 +52,14 @@ Route::middleware('auth')
          * ----------------------------------------
          */
         Route::resource('members', 'MemberController')->only([
-            'index', 'show'
+            'index', 'show', 'edit', 'update'
         ]);
+        /**
+         * ----------------------------------------
+         * Membros / Papel
+         * ----------------------------------------
+         */
+        Route::put('members/{member}/role/{role}', 'MemberController@role');
         /**
          * ----------------------------------------
          * Membros / Requisições

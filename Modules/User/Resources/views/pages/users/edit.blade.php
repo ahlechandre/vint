@@ -42,7 +42,7 @@
                     'withCancel' => true,
                     'withSubmit' => true,                
                     'inputs' => [
-                        '__view' => 'user::inputs.user',
+                        'view' => 'user::inputs.user',
                         'props' => [
                             'name' => $userToEdit->name,
                             'userTypeId' => $userToEdit->user_type_id,

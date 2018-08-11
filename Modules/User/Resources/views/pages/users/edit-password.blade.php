@@ -42,7 +42,7 @@
                     'withCancel' => true,
                     'withSubmit' => true,                
                     'inputs' => [
-                        '__view' => 'user::inputs.user-password'
+                        'view' => 'user::inputs.user-password'
                     ]
                 ]) @endform
             @endcard        

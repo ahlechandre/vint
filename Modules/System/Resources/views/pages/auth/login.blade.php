@@ -37,7 +37,7 @@
                     'action' => url('/login'),
                     'method' => 'post',
                     'inputs' => [
-                        '__view' => 'system::inputs.login',
+                        'view' => 'system::inputs.login',
                         'props' => [
                             'email' => old('email')
                         ] 

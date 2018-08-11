@@ -55,60 +55,44 @@ class MemberRepository
     }
 
     /**
-     * Tenta criar um novo grupo.
+     * Tenta atualizar um membro.
      *
      * @param  \Modules\User\Entities\User  $user
+     * @param  int|string  $userId
      * @param  array  $inputs
      * @return stdClass
      */
-    public function store(User $user, array $inputs)
+    public function update(User $user, $userId, array $inputs)
     {
-        $group = null;
+        $member = Member::approved()
+            ->findOrFail($userId);
 
         // Verifica se o usuário pode realizar.
-        if ($user->cant('create', Group::class)) {
+        if ($user->cant('update', $member)) {
             return api_response(403);
         }
-        $store = function () use ($user, $inputs, &$group) {
-            $group = Group::create($inputs);
-            // Associa os papéis ao grupo.
-            $groupRoles = Role::all()->map(function ($role) {
-                return new GroupRole(['role_id' => $role->id]);
-            });
-            $group->groupRoles()
-                ->saveMany($groupRoles);
-        };
 
-        try {
-            // Tenta criar.
-            DB::transaction($store);
-        } catch (Exception $exception) {
-            return api_response(500);
-        }
+        $update = function () use ($user, $inputs, $member) {
+            // Atualiza os dados gerais.
+            $member->update($inputs);
 
-        return api_response(200, __('messages.groups.created'), [
-            'group' => $group
-        ]);
-    }
+            // Verifica se é atualização de aluno.
+            if ($member->isStudent()) {
+                return $member->student
+                    ->update($inputs['student']);
+            }
 
-    /**
-     * Tenta atualizar um usuário.
-     *
-     * @param  \Modules\User\Entities\User  $user
-     * @param  int  $id
-     * @param  array  $inputs
-     * @return stdClass
-     */
-    public function update(User $user, $id, array $inputs)
-    {
-        $group = Group::findOrFail($id);
+            // Verifica se é atualização de servidor.
+            if ($member->isServant()) {
+                return $member->servant
+                    ->update($inputs['servant']);
+            }
 
-        // Verifica se o usuário pode realizar.
-        if ($user->cant('update', $group)) {
-            return api_response(403);
-        }
-        $update = function () use ($user, $inputs, $group) {
-            $group->update($inputs);
+            // Verifica se é atualização de colaborador.
+            if ($member->isCollaborator()) {
+                return $member->collaborator
+                    ->update();
+            }
         };
 
         try {
@@ -118,8 +102,82 @@ class MemberRepository
             return api_response(500);
         }
 
-        return api_response(200, __('messages.groups.updated'), [
-            'group' => $group
+        return api_response(200, __('messages.members.updated'), [
+            'member' => $member
+        ]);
+    }
+
+    /**
+     * Tenta atualizar o papel de membro.
+     *
+     * @param  \Modules\User\Entities\User  $user
+     * @param  int|string  $userId
+     * @param  int|string  $id
+     * @param  array  $inputs
+     * @return stdClass
+     */
+    public function role(User $user, $userId, $id, array $inputs)
+    {
+        // Acessa o membro.
+        $member = Member::approved()
+            ->findOrFail($userId);
+        // Acessa o novo papel do membro.
+        $role = Role::findOrFail($id);
+
+        // Verifica se o usuário pode realizar.
+        if ($user->cant('updateRole', [$member, $role])) {
+            return api_response(403);
+        }
+
+        $update = function () use ($user, $inputs, $member, $role) {
+            // Atualiza o papel do membro.
+            $member->role()->associate($role);
+            $member->save();
+
+            // Verifica se é atualização de aluno.
+            if ($member->isStudent()) {
+                // Se o membro já possuir especificação de aluno, apenas atualiza.
+                // Caso contrário, cria.
+                return $member->student ?
+                    $member->student
+                        ->update($inputs['student']) :
+                    $member->student()
+                        ->create($inputs['student']);
+            }
+
+            // Verifica se é atualização de servidor.
+            if ($member->isServant()) {
+                // Se o membro já possuir especificação de servidor, apenas atualiza.
+                // Caso contrário, cria.
+                return $member->servant ?
+                    $member->servant
+                        ->update($inputs['servant']) :
+                    $member->servant()
+                        ->create($inputs['servant']);
+            }
+
+            // Verifica se é atualização de colaborador.
+            if ($member->isCollaborator()) {
+                // Se o membro já possuir especificação de colaborador, apenas atualiza.
+                // Caso contrário, cria.
+                return $member->collaborator ?
+                    $member->collaborator
+                        ->update() :
+                    $member->collaborator()
+                        ->create();
+            }
+        };
+
+        try {
+            // Tenta atualizar.
+            DB::transaction($update);
+        } catch (Exception $exception) {
+            return api_response(500);
+        }
+
+        return api_response(200, __('messages.members.role.updated'), [
+            'member' => $member,
+            'role' => $role
         ]);
     }
 

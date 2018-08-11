@@ -43,7 +43,7 @@
         'action' => url("groups/{$group->id}/group-roles/{$groupRole->id}"),
         'method' => 'put',
         'inputs' => [
-            '__view' => 'group::inputs.group-role',
+            'view' => 'group::inputs.group-role',
             'props' => [
                 'title' => __('messages.group_roles.role', [
                     'role' => $groupRole->role->name

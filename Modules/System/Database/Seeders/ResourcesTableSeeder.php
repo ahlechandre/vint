@@ -19,9 +19,9 @@ class ResourcesTableSeeder extends Seeder
             'description' => 'Recurso de membros',
         ],
         [
-            'name' => 'Privilégios',
-            'slug' => 'privileges',
-            'description' => 'Recurso de privilégios',
+            'name' => 'Papéis de membros',
+            'slug' => 'members_roles',
+            'description' => 'Recurso de papéis de membros',
         ],
         [
             'name' => 'Convites',

@@ -42,7 +42,7 @@
                     'withCancel' => true,
                     'withSubmit' => true,                
                     'inputs' => [
-                        '__view' => 'group::inputs.group',
+                        'view' => 'group::inputs.group',
                         'props' => [
                             'name' => $group->name,
                             'description' => $group->description,

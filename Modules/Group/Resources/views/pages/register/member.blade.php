@@ -26,7 +26,7 @@
                     'method' => 'post',
                     'withSubmit' => true,
                     'inputs' => [
-                        '__view' => 'group::inputs.register',
+                        'view' => 'group::inputs.register',
                         'props' => [
                             'role' => $role,
                             'invite' => $invite,

@@ -7,6 +7,7 @@ use Modules\User\Entities\User;
 use Modules\Group\Entities\Role;
 use Illuminate\Support\Facades\DB;
 use Modules\Group\Entities\Invite;
+use Modules\Group\Entities\Member;
 use Modules\User\Entities\UserType;
 use Modules\Group\Entities\MemberType;
 
@@ -33,9 +34,14 @@ class RegisterRepository
             $role = Role::findOrFail(
                 $inputs['member']['role_id']
             );
-            // Cria o usuário do membro.
+            // Cria o usuário do membro como "inativo"
+            // para prevenir login.
             $user = $userType->users()
-                ->create($inputs);
+                ->create(array_merge($inputs, [
+                    'is_active' => false
+                ]));
+            // Permite "mass-assignment" de todos os campos (e.g. "role_id").
+            Member::unguard();
             // Cria o membro no grupo do convite.
             $member = $user->member()
                 ->create(array_merge(
@@ -44,7 +50,8 @@ class RegisterRepository
                         'group_id' => $invite->group_id
                     ]
                 ));
-
+            // Guarda os campos novamente.
+            Member::reguard();
             // Se o novo membro é servidor.
             if ($role->isServant()) {
                 return $member->servant()

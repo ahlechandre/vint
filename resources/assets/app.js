@@ -10,6 +10,7 @@ import { ChartContainer } from './components/chart'
 import { TabBarScrollerContainer } from './components/tab-bar-scroller'
 import { ExpandableContainer } from './components/expandable'
 import { DialogContainer } from './components/dialog'
+import { MenuContainer } from './components/menu'
 
 /**
  * Inicializa automaticamente todos os componentes indicados.
@@ -31,7 +32,8 @@ const autoInit = () => {
     ChartContainer,
     TabBarScrollerContainer,
     ExpandableContainer,
-    DialogContainer
+    DialogContainer,
+    MenuContainer
   ]
   // Inicializa os componentes.
   containers.map(container => {

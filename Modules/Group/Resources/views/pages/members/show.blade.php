@@ -1,15 +1,15 @@
 @extends('layouts.master', [
     'breadcrumbs' => [
         [
-            'text' => __('resources.groups'),
+            'text' => __('resources.members'),
             'attrs' => [
-                'href' => url('groups')
+                'href' => url('members')
             ]
         ],
         [
-            'text' => $group->name,
+            'text' => $member->user->name,
             'attrs' => [
-                'href' => url("groups/{$group->id}")
+                'href' => url("members/{$member->user_id}")
             ]
         ],
     ],    
@@ -19,48 +19,27 @@
                 'text' => __('headlines.about'),
                 'isActive' => $section === 'about',
                 'attrs' => [
-                    'href' => url("/groups/{$group->id}?section=about")
-                ],
-            ],
-            [
-                'text' => __('resources.members'),
-                'isActive' => $section === 'members',
-                'attrs' => [
-                    'href' => url("/groups/{$group->id}?section=members")
-                ],
-            ],
-            [
-                'text' => __('resources.programs'),
-                'isActive' => $section === 'programs',
-                'attrs' => [
-                    'href' => url("/groups/{$group->id}?section=programs")
+                    'href' => url("members/{$member->user_id}?section=about")
                 ],
             ],
             [
                 'text' => __('resources.projects'),
                 'isActive' => $section === 'projects',
                 'attrs' => [
-                    'href' => url("/groups/{$group->id}?section=projects")
+                    'href' => url("members/{$member->user_id}?section=projects")
                 ],
             ],
             [
-                'text' => __('resources.invites'),
-                'isActive' => $section === 'invites',
+                'text' => __('resources.publications'),
+                'isActive' => $section === 'publications',
                 'attrs' => [
-                    'href' => url("/groups/{$group->id}?section=invites")
+                    'href' => url("members/{$member->user_id}?section=publications")
                 ],
             ],
-            [
-                'text' => __('resources.roles'),
-                'isActive' => $section === 'group-roles',
-                'attrs' => [
-                    'href' => url("/groups/{$group->id}?section=group-roles")
-                ],
-            ]            
         ]
     ],
 ])
-@section('title', __('resources.groups') . " / {$group->name}")
+@section('title', __('resources.members') . " / {$member->user->name}")
 
 @section('main')
     @layoutGridWithInner([
@@ -71,25 +50,9 @@
         ])
             @if ($section === 'about')
                 {{-- "Sobre" --}}
-                @component('group::pages.groups.sections.about', [
-                    'group' => $group
+                @component('group::pages.members.sections.about', [
+                    'member' => $member
                 ]) @endcomponent
-            @elseif ($section === 'members')
-                {{-- "Membros" --}}
-                @component('group::pages.groups.sections.members', [
-                    'group' => $group
-                ]) @endcomponent
-            @elseif ($section === 'invites')
-                {{-- "Convites" --}}
-                @component('group::pages.groups.sections.invites', [
-                    'group' => $group
-                ]) @endcomponent
-            @elseif ($section === 'group-roles')
-                {{-- "Papéis" --}}
-                @component('group::pages.groups.sections.group-roles', [
-                    'group' => $group,
-                    'permissions' => $permissions
-                ]) @endcomponent                
             @endif
         @endcell
     @endlayoutGridWithInner

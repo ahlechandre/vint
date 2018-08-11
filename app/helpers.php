@@ -25,19 +25,44 @@ function setAttributes($attrs)
 }
 
 /**
- * Define as classes adicionais de um componente HTML.
+ * Define os atributos de elementos HTML.
  *
- * @param string $classes
+ * @param array $attrs
  * @return string
  */
-function setClasses($classes)
+function set_attrs($attrs)
+{
+    $htmlAttrs = '';
+
+    foreach ($attrs as $attr => $value) {
+
+        if ($value !== false) {
+            $htmlAttrs .= " {$attr}=\"{$value}\"";
+        }
+    }
+    
+    echo $htmlAttrs;
+}
+
+
+/**
+ *
+ * @param array $modifiers
+ * @return string
+ */
+function set_classes($modifiers)
 {
 
-    if (!$classes) {
+    if (!$modifiers) {
         return '';
     }
+    $classes = '';
 
-    return " {$classes}";
+    foreach ($modifiers as $modifier) {
+        $classes .= ' ' . $modifier;
+    }
+
+    return $classes;
 }
 
 /**

@@ -4,8 +4,8 @@
         'when' => ['desktop' => 12]
     ])
         @card([
-            'title' => __('resources.group'),
-            'subtitle' => __('messages.groups.about'),
+            'title' => __('resources.member'),
+            'subtitle' => __('messages.members.about'),
             'modifiers' => ['mdc-card--outlined']
         ])
             @listTwoLine([
@@ -13,34 +13,44 @@
                     [
                         'icon' => __('material_icons.name'),
                         'text' => __('attrs.name'),
-                        'secondaryText' => $group->name
+                        'secondaryText' => $member->user->name
+                    ],
+                    [
+                        'icon' => __("material_icons.{$member->role->slug}"),
+                        'text' => __('attrs.role'),
+                        'secondaryText' => $member->role->name
                     ],
                     [
                         'icon' => __('material_icons.description'),
                         'text' => __('attrs.description'),
-                        'secondaryText' => $group->description
+                        'secondaryText' => $member->description
+                    ],
+                    [
+                        'icon' => __('material_icons.cpf'),
+                        'text' => __('attrs.cpf'),
+                        'secondaryText' => $member->cpf,
                     ],
                     [
                         'icon' => __('material_icons.is_active'),
                         'text' => __('attrs.is_active'),
-                        'secondaryText' => __("messages.is_active.{$group->is_active}")
-                    ],                    
+                        'secondaryText' => __("messages.is_active.{$member->user->is_active}")
+                    ],
                 ]
             ]) @endlistTwoLine
         @endcard
 
-        @if ($user->can('update', $group))
+        @can('update', $member)
             @fab([
                 'icon' => 'edit',
-                'label' => __('messages.groups.edit'),
+                'label' => __('messages.members.edit'),
                 'modifiers' => ['fab--fixed'],
                 'attrs' => [
-                    'href' => url("/groups/{$group->id}/edit"),
-                    'title' => __('messages.groups.edit'),
-                    'alt' => __('messages.groups.edit'),
+                    'href' => url("members/{$member->user_id}/edit"),
+                    'title' => __('messages.members.edit'),
+                    'alt' => __('messages.members.edit'),
                 ],
-            ]) @endfab        
-        @endif
+            ]) @endfab
+        @endcan
     @endcell
 
 @endlayoutGridInner

@@ -4,6 +4,8 @@ namespace Modules\Group\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Modules\User\Entities\User;
+use Modules\Group\Entities\Member;
+use Modules\Group\Entities\Role;
 
 class MemberPolicy
 {
@@ -65,6 +67,26 @@ class MemberPolicy
      * @return bool
      */
     public function update(User $user, User $userToUpdate)
+    {
+        // Só pode atualizar o usuário se:
+        // 1. O usuário for ele mesmo.
+        // 2. Ele possuir habilidade de atualizar usuário e
+        // o usuário não for administrador.
+        return (
+            $user->id === $userToUpdate->id
+        ) || (
+            !$userToUpdate->isAdmin() && $user->hasAbility('users.update')
+        );
+    }
+
+    /**
+     * Determine whether the user can update.
+     *
+     * @param  \Modules\User\Entities\User  $user
+     * @param  \Modules\User\Entities\User  $userToUpdate
+     * @return bool
+     */
+    public function updateRole(User $user, Member $member, Role $role)
     {
         // Só pode atualizar o usuário se:
         // 1. O usuário for ele mesmo.

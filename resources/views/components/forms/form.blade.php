@@ -8,7 +8,7 @@
     
     {{-- Verifica se possui view com inputs --}}
     @if ($inputs ?? false)
-        @component($inputs['__view'], array_merge(
+        @component($inputs['view'], array_merge(
             $inputs['props'] ?? [], [
                 'isUpdate' => strtolower($method) === 'put',
                 'validations' => array_map(function ($error) {
