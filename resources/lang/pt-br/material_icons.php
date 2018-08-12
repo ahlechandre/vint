@@ -10,6 +10,8 @@ return [
     'description' => 'description',
     'created_at' => 'add_box',
     'updated_at' => 'edit',
+    'start_on' => 'event',
+    'finish_on' => 'event',
     'forward' => 'arrow_forward',
     'password' => 'vpn_key',
     'email' => 'mail_outline',

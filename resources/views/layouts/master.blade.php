@@ -85,6 +85,14 @@
           ],
         ],
         [
+          'text' => __('resources.programs'),
+          'icon' => __('material_icons.programs'),
+          'isActive' => isActivePage('programs'),
+          'attrs' => [
+            'href' => url('programs'),
+          ],
+        ],        
+        [
           'text' => __('actions.logout'),
           'icon' => 'exit_to_app',
           'isActive' => false,

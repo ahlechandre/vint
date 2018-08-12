@@ -47,4 +47,7 @@ return [
     'siape' => 'SIAPE',
     'is_professor' => 'Sou professor(a)',
     'rga' => 'RGA',
+    'start_on' => 'Início em',
+    'finish_on' => 'Finaliza em',
+    'coordinator' => 'Coordenador',
 ];

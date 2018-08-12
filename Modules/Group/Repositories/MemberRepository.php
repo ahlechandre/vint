@@ -237,10 +237,16 @@ class MemberRepository
             Member::notApproved()
                 ->where('user_id', $memberUserId)
                 ->get() :
-            Member::notApproved()->get();
+            Member::notApproved()
+                ->with('user')
+                ->get();
 
         $approve = function () use ($members) {
             $members->each(function ($member) {
+                // Ativa o usuário.
+                $member->user->is_active = true;
+                $member->user->save();
+                // Aprova o membro.
                 $member->is_approved = true;
                 $member->save();
             });
@@ -315,5 +321,4 @@ class MemberRepository
             'members' => $members
         ]);
     }
-
 }

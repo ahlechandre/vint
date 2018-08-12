@@ -37,6 +37,7 @@ trait BladeUtils
          * Cards
          */
         'components.cards.card-member-request' => 'cardMemberRequest',
+        'components.cards.card-program-request' => 'cardProgramRequest',
         /**
          * Forms.
          */

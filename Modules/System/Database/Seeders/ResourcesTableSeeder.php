@@ -24,6 +24,21 @@ class ResourcesTableSeeder extends Seeder
             'description' => 'Recurso de papéis de membros',
         ],
         [
+            'name' => 'Solicitações de membro',
+            'slug' => 'member_requests',
+            'description' => 'Recurso de solicitações de membros',
+        ],
+        [
+            'name' => 'Solicitações de programa',
+            'slug' => 'program_requests',
+            'description' => 'Recurso de solicitações de programas',
+        ],
+        [
+            'name' => 'Solicitações de projeto',
+            'slug' => 'project_requests',
+            'description' => 'Recurso de solicitações de projetos',
+        ],
+        [
             'name' => 'Convites',
             'slug' => 'invites',
             'description' => 'Recurso de convites',
