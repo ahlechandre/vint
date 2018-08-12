@@ -91,7 +91,15 @@
           'attrs' => [
             'href' => url('programs'),
           ],
-        ],        
+        ],
+        [
+          'text' => __('resources.projects'),
+          'icon' => __('material_icons.projects'),
+          'isActive' => isActivePage('projects'),
+          'attrs' => [
+            'href' => url('projects'),
+          ],
+        ],   
         [
           'text' => __('actions.logout'),
           'icon' => 'exit_to_app',

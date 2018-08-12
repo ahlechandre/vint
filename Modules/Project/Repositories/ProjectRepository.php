@@ -6,12 +6,12 @@ use Exception;
 use Modules\User\Entities\User;
 use Modules\Group\Entities\Group;
 use Illuminate\Support\Facades\DB;
-use Modules\Project\Entities\Program;
+use Modules\Project\Entities\Project;
 
-class ProgramRepository
+class ProjectRepository
 {
     /**
-     * Lista todos os programas.
+     * Lista todos os projetos.
      *
      * @param  \Modules\User\Entities\User  $user
      * @param  null|int  $perPage
@@ -21,7 +21,7 @@ class ProgramRepository
     public function index(User $user, $perPage = null, $filter = null)
     {
         // Verifica se o usuário pode realizar.
-        if ($user->cant('index', Program::class)) {
+        if ($user->cant('index', Project::class)) {
             return api_response(403);
         }
         $search = function ($filter, $scope) {
@@ -32,27 +32,27 @@ class ProgramRepository
             ]);
         };
         // Escopo.
-        $scope = Program::approved()
+        $scope = Project::approved()
             ->orderBy('created_at', 'desc');
         // Escopo por filtro.
         $query = $filter ?
             $search($filter, $scope) :
             $scope;
         // Seleciona.
-        $programs = $perPage ?
+        $projects = $perPage ?
             $query->simplePaginate($perPage) :
             $query->get();
-        $programRequestsCount = Program::notApproved()
+        $projectRequestsCount = Project::notApproved()
             ->count();
 
         return api_response(200, null, [
-            'programs' => $programs,
-            'programRequestsCount' => $programRequestsCount
+            'projects' => $projects,
+            'projectRequestsCount' => $projectRequestsCount
         ]);
     }
 
     /**
-     * Tenta criar um novo programa.
+     * Tenta criar um novo projeto.
      *
      * @param  \Modules\User\Entities\User  $user
      * @param  array  $inputs
@@ -60,32 +60,40 @@ class ProgramRepository
      */
     public function store(User $user, array $inputs)
     {
-        $program = null;
+        $project = null;
 
         // Verifica se o usuário pode realizar.
-        if ($user->cant('create', Program::class)) {
+        if ($user->cant('create', Project::class)) {
             return api_response(403);
         }
-        $store = function () use ($user, $inputs, &$program) {
-            // Se o programa for criado por um membro,
-            // o grupo do programa é o mesmo do membro.
+        $store = function () use ($user, $inputs, &$project) {
+            // Se o projeto for criado por um membro,
+            // o grupo do projeto é o mesmo do membro.
             // Caso contrário, o grupo será indicado por input.
             $group = $user->isMember() ?
                 $user->member->group :
                 Group::findOrFail($inputs['group_id']);
-            // Novo programa.
-            $program = new Program;
+
+            if (isset($inputs['project_id'])) {
+                // Verifica se o projecta indicado está aprovado 
+                // e no mesmo grupo.
+                $project = Project::ofGroup($group)
+                    ->approved()
+                    ->findOrFail($inputs['project_id']);
+            }
+            // Novo projeto.
+            $project = new Project;
             // O grupo.
-            $program->group()->associate($group);
+            $project->group()->associate($group);
             // O usuário criador.
-            $program->user()->associate($user);
+            $project->user()->associate($user);
             // Preenche os dados indicados por inputs.
-            $program->fill($inputs);
-            // O programa não precisa ser aprovado se o usuário
+            $project->fill($inputs);
+            // O projeto não precisa ser aprovado se o usuário
             // não for um membro (e.g. administrador ou gerente).
-            $program->is_approved = !$user->isMember();
-            // Salva o novo programa.
-            $program->save();
+            $project->is_approved = !$user->isMember();
+            // Salva o novo projeto.
+            $project->save();
         };
 
         try {
@@ -95,13 +103,13 @@ class ProgramRepository
             return api_response(500);
         }
 
-        return api_response(200, __('messages.programs.created'), [
-            'program' => $program
+        return api_response(200, __('messages.projects.created'), [
+            'project' => $project
         ]);
     }
 
     /**
-     * Tenta atualizar um usuário.
+     * Tenta atualizar um projecta.
      *
      * @param  \Modules\User\Entities\User  $user
      * @param  int  $id
@@ -110,14 +118,14 @@ class ProgramRepository
      */
     public function update(User $user, $id, array $inputs)
     {
-        $program = Program::findOrFail($id);
+        $project = Project::findOrFail($id);
 
         // Verifica se o usuário pode realizar.
-        if ($user->cant('update', $program)) {
+        if ($user->cant('update', $project)) {
             return api_response(403);
         }
-        $update = function () use ($user, $inputs, $program) {
-            $program->update($inputs);
+        $update = function () use ($user, $inputs, $project) {
+            $project->update($inputs);
         };
 
         try {
@@ -127,13 +135,13 @@ class ProgramRepository
             return api_response(500);
         }
 
-        return api_response(200, __('messages.programs.updated'), [
-            'program' => $program
+        return api_response(200, __('messages.projects.updated'), [
+            'project' => $project
         ]);
     }
 
     /**
-     * Lista todos as solicitações de programas.
+     * Lista todos as solicitações de projetos.
      *
      * @param  \Modules\User\Entities\User  $user
      * @param  null|int  $perPage
@@ -143,7 +151,7 @@ class ProgramRepository
     public function requests(User $user, $perPage = null, $filter = null)
     {
         // Verifica se o usuário pode realizar.
-        if ($user->cant('indexRequests', Program::class)) {
+        if ($user->cant('indexRequests', Project::class)) {
             return api_response(403);
         }
         $search = function ($filter, $scope) {
@@ -152,24 +160,24 @@ class ProgramRepository
             return $scope->where('name', 'like', $filterLike);
         };
         // Escopo.
-        $scope = Program::notApproved()
+        $scope = Project::notApproved()
             ->orderBy('created_at', 'desc');
         // Escopo por filtro.
         $query = $filter ?
             $search($filter, $scope) :
             $scope;
         // Seleciona.
-        $programs = $perPage ?
+        $projects = $perPage ?
             $query->simplePaginate($perPage) :
             $query->get();
 
         return api_response(200, null, [
-            'programs' => $programs,
+            'projects' => $projects,
         ]);
     }
 
     /**
-     * Tenta aprovar um ou vários programas.
+     * Tenta aprovar um ou vários projetos.
      *
      * @param  \Modules\User\Entities\User  $user
      * @param  null|string  $id
@@ -179,20 +187,20 @@ class ProgramRepository
     public function approve(User $user, $id)
     {
         // Verifica se o usuário pode realizar.
-        if ($user->cant('updateRequests', Program::class)) {
+        if ($user->cant('updateRequests', Project::class)) {
             return api_response(403);
         }
-        $programs = $id ?
-            Program::notApproved()
+        $projects = $id ?
+            Project::notApproved()
                 ->where('id', $id)
                 ->get() :
-            Program::notApproved()
+            Project::notApproved()
                 ->get();
 
-        $approve = function () use ($programs) {
-            $programs->each(function ($program) {
-                $program->is_approved = true;
-                $program->save();
+        $approve = function () use ($projects) {
+            $projects->each(function ($project) {
+                $project->is_approved = true;
+                $project->save();
             });
         };
 
@@ -203,14 +211,14 @@ class ProgramRepository
             return api_response(500);
         }
 
-        return api_response(200, __('messages.program_requests.approved'), [
-            'programs' => $programs
+        return api_response(200, __('messages.project_requests.approved'), [
+            'projects' => $projects
         ]);
     }
 
 
     /**
-     * Tenta recusar um ou mais programas.
+     * Tenta recusar um ou mais projetos.
      *
      * @param  \Modules\User\Entities\User  $user
      * @param  null|string  $id
@@ -220,20 +228,20 @@ class ProgramRepository
     public function deny(User $user, $id)
     {
         // Verifica se o usuário pode realizar.
-        if ($user->cant('updateRequests', Program::class)) {
+        if ($user->cant('updateRequests', Project::class)) {
             return api_response(403);
         }
-        $programs = $id ?
-            Program::notApproved()
+        $projects = $id ?
+            Project::notApproved()
                 ->where('id', $id)
                 ->get() :
-            Program::notApproved()
+            Project::notApproved()
                 ->get();
 
-        $deny = function () use ($programs) {
-            $programs->each(function ($program) {
-                // Remove permanentemente o programa recusado.
-                $program->forceDelete();
+        $deny = function () use ($projects) {
+            $projects->each(function ($project) {
+                // Remove permanentemente o projecta recusado.
+                $project->forceDelete();
             });
         };
 
@@ -244,8 +252,8 @@ class ProgramRepository
             return api_response(500);
         }
 
-        return api_response(200, __('messages.program_requests.denied'), [
-            'programs' => $programs
+        return api_response(200, __('messages.project_requests.denied'), [
+            'projects' => $projects
         ]);
     }
 }

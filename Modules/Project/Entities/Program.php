@@ -114,4 +114,15 @@ class Program extends Model
     {
         return $query->where('is_approved', 0);
     }
+
+    /**
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  \Modules\Group\Entities\Group  $group
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOfGroup($query, Group $group)
+    {
+        return $query->where('group_id', $group->id);
+    }    
 }

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Group\Entities\Collaborator;
 use Modules\Group\Entities\Student;
+use Illuminate\Database\Eloquent\Builder;
 
 class Project extends Model
 {
@@ -27,6 +28,30 @@ class Project extends Model
         'start_on',
         'finish_on'
     ];
+
+    /**
+     * @var array
+     */
+    protected $dates = [
+        'deleted_at',
+        'start_on',
+        'finish_on'
+    ];
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Escopo global de programas ativos.
+        static::addGlobalScope('active', function (Builder $builder) {
+            $builder->where('is_active', 1);
+        });
+    }
 
     /**
      *
@@ -98,4 +123,24 @@ class Project extends Model
             'member_user_id'
         );
     }
+
+    /**
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeApproved($query)
+    {
+        return $query->where('is_approved', 1);
+    }
+
+    /**
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeNotApproved($query)
+    {
+        return $query->where('is_approved', 0);
+    }    
 }
