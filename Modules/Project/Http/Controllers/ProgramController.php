@@ -77,7 +77,7 @@ class ProgramController extends Controller
             return abort(403);
         }
         // Professores para selecionar o coordenador.
-        $servants = Servant::professors()
+        $servants = Servant::professor()
             ->with('member.user')
             ->get();
 
@@ -156,7 +156,7 @@ class ProgramController extends Controller
             return abort(403);
         }
         // Professores para selecionar o coordenador.
-        $servants = Servant::professors()
+        $servants = Servant::professor()
             ->get();
 
         return view('project::pages.programs.edit', [

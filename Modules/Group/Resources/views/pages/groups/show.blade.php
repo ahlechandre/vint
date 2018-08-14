@@ -23,6 +23,13 @@
                 ],
             ],
             [
+                'text' => __('resources.coordinators'),
+                'isActive' => $section === 'coordinators',
+                'attrs' => [
+                    'href' => url("/groups/{$group->id}?section=coordinators")
+                ],
+            ],
+            [
                 'text' => __('resources.members'),
                 'isActive' => $section === 'members',
                 'attrs' => [
@@ -74,6 +81,12 @@
                 @component('group::pages.groups.sections.about', [
                     'group' => $group
                 ]) @endcomponent
+            @elseif ($section === 'coordinators')
+                {{-- "Coordenadores" --}}
+                @component('group::pages.groups.sections.coordinators', [
+                    'group' => $group,
+                    'professors' => $professors,
+                ]) @endcomponent                
             @elseif ($section === 'members')
                 {{-- "Membros" --}}
                 @component('group::pages.groups.sections.members', [

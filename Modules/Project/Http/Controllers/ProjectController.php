@@ -86,7 +86,7 @@ class ProjectController extends Controller
             Program::approved()
                 ->get();
         // Professores para selecionar o coordenador.
-        $professors = Servant::professors()
+        $professors = Servant::professor()
             ->with('member.user')
             ->get();
         // Servidores para selecionar o orientador.
@@ -184,7 +184,7 @@ class ProjectController extends Controller
             Program::approved()
                 ->get();
         // Professores para selecionar o coordenador.
-        $professors = Servant::professors()
+        $professors = Servant::professor()
             ->with('member.user')
             ->get();
         // Servidores para selecionar o orientador.

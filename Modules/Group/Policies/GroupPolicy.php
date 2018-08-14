@@ -4,6 +4,7 @@ namespace Modules\Group\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Modules\User\Entities\User;
+use Modules\Group\Entities\Group;
 
 class GroupPolicy
 {
@@ -75,6 +76,42 @@ class GroupPolicy
         ) || (
             !$userToUpdate->isAdmin() && $user->hasAbility('users.update')
         );
+    }
+
+    /**
+     * Determine whether the user can update.
+     *
+     * @param  \Modules\User\Entities\User  $user
+     * @param  \Modules\User\Entities\User  $userToUpdate
+     * @return bool
+     */
+    public function createCoordinators(User $user, Group $group)
+    {
+        return false;
+    }
+
+    /**
+     * Determine whether the user can update.
+     *
+     * @param  \Modules\User\Entities\User  $user
+     * @param  \Modules\User\Entities\User  $userToUpdate
+     * @return bool
+     */
+    public function deleteCoordinators(User $user, Group $group)
+    {
+        return false;
+    }
+
+    /**
+     * Determine whether the user can update.
+     *
+     * @param  \Modules\User\Entities\User  $user
+     * @param  \Modules\User\Entities\User  $userToUpdate
+     * @return bool
+     */
+    public function updateCoordinators(User $user, Group $group)
+    {
+        return false;
     }
 
     /**

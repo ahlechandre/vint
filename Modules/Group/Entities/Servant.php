@@ -69,10 +69,24 @@ class Servant extends Model
 
     /**
      *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function coordinations()
+    {
+        return $this->belongsToMany(
+            Group::class,
+            'coordinators',
+            'coordinator_user_id',
+            'group_id'
+        )->withPivot('is_vice');
+    }
+
+    /**
+     *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeProfessors($query)
+    public function scopeProfessor($query)
     {
         return $query->where('is_professor', 1);
     }

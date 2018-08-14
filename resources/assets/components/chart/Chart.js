@@ -81,7 +81,8 @@ class Chart {
         return new Chartist.Line(container, payload.data, {
           ...options,
           low: 0,
-          showArea: true
+          showArea: true,
+          fullWidth: true,
         })
       }
       case 'pie': {

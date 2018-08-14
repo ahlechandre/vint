@@ -10,13 +10,6 @@
 ])
 @section('title', 'Dashboard')
 
-@section('scripts')
-    <script src="{{ asset('js/chartist.min.js') }}"></script>
-    <script src="{{ asset('js/chartist-plugin-tooltip.min.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('css/chartist.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/chartist-plugin-tooltip.css') }}">
-@endsection
-
 @section('main')
     @layoutGridWithInner
 
@@ -62,13 +55,23 @@
                 'tablet' => 8
             ]
         ])
-            @chart([
-                'title' => 'Chart 1',
-                'subtitle' => 'Subtitle of chart 1',
-                'ratioClass' => 'ct-major-twelfth',
-                'api' => url('/api/charts/example'),
-            ]) @endchart
+            <div class="chart" data-chart-api="{{ url('/api/charts/example') }}">
+                @card([
+                    'title' => 'Chart 1',
+                    'subtitle' => 'Subtitle of chart 1',
+                ])
+                    <div class="chart__container ct-chart ct-major-twelfth">
+                    </div>
+                @endcard
+            </div>        
         @endcell
 
     @endlayoutGridWithInner
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/chartist.min.js') }}"></script>
+    <script src="{{ asset('js/chartist-plugin-tooltip.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/chartist.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/chartist-plugin-tooltip.css') }}">
 @endsection

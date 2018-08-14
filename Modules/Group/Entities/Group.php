@@ -63,6 +63,20 @@ class Group extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+    public function coordinators()
+    {
+        return $this->belongsToMany(
+            Servant::class,
+            'coordinators',
+            'group_id',
+            'coordinator_user_id'
+        )->withPivot('is_vice');
+    }
+
+    /**
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function groupRoles()
     {
         return $this->hasMany(GroupRole::class);

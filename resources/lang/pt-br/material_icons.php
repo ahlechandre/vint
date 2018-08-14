@@ -28,6 +28,9 @@ return [
     'login' => 'exit_to_app', 
     'permissions' => 'vpn_key', 
     'member_requests' => 'check_circle_outline', 
+    'coordinator' => 'supervisor_account',
+    'leader' => 'record_voice_over',
+    'supporter' => 'mood',
     /**
      * Group
      */
@@ -37,6 +40,14 @@ return [
     'siape' => 'perm_identity',
     'cpf' => 'perm_identity',
     'member' => 'person',
+    'members' => 'person',
+    /**
+     * Project
+     */
+    'program' => 'language',
+    'programs' => 'language',
+    'project' => 'code',
+    'projects' => 'code',
     /**
      * Actions 
      */

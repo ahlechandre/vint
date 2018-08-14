@@ -42,4 +42,6 @@ return [
     'project' => 'Projeto',
     'publications' => 'Publicações',
     'publication' => 'Publicação',
+    'coordinators' => 'Coordenadores',
+    'coordinator' => 'Coordenador',
 ];

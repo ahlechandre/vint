@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\Group\Entities\Group;
 use Illuminate\Routing\Controller;
+use Modules\Group\Entities\Servant;
+use Modules\System\Entities\Permission;
 use Modules\Group\Http\Requests\GroupRequest;
 use Modules\Group\Repositories\GroupRepository;
-use Modules\System\Entities\Permission;
 
 class GroupController extends Controller
 {
@@ -116,22 +117,41 @@ class GroupController extends Controller
         }
         $section = $request->query('section', 'about');
     
-        if ($section === 'group-roles') {
-            // Carrega as permissões caso a seção seja de papéis.
-            $permissions = Permission::with('action', 'resource')
-                ->get();
+        switch ($section) {
+            case 'group-roles': {
+                // Carrega as permissões caso a seção seja de papéis.
+                $permissions = Permission::with('action', 'resource')
+                    ->get();
 
-            return view('group::pages.groups.show', [
-                'group' => $group,
-                'permissions' => $permissions,
-                'section' => $section
-            ]);    
+                return view('group::pages.groups.show', [
+                    'group' => $group,
+                    'permissions' => $permissions,
+                    'section' => $section
+                ]);
+            }
+            case 'coordinators': {
+                $coordinatorsUserId = $group->coordinators
+                    ->pluck('member_user_id')
+                    ->toArray();
+                // Carrega todos os professores para seleção.
+                $professors = Servant::professor()
+                    ->with('member.user')
+                    ->whereNotIn('member_user_id', $coordinatorsUserId)
+                    ->get();
+
+                return view('group::pages.groups.show', [
+                    'group' => $group,
+                    'professors' => $professors,
+                    'section' => $section
+                ]);                
+            }
+            default: {
+                return view('group::pages.groups.show', [
+                    'group' => $group,
+                    'section' => $section
+                ]);
+            }
         }
-
-        return view('group::pages.groups.show', [
-            'group' => $group,
-            'section' => $section
-        ]);
     }
 
     /**

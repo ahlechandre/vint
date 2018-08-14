@@ -50,4 +50,6 @@ return [
     'start_on' => 'Início em',
     'finish_on' => 'Finaliza em',
     'coordinator' => 'Coordenador',
+    'leader' => 'Orientador',
+    'supporter' => 'Apoiador',
 ];

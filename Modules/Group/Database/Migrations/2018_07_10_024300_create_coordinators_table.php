@@ -13,7 +13,7 @@ class CreateCoordinatorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('coordinations', function (Blueprint $table) {
+        Schema::create('coordinators', function (Blueprint $table) {
             // Group relation.
             $table->integer('group_id')
                 ->unsigned();
@@ -21,12 +21,14 @@ class CreateCoordinatorsTable extends Migration
                 ->references('id')
                 ->on('groups');
             // Member relation.
-            $table->integer('member_user_id')
+            $table->integer('coordinator_user_id')
                 ->unsigned();
-            $table->foreign('member_user_id')
-                ->references('user_id')
-                ->on('members');            
-            $table->primary(['group_id', 'member_user_id']);
+            $table->foreign('coordinator_user_id')
+                ->references('member_user_id')
+                ->on('servants');
+            $table->boolean('is_vice')
+                ->default(false);
+            $table->primary(['group_id', 'coordinator_user_id']);
             $table->timestamps();
         });
     }
@@ -38,6 +40,6 @@ class CreateCoordinatorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coordinations');
+        Schema::dropIfExists('coordinators');
     }
 }

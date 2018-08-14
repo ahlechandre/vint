@@ -34,14 +34,21 @@ Route::middleware('auth')
             ->except(['destroy']);
         /**
          * ----------------------------------------
-         * Convites
+         * Grupos / Coordenadores
+         * ----------------------------------------
+         */
+        Route::resource('groups/{group}/coordinators', 'CoordinatorController')
+            ->only(['store', 'update', 'destroy']);            
+        /**
+         * ----------------------------------------
+         * Grupos / Convites
          * ----------------------------------------
          */
         Route::resource('groups/{group}/invites', 'InviteController')
             ->only(['store', 'update', 'destroy']);
         /**
          * ----------------------------------------
-         * Papéis no grupo
+         * Grupos / Papéis
          * ----------------------------------------
          */
         Route::resource('groups/{group}/group-roles', 'GroupRoleController')
