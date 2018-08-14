@@ -38,14 +38,14 @@
             ]
         ])
             @select([
-                'label' => 'Professor',
+                'label' => 'Aluno',
                 'attrs' => [
-                    'id' => "select-group-update-coordinator-{$coordinator->member_user_id}",
+                    'id' => "select-group-update-student-{$student->member_user_id}",
                     'disabled' => '',
                 ],
                 'options' => [
                     [
-                        'text' => "{$coordinator->member->user->name} <{$coordinator->member->user->email}>",
+                        'text' => "{$student->member->user->name} <{$student->member->user->email}>",
                         'attrs' => [
                             'disabled' => '',
                             'selected' => '',
@@ -56,7 +56,7 @@
             ]) @endselect
         @endcell
 
-        {{-- É vice --}}
+        {{-- É bolsista --}}
         @cell([
             'when' => [
                 'desktop' => 12,
@@ -64,11 +64,11 @@
             ]
         ])
             @checkbox([
-                'label' => 'Vice coordenador',
+                'label' => 'Bolsista',
                 'attrs' => [
-                    'name' => 'is_vice',
-                    'id' => "checkbox-group-update-coordinator-is-vice-{$coordinator->member_user_id}",
-                    'checked' => $coordinator->pivot->is_vice ? true : false,
+                    'name' => 'is_scholarship',
+                    'id' => "checkbox-group-update-student-is-scholarship-{$student->member_user_id}",
+                    'checked' => $student->pivot->is_scholarship ? true : false,
                 ]
             ]) @endcheckbox
         @endcell        

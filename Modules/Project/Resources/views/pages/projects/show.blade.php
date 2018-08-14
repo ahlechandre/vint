@@ -23,6 +23,13 @@
                 ],
             ],
             [
+                'text' => __('resources.students'),
+                'isActive' => $section === 'students',
+                'attrs' => [
+                    'href' => url("projects/{$project->id}?section=students")
+                ],
+            ],
+            [
                 'text' => __('resources.publications'),
                 'isActive' => $section === 'publications',
                 'attrs' => [
@@ -46,6 +53,12 @@
                 @component('project::pages.projects.sections.about', [
                     'project' => $project
                 ]) @endcomponent
+            @elseif ($section === 'students')
+                {{-- "Alunos" --}}
+                @component('project::pages.projects.sections.students', [
+                    'project' => $project,
+                    'students' => $students,
+                ]) @endcomponent                
             @endif
         @endcell
     @endlayoutGridWithInner

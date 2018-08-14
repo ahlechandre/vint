@@ -119,9 +119,8 @@ class Project extends Model
             Student::class,
             'project_student',
             'project_id',
-            'student_user_id',
-            'member_user_id'
-        );
+            'student_user_id'
+        )->withPivot('is_scholarship');
     }
 
     /**

@@ -38,7 +38,7 @@ Route::middleware('auth')
          * ----------------------------------------
          */
         Route::resource('groups/{group}/coordinators', 'CoordinatorController')
-            ->only(['store', 'update', 'destroy']);            
+            ->only(['store', 'update', 'destroy']);
         /**
          * ----------------------------------------
          * Grupos / Convites

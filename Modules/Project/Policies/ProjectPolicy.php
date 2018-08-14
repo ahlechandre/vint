@@ -63,6 +63,42 @@ class ProjectPolicy
      * @param  \Modules\User\Entities\User  $userToUpdate
      * @return bool
      */
+    public function createStudents(User $user, Project $project)
+    {
+        return true;
+    }
+
+    /**
+     * Determine whether the user can update.
+     *
+     * @param  \Modules\User\Entities\User  $user
+     * @param  \Modules\User\Entities\User  $userToUpdate
+     * @return bool
+     */
+    public function deleteStudents(User $user, Project $project)
+    {
+        return true;
+    }
+
+    /**
+     * Determine whether the user can update.
+     *
+     * @param  \Modules\User\Entities\User  $user
+     * @param  \Modules\User\Entities\User  $userToUpdate
+     * @return bool
+     */
+    public function updateStudents(User $user, Project $project)
+    {
+        return true;
+    }
+
+    /**
+     * Determine whether the user can update.
+     *
+     * @param  \Modules\User\Entities\User  $user
+     * @param  \Modules\User\Entities\User  $userToUpdate
+     * @return bool
+     */
     public function update(User $user, Project $project)
     {
         return true;

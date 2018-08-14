@@ -12,6 +12,7 @@ use Modules\Group\Entities\Servant;
 use Modules\Group\Entities\Group;
 use Modules\Group\Entities\Collaborator;
 use Modules\Project\Entities\Program;
+use Modules\Group\Entities\Student;
 
 class ProjectController extends Controller
 {
@@ -153,11 +154,29 @@ class ProjectController extends Controller
             return abort(403);
         }
         $section = $request->query('section', 'about');
-    
-        return view('project::pages.projects.show', [
-            'project' => $project,
-            'section' => $section
-        ]);
+
+        switch ($section) {
+            case 'students': {
+                $studentsUserId = $project->students
+                    ->pluck('member_user_id');
+                $students = Student::approved()
+                    ->with('member.user')
+                    ->whereNotIn('member_user_id', $studentsUserId)
+                    ->get();
+
+                return view('project::pages.projects.show', [
+                    'project' => $project,
+                    'students' => $students,
+                    'section' => $section
+                ]);                
+            }
+            default: {
+                return view('project::pages.projects.show', [
+                    'project' => $project,
+                    'section' => $section
+                ]);
+            }
+        }    
     }
 
     /**

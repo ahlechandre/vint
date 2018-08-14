@@ -37,6 +37,13 @@ Route::middleware('auth')
             ->except(['destroy']);
         /**
          * ----------------------------------------
+         * Projetos / Alunos
+         * ----------------------------------------
+         */
+        Route::resource('projects/{project}/students', 'ProjectStudentController')
+            ->only(['store', 'update', 'destroy']);            
+        /**
+         * ----------------------------------------
          * Projetos / Solicitações
          * ----------------------------------------
          */

@@ -36,6 +36,8 @@ return [
     'invite' => 'Convite',
     'members' => 'Membros',
     'member' => 'Membro',
+    'students' => 'Alunos',
+    'student' => 'Aluno',
     'programs' => 'Programas',
     'program' => 'Programa',
     'projects' => 'Projetos',

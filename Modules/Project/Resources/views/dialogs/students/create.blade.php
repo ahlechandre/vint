@@ -38,25 +38,31 @@
             ]
         ])
             @select([
-                'label' => 'Professor',
+                'label' => 'Aluno',
                 'attrs' => [
-                    'id' => "select-group-update-coordinator-{$coordinator->member_user_id}",
-                    'disabled' => '',
+                    'id' => 'select-group-create-student',
+                    'required' => '',
+                    'name' => 'student_user_id'
                 ],
-                'options' => [
-                    [
-                        'text' => "{$coordinator->member->user->name} <{$coordinator->member->user->email}>",
+                'options' => $students->map(function ($student) {
+                    return [
+                        'text' => "{$student->member->user->name} <{$student->member->user->email}>",
                         'attrs' => [
-                            'disabled' => '',
-                            'selected' => '',
-                            'value' => '...'
+                            'value' => $student->member_user_id
                         ]
+                    ];
+                })->prepend([
+                    'text' => '',
+                    'attrs' => [
+                        'disabled' => '',
+                        'selected' => '',
+                        'value' => ''
                     ]
-                ]
+                ])
             ]) @endselect
         @endcell
 
-        {{-- É vice --}}
+        {{-- É bolsista --}}
         @cell([
             'when' => [
                 'desktop' => 12,
@@ -64,11 +70,10 @@
             ]
         ])
             @checkbox([
-                'label' => 'Vice coordenador',
+                'label' => 'Bolsista',
                 'attrs' => [
-                    'name' => 'is_vice',
-                    'id' => "checkbox-group-update-coordinator-is-vice-{$coordinator->member_user_id}",
-                    'checked' => $coordinator->pivot->is_vice ? true : false,
+                    'name' => 'is_scholarship',
+                    'id' => 'checkbox-group-create-student-is-scholarship',
                 ]
             ]) @endcheckbox
         @endcell        

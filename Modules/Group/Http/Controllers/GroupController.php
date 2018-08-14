@@ -134,7 +134,8 @@ class GroupController extends Controller
                     ->pluck('member_user_id')
                     ->toArray();
                 // Carrega todos os professores para seleção.
-                $professors = Servant::professor()
+                $professors = Servant::approved()
+                    ->professor()
                     ->with('member.user')
                     ->whereNotIn('member_user_id', $coordinatorsUserId)
                     ->get();
