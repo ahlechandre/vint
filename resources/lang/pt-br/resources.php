@@ -42,6 +42,8 @@ return [
     'program' => 'Programa',
     'projects' => 'Projetos',
     'project' => 'Projeto',
+    'products' => 'Produtos',
+    'product' => 'Produto',
     'publications' => 'Publicações',
     'publication' => 'Publicação',
     'coordinators' => 'Coordenadores',

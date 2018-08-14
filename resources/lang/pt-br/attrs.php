@@ -3,6 +3,8 @@
 return [
     'id' => 'Identificador',
     'name' => 'Nome',
+    'title' => 'Título',
+    'url' => 'URL',
     'creator' => 'Criador',
     'slug' => 'Slug',
     'description' => 'Descrição',

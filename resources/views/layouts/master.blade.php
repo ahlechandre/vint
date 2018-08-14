@@ -99,7 +99,15 @@
           'attrs' => [
             'href' => url('projects'),
           ],
-        ],   
+        ],
+        [
+          'text' => __('resources.products'),
+          'icon' => __('material_icons.products'),
+          'isActive' => isActivePage('products'),
+          'attrs' => [
+            'href' => url('products'),
+          ],
+        ],           
         [
           'text' => __('actions.logout'),
           'icon' => 'exit_to_app',

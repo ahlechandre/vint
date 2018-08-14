@@ -6,6 +6,8 @@ return [
     'user_types' => 'account_circle',
     'user_type' => 'account_circle',
     'name' => 'text_format',
+    'title' => 'text_format',
+    'url' => 'link',
     'is_active' => 'check_circle_outline',
     'description' => 'description',
     'created_at' => 'add_box',
@@ -48,6 +50,11 @@ return [
     'programs' => 'language',
     'project' => 'code',
     'projects' => 'code',
+    /**
+     * Project
+     */
+    'product' => 'inbox',
+    'products' => 'inbox',
     /**
      * Actions 
      */
