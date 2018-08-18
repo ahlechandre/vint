@@ -240,6 +240,9 @@ class ProjectRepository
 
         $deny = function () use ($projects) {
             $projects->each(function ($project) {
+                // Desassocia todos os alunos.
+                $project->students()
+                    ->sync([]);
                 // Remove permanentemente o projecta recusado.
                 $project->forceDelete();
             });
