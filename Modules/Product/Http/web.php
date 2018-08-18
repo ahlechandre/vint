@@ -20,4 +20,11 @@ Route::middleware('auth')
          */
         Route::resource('products', 'ProductController')
             ->except(['destroy']);
+        /**
+         * ----------------------------------------
+         * Publicações
+         * ----------------------------------------
+         */
+        Route::resource('publications', 'PublicationController')
+            ->except(['destroy']);
     });

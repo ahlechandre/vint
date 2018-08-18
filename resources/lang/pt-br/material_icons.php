@@ -51,10 +51,12 @@ return [
     'project' => 'code',
     'projects' => 'code',
     /**
-     * Project
+     * Product
      */
     'product' => 'inbox',
     'products' => 'inbox',
+    'publications' => 'format_align_justify',
+    'publication' => 'format_align_justify',
     /**
      * Actions 
      */

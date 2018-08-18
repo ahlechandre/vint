@@ -5,7 +5,7 @@ namespace Modules\Product\Http\Requests;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProductRequest extends FormRequest
+class PublicationRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -17,17 +17,12 @@ class ProductRequest extends FormRequest
         $isUpdate = $this->method() === 'PUT';
 
         return [
-            'title' => [
-                'required',
-                $isUpdate ?
-                   Rule::unique('products')
-                       ->ignore($this->product) :
-                   'unique:products'
-            ],
-            'description' => 'required|string',
+            'reference' => 'required|string',
             'url' => 'nullable|string',
             'projects' => 'required|array',
             'projects.*' => 'integer',
+            'members' => 'nullable|array',
+            'members.*' => 'integer',            
         ];
     }
 

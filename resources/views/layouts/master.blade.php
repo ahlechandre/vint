@@ -107,7 +107,15 @@
           'attrs' => [
             'href' => url('products'),
           ],
-        ],           
+        ],
+        [
+          'text' => __('resources.publications'),
+          'icon' => __('material_icons.publications'),
+          'isActive' => isActivePage('publications'),
+          'attrs' => [
+            'href' => url('publications'),
+          ],
+        ],                   
         [
           'text' => __('actions.logout'),
           'icon' => 'exit_to_app',

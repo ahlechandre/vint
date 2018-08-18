@@ -20,6 +20,8 @@ use Modules\Project\Policies\ProjectPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Modules\Product\Entities\Product;
 use Modules\Product\Policies\ProductPolicy;
+use Modules\Product\Entities\Publication;
+use Modules\Product\Policies\PublicationPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -37,6 +39,7 @@ class AuthServiceProvider extends ServiceProvider
         Program::class => ProgramPolicy::class,
         Project::class => ProjectPolicy::class,
         Product::class => ProductPolicy::class,
+        Publication::class => PublicationPolicy::class,
     ];
 
     /**
