@@ -1,8 +1,26 @@
 {{-- Inputs escondidos --}}
-<input type="hidden" name="invite_token" value="{{ $invite->token }}">
 <input type="hidden" name="member[role_id]" value="{{ $role->id }}">
 
 @layoutGridInner
+    {{-- Grupos. --}}
+    @cell([
+        'when' => ['d' => 12, 't' => 8, 'p' => 4]
+    ])
+        <h3>Grupos</h3>
+
+        @foreach($groups as $group)
+            @checkbox([
+                'label' => $group->name,
+                'attrs' => [
+                    'name' => 'member[groups][]',
+                    'value' => $group->id,
+                    'checked' => $groupsId ?
+                        in_array($group->id, $groupsId) : false
+                ],
+            ]) @endcheckbox
+        @endforeach
+    @endcell
+
     {{-- Nome --}}
     @cell([
         'when' => ['d' => 6, 't' => 8, 'p' => 4]

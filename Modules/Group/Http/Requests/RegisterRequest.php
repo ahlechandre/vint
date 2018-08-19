@@ -5,7 +5,6 @@ namespace Modules\Group\Http\Requests;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 use Modules\Group\Entities\Role;
-use Modules\Group\Entities\Invite;
 
 class RegisterRequest extends FormRequest
 {
@@ -22,7 +21,6 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         $user = [
-            'invite_token' => 'required|size:' . Invite::TOKEN_LENGTH,
             'name' => 'required|string|min:2',
             'username' => [
                 'required',
@@ -40,7 +38,9 @@ class RegisterRequest extends FormRequest
                 'unique:members,cpf'
             ],
             'member.role_id' => 'required|integer',
-            'member.description' => 'nullable|string'
+            'member.description' => 'nullable|string',
+            'member.groups' => 'required|array',
+            'member.groups.*' => 'integer'
         ];
         // Tipo do novo membro.
         $this->role = Role::findOrFail(

@@ -29,7 +29,7 @@
                         'view' => 'group::inputs.register',
                         'props' => [
                             'role' => $role,
-                            'invite' => $invite,
+                            'groups' => $groups,
                             'name' => old('name'),
                             'username' => old('username'),
                             'email' => old('email'),
@@ -38,6 +38,7 @@
                             'siape' => old('servant.siape'),
                             'isProfessor' => true,
                             'rga' => old('student.rga'),
+                            'groupsId' => old('member.groups'),
                         ],
                     ],
                 ]) @endform

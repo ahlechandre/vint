@@ -19,7 +19,6 @@ Route::middleware('unauth')
          * ----------------------------------------
          */
         Route::get('register', 'RegisterController@create');        
-        Route::get('register/success', 'RegisterController@success');
         Route::post('register', 'RegisterController@store');        
     });
 
@@ -38,13 +37,6 @@ Route::middleware('auth')
          * ----------------------------------------
          */
         Route::resource('groups/{group}/coordinators', 'CoordinatorController')
-            ->only(['store', 'update', 'destroy']);
-        /**
-         * ----------------------------------------
-         * Grupos / Convites
-         * ----------------------------------------
-         */
-        Route::resource('groups/{group}/invites', 'InviteController')
             ->only(['store', 'update', 'destroy']);
         /**
          * ----------------------------------------

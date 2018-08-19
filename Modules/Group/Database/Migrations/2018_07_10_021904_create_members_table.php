@@ -21,12 +21,6 @@ class CreateMembersTable extends Migration
                 ->references('id')
                 ->on('users');
             $table->primary('user_id');
-            // Group relation.
-            $table->integer('group_id')
-                ->unsigned();
-            $table->foreign('group_id')
-                ->references('id')
-                ->on('groups');
             // Role relation.
             $table->integer('role_id')
                 ->unsigned();
@@ -38,8 +32,6 @@ class CreateMembersTable extends Migration
                 ->unique();
             $table->text('description')
                 ->nullable();
-            $table->boolean('is_approved')
-                ->default(false);
             $table->softDeletes();
             $table->timestamps();
         });

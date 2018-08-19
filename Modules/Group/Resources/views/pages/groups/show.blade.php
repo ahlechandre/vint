@@ -51,13 +51,6 @@
                 ],
             ],
             [
-                'text' => __('resources.invites'),
-                'isActive' => $section === 'invites',
-                'attrs' => [
-                    'href' => url("/groups/{$group->id}?section=invites")
-                ],
-            ],
-            [
                 'text' => __('resources.roles'),
                 'isActive' => $section === 'group-roles',
                 'attrs' => [
@@ -90,11 +83,6 @@
             @elseif ($section === 'members')
                 {{-- "Membros" --}}
                 @component('group::pages.groups.sections.members', [
-                    'group' => $group
-                ]) @endcomponent
-            @elseif ($section === 'invites')
-                {{-- "Convites" --}}
-                @component('group::pages.groups.sections.invites', [
                     'group' => $group
                 ]) @endcomponent
             @elseif ($section === 'group-roles')

@@ -6,10 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\Group\Entities\Group;
 use Illuminate\Routing\Controller;
-use Modules\Group\Entities\Invite;
 use Modules\Group\Http\Requests\RegisterRequest;
 use Modules\Group\Repositories\RegisterRepository;
-use Modules\Group\Entities\MemberType;
 use Modules\Group\Entities\Role;
 use Modules\Group\Entities\Member;
 
@@ -41,14 +39,6 @@ class RegisterController extends Controller
      */
     public function create(Request $request)
     {
-        $token = $request->query('invite');
-
-        if (!$token) {
-            return abort(404);
-        }
-        $invite = Invite::notExpired()
-            ->where('token', $token)
-            ->firstOrFail();
         $roleSlug = $request->query('role');
         
         if (!$roleSlug) {
@@ -57,16 +47,16 @@ class RegisterController extends Controller
             // Membro deve definir o seu papel.
             return view('group::pages.register.roles', [
                 'roles' => $roles,
-                'group' => $invite->group,
             ]);
         }
         $role = Role::where('slug', $roleSlug)
             ->firstOrFail();
+        $groups = Group::all();
 
         // Caso o membro já tenha definido o seu papel.
         return view('group::pages.register.member', [
-            'invite' => $invite,
-            'role' => $role
+            'role' => $role,
+            'groups' => $groups
         ]);
     }
 
@@ -84,11 +74,8 @@ class RegisterController extends Controller
             ->store($inputs);
 
         if ($store->success) {
-            return redirect('register/success')
-                ->with([
-                    'snackbar' => $store->message,
-                    'memberUserId' => $store->data['member']->user_id
-                ]);
+            return redirect('login')
+                ->with(['snackbar' => $store->message]);
         }
 
         return back()->withInput()

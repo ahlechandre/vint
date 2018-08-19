@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInvitesTable extends Migration
+class CreateGroupMemberTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,24 +13,22 @@ class CreateInvitesTable extends Migration
      */
     public function up()
     {
-        Schema::create('invites', function (Blueprint $table) {
-            $table->increments('id');
-            // User relation.
-            $table->integer('user_id')
-                ->unsigned();
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users');
-            // Group relation.
+        Schema::create('group_member', function (Blueprint $table) {
+            // Grupo.
             $table->integer('group_id')
                 ->unsigned();
             $table->foreign('group_id')
                 ->references('id')
                 ->on('groups');
-            // Other attributes.
-            $table->string('token');
-            $table->timestamp('expires_at');
-            $table->softDeletes();
+            // Membro.
+            $table->integer('member_user_id')
+                ->unsigned();
+            $table->foreign('member_user_id')
+                ->references('user_id')
+                ->on('members');
+            $table->boolean('is_approved')
+                ->default(false);
+            $table->primary(['group_id', 'member_user_id']);
             $table->timestamps();
         });
     }
@@ -42,6 +40,6 @@ class CreateInvitesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('invites');
+        Schema::dropIfExists('group_member');
     }
 }

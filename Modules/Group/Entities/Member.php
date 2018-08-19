@@ -24,8 +24,8 @@ class Member extends Model
      * @var array
      */
     protected $fillable = [
-        'group_id',
         'cpf',
+        'role_id',
         'description'
     ];
 
@@ -40,9 +40,10 @@ class Member extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function group()
+    public function groups()
     {
-        return $this->belongsTo(Group::class);
+        return $this->belongsToMany(Group::class)
+            ->withPivot('is_approved');
     }
 
     /**

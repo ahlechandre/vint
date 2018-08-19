@@ -17,8 +17,7 @@ class Group extends Model
     protected $fillable = [
         'name',
         'slug',
-        'description',
-        'is_active'
+        'description'
     ];
 
     /**
@@ -31,14 +30,15 @@ class Group extends Model
         $this->attributes['name'] = $value;
         $this->attributes['slug'] = str_slug($value, '-');
     }
-        
+
     /**
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function invites()
+    public function members()
     {
-        return $this->hasMany(Invite::class);
+        return $this->belongsToMany(Member::class)
+            ->withPivot('is_approved');
     }
 
     /**

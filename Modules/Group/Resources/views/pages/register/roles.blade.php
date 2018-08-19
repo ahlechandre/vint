@@ -19,7 +19,7 @@
         ])
             @card([
                 'title' => 'Papel',
-                'subtitle' => "Indique o seu papel no grupo {$group->name}.",
+                'subtitle' => "Indique o seu papel nos grupos"
             ])
                 @listTwoLineWithLink([
                     'items' => $roles->map(function ($role) {

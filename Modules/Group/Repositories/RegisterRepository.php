@@ -22,11 +22,8 @@ class RegisterRepository
      */
     public function store(array $inputs)
     {
-        $invite = Invite::notExpired()
-            ->where('token', $inputs['invite_token'])
-            ->firstOrFail();
         $member = null;
-        $store = function () use ($inputs, $invite, &$member) {
+        $store = function () use ($inputs, &$member) {
             // Tipo de usuário membro.
             $userType = UserType::member()
                 ->first();
@@ -34,24 +31,16 @@ class RegisterRepository
             $role = Role::findOrFail(
                 $inputs['member']['role_id']
             );
-            // Cria o usuário do membro como "inativo"
-            // para prevenir login.
+            // Cria o usuário do membro.
             $user = $userType->users()
-                ->create(array_merge($inputs, [
-                    'is_active' => false
-                ]));
-            // Permite "mass-assignment" de todos os campos (e.g. "role_id").
-            Member::unguard();
-            // Cria o membro no grupo do convite.
+                ->create($inputs);
+            // Cria o membro.
             $member = $user->member()
-                ->create(array_merge(
-                    $inputs['member'],
-                    [
-                        'group_id' => $invite->group_id
-                    ]
-                ));
-            // Guarda os campos novamente.
-            Member::reguard();
+                ->create($inputs['member']);
+            // Associa o novo membro aos grupos indicados.
+            $member->groups()
+                ->sync($inputs['member']['groups']);
+
             // Se o novo membro é servidor.
             if ($role->isServant()) {
                 return $member->servant()
