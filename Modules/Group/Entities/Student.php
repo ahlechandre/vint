@@ -41,16 +41,4 @@ class Student extends Model
     {
         return $this->belongsTo(Member::class);
     }
-
-    /**
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeApproved($query)
-    {
-        return $query->whereHas('member', function ($member) {
-            return $member->approved();
-        });
-    }    
 }

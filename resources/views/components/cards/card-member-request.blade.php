@@ -9,7 +9,7 @@
                 'text' => __('actions.approve'),
                 'icon' => __('material_icons.approve'),
                 'attrs' => [
-                    'disabled' => $user->cant('approve', \Modules\Group\Entities\Member::class),
+                    'disabled' => $user->cant('updateMemberRequests', \Modules\Group\Entities\Group::class),
                     'id' => "dialog-activation-approve-member-request-{$member->user_id}",
                     'type' => 'button'
                 ]                
@@ -21,7 +21,7 @@
                 'text' => __('actions.deny'),
                 'icon' => __('material_icons.deny'),
                 'attrs' => [
-                    'disabled' => $user->cant('deny', \Modules\Group\Entities\Member::class),
+                    'disabled' => $user->cant('updateMemberRequests', \Modules\Group\Entities\Group::class),
                     'id' => "dialog-activation-deny-member-request-{$member->user_id}",
                     'type' => 'button'
                 ]
@@ -67,11 +67,11 @@
     ]) @endlistTwoLine
 @endcard
 
-@can('approve', \Modules\Group\Entities\Member::class)
+@can('updateMemberRequests', \Modules\Group\Entities\Group::class)
     {{-- Ao tentar aprovar --}}
     @form([
         'method' => 'put',
-        'action' => url("member-requests/{$member->user_id}"),
+        'action' => url("groups/{$group->id}/member-requests/{$member->user_id}"),
     ])
         {{-- Diálogo --}}
         @dialog([
@@ -97,13 +97,11 @@
         @enddialog
 
     @endform
-@endcan
 
-@can('deny', \Modules\Group\Entities\Member::class)
     {{-- Ao tentar remover --}}
     @form([
         'method' => 'delete',
-        'action' => url("member-requests/{$member->user_id}"),
+        'action' => url("groups/{$group->id}/member-requests/{$member->user_id}"),
     ])
         {{-- Diálogo --}}
         @dialog([

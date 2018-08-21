@@ -168,4 +168,20 @@ class ProductController extends Controller
         return redirect("products/{$id}")
             ->with('snackbar', $update->message);
     }
+
+    /**
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int|string  $id
+     * @return void
+     */
+    public function destroy(Request $request, $id)
+    {
+        $user = $request->user();
+        $destroy = $this->products
+            ->destroy($user, $id);
+
+        return redirect('products')
+            ->with('snackbar', $destroy->message);
+    }
 }

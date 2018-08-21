@@ -91,4 +91,15 @@ class ProgramPolicy
     {
         return false;
     }
+
+    /**
+     *
+     * @param \Modules\User\Entities\User $user
+     * @param \Modules\Project\Entities\Program $program
+     * @return bool
+     */
+    public function delete(User $user, Program $program)
+    {
+        return false;
+    }
 }

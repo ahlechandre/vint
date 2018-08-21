@@ -74,8 +74,7 @@ class MemberController extends Controller
     {
         $user = $request->user();
         // Apenas membros aprovados.
-        $member = Member::approved()
-            ->findOrFail($userId);
+        $member = Member::findOrFail($userId);
 
         // Verifica se usuário pode realizar.
         if ($user->cant('view', $member)) {
@@ -100,8 +99,7 @@ class MemberController extends Controller
     {
         $user = $request->user();
         // Apenas aprovados.
-        $member = Member::approved()
-            ->findOrFail($userId);
+        $member = Member::findOrFail($userId);
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('update', $member)) {
@@ -154,60 +152,5 @@ class MemberController extends Controller
 
         return redirect("members/{$userId}")
             ->with('snackbar', $role->message);
-    }
-
-    /**
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function requests(Request $request)
-    {
-        $user = $request->user();
-        $perPage = self::$perPage;
-        $query = $request->get('q');
-        $index = $this->members
-            ->requests($user, $perPage, $query);
-        
-        if (!$index->success) {
-            return abort($index->status);
-        }
-
-        return view('group::pages.members.requests', [
-            'members' => $index->data['members']
-                ->load('user', 'role')
-        ]);
-    }
-
-    /**
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  null|string  $memberUserId
-     * @return \Illuminate\Http\Response
-     */
-    public function approve(Request $request, $memberUserId = null)
-    {
-        $user = $request->user();
-        $approve = $this->members
-            ->approve($user, $memberUserId);
-
-        return redirect('member-requests')
-            ->with('snackbar', $approve->message);
-    }
-
-    /**
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  null|string  $memberUserId
-     * @return \Illuminate\Http\Response
-     */
-    public function deny(Request $request, $memberUserId = null)
-    {
-        $user = $request->user();
-        $deny = $this->members
-            ->deny($user, $memberUserId);
-
-        return redirect('member-requests')
-            ->with('snackbar', $deny->message);
     }
 }

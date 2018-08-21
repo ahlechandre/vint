@@ -129,4 +129,34 @@ class PublicationRepository
             'publication' => $publication
         ]);
     }
+
+    /**
+     * Tenta atualizar um usuário.
+     *
+     * @param  \Modules\User\Entities\User  $user
+     * @param  int  $id
+     * @param  array  $inputs
+     * @return stdClass
+     */
+    public function destroy(User $user, $id)
+    {
+        $publication = Publication::findOrFail($id);
+
+        // Verifica se o usuário pode realizar.
+        if ($user->cant('delete', $publication)) {
+            return api_response(403);
+        }
+        $destroy = function () use ($publication) {
+            $publication->delete();
+        };
+
+        try {
+            // Tenta atualizar.
+            DB::transaction($destroy);
+        } catch (Exception $exception) {
+            return api_response(500);
+        }
+
+        return api_response(200, __('messages.publications.deleted'));
+    }
 }

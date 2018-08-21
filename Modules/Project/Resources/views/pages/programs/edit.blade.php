@@ -59,6 +59,51 @@
                 ]) @endform
             @endcard
         @endcell
+
+        @can('delete', $program)
+            @cell([
+                'when' => ['default' => 12],
+                'modifiers' => ['mdc-layout-grid--align-right']
+            ])
+                @button([
+                    'text' => __('actions.delete'),
+                    'icon' => 'delete_outline',
+                    'attrs' => [
+                        'type' => 'button',
+                        'id' => 'dialog-activation-program-destroy'
+                    ]
+                ]) @endbutton
+            @endcell
+
+            {{-- Ao tentar remover --}}
+            @form([
+                'method' => 'delete',
+                'action' => url("programs/{$program->id}"),
+            ])
+                {{-- Diálogo --}}
+                @dialog([
+                    'activation' => 'dialog-activation-program-destroy',
+                    'cancel' => [
+                        'text' => __('actions.cancel'),
+                        'attrs' => [
+                            'type' => 'button' 
+                        ],
+                    ],
+                    'accept' => [
+                        'text' => __('actions.confirm'),
+                        'attrs' => [
+                            'type' => 'submit'
+                        ],
+                    ],
+                    'attrs' => [
+                        'id' => 'dialog-program-destroy'
+                    ],
+                    'title' => __('messages.programs.dialog.destroy_title')
+                ])
+                    {{ __('messages.programs.dialog.destroy_body') }}
+                @enddialog
+            @endform
+        @endcan
     @endlayoutGridWithInner
-    
+
 @endsection

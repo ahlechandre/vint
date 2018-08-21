@@ -83,7 +83,9 @@
             @elseif ($section === 'members')
                 {{-- "Membros" --}}
                 @component('group::pages.groups.sections.members', [
-                    'group' => $group
+                    'group' => $group,
+                    'members' => $members,
+                    'membersNotApproved' => $membersNotApproved,
                 ]) @endcomponent
             @elseif ($section === 'group-roles')
                 {{-- "Papéis" --}}

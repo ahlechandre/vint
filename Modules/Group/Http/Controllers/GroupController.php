@@ -10,6 +10,7 @@ use Modules\Group\Entities\Servant;
 use Modules\System\Entities\Permission;
 use Modules\Group\Http\Requests\GroupRequest;
 use Modules\Group\Repositories\GroupRepository;
+use Modules\Group\Entities\Member;
 
 class GroupController extends Controller
 {
@@ -134,8 +135,7 @@ class GroupController extends Controller
                     ->pluck('member_user_id')
                     ->toArray();
                 // Carrega todos os professores para seleção.
-                $professors = Servant::approved()
-                    ->professor()
+                $professors = Servant::professor()
                     ->with('member.user')
                     ->whereNotIn('member_user_id', $coordinatorsUserId)
                     ->get();
@@ -145,6 +145,21 @@ class GroupController extends Controller
                     'professors' => $professors,
                     'section' => $section
                 ]);                
+            }
+            case 'members': {
+                $members = $group->members()
+                    ->wherePivot('is_approved', 1)
+                    ->get();
+                $membersNotApproved = $group->members()
+                    ->wherePivot('is_approved', 0)
+                    ->get();
+                    
+                return view('group::pages.groups.show', [
+                    'group' => $group,
+                    'members' => $members,
+                    'membersNotApproved' => $membersNotApproved,
+                    'section' => $section
+                ]);
             }
             default: {
                 return view('group::pages.groups.show', [
@@ -194,4 +209,38 @@ class GroupController extends Controller
         return redirect("groups/{$id}")
             ->with('snackbar', $update->message);
     }
+
+    /**
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  null|string  $id
+     * @param  null|string  $memberUserId
+     * @return \Illuminate\Http\Response
+     */
+    public function approveMembers(Request $request, $id, $memberUserId = null)
+    {
+        $user = $request->user();
+        $approveMembers = $this->groups
+            ->approveMembers($user, $id, $memberUserId);
+
+        return redirect("groups/{$id}?section=members")
+            ->with('snackbar', $approveMembers->message);
+    }
+
+    /**
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  null|string  $id
+     * @param  null|string  $memberUserId
+     * @return \Illuminate\Http\Response
+     */
+    public function denyMembers(Request $request, $id, $memberUserId = null)
+    {
+        $user = $request->user();
+        $denyMembers = $this->groups
+            ->denyMembers($user, $id, $memberUserId);
+
+        return redirect("groups/{$id}?section=members")
+            ->with('snackbar', $denyMembers->message);
+    } 
 }

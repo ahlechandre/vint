@@ -18,13 +18,13 @@ Route::middleware('auth')
          * Produtos
          * ----------------------------------------
          */
-        Route::resource('products', 'ProductController')
-            ->except(['destroy']);
+        Route::resource('products', 'ProductController');
+
         /**
          * ----------------------------------------
          * Publicações
          * ----------------------------------------
          */
-        Route::resource('publications', 'PublicationController')
-            ->except(['destroy']);
+        Route::resource('publications', 'PublicationController');
+
     });

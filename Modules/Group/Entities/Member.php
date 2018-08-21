@@ -93,26 +93,6 @@ class Member extends Model
 
     /**
      *
-     * @param  \Illuminate\Database\Query\Builder  $query
-     * @return \Illuminate\Database\Query\Builder
-     */
-    public function scopeApproved($query)
-    {
-        return $query->where('is_approved', 1);
-    }
-
-    /**
-     *
-     * @param  \Illuminate\Database\Query\Builder  $query
-     * @return \Illuminate\Database\Query\Builder
-     */
-    public function scopeNotApproved($query)
-    {
-        return $query->where('is_approved', 0);
-    }
-
-    /**
-     *
      * @return bool
      */
     public function isServant()

@@ -31,6 +31,7 @@ Route::middleware('auth')
          */
         Route::resource('groups', 'GroupController')
             ->except(['destroy']);
+
         /**
          * ----------------------------------------
          * Grupos / Coordenadores
@@ -38,6 +39,14 @@ Route::middleware('auth')
          */
         Route::resource('groups/{group}/coordinators', 'CoordinatorController')
             ->only(['store', 'update', 'destroy']);
+        
+        /**
+         * ----------------------------------------
+         * Grupos / Membros
+         * ----------------------------------------
+         */
+        Route::put('groups/{group}/member-requests/{member?}', 'GroupController@approveMembers');
+        Route::delete('groups/{group}/member-requests/{member?}', 'GroupController@denyMembers');
         /**
          * ----------------------------------------
          * Grupos / Papéis

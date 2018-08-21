@@ -159,8 +159,7 @@ class ProjectController extends Controller
             case 'students': {
                 $studentsUserId = $project->students
                     ->pluck('member_user_id');
-                $students = Student::approved()
-                    ->with('member.user')
+                $students = Student::with('member.user')
                     ->whereNotIn('member_user_id', $studentsUserId)
                     ->get();
 
@@ -238,6 +237,22 @@ class ProjectController extends Controller
 
         return redirect("projects/{$id}")
             ->with('snackbar', $update->message);
+    }
+
+    /**
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int|string  $id
+     * @return void
+     */
+    public function destroy(Request $request, $id)
+    {
+        $user = $request->user();
+        $destroy = $this->projects
+            ->destroy($user, $id);
+
+        return redirect('projects')
+            ->with('snackbar', $destroy->message);
     }
 
     /**

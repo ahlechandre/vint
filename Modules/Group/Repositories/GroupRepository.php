@@ -116,4 +116,92 @@ class GroupRepository
             'group' => $group
         ]);
     }
+
+
+    /**
+     * Tenta atualizar um usuário.
+     *
+     * @param  \Modules\User\Entities\User  $user
+     * @param  int|string  $id
+     * @param  int|string  $memberUserId
+     * @return stdClass
+     */
+    public function approveMembers(User $user, $id, $memberUserId)
+    {
+        $group = Group::findOrFail($id);
+
+        // Verifica se o usuário pode realizar.
+        if ($user->cant('updateMemberRequests', $group)) {
+            return api_response(403);
+        }
+        $members = $memberUserId ?
+            $group->membersNotApproved()
+                ->where('user_id', $memberUserId)
+                ->get() :
+            $group->membersNotApproved()
+                ->get();
+
+        $approve = function () use ($user, $group, $members) {
+            $members->map(function ($member) use ($group) {
+                return $group->membersNotApproved()
+                    ->updateExistingPivot($member->user_id, [
+                        'is_approved' => true
+                    ]);
+            });
+        };
+
+        try {
+            // Tenta atualizar.
+            DB::transaction($approve);
+        } catch (Exception $exception) {
+            return api_response(500);
+        }
+
+        return api_response(200, __('messages.member_requests.approved'), [
+            'group' => $group
+        ]);
+    }
+
+
+    /**
+     * Tenta atualizar um usuário.
+     *
+     * @param  \Modules\User\Entities\User  $user
+     * @param  int|string  $id
+     * @param  int|string  $memberUserId
+     * @return stdClass
+     */
+    public function denyMembers(User $user, $id, $memberUserId)
+    {
+        $group = Group::findOrFail($id);
+
+        // Verifica se o usuário pode realizar.
+        if ($user->cant('updateMemberRequests', $group)) {
+            return api_response(403);
+        }
+        $members = $memberUserId ?
+            $group->members()
+                ->where('user_id', $memberUserId)
+                ->get() :
+            $group->members()
+                ->get();
+
+        $deny = function () use ($user, $group, $members) {
+            $members->map(function ($member) use ($group) {
+                return $group->members()
+                    ->detach($member->user_id);
+            });
+        };
+
+        try {
+            // Tenta atualizar.
+            DB::transaction($deny);
+        } catch (Exception $exception) {
+            return api_response(500);
+        }
+
+        return api_response(200, __('messages.member_requests.denied'), [
+            'group' => $group
+        ]);
+    }    
 }

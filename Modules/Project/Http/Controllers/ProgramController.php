@@ -186,6 +186,22 @@ class ProgramController extends Controller
     /**
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  int|string  $id
+     * @return void
+     */
+    public function destroy(Request $request, $id)
+    {
+        $user = $request->user();
+        $destroy = $this->programs
+            ->destroy($user, $id);
+
+        return redirect('programs')
+            ->with('snackbar', $destroy->message);
+    }
+
+    /**
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function requests(Request $request)

@@ -90,16 +90,4 @@ class Servant extends Model
     {
         return $query->where('is_professor', 1);
     }
-
-    /**
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeApproved($query)
-    {
-        return $query->whereHas('member', function ($member) {
-            return $member->approved();
-        });
-    }
 }

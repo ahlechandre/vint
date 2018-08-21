@@ -78,8 +78,7 @@ class PublicationController extends Controller
         }
         $projects = Project::approved()
             ->get();
-        $members = Member::approved()
-            ->with('user')
+        $members = Member::with('user')
             ->get();
 
         return view('product::pages.publications.create', [
@@ -150,8 +149,7 @@ class PublicationController extends Controller
         }
         $projects = Project::approved()
             ->get();
-        $members = Member::approved()
-            ->with('user')
+        $members = Member::with('user')
             ->get();
 
         return view('product::pages.publications.edit', [
@@ -178,4 +176,20 @@ class PublicationController extends Controller
         return redirect("publications/{$id}")
             ->with('snackbar', $update->message);
     }
+
+    /**
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int|string  $id
+     * @return void
+     */
+    public function destroy(Request $request, $id)
+    {
+        $user = $request->user();
+        $destroy = $this->publications
+            ->destroy($user, $id);
+
+        return redirect('publications')
+            ->with('snackbar', $destroy->message);
+    }    
 }

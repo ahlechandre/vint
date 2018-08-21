@@ -65,6 +65,51 @@
                 ]) @endform
             @endcard
         @endcell
+
+        @can('delete', $project)
+            @cell([
+                'when' => ['default' => 12],
+                'modifiers' => ['mdc-layout-grid--align-right']
+            ])
+                @button([
+                    'text' => __('actions.delete'),
+                    'icon' => 'delete_outline',
+                    'attrs' => [
+                        'type' => 'button',
+                        'id' => 'dialog-activation-project-destroy'
+                    ]
+                ]) @endbutton
+            @endcell
+
+            {{-- Ao tentar remover --}}
+            @form([
+                'method' => 'delete',
+                'action' => url("projects/{$project->id}"),
+            ])
+                {{-- Diálogo --}}
+                @dialog([
+                    'activation' => 'dialog-activation-project-destroy',
+                    'cancel' => [
+                        'text' => __('actions.cancel'),
+                        'attrs' => [
+                            'type' => 'button' 
+                        ],
+                    ],
+                    'accept' => [
+                        'text' => __('actions.confirm'),
+                        'attrs' => [
+                            'type' => 'submit'
+                        ],
+                    ],
+                    'attrs' => [
+                        'id' => 'dialog-project-destroy'
+                    ],
+                    'title' => __('messages.projects.dialog.destroy_title')
+                ])
+                    {{ __('messages.projects.dialog.destroy_body') }}
+                @enddialog
+            @endform
+        @endcan
     @endlayoutGridWithInner
     
 @endsection

@@ -34,8 +34,7 @@ class MemberRepository
             });
         };
         // Escopo.
-        $scope = Member::approved()
-            ->with('user')
+        $scope = Member::with('user')
             ->orderBy('created_at', 'desc');
         // Escopo por filtro.
         $query = $filter ?
@@ -45,12 +44,9 @@ class MemberRepository
         $members = $perPage ?
             $query->simplePaginate($perPage) :
             $query->get();
-        $memberRequestsCount = Member::notApproved()
-            ->count();
 
         return api_response(200, null, [
             'members' => $members,
-            'memberRequestsCount' => $memberRequestsCount,
         ]);
     }
 
@@ -64,8 +60,7 @@ class MemberRepository
      */
     public function update(User $user, $userId, array $inputs)
     {
-        $member = Member::approved()
-            ->findOrFail($userId);
+        $member = Member::findOrFail($userId);
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('update', $member)) {
@@ -119,8 +114,7 @@ class MemberRepository
     public function role(User $user, $userId, $id, array $inputs)
     {
         // Acessa o membro.
-        $member = Member::approved()
-            ->findOrFail($userId);
+        $member = Member::findOrFail($userId);
         // Acessa o novo papel do membro.
         $role = Role::findOrFail($id);
 
@@ -178,147 +172,6 @@ class MemberRepository
         return api_response(200, __('messages.members.role.updated'), [
             'member' => $member,
             'role' => $role
-        ]);
-    }
-
-    /**
-     * Lista todos os grupos.
-     *
-     * @param  \Modules\User\Entities\User  $user
-     * @param  null|int  $perPage
-     * @param  null|string  $filter
-     * @return stdClass
-     */
-    public function requests(User $user, $perPage = null, $filter = null)
-    {
-        // Verifica se o usuário pode realizar.
-        if ($user->cant('approve', Member::class) && $user->cant('deny', Member::class)) {
-            return api_response(403);
-        }
-        $search = function ($filter, $scope) {
-            $filterLike = "%{$filter}%";
-
-            return $scope->whereHas('user', function ($user) use ($filterLike) {
-                return $user->where('name', 'like', $filterLike);
-            });
-        };
-        // Escopo.
-        $scope = Member::notApproved()
-            ->orderBy('created_at', 'desc');
-        // Escopo por filtro.
-        $query = $filter ?
-            $search($filter, $scope) :
-            $scope;
-        // Seleciona.
-        $members = $perPage ?
-            $query->simplePaginate($perPage) :
-            $query->get();
-
-        return api_response(200, null, [
-            'members' => $members,
-        ]);
-    }
-
-    /**
-     * Tenta aprovar um ou vários membros.
-     *
-     * @param  \Modules\User\Entities\User  $user
-     * @param  null|string  $memberUserId
-     * @param  array  $inputs
-     * @return stdClass
-     */
-    public function approve(User $user, $memberUserId)
-    {
-        // Verifica se o usuário pode realizar.
-        if ($user->cant('approve', Member::class)) {
-            return api_response(403);
-        }
-        $members = $memberUserId ?
-            Member::notApproved()
-                ->where('user_id', $memberUserId)
-                ->get() :
-            Member::notApproved()
-                ->with('user')
-                ->get();
-
-        $approve = function () use ($members) {
-            $members->each(function ($member) {
-                // Ativa o usuário.
-                $member->user->is_active = true;
-                $member->user->save();
-                // Aprova o membro.
-                $member->is_approved = true;
-                $member->save();
-            });
-        };
-
-        try {
-            // Tenta aprovar.
-            DB::transaction($approve);
-        } catch (Exception $exception) {
-            return api_response(500);
-        }
-
-        return api_response(200, __('messages.member_requests.approved'), [
-            'members' => $members
-        ]);
-    }
-
-
-    /**
-     * Tenta recusar um ou mais membros.
-     *
-     * @param  \Modules\User\Entities\User  $user
-     * @param  null|string  $memberUserId
-     * @param  array  $inputs
-     * @return stdClass
-     */
-    public function deny(User $user, $memberUserId)
-    {
-        // Verifica se o usuário pode realizar.
-        if ($user->cant('deny', Member::class)) {
-            return api_response(403);
-        }
-        $members = $memberUserId ?
-            Member::notApproved()
-                ->where('user_id', $memberUserId)
-                ->get() :
-            Member::notApproved()->get();
-
-        $deny = function () use ($members) {
-            $members->each(function ($member) {
-                
-                // Recusando aluno.
-                if ($member->isStudent()) {
-                    $member->student->forceDelete();
-                }
-
-                // Recusando servidor.
-                if ($member->isServant()) {
-                    $member->servant->forceDelete();
-                }
-
-                // Recusando colaborador.
-                if ($member->isCollaborator()) {
-                    $member->collaborator->forceDelete();
-                }
-                // Ao recusar um membro, todos os seus dados
-                // devem ser removidos da base.
-                $userToDelete = $member->user;
-                $member->forceDelete();
-                $userToDelete->forceDelete();
-            });
-        };
-
-        try {
-            // Tenta recusar.
-            DB::transaction($deny);
-        } catch (Exception $exception) {
-            return api_response(500);
-        }
-
-        return api_response(200, __('messages.member_requests.denied'), [
-            'members' => $members
         ]);
     }
 }

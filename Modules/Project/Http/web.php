@@ -18,8 +18,7 @@ Route::middleware('auth')
          * Programas
          * ----------------------------------------
          */
-        Route::resource('programs', 'ProgramController')
-            ->except(['destroy']);
+        Route::resource('programs', 'ProgramController');
         /**
          * ----------------------------------------
          * Programas / Solicitações
@@ -33,8 +32,7 @@ Route::middleware('auth')
          * Projetos
          * ----------------------------------------
          */
-        Route::resource('projects', 'ProjectController')
-            ->except(['destroy']);
+        Route::resource('projects', 'ProjectController');
         /**
          * ----------------------------------------
          * Projetos / Alunos

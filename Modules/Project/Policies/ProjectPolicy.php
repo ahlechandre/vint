@@ -105,6 +105,17 @@ class ProjectPolicy
     }
 
     /**
+     *
+     * @param \Modules\User\Entities\User $user
+     * @param \Modules\Project\Entities\Project $project
+     * @return bool
+     */
+    public function delete(User $user, Project $project)
+    {
+        return false;
+    }
+
+    /**
      * Determine whether the user can update.
      *
      * @param  \Modules\User\Entities\User  $user

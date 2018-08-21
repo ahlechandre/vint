@@ -141,6 +141,36 @@ class ProjectRepository
     }
 
     /**
+     * Tenta atualizar um usuário.
+     *
+     * @param  \Modules\User\Entities\User  $user
+     * @param  int  $id
+     * @param  array  $inputs
+     * @return stdClass
+     */
+    public function destroy(User $user, $id)
+    {
+        $project = Project::findOrFail($id);
+
+        // Verifica se o usuário pode realizar.
+        if ($user->cant('delete', $project)) {
+            return api_response(403);
+        }
+        $destroy = function () use ($project) {
+            $project->delete();
+        };
+
+        try {
+            // Tenta atualizar.
+            DB::transaction($destroy);
+        } catch (Exception $exception) {
+            return api_response(500);
+        }
+
+        return api_response(200, __('messages.projects.deleted'));
+    }
+
+    /**
      * Lista todos as solicitações de projetos.
      *
      * @param  \Modules\User\Entities\User  $user

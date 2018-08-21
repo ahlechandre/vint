@@ -59,5 +59,50 @@
                 ]) @endform
             @endcard
         @endcell
+
+        @can('delete', $publication)
+            @cell([
+                'when' => ['default' => 12],
+                'modifiers' => ['mdc-layout-grid--align-right']
+            ])
+                @button([
+                    'text' => __('actions.delete'),
+                    'icon' => 'delete_outline',
+                    'attrs' => [
+                        'type' => 'button',
+                        'id' => 'dialog-activation-publication-destroy'
+                    ]
+                ]) @endbutton
+            @endcell
+
+            {{-- Ao tentar remover --}}
+            @form([
+                'method' => 'delete',
+                'action' => url("publications/{$publication->id}"),
+            ])
+                {{-- Diálogo --}}
+                @dialog([
+                    'activation' => 'dialog-activation-publication-destroy',
+                    'cancel' => [
+                        'text' => __('actions.cancel'),
+                        'attrs' => [
+                            'type' => 'button' 
+                        ],
+                    ],
+                    'accept' => [
+                        'text' => __('actions.confirm'),
+                        'attrs' => [
+                            'type' => 'submit'
+                        ],
+                    ],
+                    'attrs' => [
+                        'id' => 'dialog-publication-destroy'
+                    ],
+                    'title' => __('messages.publications.dialog.destroy_title')
+                ])
+                    {{ __('messages.publications.dialog.destroy_body') }}
+                @enddialog
+            @endform
+        @endcan
     @endlayoutGridWithInner
 @endsection

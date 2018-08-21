@@ -113,6 +113,17 @@ class GroupPolicy
     {
         return false;
     }
+    
+    /**
+     *
+     * @param \Modules\User\Entities\User $user
+     * @param \Modules\Group\Entities\Group $group
+     * @return bool
+     */
+    public function updateMemberRequests(User $user, Group $group)
+    {
+        return false;
+    }
 
     /**
      * Determine whether the user can delete.

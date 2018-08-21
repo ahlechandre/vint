@@ -43,6 +43,26 @@ class Group extends Model
 
     /**
      *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function membersNotApproved()
+    {
+        return $this->members()
+            ->wherePivot('is_approved', 0);
+    }
+
+    /**
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function membersApproved()
+    {
+        return $this->members()
+            ->wherePivot('is_approved', 1);
+    }
+
+    /**
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function programs()

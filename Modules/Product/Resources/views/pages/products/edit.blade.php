@@ -56,5 +56,50 @@
                 ]) @endform
             @endcard
         @endcell
+
+        @can('delete', $product)
+            @cell([
+                'when' => ['default' => 12],
+                'modifiers' => ['mdc-layout-grid--align-right']
+            ])
+                @button([
+                    'text' => __('actions.delete'),
+                    'icon' => 'delete_outline',
+                    'attrs' => [
+                        'type' => 'button',
+                        'id' => 'dialog-activation-product-destroy'
+                    ]
+                ]) @endbutton
+            @endcell
+
+            {{-- Ao tentar remover --}}
+            @form([
+                'method' => 'delete',
+                'action' => url("products/{$product->id}"),
+            ])
+                {{-- Diálogo --}}
+                @dialog([
+                    'activation' => 'dialog-activation-product-destroy',
+                    'cancel' => [
+                        'text' => __('actions.cancel'),
+                        'attrs' => [
+                            'type' => 'button' 
+                        ],
+                    ],
+                    'accept' => [
+                        'text' => __('actions.confirm'),
+                        'attrs' => [
+                            'type' => 'submit'
+                        ],
+                    ],
+                    'attrs' => [
+                        'id' => 'dialog-product-destroy'
+                    ],
+                    'title' => __('messages.products.dialog.destroy_title')
+                ])
+                    {{ __('messages.products.dialog.destroy_body') }}
+                @enddialog
+            @endform
+        @endcan
     @endlayoutGridWithInner
 @endsection
