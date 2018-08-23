@@ -1,0 +1,12 @@
+@import '~@material/shape/mdc-shape';
+@import '~@material/shape/mixins';
+
+.shape-container-button {
+  @include mdc-shape-angled-corner($theme-bg, 10px);
+  @include mdc-shape-angled-corner-outline(2px, $mdc-theme-primary);
+}
+
+.shape-container-card {
+  @include mdc-shape-angled-corner($theme-bg, 50px);
+  @include mdc-shape-angled-corner-outline(1px, #e0e0e0);
+}

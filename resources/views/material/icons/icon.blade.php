@@ -1,0 +1,1 @@
+<i class="material-icons{{ set_classes($classes ?? []) }}"{{ set_attrs($attrs ?? []) }}>{{ $name ?? $slot }}</i>

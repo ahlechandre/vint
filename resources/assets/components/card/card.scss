@@ -1,35 +1,19 @@
-.card {
+.card--paper {
   background-color: white;
 
-  .card__primary {
+  .card__header {
     padding: 1rem;
-  
-    & .card__title {
-      margin: 0;
-    }
-  
-    & .card__subtitle {
-      margin: 0;
-      color: rgba(0,0,0,.54);
-    }
   }
-  
-  .card__body {
-    padding: 0 1rem 8px;
-  }
-}
 
-.card--with-list {
-  & .card__body {
-    padding: 0;
+  .card__content {
+    padding: 0 1rem 1rem 1rem;
   }
-}
 
-.card--with-form {
-  padding: 18px;
-  
-  & .card__title {
-    margin-bottom: 12px!important;
-    font-size: 2rem;
+  .card__header-title {
+    margin: 0;
   }
+
+  .card__header-subtitle {
+    margin: 0;
+  }  
 }

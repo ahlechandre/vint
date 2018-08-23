@@ -6,30 +6,6 @@
  * @param array $attrs
  * @return string
  */
-function setAttributes($attrs)
-{
-    $htmlAttrs = '';
-    $index = 0;
-    $scaping = function ($index) {
-        return $index === 0 ? '' : ' ';
-    };
-
-    foreach ($attrs as $attr => $value) {
-        if ($value !== false) {
-            $htmlAttrs .= $scaping($index) . $attr . '="' . $value . '"';
-            $index++;
-        }
-    }
-    
-    echo $htmlAttrs;
-}
-
-/**
- * Define os atributos de elementos HTML.
- *
- * @param array $attrs
- * @return string
- */
 function set_attrs($attrs)
 {
     $htmlAttrs = '';
@@ -43,7 +19,6 @@ function set_attrs($attrs)
     
     echo $htmlAttrs;
 }
-
 
 /**
  *
@@ -66,33 +41,12 @@ function set_classes($modifiers)
 }
 
 /**
- * Define as classes modificadoras de um componente HTML.
- *
- * @param array $modifiers
- * @return string
- */
-function setModifiers($modifiers)
-{
-
-    if (!$modifiers) {
-        return '';
-    }
-    $classes = '';
-
-    foreach ($modifiers as $modifier) {
-        $classes .= ' ' . $modifier;
-    }
-
-    return $classes;
-}
-
-/**
  * Define as classes de células responsivas do componente.
  *
  * @param  null|string  $cells
  * @return string
  */
-function setMaterialCells($cells)
+function set_mdc_cells($cells)
 {
     if (!$cells) {
         return '';
@@ -122,7 +76,7 @@ function setMaterialCells($cells)
  * @param  null|string  $when
  * @return string
  */
-function setMaterialCellsWhen($when)
+function set_mdc_cells_when($when)
 {
     if (!$when) {
         return '';
@@ -153,7 +107,7 @@ function setMaterialCellsWhen($when)
  * @param  string|array  $paths
  * @return bool
  */
-function isActivePage($paths)
+function is_active_page($paths)
 {
     $requested = request()->path();
 
@@ -172,13 +126,14 @@ function isActivePage($paths)
 
 /**
  *
- * @param array $inputs
+ * @param  array  $inputs
+ * @param  string  $field
  * @return boolean
  */
-function sanitize_is_active($inputs)
+function sanitize_bool_input($inputs, $field)
 {
     return (
-        isset($inputs['is_active']) && $inputs['is_active']
+        isset($inputs[$field]) && $inputs[$field]
     ) ? true : false;
 }
 
@@ -190,7 +145,7 @@ function sanitize_is_active($inputs)
  * @param  null|array  $data
  * @return stdClass
  */
-function api_response($status, $message = null, $data = null)
+function repository_response($status, $message = null, $data = null)
 {
     switch ($status) {
         case 200: {
@@ -218,4 +173,30 @@ function api_response($status, $message = null, $data = null)
             ];
         } 
     }
+}
+
+/**
+ *
+ * @param array $componentProps
+ * @param array $classes
+ * @return array
+ */
+function component_with_classes($componentProps, $classes)
+{
+    return array_merge_recursive($componentProps, [
+        'classes' => $classes
+    ]);
+}
+
+/**
+ *
+ * @param array $componentProps
+ * @param array $attrs
+ * @return array
+ */
+function component_with_attrs($componentProps, $attrs)
+{
+    return array_merge_recursive($componentProps, [
+        'attrs' => $attrs
+    ]);
 }

@@ -11,36 +11,13 @@ const mix = require('laravel-mix');
  |
  */
 
-const copies = [
-  {
-    from: './node_modules/material-components-web/dist/material-components-web.js',
-    to: 'public/js',
-  },
-  {
-    from: './node_modules/material-components-web/dist/material-components-web.css',
-    to: 'public/css',
-  },
-  {
-    from: './node_modules/chartist/dist/chartist.min.css',
-    to: 'public/css',
-  },
-  {
-    from: './node_modules/chartist/dist/chartist.min.js',
-    to: 'public/js',
-  },
-  {
-    from: './node_modules/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js',
-    to: 'public/js',
-  },
-  {
-    from: './node_modules/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css',
-    to: 'public/css',
-  },  
-];
-copies.map(asset => mix.copy(asset.from, asset.to));
-mix.js('resources/assets/app.js', 'public/js');
-mix.sass('resources/assets/app.scss', 'public/css', {
+// MDC JavaScript.
+mix.copy('./node_modules/material-components-web/dist/material-components-web.js', 'public/js/material-components-web.js') 
+// JavaScript bundle.
+mix.js('resources/assets/vint.js', 'public/js/vint.js')
+// CSS bundle.
+mix.sass('resources/assets/vint.scss', 'public/css/vint.css', {
   includePaths: [
     'node_modules',
   ],
-});
+})

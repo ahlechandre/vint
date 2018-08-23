@@ -32,6 +32,13 @@ Route::middleware('auth')
 Route::middleware('unauth')
     ->group(function () {
         /**
+         * Home Page
+         */
+        Route::get('/', function () {
+            return view('system::pages.home.index');
+        });
+
+        /**
          * ---------------------------------------
          * Login
          * ---------------------------------------
