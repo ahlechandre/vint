@@ -9,7 +9,7 @@
         ]
     ])
         @cell
-            <h1>Bem vindo ao VINT</h1>
+            <h1>...</h1>
         @endcell
 
         @cell

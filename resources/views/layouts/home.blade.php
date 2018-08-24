@@ -9,15 +9,33 @@
     <title>{{ $title }}</title>
     {{-- Material icons --}}
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
     {{-- MDC + App --}}
     <link rel="stylesheet" href="{{ asset('css/vint.css') }}">
   </head>
-  <body class="mdc-typography mdc-theme">
-    
-    {{-- Conteúdo da página --}}
-    @yield('main')
+  <body class="mdc-typography mdc-theme theme typography">
+    {{-- Top App Bar --}}
+    @topAppBarHome([
+      'menu' => [
+        'classes' => ['drawer-activation'],
+        'attrs' => [
+          'href' => '#',
+          'data-drawer-activation' => 'drawer-activation-1' 
+        ]
+      ],
+      'title' => [
+        'attrs' => [
+          'href' => url('/')
+        ],
+        'text' => 'VINT',
+      ]
+    ]) @endtopAppBarHome
 
+    {{-- Conteúdo da página --}}
+    <div class="mdc-top-app-bar--fixed-adjust">
+      @yield('main')
+    </div>
+    
     {{-- MDC --}}
     <script src="{{ asset('js/material-components-web.js') }}" defer></script>
     {{-- VINT --}}

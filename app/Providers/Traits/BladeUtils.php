@@ -54,6 +54,10 @@ trait BladeUtils
         'material.menus.menu-anchor' => 'menuAnchor',
         'material.menus.menu' => 'menu',
 
+        // Top App Bar.
+        'material.top-app-bar.top-app-bar' => 'topAppBar',
+        'material.top-app-bar.top-app-bar-home' => 'topAppBarHome',
+
         /**
          * -------------------------------------
          * Components.
