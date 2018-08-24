@@ -41,6 +41,28 @@ trait BladeUtils
         'material.shape.shape-button' => 'shapeButton',
         'material.shape.shape-card' => 'shapeCard',
 
+        // Dialogs.
+        'material.dialogs.dialog' => 'dialog',
+        'material.dialogs.dialog-container' => 'dialogContainer',
+
+        // Lists.
+        'material.lists.list' => 'list',
+        'material.lists.list-item' => 'listItem',
+        'material.lists.list-item-link' => 'listItemLink',
+
+        // Menus.
+        'material.menus.menu-anchor' => 'menuAnchor',
+        'material.menus.menu' => 'menu',
+
+        /**
+         * -------------------------------------
+         * Components.
+         * -------------------------------------
+         */
+
+        // Heading.
+        'components.heading' => 'heading',
+
     ];
 
     /**

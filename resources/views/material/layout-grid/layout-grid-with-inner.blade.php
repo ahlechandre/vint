@@ -1,5 +1,5 @@
-@layoutGrid($grid ?? [])
-    @layoutGridInner($inner ?? [])
+@grid($grid ?? [])
+    @gridInner($gridInner ?? [])
         {{ $slot }}
-    @endlayoutGridInner
-@endlayoutGrid
+    @endgridInner
+@endgrid

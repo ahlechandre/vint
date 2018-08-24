@@ -1,0 +1,29 @@
+.heading__title {
+  margin-bottom: 1rem;
+}
+
+.heading__title-text {
+  color: #202124;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0 0 8px; 
+}
+
+.heading__content {
+  margin-bottom: 1rem;
+}
+
+.heading__pretitle-text {
+  font-size: .75rem;
+  text-transform: uppercase;
+  color: #202124;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0 0 8px;
+}
+
+.heading__content-text, .heading__pretitle-text {
+  line-height: 1.5rem;
+  margin: 0;
+  color: #424242;
+}

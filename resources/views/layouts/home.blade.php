@@ -9,6 +9,7 @@
     <title>{{ $title }}</title>
     {{-- Material icons --}}
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
     {{-- MDC + App --}}
     <link rel="stylesheet" href="{{ asset('css/vint.css') }}">
   </head>

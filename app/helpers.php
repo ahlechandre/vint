@@ -200,3 +200,14 @@ function component_with_attrs($componentProps, $attrs)
         'attrs' => $attrs
     ]);
 }
+
+/**
+ *
+ * @param array $componentProps
+ * @param array $props
+ * @return array
+ */
+function component_with_props($componentProps, $props)
+{
+    return array_merge($componentProps, $props);
+}
