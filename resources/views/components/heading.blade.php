@@ -4,10 +4,6 @@
             'when' => ['d' => 8, 't' => 6, 'p' => 4]
         ])
             <div class="heading__title">
-                @if ($pretitle ?? false)
-                    <h6 class="heading__pretitle-text">{{ $pretitle }}</h6>
-                @endif
-
                 <h1 class="heading__title-text">{{ $title }}</h1>
             </div>
             <div class="heading__content">

@@ -1,11 +1,13 @@
 import DialogContainer from './dialog/DialogContainer'
 import DialogActivation from './dialog/DialogActivation'
-import MenuAnchor from './menus/MenuAnchor'
+import MenuAnchor from './menu/MenuAnchor'
+import DrawerActivation from './drawer/DrawerActivation';
 
 const Components = () => {
   const components = [
     DialogActivation,
     DialogContainer,
+    DrawerActivation,
     MenuAnchor
   ]
 

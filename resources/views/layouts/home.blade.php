@@ -20,7 +20,7 @@
         'classes' => ['drawer-activation'],
         'attrs' => [
           'href' => '#',
-          'data-drawer-activation' => 'drawer-activation-1' 
+          'data-drawer-activation' => 'drawer-temporary-1' 
         ]
       ],
       'title' => [
@@ -30,6 +30,67 @@
         'text' => 'VINT',
       ]
     ]) @endtopAppBarHome
+
+    @drawerTemporary([
+      'attrs' => [
+        'id' => 'drawer-temporary-1'
+      ],
+      'header' => [
+        'title' => 'Alexandre Thebaldi',
+        'subtitle' => 'ahlechandre@gmail.com',
+      ],
+      'listGroup' => [
+        'groups' => [
+          [
+            'list' => [
+              'isNavigation' => true,
+              'items' => [
+                [
+                  'icon' => 'dashboard',
+                  'text' => 'Dashboard',
+                  'attrs' => [
+                    'href' => url('dashboard')
+                  ],
+                  'classes' => ['mdc-list-item--activated']
+                ],
+                [
+                  'icon' => 'person',
+                  'text' => 'Usuários',
+                  'attrs' => [
+                    'href' => url('users')
+                  ],
+                ]          
+              ]
+            ]          
+
+          ],
+          [
+            'subheader' => 'Sistema',
+            'list' => [
+              'isNavigation' => true,
+              'items' => [
+                [
+                  'icon' => 'dashboard',
+                  'text' => 'Dashboard',
+                  'attrs' => [
+                    'href' => url('dashboard')
+                  ],
+                  'classes' => ['mdc-list-item--activated']
+                ],
+                [
+                  'icon' => 'person',
+                  'text' => 'Usuários',
+                  'attrs' => [
+                    'href' => url('users')
+                  ],
+                ]          
+              ]
+            ]          
+
+          ]          
+        ]
+      ]
+    ]) @enddrawerTemporary
 
     {{-- Conteúdo da página --}}
     <div class="mdc-top-app-bar--fixed-adjust">

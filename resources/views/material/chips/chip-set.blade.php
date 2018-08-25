@@ -1,0 +1,1 @@
+<div class="mdc-chip-set{{ set_classes($classes ?? []) }}"{{ set_attrs($attrs ?? []) }}>{{ $slot }}</div>

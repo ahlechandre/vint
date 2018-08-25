@@ -27,6 +27,17 @@ trait BladeUtils
         'material.cards.card' => 'card',
         'material.cards.card-paper' => 'cardPaper',
 
+        // Chips.
+        'material.chips.chip-set' => 'chipSet',
+        'material.chips.chip' => 'chip',
+
+        // Dialogs.
+        'material.dialogs.dialog' => 'dialog',
+        'material.dialogs.dialog-container' => 'dialogContainer',
+
+        // Drawers.
+        'material.drawers.drawer-temporary' => 'drawerTemporary',
+
         // Icons.
         'material.icons.icon' => 'icon',
 
@@ -36,23 +47,20 @@ trait BladeUtils
         'material.layout-grid.layout-grid-cell' => 'cell',
         'material.layout-grid.layout-grid-with-inner' => 'gridWithInner',
 
-        // Shape.
-        'material.shape.shape' => 'shape',
-        'material.shape.shape-button' => 'shapeButton',
-        'material.shape.shape-card' => 'shapeCard',
-
-        // Dialogs.
-        'material.dialogs.dialog' => 'dialog',
-        'material.dialogs.dialog-container' => 'dialogContainer',
-
         // Lists.
         'material.lists.list' => 'list',
         'material.lists.list-item' => 'listItem',
         'material.lists.list-item-link' => 'listItemLink',
+        'material.lists.list-group' => 'listGroup',
 
         // Menus.
         'material.menus.menu-anchor' => 'menuAnchor',
         'material.menus.menu' => 'menu',
+        
+        // Shape.
+        'material.shape.shape' => 'shape',
+        'material.shape.shape-button' => 'shapeButton',
+        'material.shape.shape-card' => 'shapeCard',
 
         // Top App Bar.
         'material.top-app-bar.top-app-bar' => 'topAppBar',

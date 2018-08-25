@@ -1,0 +1,45 @@
+.drawer {
+  // Header
+  .drawer__header {
+    &::before {
+      padding-top: 34.25%;
+    }
+  }
+
+  .drawer__header-title {
+    margin: 1rem 0;
+  }
+
+  .drawer__header-title-text, .drawer__header-subtitle-text {
+    margin: 0;
+  }
+
+  .drawer__header-subtitle-text {
+    opacity: .7;
+  }
+
+  // Content
+  .drawer__content {
+    .list-divider {
+      margin: .5rem 0
+    }
+
+    .list-group__subheader {
+      font-size: 0.875rem;
+      opacity: .7;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .list {
+      margin-left: 12px;
+      margin-right: 12px;  
+    }
+
+    .list-item {
+      border-radius: 6px;
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+  }
+}

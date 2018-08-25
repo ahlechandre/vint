@@ -308,5 +308,22 @@
                 ]
             ]) @endheading
         @endcell
+
+        @cell
+            <h3>chips</h3>
+
+            @chipSet 
+                @chip([
+                    'iconTrailing' => true,
+                    'icon' => 'cancel',
+                    'text' => 'Hello world'
+                ]) @endchip
+
+                @chip([
+                    'icon' => 'check',
+                    'text' => 'Hello world'
+                ]) @endchip
+            @endchipSet 
+        @endcell
     @endgridWithInner
 @endsection
