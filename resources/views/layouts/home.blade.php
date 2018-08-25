@@ -51,7 +51,6 @@
                   'attrs' => [
                     'href' => url('dashboard')
                   ],
-                  'classes' => ['mdc-list-item--activated']
                 ],
                 [
                   'icon' => 'person',
@@ -61,8 +60,7 @@
                   ],
                 ]          
               ]
-            ]          
-
+            ]
           ],
           [
             'subheader' => 'Sistema',

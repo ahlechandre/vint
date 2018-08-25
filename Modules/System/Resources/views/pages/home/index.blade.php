@@ -325,5 +325,159 @@
                 ]) @endchip
             @endchipSet 
         @endcell
+
+        @cell
+            <h3>tab bar</h3>
+
+            @tabBar([
+                'tabs' => [
+                    [
+                        'active' => true,
+                        'icon' => 'add',
+                        'label' => 'item 1',
+                        'classes' => ['mdc-tab--stacked'],
+                        'restrictIndicator' => true,
+                    ],
+                    [
+                        'icon' => 'close',
+                        'label' => 'item 2',
+                        'classes' => ['mdc-tab--stacked'],
+                        'restrictIndicator' => true,
+                    ],
+                ]
+            ]) @endtabBar
+        @endcell
+
+        @cell
+            <h3>inputs</h3>
+
+            <div>
+                @checkbox([
+                    'label' => 'checkbox 1',
+                    'attrs' => [
+                        'id' => 'checkbox-1'
+                    ],
+                ]) @endcheckbox
+            </div>
+
+            <div>
+                @radio([
+                    'label' => 'radio 1',
+                    'attrs' => [
+                        'id' => 'radio-1'
+                    ],
+                ]) @endradio
+            </div>
+
+            <div>
+                @switchControl([
+                    'label' => 'switch 1',
+                    'attrs' => [
+                        'id' => 'switch-1'
+                    ],
+                ]) @endswitchControl
+            </div>
+
+            <div>
+                @select([
+                    'label' => 'select 1',
+                    'attrs' => [
+                        'id' => 'select-1'
+                    ],
+                    'options' => [
+                        [
+                            'text' => '',
+                            'attrs' => [
+                                'value' => '',
+                                'disabled' => '',
+                                'selected' => ''
+                            ],
+                        ],
+                        [
+                            'text' => 'option 1',
+                            'attrs' => [
+                                'value' => '1',
+                            ],
+                        ],
+                        [
+                            'text' => 'option 2',
+                            'attrs' => [
+                                'value' => '2',
+                            ],
+                        ]       
+                    ]
+                ]) @endselect                
+            </div>
+
+            <div>
+                @select([
+                    'label' => 'select 2',
+                    'attrs' => [
+                        'id' => 'select-2'
+                    ],
+                    'options' => [
+                        [
+                            'text' => '',
+                            'attrs' => [
+                                'value' => '',
+                                'disabled' => '',
+                                'selected' => ''
+                            ],
+                        ],
+                        [
+                            'text' => 'option 1',
+                            'attrs' => [
+                                'value' => '1',
+                                'selected' => ''
+                            ],
+                        ],
+                        [
+                            'text' => 'option 2',
+                            'attrs' => [
+                                'value' => '2',
+                            ],
+                        ]       
+                    ]
+                ]) @endselect            
+            </div>
+            
+            <div>
+                @textfield([
+                    'label' => 'textfield 1',
+                    'attrs' => [
+                        'id' => 'textfield-1'
+                    ]
+                ]) @endtextfield
+            </div>
+
+            <div>
+                @textfield([
+                    'label' => 'textfield 2',
+                    'attrs' => [
+                        'id' => 'textfield-2',
+                        'value' => 'text value'
+                    ]
+                ]) @endtextfield
+            </div>
+
+            <div>
+                @textarea([
+                    'label' => 'textarea 1',
+                    'attrs' => [
+                        'id' => 'textarea-1',
+                    ]
+                ]) @endtextarea
+            </div>            
+        @endcell
+
+        {{-- Spacing --}}
+        @cell @endcell
+        @cell @endcell
+        @cell @endcell
+        @cell @endcell
+        @cell @endcell
+        @cell @endcell
+        @cell @endcell
+        @cell @endcell
     @endgridWithInner
 @endsection
