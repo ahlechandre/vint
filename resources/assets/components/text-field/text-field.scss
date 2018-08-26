@@ -2,6 +2,18 @@
   width: 100%;
 }
 
+// Helper text.
+.text-field-helper-text {
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 8px;
+  color: rgba(0, 0, 0, .6);
+
+  &.text-field-helper-text--validation-msg {
+    color: $theme-validation!important;
+  }
+}
+
 .text-field--textarea {
   .mdc-floating-label {
     background-color: whitesmoke;

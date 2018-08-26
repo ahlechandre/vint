@@ -47,9 +47,10 @@ trait BladeUtils
         'material.inputs.radio' => 'radio',
         'material.inputs.switch' => 'switchControl',
         'material.inputs.select' => 'select',
-        'material.inputs.textfield' => 'textfield',
+        'material.inputs.text-field' => 'textfield',
         'material.inputs.textarea' => 'textarea',      
         'material.inputs.select2' => 'select2',      
+        'material.inputs.text-field-helper-text' => 'textfieldHelperText',
 
         // Layout Grid.
         'material.layout-grid.layout-grid' => 'grid',

@@ -1,4 +1,4 @@
-<div class="select mdc-typography select--select2{{ set_classes($componentClasses ?? []) }}"{{ set_attrs($componentAttrs ?? []) }}>
+<div class="select mdc-typography select--select2{{ set_classes($componentClasses ?? []) }}"{{ set_attrs($componentAttrs ?? []) }} tabindex="0">
     <label>{{ $label }}</label>
 
     <select class="select__native-control{{ set_classes($classes ?? []) }}"{{ set_attrs($attrs ?? []) }}>
@@ -7,6 +7,7 @@
             <option {{ set_attrs($option['attrs'] ?? []) }}>{{ $option['text'] }}</option>
         @endforeach    
         @endif
-    </select>    
-
+    </select>
 </div>
+
+@textfieldHelperText($helperText ?? []) @endtextfieldHelperText

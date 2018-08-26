@@ -3,3 +3,5 @@
   <label class="mdc-floating-label" for="{{ $attrs['id'] }}">{{ $label }}</label>
   <div class="mdc-line-ripple"></div>
 </div>
+
+@textfieldHelperText($helperText ?? []) @endtextfieldHelperText

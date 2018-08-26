@@ -1,0 +1,1 @@
+<p class="text-field-helper-text mdc-text-field-helper-text{{ isset($isPersistent) && $isPersistent ? ' text-field-helper-text--persistent mdc-text-field-helper-text--persistent' : '' }}{{ isset($isValidation) && $isValidation ? ' text-field-helper-text--validation-msg mdc-text-field-helper-text--validation-msg' : '' }}" aria-hidden="true">{{ $text ?? $slot }}</p>

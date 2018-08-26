@@ -2,3 +2,5 @@
   <textarea class="text-field__input mdc-text-field__input{{ set_classes($classes ?? []) }}"{{ set_attrs($attrs ?? []) }}>{{ $attrs['value'] ?? $text ?? null }}</textarea>
   <label for="{{ $attrs['id'] }}" class="mdc-floating-label">{{ $label }}</label>
 </div>
+
+@textfieldHelperText($helperText ?? []) @endtextfieldHelperText

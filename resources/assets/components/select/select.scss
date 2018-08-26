@@ -2,16 +2,16 @@
 
 .select {
   width: 100%;
+  margin: 16px 0 8px 0;
 }
 
 // Select2
 .select--select2 {
-  margin: 16px 0 8px 0;
   background-color: whitesmoke;
   border-radius: 4px 4px 0 0;
-  padding-top: 4px;
   min-height: 56px;
   border-bottom: 1px solid #999999;
+  outline: none;
   
   label {
     padding-left: 16px;
@@ -32,13 +32,22 @@
     border-bottom: 1px solid #222222;
   }
   
+  &:focus-within, &:focus {
+    border-bottom: 2px solid $mdc-theme-primary;
+
+    label {
+      color: $mdc-theme-primary;
+    }
+  }
+  
   .select__native-control {
     width: 100%;
   }
 
   // Container.
-  .select2 {
+  .select2, .select2-container {
     width: 100%!important;
+    margin-top: -4px;
   }
 
   // Input.
@@ -61,7 +70,8 @@
   .select2-selection__arrow {
     height: 0!important;
     width: 0!important;
-    right: 12px!important;
+    right: 16px!important;
+    top: 6px!important;
   }
 
   // Closed.
@@ -90,6 +100,7 @@
   } 
 
   .select2-selection.select2-selection--multiple {
+    padding-top: 4px;
     padding-bottom: 4px;
   }
 
@@ -123,4 +134,8 @@
       }
   }
 
+}
+
+.select2-container.select2-container--default.select2-container--open .select2-dropdown.select2-dropdown--below {
+  margin-top: 2px!important;      
 }

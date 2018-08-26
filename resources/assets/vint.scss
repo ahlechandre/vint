@@ -3,6 +3,7 @@ $mdc-theme-secondary: #76ff03;
 $mdc-theme-on-primary: #ffffff;
 $mdc-theme-on-secondary: #000000;
 $theme-bg: #fff;
+$theme-validation: #f44336;
 
 // Material Components Web.
 @import '~@material/button/mdc-button';
@@ -34,6 +35,7 @@ $theme-bg: #fff;
 @import '~@material/tab-indicator/mdc-tab-indicator';
 @import '~@material/tab/mdc-tab';
 @import '~@material/textfield/mdc-text-field';
+@import '~@material/textfield/helper-text/mdc-text-field-helper-text';
 @import '~@material/theme/mdc-theme';
 // @import '~@material/toolbar/mdc-toolbar';
 @import '~@material/top-app-bar/mdc-top-app-bar';
