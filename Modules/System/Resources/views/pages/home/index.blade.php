@@ -272,7 +272,8 @@
                                 'text' => 'dialog',
                                 'classes' => ['dialog-activation'],
                                 'attrs' => [
-                                    'data-dialog-activation' => 'dialog-2'
+                                    'data-dialog-activation' => 'dialog-2',
+                                    'data-vint-auto-init' => 'VintDialogActivation'
                                 ]
                             ],
                         ]
@@ -462,12 +463,21 @@
 
             <div>
                 @textarea([
-                    'label' => 'textarea 1',
+                    'label' => 'Textarea',
                     'attrs' => [
                         'id' => 'textarea-1',
                     ]
                 ]) @endtextarea
-            </div>            
+            </div>
+
+            <div>
+                @select2([
+                    'attrs' => [
+                        'id' => 'select2-1',
+                        'multiple' => '',
+                    ],
+                ]) @endselect2
+            </div>
         @endcell
 
         {{-- Spacing --}}
@@ -480,4 +490,34 @@
         @cell @endcell
         @cell @endcell
     @endgridWithInner
+@endsection
+
+@section('scripts')
+    <script>
+        (() => {
+            const s = () => {
+                const element = document.querySelector('.select--select2')
+                const select2 = new window.vint.VintSelect2(element)
+                select2.render({
+                    ajax: {
+                        url: '/api/choices',
+                        processResults: response => ({
+                            results: response.data.map(item => ({
+                                id: item.id,
+                                text: item.name,
+                            })),
+                        }),
+                        data: params => ({
+                            q: params.term,
+                            'per-page': 10 
+                        })
+                    }
+                })
+            }
+
+            window.addEventListener('load', () => {
+                setTimeout(s, 1)
+            })
+        })()
+    </script>
 @endsection

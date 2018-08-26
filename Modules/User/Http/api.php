@@ -12,6 +12,28 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::get('choices', function () {
+    return response()->json([
+        'data' => [
+            [
+                'id' => 1,
+                'name' => 'Item 1'
+            ],
+            [
+                'id' => 2,
+                'name' => 'Item 2'
+            ],
+            [
+                'id' => 3,
+                'name' => 'Item 3'
+            ],
+            [
+                'id' => 4,
+                'name' => 'Item 4'
+            ]
+        ]
+    ]);
+});
 
 Route::middleware('auth:api')
     ->group(function () {

@@ -1,27 +1,15 @@
-import DialogContainer from './dialog/DialogContainer'
-import DialogActivation from './dialog/DialogActivation'
-import MenuAnchor from './menu/MenuAnchor'
-import DrawerActivation from './drawer/DrawerActivation';
+import VintDialogActivation from "./dialog/VintDialogActivation";
+import VintDialogContainer from "./dialog/VintDialogContainer";
+import VintDrawerActivation from "./drawer/VintDrawerActivation";
+import VintMenuAnchor from "./menu/VintMenuAnchor";
+import VintSelect2 from "./select/VintSelect2";
+import VintTextarea from "./text-field/VintTextarea";
 
-const Components = () => {
-  const components = [
-    DialogActivation,
-    DialogContainer,
-    DrawerActivation,
-    MenuAnchor
-  ]
-
-  components.map(component => {
-    const elements = document.querySelectorAll(`.${component.classes.COMPONENT}`)
-
-    for (let i = 0; i < elements.length; i++) {
-      Object.defineProperty(elements[i], component.constants.COMPONENT_NAME, {
-        value: new component(elements[i]),
-        writable: false,
-        enumerable: false
-      })
-    }
-  })
+export default {
+  VintDialogActivation,
+  VintDialogContainer,
+  VintDrawerActivation,
+  VintMenuAnchor,
+  VintSelect2,
+  VintTextarea 
 }
-
-export default Components

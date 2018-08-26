@@ -1,6 +1,6 @@
 import { MDCTemporaryDrawer, MDCPersistentDrawer } from '@material/drawer'
 
-class DrawerActivation {
+class VintDrawerActivation {
 
   /**
    * @var {Object}
@@ -16,7 +16,6 @@ class DrawerActivation {
    * @var {Object}
    */
   static constants = {
-    COMPONENT_NAME: 'DrawerActivation',
     DRAWER_ACTIVATION_DATASET: 'drawerActivation'
   }
 
@@ -25,12 +24,16 @@ class DrawerActivation {
    * @param {HTMLElement} element 
    */
   constructor(element) {
-    const drawerId = element.dataset[DrawerActivation.constants.DRAWER_ACTIVATION_DATASET]
-    const drawer = document.querySelector(`.${DrawerActivation.classes.DRAWER}#${drawerId}`)
+
+    if (!element || !element.classList.contains(VintDrawerActivation.classes.COMPONENT)) {
+      return console.warn('Please, add a valid element for Drawer Activation.')
+    }
+    const drawerId = element.dataset[VintDrawerActivation.constants.DRAWER_ACTIVATION_DATASET]
+    const drawer = document.querySelector(`.${VintDrawerActivation.classes.DRAWER}#${drawerId}`)
     this.state = {
       drawer,
-      isPersistent: drawer.classList.contains(DrawerActivation.classes.DRAWER_PERSISTENT),
-      isTemporary: drawer.classList.contains(DrawerActivation.classes.DRAWER_TEMPORARY)
+      isPersistent: drawer.classList.contains(VintDrawerActivation.classes.DRAWER_PERSISTENT),
+      isTemporary: drawer.classList.contains(VintDrawerActivation.classes.DRAWER_TEMPORARY)
     }
 
     if (!this.state.drawer) {
@@ -49,4 +52,4 @@ class DrawerActivation {
   }
 }
 
-export default DrawerActivation
+export default VintDrawerActivation

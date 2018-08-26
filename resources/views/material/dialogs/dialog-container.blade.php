@@ -1,4 +1,4 @@
-<span class="dialog-container{{ set_classes($classes ?? []) }}"{{ set_attrs($attrs ?? []) }}>
+<span class="dialog-container{{ set_classes($classes ?? []) }}" data-vint-auto-init="VintDialogContainer"{{ set_attrs($attrs ?? []) }}>
     @if ($button ?? false)
         @button(component_with_classes($button, [
             'dialog-container__activation'

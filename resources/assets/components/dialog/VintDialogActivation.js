@@ -1,6 +1,6 @@
 import { MDCDialog } from '@material/dialog'
 
-class DialogActivation {
+class VintDialogActivation {
 
   /**
    * @var {Object}
@@ -14,7 +14,6 @@ class DialogActivation {
    * @var {Object}
    */
   static constants = {
-    COMPONENT_NAME: 'DialogActivation',
     DIALOG_ACTIVATION_DATASET: 'dialogActivation'
   }
 
@@ -23,9 +22,13 @@ class DialogActivation {
    * @param {HTMLElement} element 
    */
   constructor(element) {
-    const dialogId = element.dataset[DialogActivation.constants.DIALOG_ACTIVATION_DATASET]
+
+    if (!element || !element.classList.contains(VintDialogActivation.classes.COMPONENT)) {
+      return console.warn('Please, add a valid element for Dialog Activation.')
+    }
+    const dialogId = element.dataset[VintDialogActivation.constants.DIALOG_ACTIVATION_DATASET]
     this.state = {
-      dialog: document.querySelector(`.${DialogActivation.classes.DIALOG}#${dialogId}`)
+      dialog: document.querySelector(`.${VintDialogActivation.classes.DIALOG}#${dialogId}`)
     }
 
     if (!this.state.dialog) {
@@ -43,4 +46,4 @@ class DialogActivation {
   }
 }
 
-export default DialogActivation
+export default VintDialogActivation

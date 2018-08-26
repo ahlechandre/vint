@@ -1,4 +1,4 @@
-<div class="menu-anchor mdc-menu-anchor">
+<div class="menu-anchor mdc-menu-anchor{{ set_classes($classes ?? []) }}" data-vint-auto-init="VintMenuAnchor"{{ set_attrs($attrs ?? []) }}>
     @if ($button ?? false)
         @button(component_with_classes($button, [
             'menu-anchor__button'

@@ -2,9 +2,21 @@
   width: 100%;
 }
 
-.mdc-text-field--textarea.mdc-text-field--box {
-  label {
+.text-field--textarea {
+  .mdc-floating-label {
     background-color: whitesmoke;
-    width: 100%;
   }
+}
+
+.text-field--textarea,
+.mdc-text-field--focused .text-field__input:focus {
+  border-top-color: transparent!important;
+  border-left-color: transparent!important;
+  border-right-color: transparent!important;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.mdc-text-field--textarea--focused .mdc-floating-label {
+  font-size: 1rem;
 }

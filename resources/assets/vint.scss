@@ -39,6 +39,9 @@ $theme-bg: #fff;
 @import '~@material/top-app-bar/mdc-top-app-bar';
 @import '~@material/typography/mdc-typography';
 
+// Dependencies
+@import '~select2/dist/css/select2.min.css';
+
 // VINT Components.
 @import './components/theme/theme';
 @import './components/layout-grid/layout-grid';

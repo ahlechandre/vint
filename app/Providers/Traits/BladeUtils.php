@@ -49,6 +49,7 @@ trait BladeUtils
         'material.inputs.select' => 'select',
         'material.inputs.textfield' => 'textfield',
         'material.inputs.textarea' => 'textarea',      
+        'material.inputs.select2' => 'select2',      
 
         // Layout Grid.
         'material.layout-grid.layout-grid' => 'grid',

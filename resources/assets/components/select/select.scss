@@ -1,3 +1,10 @@
 .select {
   width: 100%;
 }
+
+// Select2
+.select--select2 {
+  .select__native-control {
+    width: 100%
+  }  
+}

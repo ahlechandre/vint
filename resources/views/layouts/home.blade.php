@@ -20,7 +20,8 @@
         'classes' => ['drawer-activation'],
         'attrs' => [
           'href' => '#',
-          'data-drawer-activation' => 'drawer-temporary-1' 
+          'data-drawer-activation' => 'drawer-temporary-1',
+          'data-vint-auto-init' => 'VintDrawerActivation'
         ]
       ],
       'title' => [

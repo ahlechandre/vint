@@ -1,6 +1,6 @@
 import { MDCDialog } from '@material/dialog'
 
-class DialogContainer {
+class VintDialogContainer {
 
   /**
    * @var {Object}
@@ -11,21 +11,19 @@ class DialogContainer {
     DIALOG: 'dialog-container__dialog',
   }
 
-  /**
-   * @var {Object}
-   */
-  static constants = {
-    COMPONENT_NAME: 'DialogContainer'
-  }
 
   /**
    * 
    * @param {HTMLElement} element 
    */
   constructor(element) {
+
+    if (!element || !element.classList.contains(VintDialogContainer.classes.COMPONENT)) {
+      return console.warn('Please, add a valid element for Dialog Container.')
+    }    
     this.state = {
-      activation: element.querySelector(`.${DialogContainer.classes.ACTIVATION}`),
-      dialog: element.querySelector(`.${DialogContainer.classes.DIALOG}`)
+      activation: element.querySelector(`.${VintDialogContainer.classes.ACTIVATION}`),
+      dialog: element.querySelector(`.${VintDialogContainer.classes.DIALOG}`)
     }
 
     if (!this.state.activation || !this.state.dialog) {
@@ -43,4 +41,4 @@ class DialogContainer {
   }
 }
 
-export default DialogContainer
+export default VintDialogContainer

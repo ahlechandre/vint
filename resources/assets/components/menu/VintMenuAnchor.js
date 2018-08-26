@@ -1,6 +1,6 @@
 import { MDCMenu } from '@material/menu'
 
-class MenuAnchor {
+class VintMenuAnchor {
 
   /**
    * @var {Object}
@@ -12,20 +12,17 @@ class MenuAnchor {
   }
 
   /**
-   * @var {Object}
-   */
-  static constants = {
-    COMPONENT_NAME: 'MenuAnchor'
-  }
-
-  /**
    * 
    * @param {HTMLElement} element 
    */
   constructor(element) {
+
+    if (!element || !element.classList.contains(VintMenuAnchor.classes.COMPONENT)) {
+      return console.warn('Please, add a valid element for Menu Anchor.')
+    }    
     this.state = {
-      button: element.querySelector(`.${MenuAnchor.classes.BUTTON}`),
-      menu: element.querySelector(`.${MenuAnchor.classes.MENU}`)
+      button: element.querySelector(`.${VintMenuAnchor.classes.BUTTON}`),
+      menu: element.querySelector(`.${VintMenuAnchor.classes.MENU}`)
     }
 
     if (!this.state.button || !this.state.menu) {
@@ -42,4 +39,4 @@ class MenuAnchor {
   }
 }
 
-export default MenuAnchor
+export default VintMenuAnchor
