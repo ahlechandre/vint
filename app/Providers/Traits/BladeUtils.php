@@ -25,7 +25,6 @@ trait BladeUtils
         
         // Cards.
         'material.cards.card' => 'card',
-        'material.cards.card-paper' => 'cardPaper',
 
         // Chips.
         'material.chips.chip-set' => 'chipSet',
@@ -81,6 +80,7 @@ trait BladeUtils
         // Top App Bar.
         'material.top-app-bar.top-app-bar' => 'topAppBar',
         'material.top-app-bar.top-app-bar-home' => 'topAppBarHome',
+        'material.top-app-bar.top-app-bar-default' => 'topAppBarDefault',
 
         /**
          * -------------------------------------
@@ -88,9 +88,17 @@ trait BladeUtils
          * -------------------------------------
          */
 
-        // Heading.
-        'components.heading' => 'heading',
+        // Cards.
+        'components.cards.card-header' => 'cardHeader',
+        'components.cards.card-content' => 'cardContent',
+        'components.cards.card-paper' => 'cardPaper',
+        'components.cards.card-login' => 'cardLogin',
 
+        // Forms.
+        'components.forms.form' => 'form',
+
+        // Heading.
+        'components.heading.heading' => 'heading',
     ];
 
     /**

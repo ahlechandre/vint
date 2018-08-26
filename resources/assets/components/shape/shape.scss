@@ -7,6 +7,7 @@
 }
 
 .shape-container-card {
+  width: 100%;
   @include mdc-shape-angled-corner($theme-bg, 50px);
   @include mdc-shape-angled-corner-outline(1px, #e0e0e0);
 }

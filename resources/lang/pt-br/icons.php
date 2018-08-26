@@ -1,6 +1,13 @@
 <?php
 
 return [
+    /**
+     * -------------------------------------------
+     * Ações
+     * -------------------------------------------
+     */
+    'back' => 'arrow_back',
+
     'users' => 'person',
     'user' => 'person',
     'user_types' => 'account_circle',

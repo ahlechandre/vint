@@ -17,6 +17,7 @@
     {{-- Top App Bar --}}
     @topAppBarHome([
       'menu' => [
+        'icon' => 'menu',
         'classes' => ['drawer-activation'],
         'attrs' => [
           'href' => '#',
@@ -92,7 +93,7 @@
     ]) @enddrawerTemporary
 
     {{-- Conteúdo da página --}}
-    <div class="mdc-top-app-bar--fixed-adjust">
+    <div class="top-app-bar--fixed-adjust mdc-top-app-bar--fixed-adjust">
       @yield('main')
     </div>
     

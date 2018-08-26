@@ -3,7 +3,7 @@
 }
 
 .heading__title-text {
-  color: #202124;
+  color: $theme-primary-title;
   font-weight: 400;
   line-height: 1.2;
   margin: 0 0 8px; 
@@ -16,7 +16,7 @@
 .heading__pretitle-text {
   font-size: .75rem;
   text-transform: uppercase;
-  color: #202124;
+  color: $theme-primary-title;
   font-weight: 400;
   line-height: 1.2;
   margin: 0 0 8px;

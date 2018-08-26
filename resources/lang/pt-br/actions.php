@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'signup' => 'Cadastre-se',
+    'signin' => 'Entrar',
     'cancel' => 'Cancelar',
     'save' => 'Salvar',
     'create' => 'Criar',

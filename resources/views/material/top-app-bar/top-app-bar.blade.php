@@ -4,7 +4,7 @@
             @foreach($row['sections'] as $section)
                 <section class="mdc-top-app-bar__section{{ set_classes($section['classes'] ?? []) }}"{{ set_attrs($section['attrs'] ?? []) }}>
                     @if ($section['menu'] ?? false)
-                        <a class="material-icons mdc-top-app-bar__navigation-icon{{ set_classes($section['menu']['classes'] ?? []) }}"{{ set_attrs($section['menu']['attrs'] ?? []) }}>menu</a>
+                        <a class="material-icons mdc-top-app-bar__navigation-icon{{ set_classes($section['menu']['classes'] ?? []) }}"{{ set_attrs($section['menu']['attrs'] ?? []) }}>{{ $section['menu']['icon'] }}</a>
                     @endif
 
                     @if ($section['title'] ?? false)

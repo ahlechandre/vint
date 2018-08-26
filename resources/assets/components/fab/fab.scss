@@ -1,6 +1,9 @@
+@import '../animation/animation';
+
 .fab-fixed {
   position: fixed;
   bottom: 2rem;
   right: 2.5rem;
   z-index: 1;
+  animation: FadeFromScale0Delay .4s linear;
 }

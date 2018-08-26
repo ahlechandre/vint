@@ -16,6 +16,10 @@
             <div>
                 <h3>button</h3>
                 @button([
+                    'isLink' => true,
+                    'attrs' => [
+                        'href' => url('login')
+                    ],
                     'classes' => ['mdc-button--outlined'],
                     'icon' => 'arrow_forward'
                 ]) Hello, world! @endbutton    

@@ -1,45 +1,59 @@
-@layoutGridInner
-    {{-- E-mail --}}
-    @cell([
-        'when' => ['d' => 12, 't' => 8, 'p' => 4]
-    ])
+@gridInner
+    @cell
         @textfield([
             'label' => __('attrs.email'),
             'attrs' => [
-                'type' => 'email',
-                'name' => 'email',
-                'required' => '',
                 'id' => 'textfield-login-email',
+                'name' => 'email',
+                'type' => 'email',
+                'required' => '',
+                'autocomplete' => 'off',
             ],
+            'helperText' => [
+                'isPersistent' => true,
+                'isValidation' => $errors->get('auth')[0] ?? false,
+                'text' => $errors->get('auth')[0] ?? null,
+            ]
         ]) @endtextfield
     @endcell
 
-    {{-- Senha --}}
-    @cell([
-        'when' => ['d' => 12, 't' => 8, 'p' => 4]
-    ])
+    @cell
         @textfield([
             'label' => __('attrs.password'),
             'attrs' => [
-                'type' => 'password',
-                'name' => 'password',
-                'required' => '',
                 'id' => 'textfield-login-password',
+                'name' => 'password',
+                'type' => 'password',
+                'required' => '',
             ],
-        ]) @endtextfield    
-    @endcell
+        ]) @endtextfield
+    @endcell 
 
-    {{-- Submit --}}
+    {{-- Cadastre-se --}}
     @cell([
-        'when' => ['d' => 12, 't' => 8, 'p' => 4],
-        'modifiers' => ['mdc-layout-grid--align-right']
+        'when' => ['d' => 6, 't' => 4, 'p' => 2]
     ])
         @button([
-            'text' => __('actions.login'),
-            'modifiers' => ['mdc-button--unelevated'],
+            'isLink' => true,
+            'classes' => ['mdc-button--outlined'],
+            'text' => __('actions.signup'),
             'attrs' => [
-                'type' => 'submit'
-            ],
+                'href' => url('register')
+            ]
         ]) @endbutton
     @endcell
-@endlayoutGridInner
+
+    {{-- Entrar --}}
+    @cell([
+        'when' => ['d' => 6, 't' => 4, 'p' => 2],
+        'classes' => ['mdc-layout-grid--align-right']
+    ])
+        @button([
+            'text' => __('actions.signin'),
+            'classes' => ['mdc-button--unelevated'],
+            'attrs' => [
+                'type' => 'submit'
+            ]
+        ]) @endbutton
+    @endcell
+@endgridInner
