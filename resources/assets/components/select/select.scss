@@ -1,10 +1,126 @@
+@import '~select2/dist/css/select2.min.css';
+
 .select {
   width: 100%;
 }
 
 // Select2
 .select--select2 {
+  margin: 16px 0 8px 0;
+  background-color: whitesmoke;
+  border-radius: 4px 4px 0 0;
+  padding-top: 4px;
+  min-height: 56px;
+  border-bottom: 1px solid #999999;
+  
+  label {
+    padding-left: 16px;
+    color: rgba(0, 0, 0, 0.6);
+    font-family: Roboto, sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-size: .75rem;
+    line-height: 1.75rem;
+    font-weight: 400;
+    letter-spacing: 0.009375em;
+    text-decoration: inherit;
+    text-transform: inherit;    
+  }
+
+  &:hover {
+    background-color: #ececec;
+    border-bottom: 1px solid #222222;
+  }
+  
   .select__native-control {
-    width: 100%
-  }  
+    width: 100%;
+  }
+
+  // Container.
+  .select2 {
+    width: 100%!important;
+  }
+
+  // Input.
+  .select2-selection {
+    background-color: transparent;
+    height: auto;
+    border: none;
+    min-height: 20px;
+    padding: 0 26px 4px 16px;
+    outline: none;
+    border-radius: 0;
+  }
+
+  // Sub input.
+  .select2-selection__rendered {
+    padding: 0!important;
+  }
+
+  // Arrow.
+  .select2-selection__arrow {
+    height: 0!important;
+    width: 0!important;
+    right: 12px!important;
+  }
+
+  // Closed.
+  .select2-selection__arrow {
+    b {
+        border-width: 6px 5px 0 5px!important;
+    }
+  }
+
+  // Open.
+  .select2-container--open {
+    .select2-selection__arrow {
+      b {
+        border-width: 0 5px 6px 5px!important;
+      }
+    }
+  }
+
+  // Multiple.
+  .select2-container--default.select2-container--focus .select2-selection--multiple {
+    border: none;
+
+    .select2-search__field {
+      font-size: 1rem;
+    }
+  } 
+
+  .select2-selection.select2-selection--multiple {
+    padding-bottom: 4px;
+  }
+
+  // Choice.
+  .select2-selection__choice {
+      border: none !important;
+      padding: 4px 32px 4px 12px !important;
+      border-radius: 50px !important;
+      position: relative;
+      background-color: #e0e0e0!important;
+      display: flex!important;
+      align-items: center;
+      font-size: 0.875rem!important;
+      margin-top: 0!important;
+
+      .select2-selection__choice__remove {
+        position: absolute;
+        right: 4px;
+        width: 16px;
+        height: 16px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: rgba(255, 255, 255, 0.7);
+
+        &:hover {
+          color: rgba(255, 255, 255, 0.7);
+        }
+      }
+  }
+
 }

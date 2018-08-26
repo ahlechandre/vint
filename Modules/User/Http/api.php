@@ -30,7 +30,23 @@ Route::get('choices', function () {
             [
                 'id' => 4,
                 'name' => 'Item 4'
-            ]
+            ],
+            [
+                'id' => 10,
+                'name' => 'Item 1'
+            ],
+            [
+                'id' => 20,
+                'name' => 'Item 2'
+            ],
+            [
+                'id' => 30,
+                'name' => 'Item 3'
+            ],
+            [
+                'id' => 40,
+                'name' => 'Item 4'
+            ]            
         ]
     ]);
 });

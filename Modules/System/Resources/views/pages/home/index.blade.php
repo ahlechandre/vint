@@ -472,12 +472,34 @@
 
             <div>
                 @select2([
-                    'attrs' => [
-                        'id' => 'select2-1',
-                        'multiple' => '',
-                    ],
+                    'label' => 'Single',
+                    'componentAttrs' => [
+                        'id' => 'select2-single'
+                    ], 
+                    'options' => [
+                        [
+                            'text' => 'select single',
+                            'attrs' => [
+                                'value' => '',
+                                'selected' => '',
+                                'disabled' => '',
+                            ]
+                        ]
+                    ]
                 ]) @endselect2
             </div>
+
+            <div>
+                @select2([
+                    'label' => 'Multiple',
+                    'componentAttrs' => [
+                        'id' => 'select2-multiple'
+                    ], 
+                    'attrs' => [
+                        'multiple' => ''
+                    ]
+                ]) @endselect2
+            </div>            
         @endcell
 
         {{-- Spacing --}}
@@ -496,23 +518,49 @@
     <script>
         (() => {
             const s = () => {
-                const element = document.querySelector('.select--select2')
-                const select2 = new window.vint.VintSelect2(element)
-                select2.render({
-                    ajax: {
-                        url: '/api/choices',
-                        processResults: response => ({
-                            results: response.data.map(item => ({
-                                id: item.id,
-                                text: item.name,
-                            })),
-                        }),
-                        data: params => ({
-                            q: params.term,
-                            'per-page': 10 
-                        })
-                    }
-                })
+                // Single
+                const single = () => {
+                    const element = document.querySelector('#select2-single')
+                    const select2 = new window.vint.VintSelect2(element)
+                    select2.render({
+                        ajax: {
+                            url: '/api/choices',
+                            processResults: response => ({
+                                results: response.data.map(item => ({
+                                    id: item.id,
+                                    text: item.name,
+                                })),
+                            }),
+                            data: params => ({
+                                q: params.term,
+                                'per-page': 10 
+                            })
+                        }
+                    })                    
+                }
+                // Multiple.
+                const multiple = () => {
+                    const element = document.querySelector('#select2-multiple')
+                    const select2 = new window.vint.VintSelect2(element)
+                    select2.render({
+                        placeholder: 'chooseeeee',
+                        ajax: {
+                            url: '/api/choices',
+                            processResults: response => ({
+                                results: response.data.map(item => ({
+                                    id: item.id,
+                                    text: item.name,
+                                })),
+                            }),
+                            data: params => ({
+                                q: params.term,
+                                'per-page': 10 
+                            })
+                        }
+                    })                    
+                }
+                single()
+                multiple()                   
             }
 
             window.addEventListener('load', () => {
