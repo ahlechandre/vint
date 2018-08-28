@@ -3,14 +3,18 @@
         @if ($items ?? false)
             @if ($isMenu ?? false)
                 @foreach ($items as $item)
-                    @listItemLink(component_with_attrs($item, [
-                        'role' => 'menuitem',
-                        'tabindex' => '0'
-                    ])) @endlistItemLink
+                    @if (!isset($item['ignore']) || !$item['ignore'])
+                        @listItemLink(component_with_attrs($item, [
+                            'role' => 'menuitem',
+                            'tabindex' => '0'
+                        ])) @endlistItemLink           
+                    @endif
                 @endforeach            
             @else
                 @foreach ($items as $item)
-                    @listItemLink($item) @endlistItemLink
+                    @if (!isset($item['ignore']) || !$item['ignore'])
+                        @listItemLink($item) @endlistItemLink
+                    @endif
                 @endforeach
             @endif
         @endif
@@ -21,14 +25,18 @@
         @if ($items ?? false)
             @if ($isMenu ?? false)
                 @foreach ($items as $item)
-                    @listItem(component_with_attrs($item, [
-                        'role' => 'menuitem',
-                        'tabindex' => '0'
-                    ])) @endlistItem
+                    @if (!isset($item['ignore']) || !$item['ignore'])
+                        @listItem(component_with_attrs($item, [
+                            'role' => 'menuitem',
+                            'tabindex' => '0'
+                        ])) @endlistItem
+                    @endif
                 @endforeach            
             @else
                 @foreach ($items as $item)
-                    @listItem($item) @endlistItem
+                    @if (!isset($item['ignore']) || !$item['ignore'])
+                        @listItem($item) @endlistItem
+                    @endif
                 @endforeach
             @endif
         @endif

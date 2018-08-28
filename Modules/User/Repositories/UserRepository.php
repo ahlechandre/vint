@@ -22,28 +22,13 @@ class UserRepository
     {
         // Verifica se o usuário pode realizar.
         if ($user->cant('index', User::class)) {
-            return api_response(403);
+            return repository_result(403);
         }
-        $search = function ($filter, $scope) {
-            $filterLike = "%{$filter}%";
 
-            return $scope->where([
-                ['name', 'like', $filterLike],
-            ]);
-        };
-        // Escopo.
-        $scope = User::orderBy('created_at', 'desc');
-        // Escopo por filtro.
-        $query = $filter ?
-            $search($filter, $scope) :
-            $scope;
-        // Seleciona os usuários.
-        $users = $perPage ?
-            $query->simplePaginate($perPage) :
-            $query->get();
-
-        return api_response(200, null, [
-            'users' => $users
+        return repository_result(200, null, [
+            'users' => User::filterLike($filter)
+                ->orderBy('created_at', 'desc')
+                ->simplePaginateOrGet($perPage)
         ]);
     }
 
@@ -60,24 +45,29 @@ class UserRepository
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('create', User::class)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $store = function () use ($user, $inputs, &$userCreated) {
+            // Seleciona o papel do usuário a ser criado, disponível
+            // para o usuário da requisição e que esteja disponível
+            // para formulários.
             $role = UserType::ofUser($user)
                 ->forUsersForm()
                 ->findOrFail($inputs['user_type_id']);
-            $userCreated = $role->users()
-                ->create($inputs);       
+            $userCreated = new User;
+            $userCreated->fill($inputs);
+            $userCreated->userType()->associate($role);
+            $userCreated->save();
         };
 
         try {
             // Tenta criar.
             DB::transaction($store);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.users.created'), [
+        return repository_result(200, __('messages.users.created'), [
             'userCreated' => $userCreated
         ]);
     }
@@ -96,12 +86,16 @@ class UserRepository
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('update', $userToUpdate)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $update = function () use ($user, $inputs, $userToUpdate) {
+            // Seleciona o papel do usuário a ser criado, disponível
+            // para o usuário da requisição e que esteja disponível
+            // para formulários.            
             $userType = UserType::ofUser($user)
                 ->forUsersForm()
                 ->findOrFail($inputs['user_type_id']);
+            // Atualiza os inputs com "mass assingment".
             $userToUpdate->update($inputs);
             // Atualiza o tipo sem "mass assignament".
             $userToUpdate->userType()
@@ -113,10 +107,10 @@ class UserRepository
             // Tenta atualizar.
             DB::transaction($update);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.users.updated'), [
+        return repository_result(200, __('messages.users.updated'), [
             'userUpdated' => $userToUpdate
         ]);
     }
@@ -129,15 +123,15 @@ class UserRepository
      * @param  array  $inputs
      * @return stdClass
      */
-    public function updatePassword(User $user, $id, array $inputs)
+    public function password(User $user, $id, array $inputs)
     {
         $userToUpdate = User::findOrFail($id);
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('update', $userToUpdate)) {
-            return api_response(403);
+            return repository_result(403);
         }
-        $update = function () use ($user, $inputs, $userToUpdate) {
+        $update = function () use ($userToUpdate, $inputs) {
             $userToUpdate->update([
                 'password' => $inputs['password']
             ]);
@@ -147,10 +141,10 @@ class UserRepository
             // Tenta atualizar o usuário.
             DB::transaction($update);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.auth.updated'), [
+        return repository_result(200, __('messages.users.password_updated'), [
             'userUpdated' => $userToUpdate
         ]);
     }

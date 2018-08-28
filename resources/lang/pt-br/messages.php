@@ -1,6 +1,12 @@
 <?php
 
 return [
+    // Paginação.
+    'pagination' => [
+        'is_empty' => 'Nenhum resultado',
+        'is_empty_search' => 'Nenhum resultado para ":query"',
+    ],
+
     'register' => [
         'congrats' => 'Parabéns, :name!',
         'success' => 'Aliqua anim aliqua culpa voluptate ad id anim consequat dolor ipsum. Adipisicing exercitation non exercitation mollit labore pariatur. Reprehenderit ullamco velit ipsum minim dolore nostrud consequat.

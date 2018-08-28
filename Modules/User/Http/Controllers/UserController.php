@@ -25,7 +25,7 @@ class UserController extends Controller
      *
      * @var int
      */
-    static public $perPage = 10;
+    static public $perPage = 30;
 
     /**
      * Inicializa o controlador com a instância do repositório de dados.
@@ -173,41 +173,20 @@ class UserController extends Controller
     }
 
     /**
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  string  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function editPassword(Request $request, $id)
-    {
-        $user = $request->user();
-        $userToEdit = User::findOrFail($id);
-
-        // Verifica se o usuário pode realizar.
-        if ($user->cant('update', $userToEdit)) {
-            return abort(403);
-        }
-        
-        return view('user::pages.users.edit-password', [
-            'userToEdit' => $userToEdit
-        ]);
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Modules\User\Http\Requests\UserRequest  $request
      * @param  string  $id
      * @return \Illuminate\Http\Response
      */
-    public function updatePassword(UserPasswordRequest $request, $id)
+    public function password(UserPasswordRequest $request, $id)
     {
         $user = $request->user();
         $inputs = $request->all();
         $update = $this->users
-            ->updatePassword($user, (int) $id, $inputs);
+            ->password($user, (int) $id, $inputs);
 
-        return redirect("users/{$id}?section=security")
+        return redirect("users/{$id}")
             ->with('snackbar', $update->message);
     }
 }

@@ -22,7 +22,7 @@ class ProgramRepository
     {
         // Verifica se o usuário pode realizar.
         if ($user->cant('index', Program::class)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $search = function ($filter, $scope) {
             $filterLike = "%{$filter}%";
@@ -45,7 +45,7 @@ class ProgramRepository
         $programRequestsCount = Program::notApproved()
             ->count();
 
-        return api_response(200, null, [
+        return repository_result(200, null, [
             'programs' => $programs,
             'programRequestsCount' => $programRequestsCount
         ]);
@@ -64,7 +64,7 @@ class ProgramRepository
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('create', Program::class)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $store = function () use ($user, $inputs, &$program) {
             // Se o programa for criado por um membro,
@@ -92,10 +92,10 @@ class ProgramRepository
             // Tenta criar.
             DB::transaction($store);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.programs.created'), [
+        return repository_result(200, __('messages.programs.created'), [
             'program' => $program
         ]);
     }
@@ -114,7 +114,7 @@ class ProgramRepository
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('update', $program)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $update = function () use ($user, $inputs, $program) {
             $program->update($inputs);
@@ -124,10 +124,10 @@ class ProgramRepository
             // Tenta atualizar.
             DB::transaction($update);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.programs.updated'), [
+        return repository_result(200, __('messages.programs.updated'), [
             'program' => $program
         ]);
     }
@@ -146,7 +146,7 @@ class ProgramRepository
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('delete', $program)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $destroy = function () use ($program) {
             $program->delete();
@@ -156,10 +156,10 @@ class ProgramRepository
             // Tenta atualizar.
             DB::transaction($destroy);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.programs.deleted'));
+        return repository_result(200, __('messages.programs.deleted'));
     }
 
     /**
@@ -174,7 +174,7 @@ class ProgramRepository
     {
         // Verifica se o usuário pode realizar.
         if ($user->cant('indexRequests', Program::class)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $search = function ($filter, $scope) {
             $filterLike = "%{$filter}%";
@@ -193,7 +193,7 @@ class ProgramRepository
             $query->simplePaginate($perPage) :
             $query->get();
 
-        return api_response(200, null, [
+        return repository_result(200, null, [
             'programs' => $programs,
         ]);
     }
@@ -210,7 +210,7 @@ class ProgramRepository
     {
         // Verifica se o usuário pode realizar.
         if ($user->cant('updateRequests', Program::class)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $programs = $id ?
             Program::notApproved()
@@ -230,10 +230,10 @@ class ProgramRepository
             // Tenta aprovar.
             DB::transaction($approve);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.program_requests.approved'), [
+        return repository_result(200, __('messages.program_requests.approved'), [
             'programs' => $programs
         ]);
     }
@@ -251,7 +251,7 @@ class ProgramRepository
     {
         // Verifica se o usuário pode realizar.
         if ($user->cant('updateRequests', Program::class)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $programs = $id ?
             Program::notApproved()
@@ -271,10 +271,10 @@ class ProgramRepository
             // Tenta recusar.
             DB::transaction($deny);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.program_requests.denied'), [
+        return repository_result(200, __('messages.program_requests.denied'), [
             'programs' => $programs
         ]);
     }

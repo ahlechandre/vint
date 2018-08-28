@@ -11,27 +11,40 @@
 |
 */
 
+/**
+ * -------------------------------------------------------
+ * Rotas não autenticadas.
+ * -------------------------------------------------------
+ */
 Route::middleware('unauth')
     ->group(function () {
-        /**
-         * ----------------------------------------
-         * Registro de membro
-         * ----------------------------------------
-         */
+        // Registro de membro.
         Route::get('register', 'RegisterController@create');        
-        Route::post('register', 'RegisterController@store');        
+        Route::post('register', 'RegisterController@store');
     });
 
+/**
+ * -------------------------------------------------------
+ * Rotas públicas.
+ * -------------------------------------------------------
+ */
+// Grupos.
+Route::resource('groups', 'GroupController')
+    ->only(['index', 'view']);
+
+/**
+ * -------------------------------------------------------
+ * Rotas autenticadas.
+ * -------------------------------------------------------
+ */
 Route::middleware('auth')
     ->group(function () {
-        /**
-         * ----------------------------------------
-         * Grupos 
-         * ----------------------------------------
-         */
-        Route::resource('groups', 'GroupController')
-            ->except(['destroy']);
+        // Meus grupos.
+        Route::get('me/groups', 'GroupController@me');
 
+        // Grupos.
+        Route::resource('groups', 'GroupController')
+            ->only(['create', 'store', 'edit', 'update']);
         /**
          * ----------------------------------------
          * Grupos / Coordenadores

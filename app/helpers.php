@@ -145,7 +145,7 @@ function sanitize_bool_input($inputs, $field)
  * @param  null|array  $data
  * @return stdClass
  */
-function repository_response($status, $message = null, $data = null)
+function repository_result($status, $message = null, $data = null)
 {
     switch ($status) {
         case 200: {

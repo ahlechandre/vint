@@ -1,3 +1,3 @@
-<div class="card__header{{ set_classes($classes ?? []) }}"{{ set_attrs($attrs ?? []) }}>
+<div class="card__content{{ set_classes($classes ?? []) }}"{{ set_attrs($attrs ?? []) }}>
     {{ $slot }}
 </div>

@@ -50,6 +50,7 @@ trait BladeUtils
         'material.inputs.textarea' => 'textarea',      
         'material.inputs.select2' => 'select2',      
         'material.inputs.text-field-helper-text' => 'textfieldHelperText',
+        'material.inputs.text-field-icon' => 'textfieldIcon',
 
         // Layout Grid.
         'material.layout-grid.layout-grid' => 'grid',
@@ -99,6 +100,9 @@ trait BladeUtils
 
         // Heading.
         'components.heading.heading' => 'heading',
+
+        // Pagination.
+        'components.pagination.paginable' => 'paginable',        
     ];
 
     /**

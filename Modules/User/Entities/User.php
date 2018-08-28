@@ -8,10 +8,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Modules\Group\Entities\Member;
+use Modules\System\Entities\Traits\EloquentVint;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable, SoftDeletes;
+    use HasApiTokens, Notifiable, SoftDeletes, EloquentVint;
 
     /**
      * The attributes that are mass assignable.
@@ -23,6 +24,14 @@ class User extends Authenticatable
         'username',
         'email',
         'password'
+    ];
+
+    /**
+     *
+     * @var array
+     */
+    protected $filterable = [
+        'name', 'username', 'email'
     ];
 
     /**

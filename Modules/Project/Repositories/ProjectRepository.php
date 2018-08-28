@@ -22,7 +22,7 @@ class ProjectRepository
     {
         // Verifica se o usuário pode realizar.
         if ($user->cant('index', Project::class)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $search = function ($filter, $scope) {
             $filterLike = "%{$filter}%";
@@ -45,7 +45,7 @@ class ProjectRepository
         $projectRequestsCount = Project::notApproved()
             ->count();
 
-        return api_response(200, null, [
+        return repository_result(200, null, [
             'projects' => $projects,
             'projectRequestsCount' => $projectRequestsCount
         ]);
@@ -64,7 +64,7 @@ class ProjectRepository
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('create', Project::class)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $store = function () use ($user, $inputs, &$project) {
             // Se o projeto for criado por um membro,
@@ -100,10 +100,10 @@ class ProjectRepository
             // Tenta criar.
             DB::transaction($store);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.projects.created'), [
+        return repository_result(200, __('messages.projects.created'), [
             'project' => $project
         ]);
     }
@@ -122,7 +122,7 @@ class ProjectRepository
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('update', $project)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $update = function () use ($user, $inputs, $project) {
             $project->update($inputs);
@@ -132,10 +132,10 @@ class ProjectRepository
             // Tenta atualizar.
             DB::transaction($update);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.projects.updated'), [
+        return repository_result(200, __('messages.projects.updated'), [
             'project' => $project
         ]);
     }
@@ -154,7 +154,7 @@ class ProjectRepository
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('delete', $project)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $destroy = function () use ($project) {
             $project->delete();
@@ -164,10 +164,10 @@ class ProjectRepository
             // Tenta atualizar.
             DB::transaction($destroy);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.projects.deleted'));
+        return repository_result(200, __('messages.projects.deleted'));
     }
 
     /**
@@ -182,7 +182,7 @@ class ProjectRepository
     {
         // Verifica se o usuário pode realizar.
         if ($user->cant('indexRequests', Project::class)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $search = function ($filter, $scope) {
             $filterLike = "%{$filter}%";
@@ -201,7 +201,7 @@ class ProjectRepository
             $query->simplePaginate($perPage) :
             $query->get();
 
-        return api_response(200, null, [
+        return repository_result(200, null, [
             'projects' => $projects,
         ]);
     }
@@ -218,7 +218,7 @@ class ProjectRepository
     {
         // Verifica se o usuário pode realizar.
         if ($user->cant('updateRequests', Project::class)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $projects = $id ?
             Project::notApproved()
@@ -238,10 +238,10 @@ class ProjectRepository
             // Tenta aprovar.
             DB::transaction($approve);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.project_requests.approved'), [
+        return repository_result(200, __('messages.project_requests.approved'), [
             'projects' => $projects
         ]);
     }
@@ -259,7 +259,7 @@ class ProjectRepository
     {
         // Verifica se o usuário pode realizar.
         if ($user->cant('updateRequests', Project::class)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $projects = $id ?
             Project::notApproved()
@@ -282,10 +282,10 @@ class ProjectRepository
             // Tenta recusar.
             DB::transaction($deny);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.project_requests.denied'), [
+        return repository_result(200, __('messages.project_requests.denied'), [
             'projects' => $projects
         ]);
     }

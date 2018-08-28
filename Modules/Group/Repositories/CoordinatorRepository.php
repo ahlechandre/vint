@@ -23,7 +23,7 @@ class CoordinatorRepository
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('createCoordinators', $group)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $store = function () use ($inputs, $group) {
             $group->coordinators()
@@ -36,10 +36,10 @@ class CoordinatorRepository
             // Tenta adicionar.
             DB::transaction($store);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.coordinators.created'), [
+        return repository_result(200, __('messages.coordinators.created'), [
             'group' => $group,
         ]);
     }
@@ -59,7 +59,7 @@ class CoordinatorRepository
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('updateCoordinators', $group)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $update = function () use ($inputs, $group, $id) {
             $group->coordinators()
@@ -72,10 +72,10 @@ class CoordinatorRepository
             // Tenta atualizar.
             DB::transaction($update);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.coordinators.updated'), [
+        return repository_result(200, __('messages.coordinators.updated'), [
             'group' => $group
         ]);
     }
@@ -94,7 +94,7 @@ class CoordinatorRepository
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('deleteCoordinators', $group)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $destroy = function () use ($group, $id) {
             $group->coordinators()
@@ -105,10 +105,10 @@ class CoordinatorRepository
             // Tenta atualizar.
             DB::transaction($destroy);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.coordinators.deleted'), [
+        return repository_result(200, __('messages.coordinators.deleted'), [
             'group' => $group
         ]);
     }    

@@ -1,66 +1,60 @@
+{{-- Layout --}}
 @extends('layouts.master', [
-    'breadcrumbs' => [
-        [
-            'text' => 'Usuários',
-            'attrs' => [
-                'href' => url('/users')
-            ],
-        ]
-    ]
+    'title' => __('resources.users')
 ])
-@section('title', 'Usuários')
 
+{{-- Conteúdo --}}
 @section('main')
-
-    {{-- Conteúdo --}}
-    @layoutGridWithInner([
-        'modifiers' => ['layout-grid--dense']
+    @gridWithInner([
+        'grid' => [
+            'classes' => ['layout-grid--dense']
+        ]
     ])
-        {{-- Títulos --}}
-        @cell([
-            'when' => ['default' => 12]
-        ])
-            @article([
-                'title' => 'Usuários',
-                'intro' => 'Lista de usuários mais recentes no sistema.',
-            ]) @endarticle
+        @cell
+            {{-- Heading --}}
+            @heading([
+                'title' => __('resources.users'),
+                'content' => __('messages.users.subheading'),
+            ]) @endheading        
         @endcell
-
-        {{-- Lista de recursos --}}
-        @cell([
-            'when' => ['default' => 12]
-        ])
+        
+        @cell
+            {{-- Paginável --}}
             @paginable([
-            'collection' => $users,
-            'items' => $users->map(function ($userToShow) use ($user) {
-                return [
-                    'icon' => 'person',
-                    'meta' => $user->can('view', $userToShow) ? [
-                        'icon' => 'arrow_forward',
-                    ] : null,
-                    'text' => $userToShow->name,
-                    'secondaryText' => $userToShow->created_at
-                        ->diffForHumans(),
-                    'attrs' => $user->can('view', $userToShow) ? [
-                        'href' => url("/users/{$userToShow->id}"),
-                    ] : [],
-                ];
-            }),
-            ]) @endpaginable
+                'paginator' => $users,
+                'items' => $users->map(function ($userToShow) {
+                    return [
+                        'text' => [
+                            'primary' => $userToShow->name,
+                            'secondary' => $userToShow->created_at
+                                ->diffForHumans(),
+                        ],
+                        'meta' => [
+                            'icon' => __('icons.show'),
+                        ],
+                        'attrs' => [
+                            'href' => url("users/{$userToShow->id}")
+                        ]
+                    ];
+                }),
+            ]) @endpaginable        
         @endcell
-    @endlayoutGridWithInner
-
-    {{-- FAB --}}
-    @if ($user->can('create', \Modules\User\Entities\User::class))
-        @fab([
-            'icon' => 'add',
-            'label' => __('messages.users.new'),
-            'modifiers' => ['fab--fixed'],
-            'attrs' => [
-                'href' => url("/users/create"),
-                'title' => __('messages.users.new'),
-                'alt' => __('messages.users.new'),
-            ],
-        ]) @endfab
-    @endif
+        
+        {{-- Novo --}}
+        @can('create', \Modules\User\Entities\User::class)
+            @fabFixed([
+                'fab' => [
+                    'isLink' => true,
+                    'icon' => __('icons.add'),
+                    'classes' => ['mdc-fab--extended'],
+                    'label' => __('actions.new'),
+                    'attrs' => [
+                        'href' => url('users/create'),
+                        'title' => __('messages.users.new'),
+                        'alt' => __('messages.users.new')
+                    ],
+                ]
+            ]) @endfabFixed        
+        @endcan
+    @endgridWithInner
 @endsection

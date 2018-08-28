@@ -64,10 +64,10 @@ class RegisterRepository
         try {
             // Tenta criar.
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.register.created'), [
+        return repository_result(200, __('messages.register.created'), [
             'member' => $member
         ]);
     }

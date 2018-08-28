@@ -24,7 +24,7 @@ class MemberRepository
     {
         // Verifica se o usuário pode realizar.
         if ($user->cant('index', Member::class)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $search = function ($filter, $scope) {
             $filterLike = "%{$filter}%";
@@ -45,7 +45,7 @@ class MemberRepository
             $query->simplePaginate($perPage) :
             $query->get();
 
-        return api_response(200, null, [
+        return repository_result(200, null, [
             'members' => $members,
         ]);
     }
@@ -64,7 +64,7 @@ class MemberRepository
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('update', $member)) {
-            return api_response(403);
+            return repository_result(403);
         }
 
         $update = function () use ($user, $inputs, $member) {
@@ -94,10 +94,10 @@ class MemberRepository
             // Tenta atualizar.
             DB::transaction($update);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.members.updated'), [
+        return repository_result(200, __('messages.members.updated'), [
             'member' => $member
         ]);
     }
@@ -120,7 +120,7 @@ class MemberRepository
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('updateRole', [$member, $role])) {
-            return api_response(403);
+            return repository_result(403);
         }
 
         $update = function () use ($user, $inputs, $member, $role) {
@@ -166,10 +166,10 @@ class MemberRepository
             // Tenta atualizar.
             DB::transaction($update);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.members.role.updated'), [
+        return repository_result(200, __('messages.members.role.updated'), [
             'member' => $member,
             'role' => $role
         ]);

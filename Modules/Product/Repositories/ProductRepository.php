@@ -21,7 +21,7 @@ class ProductRepository
     {
         // Verifica se o usuário pode realizar.
         if ($user->cant('index', Product::class)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $search = function ($filter, $scope) {
             $filterLike = "%{$filter}%";
@@ -41,7 +41,7 @@ class ProductRepository
             $query->simplePaginate($perPage) :
             $query->get();
 
-        return api_response(200, null, [
+        return repository_result(200, null, [
             'products' => $products
         ]);
     }
@@ -59,7 +59,7 @@ class ProductRepository
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('create', Product::class)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $store = function () use ($user, $inputs, &$product) {
             // Novo produto.
@@ -79,10 +79,10 @@ class ProductRepository
             // Tenta criar.
             DB::transaction($store);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.products.created'), [
+        return repository_result(200, __('messages.products.created'), [
             'product' => $product
         ]);
     }
@@ -101,7 +101,7 @@ class ProductRepository
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('update', $product)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $update = function () use ($user, $inputs, $product) {
             // Atualiza os campos por input.
@@ -114,10 +114,10 @@ class ProductRepository
             // Tenta atualizar.
             DB::transaction($update);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.products.updated'), [
+        return repository_result(200, __('messages.products.updated'), [
             'product' => $product
         ]);
     }
@@ -136,7 +136,7 @@ class ProductRepository
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('delete', $product)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $destroy = function () use ($product) {
             $product->delete();
@@ -146,9 +146,9 @@ class ProductRepository
             // Tenta atualizar.
             DB::transaction($destroy);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.products.deleted'));
+        return repository_result(200, __('messages.products.deleted'));
     }    
 }

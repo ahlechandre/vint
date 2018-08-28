@@ -2,6 +2,8 @@
 
 return [
     'signup' => 'Cadastre-se',
+    'search' => 'Buscar',
+    'new' => 'Novo',
     'signin' => 'Entrar',
     'cancel' => 'Cancelar',
     'save' => 'Salvar',

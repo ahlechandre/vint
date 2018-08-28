@@ -23,7 +23,7 @@ class UserTypesTableSeeder extends Seeder
             'name' => 'Gerente',
             'slug' => UserType::MANAGER_SLUG,
             'description' => 'Tipo destinado aos usuários gerentes do sistema',
-        ],
+        ],        
         [
             'name' => 'Membro',
             'slug' => UserType::MEMBER_SLUG,

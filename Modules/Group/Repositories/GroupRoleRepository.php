@@ -28,7 +28,7 @@ class GroupRoleRepository
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('update', $groupRole)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $update = function () use ($inputs, $groupRole) {
             $groupRole->permissions()
@@ -40,10 +40,10 @@ class GroupRoleRepository
         try {
             // Tenta atualizar.
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.group_roles.updated'), [
+        return repository_result(200, __('messages.group_roles.updated'), [
             'group' => $group,
             'groupRole' => $groupRole
         ]);

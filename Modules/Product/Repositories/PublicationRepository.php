@@ -21,7 +21,7 @@ class PublicationRepository
     {
         // Verifica se o usuário pode realizar.
         if ($user->cant('index', Publication::class)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $search = function ($filter, $scope) {
             $filterLike = "%{$filter}%";
@@ -41,7 +41,7 @@ class PublicationRepository
             $query->simplePaginate($perPage) :
             $query->get();
 
-        return api_response(200, null, [
+        return repository_result(200, null, [
             'publications' => $publications
         ]);
     }
@@ -59,7 +59,7 @@ class PublicationRepository
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('create', Publication::class)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $store = function () use ($user, $inputs, &$publication) {
             // Nova publicação.
@@ -83,10 +83,10 @@ class PublicationRepository
             // Tenta criar.
             DB::transaction($store);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.publications.created'), [
+        return repository_result(200, __('messages.publications.created'), [
             'publication' => $publication
         ]);
     }
@@ -105,7 +105,7 @@ class PublicationRepository
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('update', $publication)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $update = function () use ($user, $inputs, $publication) {
             // Atualiza os campos por input.
@@ -122,10 +122,10 @@ class PublicationRepository
             // Tenta atualizar.
             DB::transaction($update);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.publications.updated'), [
+        return repository_result(200, __('messages.publications.updated'), [
             'publication' => $publication
         ]);
     }
@@ -144,7 +144,7 @@ class PublicationRepository
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('delete', $publication)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $destroy = function () use ($publication) {
             $publication->delete();
@@ -154,9 +154,9 @@ class PublicationRepository
             // Tenta atualizar.
             DB::transaction($destroy);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.publications.deleted'));
+        return repository_result(200, __('messages.publications.deleted'));
     }
 }

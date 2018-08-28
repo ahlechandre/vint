@@ -24,8 +24,7 @@ Route::middleware('auth')
          * Usuários 
          * ----------------------------------------
          */
-        Route::get('users/{id}/password', 'UserController@editPassword');
-        Route::put('users/{id}/password', 'UserController@updatePassword');
+        Route::put('users/{id}/password', 'UserController@password');
         /**
          * ----------------------------------------
          * Usuários 

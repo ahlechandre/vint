@@ -29,7 +29,7 @@ class UserPolicy
      */
     public function index(User $user)
     {
-        return $user->hasAbility('users.index');
+        return $user->isManager();
     }
 
     /**
@@ -41,9 +41,7 @@ class UserPolicy
      */
     public function view(User $user, User $userToView)
     {
-        // Só pode visualizar se:
-        // 1. Usuário não é administrador e possui habilidade para visualizar usuários.
-        return !$userToView->isAdmin() && $user->hasAbility('users.view');
+        return $user->isManager();
     }
 
     /**
@@ -54,7 +52,7 @@ class UserPolicy
      */
     public function create(User $user)
     {
-        return $user->hasAbility('users.create');
+        return $user->isManager();
     }
 
     /**
@@ -68,32 +66,12 @@ class UserPolicy
     {
         // Só pode atualizar o usuário se:
         // 1. O usuário for ele mesmo.
-        // 2. Ele possuir habilidade de atualizar usuário e
-        // o usuário não for administrador.
+        // 2. O usuário é gerente e o usuário a ser atualizado 
+        // não é administrador.
         return (
             $user->id === $userToUpdate->id
         ) || (
-            !$userToUpdate->isAdmin() && $user->hasAbility('users.update')
-        );
-    }
-
-    /**
-     * Determine whether the user can delete.
-     *
-     * @param  \Modules\User\Entities\User  $user
-     * @param  \Modules\User\Entities\User  $userToDelete
-     * @return bool
-     */
-    public function delete(User $user, User $userToDelete)
-    {
-        // Só pode remover o usuário se:
-        // 1. O usuário for ele mesmo.
-        // 2. Ele possuir habilidade de remover usuário e
-        // o usuário não for administrador.
-        return (
-            $user->id === $userToDelete->id
-        ) || (
-            !$userToDelete->isAdmin() && $user->hasAbility('users.delete')
+            !$userToUpdate->isAdmin() && $user->isManager()
         );
     }
 }

@@ -2,7 +2,7 @@
     <li role="separator" class="mdc-list-divider"></li>
 @endif
 
-<a class="list-item mdc-list-item{{ set_classes($classes ?? []) }}"{{ set_attrs($attrs ?? []) }}>
+<a class="list-item mdc-list-item{{ set_classes($classes ?? []) }}{{ isset($active) && $active ? ' mdc-list-item--activated' : '' }}"{{ set_attrs($attrs ?? []) }} data-mdc-auto-init="MDCRipple">
     @if ($icon ?? false)
         <span class="mdc-list-item__graphic material-icons" aria-hidden="true">{{ $icon }}</span>    
     @endif

@@ -22,7 +22,7 @@ class RoleRepository
     {
         // Verifica se o usuário pode realizar.
         if ($user->cant('index', Role::class)) {
-            return api_response(403, __('messages.status.403'));
+            return repository_result(403, __('messages.status.403'));
         }
         $search = function ($filter) {
             $filterLike = "%{$filter}%";
@@ -38,7 +38,7 @@ class RoleRepository
             $query->simplePaginate($perPage) :
             $query->get();
 
-        return api_response(200, null, [
+        return repository_result(200, null, [
             'roles' => $roles,
         ]);
     }
@@ -56,7 +56,7 @@ class RoleRepository
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('create', Role::class)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $store = function () use ($inputs, &$role) {
             $role = Role::create($inputs);
@@ -66,10 +66,10 @@ class RoleRepository
         try {
             DB::transaction($store);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.roles.created'), [
+        return repository_result(200, __('messages.roles.created'), [
             'role' => $role
         ]);
     }
@@ -88,7 +88,7 @@ class RoleRepository
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('update', $role)) {
-            return api_response(403, __('messages.status.403'), [
+            return repository_result(403, __('messages.status.403'), [
                 'role' => $role,
             ]);
         }
@@ -104,10 +104,10 @@ class RoleRepository
         try {
             DB::transaction($update);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.roles.updated'), [
+        return repository_result(200, __('messages.roles.updated'), [
             'role' => $role
         ]);
     }

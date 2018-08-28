@@ -23,7 +23,7 @@ class GroupRepository
     {
         // Verifica se o usuário pode realizar.
         if ($user->cant('index', Group::class)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $search = function ($filter, $scope) {
             $filterLike = "%{$filter}%";
@@ -43,7 +43,7 @@ class GroupRepository
             $query->simplePaginate($perPage) :
             $query->get();
 
-        return api_response(200, null, [
+        return repository_result(200, null, [
             'groups' => $groups
         ]);
     }
@@ -61,7 +61,7 @@ class GroupRepository
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('create', Group::class)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $store = function () use ($user, $inputs, &$group) {
             $group = Group::create($inputs);
@@ -77,10 +77,10 @@ class GroupRepository
             // Tenta criar.
             DB::transaction($store);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.groups.created'), [
+        return repository_result(200, __('messages.groups.created'), [
             'group' => $group
         ]);
     }
@@ -99,7 +99,7 @@ class GroupRepository
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('update', $group)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $update = function () use ($user, $inputs, $group) {
             $group->update($inputs);
@@ -109,10 +109,10 @@ class GroupRepository
             // Tenta atualizar.
             DB::transaction($update);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.groups.updated'), [
+        return repository_result(200, __('messages.groups.updated'), [
             'group' => $group
         ]);
     }
@@ -132,7 +132,7 @@ class GroupRepository
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('updateMemberRequests', $group)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $members = $memberUserId ?
             $group->membersNotApproved()
@@ -154,10 +154,10 @@ class GroupRepository
             // Tenta atualizar.
             DB::transaction($approve);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.member_requests.approved'), [
+        return repository_result(200, __('messages.member_requests.approved'), [
             'group' => $group
         ]);
     }
@@ -177,7 +177,7 @@ class GroupRepository
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('updateMemberRequests', $group)) {
-            return api_response(403);
+            return repository_result(403);
         }
         $members = $memberUserId ?
             $group->members()
@@ -197,10 +197,10 @@ class GroupRepository
             // Tenta atualizar.
             DB::transaction($deny);
         } catch (Exception $exception) {
-            return api_response(500);
+            return repository_result(500);
         }
 
-        return api_response(200, __('messages.member_requests.denied'), [
+        return repository_result(200, __('messages.member_requests.denied'), [
             'group' => $group
         ]);
     }    
