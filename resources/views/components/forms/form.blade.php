@@ -29,43 +29,32 @@
         {{-- Quebra de linha. --}}
         @cell @endcell
 
-        {{-- Cancelar --}}
-        @if ($withCancel ?? false)
-            @cell([
-                'when' => [
-                    'desktop' => 6,
-                    'tablet' => 4,
-                    'phone' => 2
-                ]
-            ]) 
-                @buttonLink([
+        @cell([
+            'classes' => ['mdc-layout-grid--align-right']
+        ])
+            {{-- Cancelar --}}
+            @if ($withCancel ?? false)
+                @button([
+                    'isLink' => true,
                     'text' => __('actions.cancel'),
                     'attrs' => [
                         'href' => $action
                     ],
-                ]) @endbuttonLink    
-            @endcell
-        @endif
+                ]) @endbutton        
+            @endif
 
-        {{-- Submeter --}}
-        @if ($withSubmit ?? false)
-            @cell([
-                'when' => [
-                    'desktop' => ($withCancel ?? false) ? 6 : 12,
-                    'tablet' => 4,
-                    'phone' => 2,
-                ],
-                'modifiers' => ['mdc-layout-grid--align-right']
-            ])
+            {{-- Submeter --}}
+            @if ($withSubmit ?? false)
                 @button([
                     'text' => __('actions.save'),
                     'icon' => 'check',
-                    'modifiers' => ['mdc-button--unelevated'],
+                    'classes' => ['mdc-button--outlined'],
                     'attrs' => [
                         'type' => 'submit'
                     ]
                 ]) @endbutton
-            @endcell
-        @endif
+            @endif
+        
+        @endcell
     @endgridInner
 </form>

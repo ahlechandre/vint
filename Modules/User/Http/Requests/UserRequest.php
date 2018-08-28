@@ -50,35 +50,14 @@ class UserRequest extends FormRequest
      *
      * @return array
      */
-    public function messages()
-    {
-        return [
-            'required' => __('validations.required'),
-            'unique' => __('validations.unique'),
-            'regex' => __('validations.regex'),
-            'digits' => __('validations.digits'),
-            'email' => __('validations.email'),
-            'min' => __('validations.strings.min'),
-            'max' => __('validations.strings.max'),
-            'integer' => __('validations.integer'),
-            'numeric' => __('validations.numeric'),
-            'array' => __('validations.array'),
-        ];
-    }
-
-    /**
-     *
-     * @return array
-     */
     public function attributes()
     {
         return [
             'name' => __('attrs.name'),
             'email' => __('attrs.email'),
-            'identification_number' => __('attrs.user.identification_number'),
             'password' => __('attrs.password'),
             'username' => __('attrs.username'),
-            'role_id' => __('resources.role'),
+            'user_type_id' => __('resources.user_type'),
         ];
     }
 
@@ -90,7 +69,7 @@ class UserRequest extends FormRequest
     {
         $inputs = $this->all();
         $isUpdate = $this->method() === 'PUT';
-        $inputs['is_active'] = sanitize_is_active($inputs);
+        $inputs['is_active'] = sanitize_bool_input($inputs, 'is_active');
         
         // Ao atualizar, remove o campo de senha pois
         // ele é "fillable". A atualização de senha deve ser feita

@@ -10,6 +10,7 @@ return [
     'show' => 'navigate_next',
     'search' => 'search',
     'add' => 'add',
+    'edit' => 'edit',
 
     // Módulo / Usuários.
     'users' => 'person',

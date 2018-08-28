@@ -1,56 +1,105 @@
+{{-- Layout --}}
 @extends('layouts.master', [
-    'breadcrumbs' => [
-        [
-            'text' => __('resources.users'),
-            'attrs' => [
-                'href' => url('/users')
-            ]
-        ],
-        [
-            'text' => $userToShow->name,
-            'attrs' => [
-                'href' => url("/users/{$userToShow->id}")
-            ]
-        ],
-    ],    
-    'topAppBarTabs' => [
-        'tabs' => array_merge([
-            [
-                'text' => __('headlines.about'),
-                'isActive' => $section === 'about',
-                'attrs' => [
-                    'href' => url("/users/{$userToShow->id}?section=about")
-                ],
-            ],
-        ], $user->can('update', $userToShow) ? [
-            [
-                'text' => __('headlines.security'),
-                'isActive' => $section === 'security',
-                'attrs' => [
-                    'href' => url("/users/{$userToShow->id}?section=security")
-                ],
-            ]            
-        ] : [])
-    ],
+    'title' => __('resources.users').' / '.$userToShow->name
 ])
-@section('title', __('resources.users') . " / {$userToShow->name}")
 
+{{-- Conteúdo --}}
 @section('main')
-    @layoutGridWithInner([
-        'modifiers' => ['layout-grid--dense']
+    @gridWithInner([
+        'grid' => [
+            'classes' => ['layout-grid--dense']
+        ]
     ])
-        @cell([
-            'when' => ['default' => 12]
-        ])
-            @if ($section === 'about')
-                @component('user::pages.users.sections.about', [
-                    'userToShow' => $userToShow
-                ]) @endcomponent
-            @elseif ($section === 'security')
-                @component('user::pages.users.sections.security', [
-                    'userToShow' => $userToShow
-                ]) @endcomponent
-            @endif
+        {{-- Heading --}}
+        @cell
+            @heading([
+                'pretitle' => __('resources.users'),
+                'title' => $userToShow->name,
+            ]) @endheading
         @endcell
-    @endlayoutGridWithInner
+
+        {{-- Card --}}
+        @cell
+            @cardShowInfo([
+                'cells' => [
+                    [
+                        'left' => [
+                            'list' => [
+                                'classes' => ['mdc-list--non-interactive'],
+                                'twoLine' => true,
+                                'items' => [
+                                    [
+                                        'text' => [
+                                            'primary' => __('attrs.email'),
+                                            'secondary' => $userToShow->email,
+                                        ]
+                                    ],
+                                    [
+                                        'text' => [
+                                            'primary' => __('attrs.username'),
+                                            'secondary' => $userToShow->username,
+                                        ]
+                                    ],
+                                    [
+                                        'text' => [
+                                            'primary' => __('resources.user_type'),
+                                            'secondary' => $userToShow->userType->name,
+                                        ]
+                                    ]
+                                ],
+                            ]
+                        ],
+                        'right' => [
+                            'list' => [
+                                'classes' => [
+                                    'mdc-list--non-interactive',
+                                    'list--text-right-tablet',
+                                ],
+                                'twoLine' => true,
+                                'items' => [
+                                    [
+                                        'text' => [
+                                            'primary' => __('attrs.created_at'),
+                                            'secondary' => $userToShow->created_at
+                                                ->diffForHumans(),
+                                        ]
+                                    ],
+                                    [
+                                        'text' => [
+                                            'primary' => __('attrs.updated_at'),
+                                            'secondary' => $userToShow->created_at
+                                                ->diffForHumans(),
+                                        ]
+                                    ],
+                                    [
+                                        'text' => [
+                                            'primary' => __('attrs.is_active'),
+                                            'secondary' => __("messages.attrs.is_active.{$userToShow->is_active}"),
+                                        ]
+                                    ]                                                  
+                                ],
+                            ]                            
+                        ],
+                    ]
+                ]
+            ]) @endcardShowInfo
+        @endcell
+
+        {{-- Editar --}}
+        @can('update', $userToShow)
+            @fabFixed([
+                'fab' => [
+                    'isLink' => true,
+                    'icon' => __('icons.edit'),
+                    'classes' => ['mdc-fab--extended'],
+                    'label' => __('actions.edit'),
+                    'attrs' => [
+                        'href' => url("users/{$userToShow->id}/edit"),
+                        'title' => __('messages.users.forms.edit_title'),
+                        'alt' => __('messages.users.forms.edit_title')
+                    ],
+                ]
+            ]) @endfabFixed
+        @endcan
+    @endgridWithInner
 @endsection

@@ -10,6 +10,7 @@ return [
     'requests' => 'Solicitações',
     'next_page' => 'Próxima',
     'previous_page' => 'Anterior',
+    'general' => 'Geral',
     // Páginas.
     'dashboard' => 'Dashboard',
     'my_groups' => 'Meus grupos',

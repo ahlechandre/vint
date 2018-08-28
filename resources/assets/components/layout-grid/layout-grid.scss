@@ -5,3 +5,10 @@
 .layout-grid--superdense {
   max-width: 500px;
 }
+
+@media only screen and (min-width: 480px) {
+  .layout-grid--align-right-tablet {
+    margin-right: 0;
+    margin-left: auto;  
+  }
+}

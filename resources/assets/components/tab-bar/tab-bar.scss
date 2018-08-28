@@ -1,0 +1,7 @@
+.tab-bar--with-border {
+  border-bottom: 2px solid rgba(0, 0, 0, .1);
+
+  .tab-scroller {
+    margin-bottom: -2px;
+  }
+}

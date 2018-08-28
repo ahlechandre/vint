@@ -44,7 +44,7 @@ trait BladeUtils
         'material.inputs.form-field' => 'formField',
         'material.inputs.checkbox' => 'checkbox',
         'material.inputs.radio' => 'radio',
-        'material.inputs.switch' => 'switchControl',
+        'material.inputs.switch' => 'materialSwitch',
         'material.inputs.select' => 'select',
         'material.inputs.text-field' => 'textfield',
         'material.inputs.textarea' => 'textarea',      
@@ -94,6 +94,7 @@ trait BladeUtils
         'components.cards.card-content' => 'cardContent',
         'components.cards.card-paper' => 'cardPaper',
         'components.cards.card-login' => 'cardLogin',
+        'components.cards.card-show-info' => 'cardShowInfo',
 
         // Forms.
         'components.forms.form' => 'form',

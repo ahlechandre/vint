@@ -3,3 +3,15 @@
     border-radius: 4px;
   }
 }
+
+// Tablet
+@media only screen and (min-width: 480px) {
+  .list--text-right-tablet {
+    text-align: right;
+
+    .mdc-list-item__text {
+      width: 100%;
+    }
+  }
+}
+

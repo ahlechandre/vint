@@ -1,4 +1,4 @@
-<button class="mdc-tab{{ isset($active) && $active ? ' mdc-tab--active' : '' }}{{ set_classes($classes ?? []) }}" role="tab" tabindex="0"{{ set_attrs($attrs ?? []) }}>
+<button class="mdc-tab{{ isset($fullWidth) && $fullWidth ? '' : ' mdc-tab--min-width' }}{{ isset($active) && $active ? ' mdc-tab--active' : '' }}{{ set_classes($classes ?? []) }}" role="tab" tabindex="0"{{ set_attrs($attrs ?? []) }}>
     <span class="mdc-tab__content">
         @if ($icon ?? false)
             <span class="mdc-tab__icon material-icons" aria-hidden="true">{{ $icon }}</span>

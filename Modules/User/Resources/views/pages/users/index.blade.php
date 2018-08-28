@@ -50,11 +50,11 @@
                     'label' => __('actions.new'),
                     'attrs' => [
                         'href' => url('users/create'),
-                        'title' => __('messages.users.new'),
-                        'alt' => __('messages.users.new')
+                        'title' => __('messages.users.forms.create_title'),
+                        'alt' => __('messages.users.forms.create_title')
                     ],
                 ]
-            ]) @endfabFixed        
+            ]) @endfabFixed
         @endcan
     @endgridWithInner
 @endsection
