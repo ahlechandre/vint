@@ -19,24 +19,13 @@ class GroupRequest extends FormRequest
         return [
             'name' => [
                 'required',
+                'string',
                 $isUpdate ?
                    Rule::unique('groups')
                        ->ignore($this->group) :
                    'unique:groups'
             ],
             'description' => 'nullable|string',
-        ];
-    }
-
-    /**
-     *
-     * @return array
-     */
-    public function messages()
-    {
-        return [
-            'required' => __('validations.required'),
-            'unique' => __('validations.unique'),
         ];
     }
 
@@ -59,7 +48,7 @@ class GroupRequest extends FormRequest
     public function sanitize()
     {
         $inputs = $this->all();
-        $inputs['is_active'] = sanitize_is_active($inputs);
+        $inputs['is_active'] = sanitize_bool_input($inputs, 'is_active');
         
         return $inputs;
     } 

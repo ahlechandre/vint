@@ -1,50 +1,40 @@
 @extends('layouts.master', [
-    'breadcrumbs' => [
-        [
-            'text' => __('resources.groups'),
-            'attrs' => [
-                'href' => url('groups')
-            ]
-        ],
-        [
-            'text' => __('actions.create'),
-            'attrs' => [
-                'href' => url('/groups/create')
-            ]
-        ]
-    ],
+    'title' => __('resources.groups').' / '.__('actions.new') 
 ])
-@section('title', __('resources.groups') . ' / ' . __('actions.create'))
 
 @section('main')
-    @layoutGridWithInner([
-        'modifiers' => ['layout-grid--dense']
+    @gridWithInner([
+        'grid' => [
+            'classes' => ['layout-grid--dense']
+        ]
     ])
-        @cell([
-            'when' => ['default' => 12] 
-        ])
-            @cardWithForm([
-                'title' => __('resources.groups'),
-                'subtitle' => __('messages.groups.create'),
-            ])
-                @form([
-                    'action' => url('groups'),
-                    'method' => 'post',
-                    'attrs' => [
-                        'id' => 'form-group'
-                    ],
-                    'withCancel' => true,
-                    'withSubmit' => true,                
-                    'inputs' => [
-                        'view' => 'group::inputs.group',
-                        'props' => [
-                            'name' => old('name'),
-                            'description' => old('description'),
-                            'isActive' => true,
-                        ],
-                    ]
-                ]) @endform
-            @endcard
+        {{-- Heading --}}
+        @cell
+            @heading([
+                'pretitle' => __('resources.groups'),
+                'title' => __('messages.groups.forms.create_title'),
+            ]) @endheading
         @endcell
-    @endlayoutGridWithInner
+
+        {{-- Formulário --}}
+        @cell
+            @form([
+                'action' => url('groups'),
+                'method' => 'post',
+                'attrs' => [
+                    'id' => 'form-group'
+                ],
+                'withCancel' => true,
+                'withSubmit' => true,                
+                'inputs' => [
+                    'view' => 'group::inputs.group',
+                    'props' => [
+                        'name' => old('name'),
+                        'description' => old('description'),
+                        'isActive' => true,
+                    ],
+                ]
+            ]) @endform        
+        @endcell    
+    @endgridWithInner
 @endsection

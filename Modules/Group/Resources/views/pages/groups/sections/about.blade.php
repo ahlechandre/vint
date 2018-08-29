@@ -1,46 +1,69 @@
-@layoutGridInner
-    {{-- Pessoal --}}
-    @cell([
-        'when' => ['desktop' => 12]
-    ])
-        @card([
-            'title' => __('resources.group'),
-            'subtitle' => __('messages.groups.about'),
-            'modifiers' => ['mdc-card--outlined']
-        ])
-            @listTwoLine([
-                'items' => [
-                    [
-                        'icon' => __('material_icons.name'),
-                        'text' => __('attrs.name'),
-                        'secondaryText' => $group->name
+{{-- Card --}}
+@cardShowInfo([
+    'cells' => [
+        [
+            'left' => [
+                'list' => [
+                    'classes' => ['mdc-list--non-interactive'],
+                    'twoLine' => true,
+                    'items' => [
+                        [
+                            'text' => [
+                                'primary' => __('attrs.description'),
+                                'secondary' => $group->description,
+                            ]
+                        ]
                     ],
-                    [
-                        'icon' => __('material_icons.description'),
-                        'text' => __('attrs.description'),
-                        'secondaryText' => $group->description
-                    ],
-                    [
-                        'icon' => __('material_icons.is_active'),
-                        'text' => __('attrs.is_active'),
-                        'secondaryText' => __("messages.is_active.{$group->is_active}")
-                    ],                    
                 ]
-            ]) @endlistTwoLine
-        @endcard
+            ],
+            'right' => [
+                'list' => [
+                    'classes' => [
+                        'mdc-list--non-interactive',
+                        'list--text-right-tablet',
+                    ],
+                    'twoLine' => true,
+                    'items' => [
+                        [
+                            'text' => [
+                                'primary' => __('attrs.created_at'),
+                                'secondary' => $group->created_at
+                                    ->diffForHumans(),
+                            ]
+                        ],
+                        [
+                            'text' => [
+                                'primary' => __('attrs.updated_at'),
+                                'secondary' => $group->created_at
+                                    ->diffForHumans(),
+                            ]
+                        ],
+                        [
+                            'text' => [
+                                'primary' => __('attrs.is_active'),
+                                'secondary' => __("messages.attrs.is_active.{$group->is_active}"),
+                            ]
+                        ]                                  
+                    ],
+                ]                            
+            ],
+        ]
+    ]
+]) @endcardShowInfo
 
-        @if ($user->can('update', $group))
-            @fab([
-                'icon' => 'edit',
-                'label' => __('messages.groups.edit'),
-                'modifiers' => ['fab--fixed'],
-                'attrs' => [
-                    'href' => url("/groups/{$group->id}/edit"),
-                    'title' => __('messages.groups.edit'),
-                    'alt' => __('messages.groups.edit'),
-                ],
-            ]) @endfab        
-        @endif
-    @endcell
-
-@endlayoutGridInner
+{{-- Editar --}}
+@can('update', $group)
+    @fabFixed([
+        'fab' => [
+            'isLink' => true,
+            'icon' => __('icons.edit'),
+            'classes' => ['mdc-fab--extended'],
+            'label' => __('actions.edit'),
+            'attrs' => [
+                'href' => url("groups/{$group->id}/edit"),
+                'title' => __('messages.groups.forms.edit_title'),
+                'alt' => __('messages.groups.forms.edit_title')
+            ],
+        ]
+    ]) @endfabFixed
+@endcan

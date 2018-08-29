@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'request_participate' => 'Participar',
     'signup' => 'Cadastre-se',
     'search' => 'Buscar',
     'new' => 'Novo',

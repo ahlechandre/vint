@@ -25,15 +25,6 @@ Route::middleware('unauth')
 
 /**
  * -------------------------------------------------------
- * Rotas públicas.
- * -------------------------------------------------------
- */
-// Grupos.
-Route::resource('groups', 'GroupController')
-    ->only(['index', 'view']);
-
-/**
- * -------------------------------------------------------
  * Rotas autenticadas.
  * -------------------------------------------------------
  */
@@ -90,3 +81,13 @@ Route::middleware('auth')
         Route::put('member-requests/{member?}', 'MemberController@approve');
         Route::delete('member-requests/{member?}', 'MemberController@deny');
     });
+
+/**
+ * -------------------------------------------------------
+ * Rotas públicas.
+ * -------------------------------------------------------
+ */
+// Grupos.
+Route::resource('groups', 'GroupController')
+    ->only(['index']);
+Route::get('groups/{group}/{section?}', 'GroupController@show');

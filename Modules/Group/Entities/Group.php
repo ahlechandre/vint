@@ -155,4 +155,15 @@ class Group extends Model
             ]);
         });
     }
+
+    /**
+     * 
+     * @param  \Modules\User\Entities\User  $user
+     * @return bool
+     */
+    public function isCoordinatorUser(User $user)
+    {
+        return $this->coordinators()
+            ->find($user->id) ? true : false;
+    }
 }

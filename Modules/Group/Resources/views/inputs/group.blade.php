@@ -1,4 +1,4 @@
-@layoutGridInner
+@gridInner
     {{-- Nome --}}
     @cell([
         'when' => ['d' => 12, 't' => 8, 'p' => 4]
@@ -47,4 +47,4 @@
             ]    
         ]) @endmaterialSwitch    
     @endcell
-@endlayoutGridInner
+@endgridInner

@@ -7,6 +7,14 @@ return [
         'is_empty_search' => 'Nenhum resultado para ":query"',
     ],
 
+    // Atributos.
+    'attrs' => [
+        'is_active' => [
+            '0' => 'Não',
+            '1' => 'Sim',
+        ]
+    ],
+
     /**
      * --------------------------------------------------
      * Recursos 
@@ -17,12 +25,18 @@ return [
     'users' => [
         'forms' => [
             'create_title' => 'Novo usuário',
-            'create_content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores rem eligendi praesentium illum expedita accusantium nam libero blanditiis.',
             'edit_title' => 'Editar o usuário',
-            'edit_content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores rem eligendi praesentium illum expedita accusantium nam libero blanditiis.'            
         ]
     ],
 
+    // Usuários.
+    'groups' => [
+        'forms' => [
+            'create_title' => 'Novo grupo',
+            'edit_title' => 'Editar o grupo',
+        ]
+    ],
+    
     // 'register' => [
     //     'congrats' => 'Parabéns, :name!',
     //     'success' => 'Aliqua anim aliqua culpa voluptate ad id anim consequat dolor ipsum. Adipisicing exercitation non exercitation mollit labore pariatur. Reprehenderit ullamco velit ipsum minim dolore nostrud consequat.

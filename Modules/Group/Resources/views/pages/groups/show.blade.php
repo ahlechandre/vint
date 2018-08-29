@@ -1,99 +1,111 @@
-@extends('layouts.master', [
-    'breadcrumbs' => [
-        [
-            'text' => __('resources.groups'),
-            'attrs' => [
-                'href' => url('groups')
-            ]
-        ],
-        [
-            'text' => $group->name,
-            'attrs' => [
-                'href' => url("groups/{$group->id}")
-            ]
-        ],
-    ],    
-    'topAppBarTabs' => [
-        'tabs' => [
-            [
-                'text' => __('headlines.about'),
-                'isActive' => $section === 'about',
-                'attrs' => [
-                    'href' => url("/groups/{$group->id}?section=about")
-                ],
-            ],
-            [
-                'text' => __('resources.coordinators'),
-                'isActive' => $section === 'coordinators',
-                'attrs' => [
-                    'href' => url("/groups/{$group->id}?section=coordinators")
-                ],
-            ],
-            [
-                'text' => __('resources.members'),
-                'isActive' => $section === 'members',
-                'attrs' => [
-                    'href' => url("/groups/{$group->id}?section=members")
-                ],
-            ],
-            [
-                'text' => __('resources.programs'),
-                'isActive' => $section === 'programs',
-                'attrs' => [
-                    'href' => url("/groups/{$group->id}?section=programs")
-                ],
-            ],
-            [
-                'text' => __('resources.projects'),
-                'isActive' => $section === 'projects',
-                'attrs' => [
-                    'href' => url("/groups/{$group->id}?section=projects")
-                ],
-            ],
-            [
-                'text' => __('resources.roles'),
-                'isActive' => $section === 'group-roles',
-                'attrs' => [
-                    'href' => url("/groups/{$group->id}?section=group-roles")
-                ],
-            ]            
-        ]
-    ],
+@extends('layouts.'. (
+    auth()->check() ? 'master' : 'default'
+), [
+    'title' => __('resources.groups').' / '.$group->name 
 ])
-@section('title', __('resources.groups') . " / {$group->name}")
 
 @section('main')
-    @layoutGridWithInner([
-        'modifiers' => ['layout-grid--dense']
+    @gridWithInner([
+        'grid' => [
+            'classes' => ['layout-grid--dense']
+        ]
     ])
-        @cell([
-            'when' => ['default' => 12]
-        ])
-            @if ($section === 'about')
-                {{-- "Sobre" --}}
+        {{-- Heading --}}
+        @cell
+            @heading([
+                'pretitle' => __('resources.groups'),
+                'title' => $group->name,
+                'action' => [
+                    'dialogContainer' => [
+                        'button' => [
+                            'text' => __('actions.request_participate'),
+                            'classes' => ['mdc-button--outlined']
+                        ],
+                        'dialog' => [
+                            'attrs' => [
+                                'id' => 'dialog-group-request',
+                            ], 
+                            'title' => __('messages.groups.dialogs.request_participate_group'),
+                            'footer' => [
+                                'buttonAccept' => [
+                                    'text' => __('actions.confirm'),
+                                    'attrs' => [
+                                        'type' => 'button'
+                                    ],
+                                ],
+                                'buttonCancel' => [
+                                    'text' => __('actions.cancel'),
+                                    'attrs' => [
+                                        'type' => 'button'
+                                    ],
+                                ],                                
+                            ]                        
+                        ]                        
+                    ]
+                ],
+                'tabBar' => [
+                    'tabs' => [
+                        [
+                            'active' => !$section,
+                            'label' => __('headlines.about'),
+                            'attrs' => [
+                                'href' => url("groups/{$group->id}")
+                            ]
+                        ],
+                        [
+                            'active' => $section === 'coordinators',
+                            'label' => __('resources.coordinators'),
+                            'attrs' => [
+                                'href' => url("groups/{$group->id}/coordinators")
+                            ]
+                        ],                        
+                        [
+                            'active' => $section === 'programs',
+                            'label' => __('resources.programs'),
+                            'attrs' => [
+                                'href' => url("groups/{$group->id}/programs")
+                            ]
+                        ],
+                        [
+                            'active' => $section === 'projects',
+                            'label' => __('resources.projects'),
+                            'attrs' => [
+                                'href' => url("groups/{$group->id}/projects")
+                            ]
+                        ],
+                        [
+                            'active' => $section === 'members',
+                            'label' => __('resources.members'),
+                            'attrs' => [
+                                'href' => url("groups/{$group->id}/members")
+                            ]
+                        ],
+                        [
+                            'active' => $section === 'products',
+                            'label' => __('resources.products'),
+                            'attrs' => [
+                                'href' => url("groups/{$group->id}/products")
+                            ]
+                        ],
+                        [
+                            'active' => $section === 'publications',
+                            'label' => __('resources.publications'),
+                            'attrs' => [
+                                'href' => url("groups/{$group->id}/publications")
+                            ]
+                        ],                            
+                    ]                    
+                ]
+            ]) @endheading
+        @endcell
+
+        @cell
+            @if (!$section)
+                {{-- Tab "sobre" ativa --}}
                 @component('group::pages.groups.sections.about', [
                     'group' => $group
                 ]) @endcomponent
-            @elseif ($section === 'coordinators')
-                {{-- "Coordenadores" --}}
-                @component('group::pages.groups.sections.coordinators', [
-                    'group' => $group,
-                    'professors' => $professors,
-                ]) @endcomponent                
-            @elseif ($section === 'members')
-                {{-- "Membros" --}}
-                @component('group::pages.groups.sections.members', [
-                    'group' => $group,
-                    'members' => $members,
-                    'membersNotApproved' => $membersNotApproved,
-                ]) @endcomponent
-            @elseif ($section === 'group-roles')
-                {{-- "Papéis" --}}
-                @component('group::pages.groups.sections.group-roles', [
-                    'group' => $group,
-                    'permissions' => $permissions
-                ]) @endcomponent                
             @endif
-        @endcell
-    @endlayoutGridWithInner
+        @endcell    
+    @endgridWithInner
 @endsection

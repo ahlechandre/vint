@@ -58,7 +58,7 @@
                 [
                   'icon' => __('icons.groups'),
                   'text' => __('resources.groups'),
-                  'active' => is_active_page('groups'),
+                  'active' => is_active_page(['groups']),
                   'attrs' => [
                     'href' => url('groups')
                   ],

@@ -6,11 +6,16 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\Group\Entities\Group;
 use Illuminate\Routing\Controller;
+use Modules\Group\Entities\Member;
 use Modules\Group\Entities\Servant;
 use Modules\System\Entities\Permission;
 use Modules\Group\Http\Requests\GroupRequest;
 use Modules\Group\Repositories\GroupRepository;
-use Modules\Group\Entities\Member;
+use Modules\Project\Repositories\ProgramRepository;
+use Modules\Project\Repositories\ProjectRepository;
+use Modules\Group\Repositories\MemberRepository;
+use Modules\Product\Repositories\ProductRepository;
+use Modules\Product\Repositories\PublicationRepository;
 
 class GroupController extends Controller
 {
@@ -120,69 +125,167 @@ class GroupController extends Controller
      *
      * @param   \Illuminate\Http\Request  $request
      * @param   string  $id
+     * @param   null|string  $section
      * @return  \Illuminate\Http\Response
      */
-    public function show(Request $request, $id)
+    public function show(Request $request, $id, $section = null)
     {
-        $user = $request->user();
         $group = Group::findOrFail($id);
+        $query = $request->query('q');
 
-        // Verifica se usuário pode realizar.
-        if ($user->cant('view', $group)) {
-            return abort(403);
+        // Nenhuma seção indicada, mostra a padrão.
+        if (!$section) {
+            return view('group::pages.groups.show', [
+                'section' => $section,
+                'group' => $group
+            ]);            
         }
-        $section = $request->query('section', 'about');
-    
+
         switch ($section) {
-            case 'group-roles': {
-                // Carrega as permissões caso a seção seja de papéis.
-                $permissions = Permission::with('action', 'resource')
-                    ->get();
+            case 'programs': {
+                $programs = new ProgramRepository;
+                $index = $programs->index($query, self::$perPage, [
+                    'group' => $group
+                ]);
 
                 return view('group::pages.groups.show', [
+                    'section' => $section,
                     'group' => $group,
-                    'permissions' => $permissions,
-                    'section' => $section
+                    'programs' => $index->data['programs'],
+                    'programRequestsCount' => $index->data['programRequestsCount']
                 ]);
             }
-            case 'coordinators': {
-                $coordinatorsUserId = $group->coordinators
-                    ->pluck('member_user_id')
-                    ->toArray();
-                // Carrega todos os professores para seleção.
-                $professors = Servant::professor()
-                    ->with('member.user')
-                    ->whereNotIn('member_user_id', $coordinatorsUserId)
-                    ->get();
+            case 'program-requests': {
+                $user = $request->user();
+                $programs = new ProgramRepository;
+                $requests = $programs->requests($user, self::$perPage, $query, [
+                    'group' => $group
+                ]);
 
                 return view('group::pages.groups.show', [
+                    'section' => $section,
                     'group' => $group,
-                    'professors' => $professors,
-                    'section' => $section
+                    'programs' => $index->data['programs'],
                 ]);                
             }
-            case 'members': {
-                $members = $group->members()
-                    ->wherePivot('is_approved', 1)
-                    ->get();
-                $membersNotApproved = $group->members()
-                    ->wherePivot('is_approved', 0)
-                    ->get();
-                    
+            case 'projects': {
+                $projects = new ProjectRepository;
+                $index = $projects->index($query, self::$perPage, [
+                    'group' => $group
+                ]);
+
                 return view('group::pages.groups.show', [
+                    'section' => $section,
                     'group' => $group,
-                    'members' => $members,
-                    'membersNotApproved' => $membersNotApproved,
-                    'section' => $section
+                    'projects' => $index->data['projects'],
+                    'projectRequestsCount' => $index->data['projectRequestsCount']
+                ]);
+            }
+            case 'project-requests': {
+                $user = $request->user();
+                $projects = new ProjectRepository;
+                $requests = $projects->requests($user, self::$perPage, $query, [
+                    'group' => $group
+                ]);
+
+                return view('group::pages.groups.show', [
+                    'section' => $section,
+                    'group' => $group,
+                    'projects' => $index->data['projects'],
+                ]);      
+            }
+            case 'members': {
+                $members = new MemberRepository;
+                $index = $members->index($query, self::$perPage, [
+                    'group' => $group
+                ]);
+
+                return view('group::pages.groups.show', [
+                    'section' => $section,
+                    'group' => $group,
+                    'members' => $index->data['members'],
+                    'memberRequestsCount' => $index->data['memberRequestsCount']
+                ]);
+            }
+            case 'products': {
+                $products = new ProductRepository;
+                $index = $products->index($query, self::$perPage, [
+                    'group' => $group
+                ]);
+
+                return view('group::pages.groups.show', [
+                    'section' => $section,
+                    'group' => $group,
+                    'products' => $index->data['products']
+                ]);
+            }
+            case 'publications': {
+                $products = new PublicationRepository;
+                $index = $products->index($query, self::$perPage, [
+                    'group' => $group
+                ]);
+
+                return view('group::pages.groups.show', [
+                    'section' => $section,
+                    'group' => $group,
+                    'publications' => $index->data['publications']
                 ]);
             }
             default: {
-                return view('group::pages.groups.show', [
-                    'group' => $group,
-                    'section' => $section
-                ]);
+                return abort(404);                
             }
         }
+
+        // switch ($section) {
+        //     case 'group-roles': {
+        //         // Carrega as permissões caso a seção seja de papéis.
+        //         $permissions = Permission::with('action', 'resource')
+        //             ->get();
+
+        //         return view('group::pages.groups.show', [
+        //             'group' => $group,
+        //             'permissions' => $permissions,
+        //             'section' => $section
+        //         ]);
+        //     }
+        //     case 'coordinators': {
+        //         $coordinatorsUserId = $group->coordinators
+        //             ->pluck('member_user_id')
+        //             ->toArray();
+        //         // Carrega todos os professores para seleção.
+        //         $professors = Servant::professor()
+        //             ->with('member.user')
+        //             ->whereNotIn('member_user_id', $coordinatorsUserId)
+        //             ->get();
+
+        //         return view('group::pages.groups.show', [
+        //             'group' => $group,
+        //             'professors' => $professors,
+        //             'section' => $section
+        //         ]);                
+        //     }
+        //     case 'members': {
+        //         $members = $group->members()
+        //             ->wherePivot('is_approved', 1)
+        //             ->get();
+        //         $membersNotApproved = $group->members()
+        //             ->wherePivot('is_approved', 0)
+        //             ->get();
+                    
+        //         return view('group::pages.groups.show', [
+        //             'group' => $group,
+        //             'members' => $members,
+        //             'membersNotApproved' => $membersNotApproved,
+        //             'section' => $section
+        //         ]);
+        //     }
+        //     default: {
+        //         return view('group::pages.groups.show', [
+        //             'group' => $group,
+        //             'section' => $section
+        //         ]);
+        //     }
+        // }
     }
 
     /**
