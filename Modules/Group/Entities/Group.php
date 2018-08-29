@@ -2,14 +2,16 @@
 
 namespace Modules\Group\Entities;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\User\Entities\User;
 use Modules\Project\Entities\Program;
 use Modules\Project\Entities\Project;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\System\Entities\Traits\EloquentVint;
 
 class Group extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, EloquentVint;
 
     /**
      * @var array
@@ -18,6 +20,14 @@ class Group extends Model
         'name',
         'slug',
         'description'
+    ];
+
+    /**
+     *
+     * @var array
+     */
+    protected $filterable = [
+        'name', 'description'
     ];
 
     /**
@@ -100,5 +110,49 @@ class Group extends Model
     public function groupRoles()
     {
         return $this->hasMany(GroupRole::class);
+    }
+
+    /**
+     * Determina o escopo de grupos de um usuário.
+     * 
+     * @param  \Illuminate\Database\Query\Builder  $query
+     * @param  \Modules\User\Entities\User  $user
+     * @return \Illuminate\Database\Query\Builder
+     */
+    public function scopeOfUser($query, User $user)
+    {
+        if ($user->isAdmin() || $user->isManager()) {
+            // Todos os grupos para administradores e gerentes.
+            return $query;
+        }
+
+        if ($user->isMember()) {
+            // Todos grupos em que possuem relacionamento e estão aprovados.
+            return $query->whereHas('members', function ($member) use ($user) {
+                return $member->where([
+                    ['user_id', $user->id],
+                    ['is_approved', 1]
+                ]);
+            });
+        }
+    }
+
+
+    /**
+     * 
+     * @param  \Illuminate\Database\Query\Builder  $query
+     * @param  \Modules\User\Entities\User  $user
+     * @return \Illuminate\Database\Query\Builder
+     */
+    public function scopeRequestedBy($query, User $user)
+    {
+        // Retorna todos os grupos que o membero do usuário
+        // indicado está relacionado mas não está aprovado.
+        return $query->whereHas('members', function ($member) use ($user) {
+            return $member->where([
+                ['user_id', $user->id],
+                ['is_approved', 0]
+            ]);
+        });
     }
 }

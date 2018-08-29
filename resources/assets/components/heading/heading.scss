@@ -2,6 +2,11 @@
   margin-bottom: 1rem;
 }
 
+.heading__primary {
+  display: flex;
+  justify-content: space-between;
+}
+
 .heading__title-text {
   color: $theme-primary-title;
   font-weight: 400;

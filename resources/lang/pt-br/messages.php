@@ -17,7 +17,9 @@ return [
     'users' => [
         'forms' => [
             'create_title' => 'Novo usuário',
-            'create_content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores rem eligendi praesentium illum expedita accusantium nam libero blanditiis.'
+            'create_content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores rem eligendi praesentium illum expedita accusantium nam libero blanditiis.',
+            'edit_title' => 'Editar o usuário',
+            'edit_content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores rem eligendi praesentium illum expedita accusantium nam libero blanditiis.'            
         ]
     ],
 

@@ -13,5 +13,6 @@ return [
     'general' => 'Geral',
     // Páginas.
     'dashboard' => 'Dashboard',
+    'homepage' => 'Página inicial',
     'my_groups' => 'Meus grupos',
 ];

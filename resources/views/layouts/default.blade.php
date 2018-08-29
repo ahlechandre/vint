@@ -15,12 +15,14 @@
   </head>
   <body class="mdc-typography mdc-theme theme typography">
     {{-- Top App Bar --}}
-    @topAppBarDefault([
+    @topAppBarHome([
       'menu' => [
-        'icon' => __('icons.back'),
+        'icon' => 'menu',
+        'classes' => ['drawer-activation'],
         'attrs' => [
-          'href' => url('/'),
-          'title' => __('actions.back_to_home')
+          'href' => '#',
+          'data-drawer-activation' => 'drawer-temporary-master',
+          'data-vint-auto-init' => 'VintDrawerActivation'
         ]
       ],
       'title' => [
@@ -29,11 +31,48 @@
         ],
         'text' => 'VINT',
       ]
-    ]) @endtopAppBarDefault
+    ]) @endtopAppBarHome
+
+    @drawerTemporary([
+      'attrs' => [
+        'id' => 'drawer-temporary-master'
+      ],
+      'header' => [
+        'title' => 'VINT',
+        'subtitle' => 'Computação Visual e Interativa',
+      ],
+      'listGroup' => [
+        'groups' => [
+          [
+            'list' => [
+              'isNavigation' => true,
+              'items' => [
+                [
+                  'icon' => __('icons.homepage'),
+                  'text' => __('headlines.homepage'),
+                  'active' => is_active_page('/'),
+                  'attrs' => [
+                    'href' => url('/')
+                  ],
+                ],
+                [
+                  'icon' => __('icons.groups'),
+                  'text' => __('resources.groups'),
+                  'active' => is_active_page('groups'),
+                  'attrs' => [
+                    'href' => url('groups')
+                  ],
+                ],                               
+              ]
+            ]
+          ],
+        ]
+      ]
+    ]) @enddrawerTemporary
 
     {{-- Conteúdo da página --}}
     <div class="top-app-bar--fixed-adjust mdc-top-app-bar--fixed-adjust">
-        @yield('main')    
+      @yield('main')
     </div>
     
     {{-- MDC --}}

@@ -1,66 +1,62 @@
-@extends('layouts.master', [
-    'breadcrumbs' => [
-        [
-            'text' => __('resources.groups'),
-            'attrs' => [
-                'href' => url('groups')
-            ],
-        ]
-    ]
+{{-- Layout --}}
+@extends('layouts.'.(
+    auth()->check() ? 'master' : 'default'
+), [
+    'title' => __('resources.groups')
 ])
-@section('title', __('resources.groups'))
 
+{{-- Conteúdo --}}
 @section('main')
-
-    {{-- Conteúdo --}}
-    @layoutGridWithInner([
-        'modifiers' => ['layout-grid--dense']
+    @gridWithInner([
+        'grid' => [
+            'classes' => ['layout-grid--dense']
+        ]
     ])
-        {{-- Títulos --}}
-        @cell([
-            'when' => ['default' => 12]
-        ])
-            @article([
+        @cell
+            {{-- Heading --}}
+            @heading([
                 'title' => __('resources.groups'),
-                'intro' => __('messages.groups.index'),
-            ]) @endarticle
+                'content' => __('messages.groups.subheading'),
+            ]) @endheading        
         @endcell
-
-        {{-- Lista de recursos --}}
-        @cell([
-            'when' => ['default' => 12]
-        ])
+        
+        @cell
+            {{-- Paginável --}}
             @paginable([
-            'collection' => $groups,
-            'items' => $groups->map(function ($group) use ($user) {
-                return [
-                    'icon' => 'person',
-                    'meta' => $user->can('view', $group) ? [
-                        'icon' => 'arrow_forward',
-                    ] : null,
-                    'text' => $group->name,
-                    'secondaryText' => $group->created_at
-                        ->diffForHumans(),
-                    'attrs' => $user->can('view', $group) ? [
-                        'href' => url("/groups/{$group->id}"),
-                    ] : [],
-                ];
-            }),
-            ]) @endpaginable
+                'paginator' => $groups,
+                'items' => $groups->map(function ($group) {
+                    return [
+                        'text' => [
+                            'primary' => $group->name,
+                            'secondary' => $group->created_at
+                                ->diffForHumans(),
+                        ],
+                        'meta' => [
+                            'icon' => __('icons.show'),
+                        ],
+                        'attrs' => [
+                            'href' => url("groups/{$group->id}")
+                        ]
+                    ];
+                }),
+            ]) @endpaginable        
         @endcell
-    @endlayoutGridWithInner
-
-    {{-- FAB --}}
-    @if ($user->can('create', \Modules\Group\Entities\Group::class))
-        @fab([
-            'icon' => 'add',
-            'label' => __('messages.groups.new'),
-            'modifiers' => ['fab--fixed'],
-            'attrs' => [
-                'href' => url("/groups/create"),
-                'title' => __('messages.groups.new'),
-                'alt' => __('messages.groups.new'),
-            ],
-        ]) @endfab
-    @endif
+        
+        {{-- Novo --}}
+        @can('create', \Modules\Group\Entities\Group::class)
+            @fabFixed([
+                'fab' => [
+                    'isLink' => true,
+                    'icon' => __('icons.add'),
+                    'classes' => ['mdc-fab--extended'],
+                    'label' => __('actions.new'),
+                    'attrs' => [
+                        'href' => url('groups/create'),
+                        'title' => __('messages.groups.forms.create_title'),
+                        'alt' => __('messages.groups.forms.create_title')
+                    ],
+                ]
+            ]) @endfabFixed
+        @endcan
+    @endgridWithInner
 @endsection

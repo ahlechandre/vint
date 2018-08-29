@@ -12,6 +12,9 @@ return [
     'add' => 'add',
     'edit' => 'edit',
 
+    // Páginas.
+    'homepage' => 'home',
+
     // Módulo / Usuários.
     'users' => 'person',
     'user' => 'person',

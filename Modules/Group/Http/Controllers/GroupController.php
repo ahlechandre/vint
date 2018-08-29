@@ -47,18 +47,33 @@ class GroupController extends Controller
      */
     public function index(Request $request)
     {
-        $user = $request->user();
         $perPage = self::$perPage;
         $query = $request->get('q');
         $index = $this->groups
-            ->index($user, $perPage, $query);
-        
-        if (!$index->success) {
-            return abort($index->status);
-        }
+            ->index($perPage, $query);
 
         return view('group::pages.groups.index', [
             'groups' => $index->data['groups']
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function me(Request $request)
+    {
+        $perPage = self::$perPage;
+        $query = $request->get('q');
+        $user = $request->user();
+        $me = $this->groups
+            ->me($user, $perPage, $query);
+        
+        return view('group::pages.groups.me', [
+            'groups' => $me->data['groups'],
+            'groupsRequested' => $me->data['groupsRequested']
         ]);
     }
 

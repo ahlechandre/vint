@@ -11,8 +11,8 @@
         {{-- Heading --}}
         @cell
             @heading([
+                'pretitle' => __('resources.users'),
                 'title' => __('messages.users.forms.edit_title'),
-                'content' => __('messages.users.forms.edit_content'),
                 'tabBar' => [
                     'tabs' => [
                         [

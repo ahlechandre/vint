@@ -14,37 +14,36 @@ class GroupRepository
     /**
      * Lista todos os grupos.
      *
+     * @param  null|int  $perPage
+     * @param  null|string  $filter
+     * @return stdClass
+     */
+    public function index($perPage = null, $filter = null)
+    {
+        return repository_result(200, null, [
+            'groups' => Group::orderBy('created_at', 'desc')
+                ->filterLike($filter)
+                ->simplePaginateOrGet($perPage)
+        ]);
+    }
+
+    /**
+     * Lista todos os grupos de um usuário.
+     *
      * @param  \Modules\User\Entities\User  $user
      * @param  null|int  $perPage
      * @param  null|string  $filter
      * @return stdClass
      */
-    public function index(User $user, $perPage = null, $filter = null)
+    public function me(User $user, $perPage = null, $filter = null)
     {
-        // Verifica se o usuário pode realizar.
-        if ($user->cant('index', Group::class)) {
-            return repository_result(403);
-        }
-        $search = function ($filter, $scope) {
-            $filterLike = "%{$filter}%";
-
-            return $scope->where([
-                ['name', 'like', $filterLike],
-            ]);
-        };
-        // Escopo.
-        $scope = Group::orderBy('created_at', 'desc');
-        // Escopo por filtro.
-        $query = $filter ?
-            $search($filter, $scope) :
-            $scope;
-        // Seleciona.
-        $groups = $perPage ?
-            $query->simplePaginate($perPage) :
-            $query->get();
-
         return repository_result(200, null, [
-            'groups' => $groups
+            'groups' => Group::ofUser($user)
+                ->orderBy('created_at', 'desc')
+                ->filterLike($filter)
+                ->simplePaginateOrGet($perPage),
+            'groupsRequested' => Group::requestedBy($user)
+                ->get()
         ]);
     }
 
