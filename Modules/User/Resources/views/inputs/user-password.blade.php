@@ -1,7 +1,7 @@
-@layoutGridInner
+@gridInner
     {{-- Nova Senha --}}
     @cell([
-        'when' => ['d' => 12, 't' => 8, 'p' => 4]
+        'when' => ['d' => 6, 't' => 8, 'p' => 4]
     ])
         @textfield([
             'label' => __('attrs.password_new'),
@@ -22,7 +22,7 @@
 
     {{-- Confirmação Nova Senha --}}
     @cell([
-        'when' => ['d' => 12, 't' => 8, 'p' => 4]
+        'when' => ['d' => 6, 't' => 8, 'p' => 4]
     ])
         @textfield([
             'label' => __('attrs.password_confirmation'),
@@ -36,4 +36,4 @@
             ]
         ]) @endtextfield
     @endcell    
-@endlayoutGridInner
+@endgridInner

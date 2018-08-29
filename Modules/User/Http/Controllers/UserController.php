@@ -144,13 +144,23 @@ class UserController extends Controller
         if ($user->cant('update', $userToEdit)) {
             return abort(403);
         }
-        $userTypes = UserType::ofUser($user)
-            ->forUsersForm()
-            ->get();
+        $section = $request->query('section', 'general');
+
+        if ($section === 'general') {
+            $userTypes = UserType::ofUser($user)
+                ->forUsersForm()
+                ->get();
+
+            return view('user::pages.users.edit', [
+                'userToEdit' => $userToEdit,
+                'userTypes' => $userTypes,
+                'section' => $section
+            ]);
+        }
 
         return view('user::pages.users.edit', [
             'userToEdit' => $userToEdit,
-            'userTypes' => $userTypes,
+            'section' => $section
         ]);
     }
 

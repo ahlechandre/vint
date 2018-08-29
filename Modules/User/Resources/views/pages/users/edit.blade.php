@@ -16,11 +16,22 @@
                 'tabBar' => [
                     'tabs' => [
                         [
-                            'active' => true,
+                            'active' => $section === 'general',
                             'label' => __('headlines.general'),
+                            'attrs' => [
+                                'href' => request()->fullUrlWithQuery([
+                                    'section' => 'general'
+                                ])
+                            ]
                         ],
                         [
+                            'active' => $section === 'security',
                             'label' => __('headlines.security'),
+                            'attrs' => [
+                                'href' => request()->fullUrlWithQuery([
+                                    'section' => 'security'
+                                ])
+                            ]
                         ],
                     ]                    
                 ]
@@ -29,26 +40,18 @@
 
         {{-- Formulário --}}
         @cell
-            @form([
-                'action' => url("users/{$userToEdit->id}"),
-                'method' => 'put',
-                'attrs' => [
-                    'id' => 'form-user'
-                ],
-                'withCancel' => true,
-                'withSubmit' => true,
-                'inputs' => [
-                    'view' => 'user::inputs.user',
-                    'props' => [
-                        'name' => $userToEdit->name,
-                        'userTypeId' => $userToEdit->user_type_id,
-                        'username' => $userToEdit->username,
-                        'email' => $userToEdit->email,
-                        'isActive' => $userToEdit->is_active ? true : false,
-                        'userTypes' => $userTypes,
-                    ],
-                ]
-            ]) @endform        
+            @if ($section === 'general')
+                {{-- Tab "geral" ativa --}}
+                @component('user::pages.users.sections.edit-general', [
+                    'userToEdit' => $userToEdit,
+                    'userTypes' => $userTypes
+                ]) @endcomponent
+            @elseif ($section === 'security')
+                {{-- Tab "segurança" ativa --}}
+                @component('user::pages.users.sections.edit-security', [
+                    'userToEdit' => $userToEdit,
+                ]) @endcomponent         
+            @endif
         @endcell    
     @endgridWithInner
 @endsection
