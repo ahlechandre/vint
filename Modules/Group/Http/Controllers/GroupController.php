@@ -108,164 +108,13 @@ class GroupController extends Controller
      * @param   null|string  $section
      * @return  \Illuminate\Http\Response
      */
-    public function show(Request $request, $id, $section = null)
+    public function show(Request $request, $id)
     {
         $group = Group::findOrFail($id);
-        $query = $request->query('q');
 
-        // Nenhuma seção indicada, mostra a padrão.
-        if (!$section) {
-            return view('group::pages.groups.show', [
-                'section' => $section,
-                'group' => $group
-            ]);            
-        }
-
-        switch ($section) {
-            case 'programs': {
-                $programs = new ProgramRepository;
-                $index = $programs->index($query, self::$perPage, [
-                    'group' => $group
-                ]);
-
-                return view('group::pages.groups.show', [
-                    'section' => $section,
-                    'group' => $group,
-                    'programs' => $index->data['programs'],
-                    'programRequestsCount' => $index->data['programRequestsCount']
-                ]);
-            }
-            case 'program-requests': {
-                $user = $request->user();
-                $programs = new ProgramRepository;
-                $requests = $programs->requests($user, self::$perPage, $query, [
-                    'group' => $group
-                ]);
-
-                return view('group::pages.groups.show', [
-                    'section' => $section,
-                    'group' => $group,
-                    'programs' => $index->data['programs'],
-                ]);                
-            }
-            case 'projects': {
-                $projects = new ProjectRepository;
-                $index = $projects->index($query, self::$perPage, [
-                    'group' => $group
-                ]);
-
-                return view('group::pages.groups.show', [
-                    'section' => $section,
-                    'group' => $group,
-                    'projects' => $index->data['projects'],
-                    'projectRequestsCount' => $index->data['projectRequestsCount']
-                ]);
-            }
-            case 'project-requests': {
-                $user = $request->user();
-                $projects = new ProjectRepository;
-                $requests = $projects->requests($user, self::$perPage, $query, [
-                    'group' => $group
-                ]);
-
-                return view('group::pages.groups.show', [
-                    'section' => $section,
-                    'group' => $group,
-                    'projects' => $index->data['projects'],
-                ]);      
-            }
-            case 'members': {
-                $members = new MemberRepository;
-                $index = $members->index($query, self::$perPage, [
-                    'group' => $group
-                ]);
-
-                return view('group::pages.groups.show', [
-                    'section' => $section,
-                    'group' => $group,
-                    'members' => $index->data['members'],
-                    'memberRequestsCount' => $index->data['memberRequestsCount']
-                ]);
-            }
-            case 'products': {
-                $products = new ProductRepository;
-                $index = $products->index($query, self::$perPage, [
-                    'group' => $group
-                ]);
-
-                return view('group::pages.groups.show', [
-                    'section' => $section,
-                    'group' => $group,
-                    'products' => $index->data['products']
-                ]);
-            }
-            case 'publications': {
-                $products = new PublicationRepository;
-                $index = $products->index($query, self::$perPage, [
-                    'group' => $group
-                ]);
-
-                return view('group::pages.groups.show', [
-                    'section' => $section,
-                    'group' => $group,
-                    'publications' => $index->data['publications']
-                ]);
-            }
-            default: {
-                return abort(404);                
-            }
-        }
-
-        // switch ($section) {
-        //     case 'group-roles': {
-        //         // Carrega as permissões caso a seção seja de papéis.
-        //         $permissions = Permission::with('action', 'resource')
-        //             ->get();
-
-        //         return view('group::pages.groups.show', [
-        //             'group' => $group,
-        //             'permissions' => $permissions,
-        //             'section' => $section
-        //         ]);
-        //     }
-        //     case 'coordinators': {
-        //         $coordinatorsUserId = $group->coordinators
-        //             ->pluck('member_user_id')
-        //             ->toArray();
-        //         // Carrega todos os professores para seleção.
-        //         $professors = Servant::professor()
-        //             ->with('member.user')
-        //             ->whereNotIn('member_user_id', $coordinatorsUserId)
-        //             ->get();
-
-        //         return view('group::pages.groups.show', [
-        //             'group' => $group,
-        //             'professors' => $professors,
-        //             'section' => $section
-        //         ]);                
-        //     }
-        //     case 'members': {
-        //         $members = $group->members()
-        //             ->wherePivot('is_approved', 1)
-        //             ->get();
-        //         $membersNotApproved = $group->members()
-        //             ->wherePivot('is_approved', 0)
-        //             ->get();
-                    
-        //         return view('group::pages.groups.show', [
-        //             'group' => $group,
-        //             'members' => $members,
-        //             'membersNotApproved' => $membersNotApproved,
-        //             'section' => $section
-        //         ]);
-        //     }
-        //     default: {
-        //         return view('group::pages.groups.show', [
-        //             'group' => $group,
-        //             'section' => $section
-        //         ]);
-        //     }
-        // }
+        return view('group::pages.groups.show', [
+            'group' => $group
+        ]);
     }
 
     /**
@@ -306,22 +155,6 @@ class GroupController extends Controller
 
         return redirect("groups/{$id}")
             ->with('snackbar', $update->message);
-    }
-
-    /**
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  string  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function activation(Request $request, $id)
-    {
-        $user = $request->user();
-        $activation = $this->groups
-            ->activation($user, $id);
-
-        return redirect("groups/{$id}")
-            ->with('snackbar', $activation->message);
     }
 
     /**

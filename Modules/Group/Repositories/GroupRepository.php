@@ -97,37 +97,6 @@ class GroupRepository
     }
 
     /**
-     *
-     * @param  \Modules\User\Entities\User  $user
-     * @param  int  $id
-     * @return stdClass
-     */
-    public function activation(User $user, $id)
-    {
-        $group = Group::findOrFail($id);
-
-        // Verifica se o usuário pode realizar.
-        if ($user->cant('activation', $group)) {
-            return repository_result(403);
-        }
-        $activation = function () use ($user, $group) {
-            $group->is_active = $group->is_active ? false : true;
-            $group->save();
-        };
-
-        try {
-            // Tenta atualizar.
-            DB::transaction($activation);
-        } catch (Exception $exception) {
-            return repository_result(500);
-        }
-
-        return repository_result(200, __("messages.groups.updated_activation.{$group->is_active}"), [
-            'group' => $group
-        ]);
-    }    
-
-    /**
      * Tenta atualizar um usuário.
      *
      * @param  \Modules\User\Entities\User  $user

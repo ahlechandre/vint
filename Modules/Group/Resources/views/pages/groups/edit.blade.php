@@ -37,41 +37,5 @@
             ]) @endform
         @endcell
 
-        {{-- Desativar --}}
-        @cell
-            @form([
-                'action' => url("groups/{$group->id}/activation"),
-                'method' => 'put',
-            ])
-                @dialogContainer([
-                    'button' => [
-                        'text' => __("actions.activation.{$group->is_active}"),
-                        'attrs' => [
-                            'type' => 'button'
-                        ]
-                    ],
-                    'dialog' => [
-                        'attrs' => [
-                            'id' => 'dialog-group-is-active',
-                        ],
-                        'title' => __("messages.groups.dialogs.activation_title_{$group->is_active}"),
-                        'footer' => [
-                            'buttonAccept' => [
-                                'text' => __('actions.confirm'),
-                                'attrs' => [
-                                    'type' => 'submit'
-                                ]
-                            ],
-                            'buttonCancel' => [
-                                'text' => __('actions.cancel'),
-                                'attrs' => [
-                                    'type' => 'button'
-                                ]
-                            ]                        
-                        ]
-                    ]
-                ]) @enddialogContainer            
-            @endform
-        @endcell
     @endgridWithInner
 @endsection

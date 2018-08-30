@@ -5,7 +5,7 @@
     ]) @endtextfieldIcon
   @endif
   <input class="text-field__input mdc-text-field__input{{ set_classes($classes ?? []) }}"{{ set_attrs($attrs ?? []) }}>
-  <label class="mdc-floating-label" for="{{ $attrs['id'] }}">{{ $label }}</label>
+  <label class="mdc-floating-label{{ isset($floatingLabelAbove) && $floatingLabelAbove ? ' mdc-floating-label--float-above' : '' }}" for="{{ $attrs['id'] }}">{{ $label }}</label>
 
   @if ($iconTrailing ?? false)
     @textfieldIcon([

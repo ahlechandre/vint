@@ -8,10 +8,11 @@ use Modules\Group\Entities\Servant;
 use Modules\Group\Entities\Group;
 use Modules\User\Entities\User;
 use Illuminate\Database\Eloquent\Builder;
+use Modules\System\Entities\Traits\EloquentVint;
 
 class Program extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, EloquentVint;
 
     /**
      * @var array
@@ -29,6 +30,17 @@ class Program extends Model
      */
     protected $dates = [
         'deleted_at',
+        'start_on',
+        'finish_on'
+    ];
+
+    /**
+     *
+     * @var array
+     */
+    protected $filterable = [
+        'name',
+        'description',
         'start_on',
         'finish_on'
     ];

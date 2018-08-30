@@ -73,6 +73,18 @@ class Group extends Model
 
     /**
      *
+     * @return void
+     */
+    public function servants()
+    {
+        return $this->membersApproved()
+            ->whereHas('role', function ($role) {
+                return $role->servant();
+            });
+    }
+
+    /**
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function programs()

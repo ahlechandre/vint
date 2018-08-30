@@ -47,6 +47,36 @@ class Role extends Model
     
     /**
      *
+     * @param  \Illuminate\Database\Query\Builder  $query
+     * @return \Illuminate\Database\Query\Builder
+     */
+    public function scopeServant($query)
+    {
+        return $query->where('slug', self::SERVANT_SLUG);
+    }
+
+    /**
+     *
+     * @param  \Illuminate\Database\Query\Builder  $query
+     * @return \Illuminate\Database\Query\Builder
+     */
+    public function scopeStudent($query)
+    {
+        return $query->where('slug', self::STUDENT_SLUG);
+    }
+
+    /**
+     *
+     * @param  \Illuminate\Database\Query\Builder  $query
+     * @return \Illuminate\Database\Query\Builder
+     */
+    public function scopeCollaborator($query)
+    {
+        return $query->where('slug', self::COLLABORATOR_SLUG);
+    }
+
+    /**
+     *
      * @return bool
      */
     public function isServant()

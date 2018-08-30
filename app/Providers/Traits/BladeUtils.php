@@ -101,6 +101,7 @@ trait BladeUtils
 
         // Heading.
         'components.heading.heading' => 'heading',
+        'components.heading.heading-group' => 'headingGroup',
 
         // Pagination.
         'components.pagination.paginable' => 'paginable',        

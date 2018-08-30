@@ -1,3 +1,9 @@
+@keyframes FadeIn {
+  from {
+    opacity: .5;
+  }
+}
+
 @keyframes FadeInFromBottom {
   from {
     transform: translateY(10px);
@@ -5,12 +11,12 @@
   }
 }
 
-@keyframes FadeFromScale0Delay {
+@keyframes FadeFromScale0 {
   0% {
     transform: scale(0, 0);
   }
-
-  90% {
+  
+  50% {
     transform: scale(0, 0);
-  }
+  }  
 }
