@@ -46,6 +46,17 @@ class GroupPolicy
     }
 
     /**
+     *
+     * @param \Modules\User\Entities\User $user
+     * @param \Modules\Group\Entities\Group $group
+     * @return void
+     */
+    public function activation(User $user, Group $group)
+    {
+        return $user->isManager();
+    }
+
+    /**
      * Determine whether the user can update.
      *
      * @param  \Modules\User\Entities\User  $user

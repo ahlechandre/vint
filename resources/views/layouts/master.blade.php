@@ -65,11 +65,11 @@
                   ],
                 ], 
                 [
-                  'icon' => __('icons.group'),
-                  'text' => __('headlines.my_groups'),
-                  'active' => is_active_page('me/groups'),
+                  'icon' => __('icons.groups'),
+                  'text' => __('resources.groups'),
+                  'active' => is_active_page('groups'),
                   'attrs' => [
-                    'href' => url('me/groups')
+                    'href' => url('groups')
                   ],
                 ],                               
               ]

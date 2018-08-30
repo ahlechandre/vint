@@ -137,7 +137,6 @@ class Group extends Model
         }
     }
 
-
     /**
      * 
      * @param  \Illuminate\Database\Query\Builder  $query

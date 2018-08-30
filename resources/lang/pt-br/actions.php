@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'activation' => [
+        '0' => 'Ativar',
+        '1' => 'Desativar',
+    ],
     'request_participate' => 'Participar',
     'signup' => 'Cadastre-se',
     'search' => 'Buscar',

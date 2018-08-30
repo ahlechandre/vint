@@ -43,18 +43,6 @@ class GroupRequest extends FormRequest
 
     /**
      *
-     * @return array
-     */
-    public function sanitize()
-    {
-        $inputs = $this->all();
-        $inputs['is_active'] = sanitize_bool_input($inputs, 'is_active');
-        
-        return $inputs;
-    } 
-
-    /**
-     *
      * @return bool
      */
     public function authorize()

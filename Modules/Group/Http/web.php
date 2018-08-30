@@ -30,12 +30,13 @@ Route::middleware('unauth')
  */
 Route::middleware('auth')
     ->group(function () {
-        // Meus grupos.
-        Route::get('me/groups', 'GroupController@me');
-
         // Grupos.
         Route::resource('groups', 'GroupController')
             ->only(['create', 'store', 'edit', 'update']);
+
+        // Grupo / Ativação.
+        Route::put('groups/{group}/activation', 'GroupController@activation');
+
         /**
          * ----------------------------------------
          * Grupos / Coordenadores

@@ -15,34 +15,35 @@
             @heading([
                 'pretitle' => __('resources.groups'),
                 'title' => $group->name,
-                'action' => [
-                    'dialogContainer' => [
-                        'button' => [
-                            'text' => __('actions.request_participate'),
-                            'classes' => ['mdc-button--outlined']
-                        ],
-                        'dialog' => [
-                            'attrs' => [
-                                'id' => 'dialog-group-request',
-                            ], 
-                            'title' => __('messages.groups.dialogs.request_participate_group'),
-                            'footer' => [
-                                'buttonAccept' => [
-                                    'text' => __('actions.confirm'),
-                                    'attrs' => [
-                                        'type' => 'button'
+                'action' => auth()->check() && $user->isMember() ?
+                    [
+                        'dialogContainer' => [
+                            'button' => [
+                                'text' => __('actions.request_participate'),
+                                'classes' => ['mdc-button--outlined']
+                            ],
+                            'dialog' => [
+                                'attrs' => [
+                                    'id' => 'dialog-group-request',
+                                ], 
+                                'title' => __('messages.groups.dialogs.request_participate_group'),
+                                'footer' => [
+                                    'buttonAccept' => [
+                                        'text' => __('actions.confirm'),
+                                        'attrs' => [
+                                            'type' => 'button'
+                                        ],
                                     ],
-                                ],
-                                'buttonCancel' => [
-                                    'text' => __('actions.cancel'),
-                                    'attrs' => [
-                                        'type' => 'button'
-                                    ],
-                                ],                                
+                                    'buttonCancel' => [
+                                        'text' => __('actions.cancel'),
+                                        'attrs' => [
+                                            'type' => 'button'
+                                        ],
+                                    ],                                
+                                ]                        
                             ]                        
-                        ]                        
-                    ]
-                ],
+                        ]
+                    ] : null,
                 'tabBar' => [
                     'tabs' => [
                         [

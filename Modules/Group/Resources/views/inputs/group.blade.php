@@ -33,18 +33,4 @@
             ],
         ]) @endtextarea
     @endcell
-
-    {{-- Está ativo --}}
-    @cell([
-        'when' => ['d' => 12, 't' => 8, 'p' => 4]
-    ])
-        @materialSwitch([
-            'label' => __('attrs.is_active_switch'),
-            'attrs' => [
-                'name' => 'is_active',
-                'id' => 'textfield-group-is-active',
-                'checked' => $isActive ? true : false,
-            ]    
-        ]) @endmaterialSwitch    
-    @endcell
 @endgridInner

@@ -63,26 +63,6 @@ class GroupController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function me(Request $request)
-    {
-        $perPage = self::$perPage;
-        $query = $request->get('q');
-        $user = $request->user();
-        $me = $this->groups
-            ->me($user, $perPage, $query);
-        
-        return view('group::pages.groups.me', [
-            'groups' => $me->data['groups'],
-            'groupsRequested' => $me->data['groupsRequested']
-        ]);
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -109,7 +89,7 @@ class GroupController extends Controller
     public function store(GroupRequest $request)
     {
         $user = $request->user();
-        $inputs = $request->sanitize();
+        $inputs = $request->all();
         $store = $this->groups
             ->store($user, $inputs);
         $redirectTo = 'groups/' . (
@@ -326,6 +306,22 @@ class GroupController extends Controller
 
         return redirect("groups/{$id}")
             ->with('snackbar', $update->message);
+    }
+
+    /**
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function activation(Request $request, $id)
+    {
+        $user = $request->user();
+        $activation = $this->groups
+            ->activation($user, $id);
+
+        return redirect("groups/{$id}")
+            ->with('snackbar', $activation->message);
     }
 
     /**
