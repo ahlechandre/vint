@@ -21,7 +21,7 @@
         'classes' => ['drawer-activation'],
         'attrs' => [
           'href' => '#',
-          'data-drawer-activation' => 'drawer-temporary-master',
+          'data-drawer-activation' => 'drawer-modal-master',
           'data-vint-auto-init' => 'VintDrawerActivation'
         ]
       ],
@@ -33,51 +33,45 @@
       ]
     ]) @endtopAppBarHome
 
-    @drawerTemporary([
+    @drawerModal([
       'attrs' => [
-        'id' => 'drawer-temporary-master'
+        'id' => 'drawer-modal-master',
       ],
       'header' => [
         'title' => $user->name,
-        'subtitle' => $user->email,
+        'subtitle' => $user->email,        
       ],
-      'listGroup' => [
-        'groups' => [
+      'list' => [
+        'isNavigation' => true,
+        'items' => [
           [
-            'list' => [
-              'isNavigation' => true,
-              'items' => [
-                [
-                  'icon' => __('icons.dashboard'),
-                  'text' => __('headlines.dashboard'),
-                  'active' => is_active_page('dashboard'),
-                  'attrs' => [
-                    'href' => url('dashboard')
-                  ],
-                ],
-                [
-                  'ignore' => !$user->isAdmin(),
-                  'icon' => __('icons.users'),
-                  'text' => __('resources.users'),
-                  'active' => is_active_page(['users']),
-                  'attrs' => [
-                    'href' => url('users')
-                  ],
-                ], 
-                [
-                  'icon' => __('icons.groups'),
-                  'text' => __('resources.groups'),
-                  'active' => is_active_page('groups'),
-                  'attrs' => [
-                    'href' => url('groups')
-                  ],
-                ],                               
-              ]
-            ]
+            'icon' => __('icons.dashboard'),
+            'text' => __('headlines.dashboard'),
+            'active' => is_active_page('dashboard'),
+            'attrs' => [
+              'href' => url('dashboard')
+            ],
           ],
+          [
+            'ignore' => !$user->isAdmin(),
+            'icon' => __('icons.users'),
+            'text' => __('resources.users'),
+            'active' => is_active_page(['users']),
+            'attrs' => [
+              'href' => url('users')
+            ],
+          ], 
+          [
+            'icon' => __('icons.groups'),
+            'text' => __('resources.groups'),
+            'active' => is_active_page('groups'),
+            'attrs' => [
+              'href' => url('groups')
+            ],
+          ],                               
         ]
-      ]
-    ]) @enddrawerTemporary
+      ]    
+    ]) @enddrawerModal
 
     {{-- Conteúdo da página --}}
     <div class="top-app-bar--fixed-adjust mdc-top-app-bar--fixed-adjust">

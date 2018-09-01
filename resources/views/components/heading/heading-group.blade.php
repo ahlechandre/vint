@@ -24,7 +24,7 @@
                         'classes' => ['mdc-button--unelevated']
                     ],
                 'form' => [
-                    'action' => url("groups/{$group->id}/members/{$user->member->user_id}"),
+                    'action' => url("groups/{$group->id}/members-toggle/{$user->member->user_id}"),
                     'method' => 'put',
                 ],
                 'dialog' => [

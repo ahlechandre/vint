@@ -4,12 +4,12 @@ namespace Modules\Member\Http\Requests;
 
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
-use Modules\Group\Entities\Role;
+use Modules\Member\Entities\Role;
 
 class MemberRoleRequest extends FormRequest
 {
     /**
-     * @var \Modules\Group\Entities\Role
+     * @var \Modules\Member\Entities\Role
      */
     protected $role;
 

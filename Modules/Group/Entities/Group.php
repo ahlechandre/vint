@@ -50,7 +50,8 @@ class Group extends Model
     public function members()
     {
         return $this->belongsToMany(Member::class)
-            ->withPivot('is_approved');
+            ->withPivot('is_approved')
+            ->withTimestamps();
     }
 
     /**

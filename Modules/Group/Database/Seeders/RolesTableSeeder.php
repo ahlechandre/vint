@@ -5,7 +5,7 @@ namespace Modules\Group\Database\Seeders;
 use DB;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Group\Entities\Role;
+use Modules\Member\Entities\Role;
 
 class RolesTableSeeder extends Seeder
 {

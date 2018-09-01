@@ -156,38 +156,4 @@ class GroupController extends Controller
         return redirect("groups/{$id}")
             ->with('snackbar', $update->message);
     }
-
-    /**
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  null|string  $id
-     * @param  null|string  $memberUserId
-     * @return \Illuminate\Http\Response
-     */
-    public function approveMembers(Request $request, $id, $memberUserId = null)
-    {
-        $user = $request->user();
-        $approveMembers = $this->groups
-            ->approveMembers($user, $id, $memberUserId);
-
-        return redirect("groups/{$id}?section=members")
-            ->with('snackbar', $approveMembers->message);
-    }
-
-    /**
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  null|string  $id
-     * @param  null|string  $memberUserId
-     * @return \Illuminate\Http\Response
-     */
-    public function denyMembers(Request $request, $id, $memberUserId = null)
-    {
-        $user = $request->user();
-        $denyMembers = $this->groups
-            ->denyMembers($user, $id, $memberUserId);
-
-        return redirect("groups/{$id}?section=members")
-            ->with('snackbar', $denyMembers->message);
-    } 
 }

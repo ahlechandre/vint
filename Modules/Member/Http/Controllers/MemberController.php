@@ -4,7 +4,7 @@ namespace Modules\Member\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Modules\Group\Entities\Role;
+use Modules\Member\Entities\Role;
 use Modules\Group\Entities\Group;
 use Illuminate\Routing\Controller;
 use Modules\Group\Entities\Member;

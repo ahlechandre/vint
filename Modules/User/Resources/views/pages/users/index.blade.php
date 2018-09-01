@@ -22,21 +22,27 @@
             {{-- Paginável --}}
             @paginable([
                 'paginator' => $users,
-                'items' => $users->map(function ($userToShow) {
-                    return [
-                        'text' => [
-                            'primary' => $userToShow->name,
-                            'secondary' => $userToShow->created_at
-                                ->diffForHumans(),
-                        ],
-                        'meta' => [
-                            'icon' => __('icons.show'),
-                        ],
-                        'attrs' => [
-                            'href' => url("users/{$userToShow->id}")
-                        ]
-                    ];
-                }),
+                'withMenu' => true, 
+                'list' => [
+                    'isNavigation' => true,
+                    'twoLine' => true,
+                    'items' => $users->map(function ($userToShow) {
+                        return [
+                            'icon' => __('icons.member'),
+                            'text' => [
+                                'primary' => $userToShow->name,
+                                'secondary' => $userToShow->created_at
+                                    ->diffForHumans(),
+                            ],
+                            'attrs' => [
+                                'href' => url("users/{$userToShow->id}")
+                            ],
+                            'meta' => [
+                                'icon' => __('icons.show')
+                            ],
+                        ];
+                    }),                    
+                ]
             ]) @endpaginable        
         @endcell
         

@@ -35,7 +35,7 @@ trait BladeUtils
         'material.dialogs.dialog-container' => 'dialogContainer',
 
         // Drawers.
-        'material.drawers.drawer-temporary' => 'drawerTemporary',
+        'material.drawers.drawer-modal' => 'drawerModal',
 
         // Icons.
         'material.icons.icon' => 'icon',
@@ -62,6 +62,7 @@ trait BladeUtils
         'material.lists.list' => 'list',
         'material.lists.list-item' => 'listItem',
         'material.lists.list-item-link' => 'listItemLink',
+        'material.lists.list-item-meta' => 'listItemMeta',
         'material.lists.list-group' => 'listGroup',
 
         // Menus.

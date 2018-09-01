@@ -4,7 +4,7 @@ namespace Modules\Member\Repositories;
 
 use Exception;
 use Modules\User\Entities\User;
-use Modules\Group\Entities\Role;
+use Modules\Member\Entities\Role;
 use Modules\Group\Entities\Group;
 use Illuminate\Support\Facades\DB;
 use Modules\Group\Entities\Member;

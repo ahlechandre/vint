@@ -5,10 +5,11 @@ namespace Modules\Member\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\User\Entities\User;
+use Modules\System\Entities\Traits\EloquentVint;
 
 class Member extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, EloquentVint;
 
     /**
      * @var string
@@ -30,6 +31,16 @@ class Member extends Model
     ];
 
     /**
+     *
+     * @var array
+     */
+    protected $filterable = [
+        'user.name',
+        'role.name',
+        'description'
+    ];
+
+    /**
      * @var array
      */
     protected $dates = [
@@ -43,7 +54,8 @@ class Member extends Model
     public function groups()
     {
         return $this->belongsToMany(Group::class)
-            ->withPivot('is_approved');
+            ->withPivot('is_approved')
+            ->withTimestamps();
     }
 
     /**

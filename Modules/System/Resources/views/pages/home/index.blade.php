@@ -205,22 +205,38 @@
 
                 @list([
                     'twoLine' => true,
-                    'isNavigation' => true,
+                    'classes' => ['mdc-list--non-interactive'],
                     'items' => [
                         [
                             'icon' => 'wifi',
-                            'attrs' => [
-                                'href' => '#',    
-                            ],
                             'text' => [
                                 'primary' => 'item 1',
                                 'secondary' => 'item 1 desc',
                             ],
                             'meta' => [
-                                'iconButton' => [
-                                    'icon' => 'add',
-                                    'attrs' => [
-                                        'href' => '#!'
+                                'menuAnchor' => [
+                                    'iconButton' => [
+                                        'icon' => 'more_vert',
+                                    ],
+                                    'menu' => [
+                                        'classes' => ['mdc-menu-surface--fixed'],
+                                        'list' => [
+                                            'items' => [
+                                                [
+                                                    'icon' => 'remove_red_eye',
+                                                    'text' => 'Visualizar',
+                                                ],
+                                                [
+                                                    'icon' => 'person_add',
+                                                    'text' => 'Compartilhar',
+                                                ],
+                                                [
+                                                    'icon' => 'delete_outline',
+                                                    'dividerBefore' => true,
+                                                    'text' => 'Remover',
+                                                ],
+                                            ]
+                                        ]
                                     ]
                                 ]
                             ]
@@ -232,7 +248,7 @@
                             'text' => 'item 3'
                         ]        
                     ]
-                ]) @endlist                
+                ]) @endlist
             </div>
         @endcell
 

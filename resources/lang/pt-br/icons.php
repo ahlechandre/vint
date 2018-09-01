@@ -12,6 +12,7 @@ return [
     'add' => 'add',
     'edit' => 'edit',
     'forward' => 'arrow_forward',
+    'view' => 'remove_red_eye',
 
     // Páginas.
     'homepage' => 'home',

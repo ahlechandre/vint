@@ -21,7 +21,7 @@
         'classes' => ['drawer-activation'],
         'attrs' => [
           'href' => '#',
-          'data-drawer-activation' => 'drawer-temporary-master',
+          'data-drawer-activation' => 'drawer-modal-default',
           'data-vint-auto-init' => 'VintDrawerActivation'
         ]
       ],
@@ -33,42 +33,37 @@
       ]
     ]) @endtopAppBarHome
 
-    @drawerTemporary([
+    @drawerModal([
       'attrs' => [
-        'id' => 'drawer-temporary-master'
+        'id' => 'drawer-modal-default'
       ],
       'header' => [
         'title' => 'VINT',
         'subtitle' => 'Computação Visual e Interativa',
       ],
-      'listGroup' => [
-        'groups' => [
+      'list' => [
+        'isNavigation' => true,
+        'items' => [
           [
-            'list' => [
-              'isNavigation' => true,
-              'items' => [
-                [
-                  'icon' => __('icons.homepage'),
-                  'text' => __('headlines.homepage'),
-                  'active' => is_active_page('/'),
-                  'attrs' => [
-                    'href' => url('/')
-                  ],
-                ],
-                [
-                  'icon' => __('icons.groups'),
-                  'text' => __('resources.groups'),
-                  'active' => is_active_page(['groups']),
-                  'attrs' => [
-                    'href' => url('groups')
-                  ],
-                ],                               
-              ]
-            ]
+            'icon' => __('icons.homepage'),
+            'text' => __('headlines.homepage'),
+            'active' => is_active_page('/'),
+            'attrs' => [
+              'href' => url('/')
+            ],
           ],
+          [
+            'icon' => __('icons.groups'),
+            'text' => __('resources.groups'),
+            'active' => is_active_page(['groups']),
+            'attrs' => [
+              'href' => url('groups')
+            ],
+          ],                               
         ]
       ]
-    ]) @enddrawerTemporary
+
+    ]) @enddrawerModal
 
     {{-- Conteúdo da página --}}
     <div class="top-app-bar--fixed-adjust mdc-top-app-bar--fixed-adjust">

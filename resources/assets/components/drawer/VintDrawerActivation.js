@@ -1,4 +1,4 @@
-import { MDCTemporaryDrawer, MDCPersistentDrawer } from '@material/drawer'
+import { MDCDrawer } from '@material/drawer'
 
 class VintDrawerActivation {
 
@@ -8,8 +8,7 @@ class VintDrawerActivation {
   static classes = {
     COMPONENT: 'drawer-activation',
     DRAWER: 'drawer',
-    DRAWER_TEMPORARY: 'mdc-drawer--temporary',
-    DRAWER_PERSISTENT: 'mdc-drawer--persistent'
+    DRAWER_MODAL: 'mdc-drawer--modal',
   }
 
   /**
@@ -32,8 +31,7 @@ class VintDrawerActivation {
     const drawer = document.querySelector(`.${VintDrawerActivation.classes.DRAWER}#${drawerId}`)
     this.state = {
       drawer,
-      isPersistent: drawer.classList.contains(VintDrawerActivation.classes.DRAWER_PERSISTENT),
-      isTemporary: drawer.classList.contains(VintDrawerActivation.classes.DRAWER_TEMPORARY)
+      isModal: drawer.classList.contains(VintDrawerActivation.classes.DRAWER_MODAL)
     }
 
     if (!this.state.drawer) {
@@ -41,9 +39,9 @@ class VintDrawerActivation {
     }
     this.state = {
       ...this.state,
-      mdcDrawer: this.state.isPersistent ?
-        new MDCPersistentDrawer(this.state.drawer) :
-        new MDCTemporaryDrawer(this.state.drawer)
+      mdcDrawer: this.state.isModal ?
+        new MDCDrawer(this.state.drawer) :
+        null
     }
 
     element.addEventListener('click', () => {

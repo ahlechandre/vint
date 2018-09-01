@@ -1,9 +1,12 @@
 <?php
 
 return [
+    'view' => 'Visualizar',
     'request_group' => 'Participar',
     'requested_group' => 'Solicitado',
     'leave_group' => 'Deixar grupo',
+    'back' => 'Voltar',
+    'back_to_members' => 'Voltar para membros',
     'activation' => [
         '0' => 'Ativar',
         '1' => 'Desativar',

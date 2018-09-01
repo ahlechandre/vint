@@ -1,5 +1,5 @@
 @if ($isNavigation ?? false)
-    <nav class="list mdc-list{{ set_classes($classes ?? []) }}{{ isset($twoLine) && $twoLine ? ' mdc-list--two-line' : '' }}" aria-orientation="vertical"{{ set_attrs($attrs ?? []) }}>
+    <nav class="list mdc-list{{ set_classes($classes ?? []) }}{{ isset($twoLine) && $twoLine ? ' mdc-list--two-line' : '' }}{{ isset($nonInteractive) && $nonInteractive ? ' mdc-list--non-interactive' : '' }}" aria-orientation="vertical"{{ set_attrs($attrs ?? []) }}>
         @if ($items ?? false)
             @if ($isMenu ?? false)
                 @foreach ($items as $item)
@@ -21,7 +21,7 @@
         {{ $slot }}
     </nav>
 @else
-    <ul class="list mdc-list{{ set_classes($classes ?? []) }}{{ isset($twoLine) && $twoLine ? ' mdc-list--two-line' : '' }}" aria-orientation="vertical"{{ set_attrs($attrs ?? []) }}>
+    <ul class="list mdc-list{{ set_classes($classes ?? []) }}{{ isset($twoLine) && $twoLine ? ' mdc-list--two-line' : '' }}{{ isset($nonInteractive) && $nonInteractive ? ' mdc-list--non-interactive' : '' }}" aria-orientation="vertical"{{ set_attrs($attrs ?? []) }}>
         @if ($items ?? false)
             @if ($isMenu ?? false)
                 @foreach ($items as $item)

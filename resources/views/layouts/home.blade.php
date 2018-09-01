@@ -33,7 +33,7 @@
       ]
     ]) @endtopAppBarHome
 
-    @drawerTemporary([
+    @drawerModal([
       'attrs' => [
         'id' => 'drawer-temporary-1'
       ],
@@ -41,56 +41,28 @@
         'title' => 'Alexandre Thebaldi',
         'subtitle' => 'ahlechandre@gmail.com',
       ],
-      'listGroup' => [
-        'groups' => [
+      'list' => [
+        'isNavigation' => true,
+        'items' => [
           [
-            'list' => [
-              'isNavigation' => true,
-              'items' => [
-                [
-                  'icon' => 'dashboard',
-                  'text' => 'Dashboard',
-                  'attrs' => [
-                    'href' => url('dashboard')
-                  ],
-                ],
-                [
-                  'icon' => 'person',
-                  'text' => 'Usuários',
-                  'attrs' => [
-                    'href' => url('users')
-                  ],
-                ]          
-              ]
-            ]
+            'icon' => 'dashboard',
+            'text' => 'Dashboard',
+            'attrs' => [
+              'href' => url('dashboard')
+            ],
+            'classes' => ['mdc-list-item--activated']
           ],
           [
-            'subheader' => 'Sistema',
-            'list' => [
-              'isNavigation' => true,
-              'items' => [
-                [
-                  'icon' => 'dashboard',
-                  'text' => 'Dashboard',
-                  'attrs' => [
-                    'href' => url('dashboard')
-                  ],
-                  'classes' => ['mdc-list-item--activated']
-                ],
-                [
-                  'icon' => 'person',
-                  'text' => 'Usuários',
-                  'attrs' => [
-                    'href' => url('users')
-                  ],
-                ]          
-              ]
-            ]          
-
+            'icon' => 'person',
+            'text' => 'Usuários',
+            'attrs' => [
+              'href' => url('users')
+            ],
           ]          
         ]
-      ]
-    ]) @enddrawerTemporary
+      ]          
+
+    ]) @enddrawerModal
 
     {{-- Conteúdo da página --}}
     <div class="top-app-bar--fixed-adjust mdc-top-app-bar--fixed-adjust">

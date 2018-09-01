@@ -36,6 +36,56 @@ class GroupMemberController extends Controller
     }
     
     /**
+     * Display a listing of the resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $groupId
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request, $groupId)
+    {
+        $perPage = self::$perPage;
+        $query = $request->get('q');
+        $index = $this->groupMembers
+            ->index($groupId, $perPage, $query);
+        $user = $request->user();
+        $group = $index->data['group'];
+            $requestsCount = $user && $user->can('updateMembersRequests', $group) ?
+            $group->membersNotApproved()->count() :
+            null;
+
+        return view('group::pages.members.index', [
+            'group' => $group,
+            'members' => $index->data['members'],
+            'requestsCount' => $requestsCount,
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $groupId
+     * @return \Illuminate\Http\Response
+     */
+    public function requests(Request $request, $groupId)
+    {
+        $query = $request->get('q');
+        $user = $request->user();
+        $index = $this->groupMembers
+            ->requests($user, $groupId, null, $query);
+
+        if (!$index->success) {
+            return abort($index->status);
+        }
+
+        return view('group::pages.members.requests', [
+            'group' => $index->data['group'],
+            'members' => $index->data['members']
+        ]);
+    }
+
+    /**
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  string  $groupId
@@ -50,4 +100,39 @@ class GroupMemberController extends Controller
 
         return back()->with('snackbar', $toggle->message);
     }
+
+
+    /**
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $groupId
+     * @param  null|string  $memberUserId
+     * @return \Illuminate\Http\Response
+     */
+    public function approve(Request $request, $groupId, $memberUserId = null)
+    {
+        $user = $request->user();
+        $approve = $this->groupMembers
+            ->approve($user, $groupId, $memberUserId);
+
+        return redirect("groups/{$groupId}/members-requests")
+            ->with('snackbar', $approve->message);
+    }
+
+    /**
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $groupId
+     * @param  null|string  $memberUserId
+     * @return \Illuminate\Http\Response
+     */
+    public function deny(Request $request, $groupId, $memberUserId = null)
+    {
+        $user = $request->user();
+        $deny = $this->groupMembers
+            ->deny($user, $groupId, $memberUserId);
+
+        return redirect("groups/{$groupId}/members-requests")
+            ->with('snackbar', $deny->message);
+    }     
 }

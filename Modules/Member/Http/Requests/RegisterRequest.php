@@ -9,7 +9,7 @@ use Modules\Member\Entities\Role;
 class RegisterRequest extends FormRequest
 {
     /**
-     * @var \Modules\Group\Entities\Role
+     * @var \Modules\Member\Entities\Role
      */
     protected $role;
 

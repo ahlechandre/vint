@@ -1,4 +1,4 @@
-<div class="mdc-menu{{ set_classes($classes ?? []) }}" tabindex="-1"{{ set_attrs($attrs ?? []) }}>
+<div class="menu mdc-menu mdc-menu-surface{{ set_classes($classes ?? []) }}" tabindex="-1"{{ set_attrs($attrs ?? []) }}>
     @list(
         component_with_props(
             component_with_attrs(

@@ -84,17 +84,6 @@ class GroupPolicy
     
     /**
      *
-     * @param \Modules\User\Entities\User $user
-     * @param \Modules\Group\Entities\Group $group
-     * @return bool
-     */
-    public function updateMemberRequests(User $user, Group $group)
-    {
-        return $user->isManager() || $group->isCoordinatorUser($user);
-    }
-
-    /**
-     *
      * @param  \Modules\User\Entities\User  $user
      * @param  \Modules\Group\Entities\Group  $group
      * @param  \Modules\Member\Entities\Member  $member
@@ -102,10 +91,18 @@ class GroupPolicy
      */
     public function toggleMember(User $user, Group $group, Member $member)
     {
-        if ($user->isManager() || $group->isCoordinatorUser($user)) {
-            return true;
-        }
-
         return $user->id === $member->user_id;
     }
+
+    /**
+     *
+     * @param \Modules\User\Entities\User $user
+     * @param \Modules\Group\Entities\Group $group
+     * @return bool
+     */
+    public function updateMembersRequests(User $user, Group $group)
+    {
+        return $user->isManager() || $group->isCoordinatorUser($user);
+    }
+
 }

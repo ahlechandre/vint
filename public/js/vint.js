@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 19);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -68,53 +68,27 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__component__ = __webpack_require__(3);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__foundation__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__component__["a"]; });
 /**
  * @license
  * Copyright 2016 Google Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-
-
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/**
- * @license
- * Copyright 2016 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 
 /**
@@ -171,55 +145,32 @@ class MDCFoundation {
 
 
 /***/ }),
-/* 2 */
+/* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__constants__ = __webpack_require__(27);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__constants__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(28);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__foundation__["a"]; });
-/**
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-
-
-/***/ }),
-/* 3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(0);
 /**
  * @license
  * Copyright 2016 Google Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 
 
@@ -333,113 +284,438 @@ class MDCComponent {
 
 
 /***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__component__ = __webpack_require__(1);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__foundation__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__component__["a"]; });
+/**
+ * @license
+ * Copyright 2016 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+
+
+
+
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/**
+ * @license
+ * Copyright 2018 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+/* eslint no-unused-vars: [2, {"args": "none"}] */
+
+/**
+ * Adapter for MDC Drawer
+ *
+ * Defines the shape of the adapter expected by the foundation. Implement this
+ * adapter to integrate the Drawer into your framework. See
+ * https://github.com/material-components/material-components-web/blob/master/docs/authoring-components.md
+ * for more information.
+ *
+ * @record
+ */
+class MDCDrawerAdapter {
+  /**
+   * Adds a class to the root Element.
+   * @param {string} className
+   */
+  addClass(className) {}
+
+  /**
+   * Removes a class from the root Element.
+   * @param {string} className
+   */
+  removeClass(className) {}
+
+  /**
+   * Returns true if the root Element contains the given class.
+   * @param {string} className
+   * @return {boolean}
+   */
+  hasClass(className) {}
+
+  /**
+   * @param {!Element} element target element to verify class name
+   * @param {string} className class name
+   */
+  elementHasClass(element, className) {}
+
+  /** @return {!ClientRect} */
+  computeBoundingRect() {}
+
+  /**
+   * Saves the focus of currently active element.
+   */
+  saveFocus() {}
+
+  /**
+   * Restores focus to element previously saved with 'saveFocus'.
+   */
+  restoreFocus() {}
+
+  /**
+   * Focuses the active / selected navigation item.
+   */
+  focusActiveNavigationItem() {}
+
+  /**
+   * Emits a custom event "MDCDrawer:closed" denoting the drawer has closed.
+   */
+  notifyClose() {}
+
+  /**
+   * Emits a custom event "MDCDrawer:opened" denoting the drawer has opened.
+   */
+  notifyOpen() {}
+
+  /**
+   * Traps focus on root element and focuses the active navigation element.
+   */
+  trapFocus() {}
+
+  /**
+   * Releases focus trap from root element which was set by `trapFocus`
+   * and restores focus to where it was prior to calling `trapFocus`.
+   */
+  releaseFocus() {}
+}
+
+/* unused harmony default export */ var _unused_webpack_default_export = (MDCDrawerAdapter);
+
+
+/***/ }),
 /* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (immutable) */ __webpack_exports__["remapEvent"] = remapEvent;
-/* harmony export (immutable) */ __webpack_exports__["getTransformPropertyName"] = getTransformPropertyName;
-/* harmony export (immutable) */ __webpack_exports__["supportsCssCustomProperties"] = supportsCssCustomProperties;
-/* harmony export (immutable) */ __webpack_exports__["applyPassive"] = applyPassive;
-/* harmony export (immutable) */ __webpack_exports__["saveElementTabState"] = saveElementTabState;
-/* harmony export (immutable) */ __webpack_exports__["restoreElementTabState"] = restoreElementTabState;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(13);
 /**
- * Copyright 2016 Google Inc. All Rights Reserved.
+ * @license
+ * Copyright 2018 Google Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 
-const TAB_DATA = 'data-mdc-tabindex';
-const TAB_DATA_HANDLED = 'data-mdc-tabindex-handled';
 
-let storedTransformPropertyName_;
-let supportsPassive_;
 
-// Remap touch events to pointer events, if the browser doesn't support touch events.
-function remapEvent(eventName, globalObj = window) {
-  if (!('ontouchstart' in globalObj.document)) {
-    switch (eventName) {
-    case 'touchstart':
-      return 'pointerdown';
-    case 'touchmove':
-      return 'pointermove';
-    case 'touchend':
-      return 'pointerup';
-    default:
-      return eventName;
+
+
+const ELEMENTS_KEY_ALLOWED_IN = ['input', 'button', 'textarea', 'select'];
+
+class MDCListFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum {string} */
+  static get strings() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */];
+  }
+
+  /** @return enum {string} */
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+  }
+
+  /**
+   * {@see MDCListAdapter} for typing information on parameters and return
+   * types.
+   * @return {!MDCListAdapter}
+   */
+  static get defaultAdapter() {
+    return /** @type {!MDCListAdapter} */ ({
+      getListItemCount: () => {},
+      getFocusedElementIndex: () => {},
+      setAttributeForElementIndex: () => {},
+      removeAttributeForElementIndex: () => {},
+      addClassForElementIndex: () => {},
+      removeClassForElementIndex: () => {},
+      focusItemAtIndex: () => {},
+      setTabIndexForListItemChildren: () => {},
+      followHref: () => {},
+    });
+  }
+
+  constructor(adapter = /** @type {!MDCListFoundation} */ ({})) {
+    super(Object.assign(MDCListFoundation.defaultAdapter, adapter));
+    /** {boolean} */
+    this.wrapFocus_ = false;
+    /** {boolean} */
+    this.isVertical_ = true;
+    /** {boolean} */
+    this.isSingleSelectionList_ = false;
+    /** {number} */
+    this.selectedIndex_ = -1;
+    /** {boolean} */
+    this.useActivatedClass_ = false;
+  }
+
+  /**
+   * Sets the private wrapFocus_ variable.
+   * @param {boolean} value
+   */
+  setWrapFocus(value) {
+    this.wrapFocus_ = value;
+  }
+
+  /**
+   * Sets the isVertical_ private variable.
+   * @param {boolean} value
+   */
+  setVerticalOrientation(value) {
+    this.isVertical_ = value;
+  }
+
+  /**
+   * Sets the isSingleSelectionList_ private variable.
+   * @param {boolean} value
+   */
+  setSingleSelection(value) {
+    this.isSingleSelectionList_ = value;
+  }
+
+  /**
+   * Sets the useActivatedClass_ private variable.
+   * @param {boolean} useActivated
+   */
+  setUseActivatedClass(useActivated) {
+    this.useActivatedClass_ = useActivated;
+  }
+
+  /** @param {number} index */
+  setSelectedIndex(index) {
+    if (index === this.selectedIndex_) {
+      return;
+    }
+
+    const className = this.useActivatedClass_
+      ? __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LIST_ITEM_ACTIVATED_CLASS : __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LIST_ITEM_SELECTED_CLASS;
+
+    if (this.selectedIndex_ >= 0) {
+      this.adapter_.removeAttributeForElementIndex(this.selectedIndex_, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ARIA_SELECTED);
+      this.adapter_.removeClassForElementIndex(this.selectedIndex_, className);
+      this.adapter_.setAttributeForElementIndex(this.selectedIndex_, 'tabindex', -1);
+    }
+
+    if (index >= 0 && this.adapter_.getListItemCount() > index) {
+      this.selectedIndex_ = index;
+      this.adapter_.setAttributeForElementIndex(this.selectedIndex_, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ARIA_SELECTED, true);
+      this.adapter_.addClassForElementIndex(this.selectedIndex_, className);
+      this.adapter_.setAttributeForElementIndex(this.selectedIndex_, 'tabindex', 0);
+
+      if (this.selectedIndex_ !== 0) {
+        this.adapter_.setAttributeForElementIndex(0, 'tabindex', -1);
+      }
     }
   }
 
-  return eventName;
-}
-
-// Choose the correct transform property to use on the current browser.
-function getTransformPropertyName(globalObj = window, forceRefresh = false) {
-  if (storedTransformPropertyName_ === undefined || forceRefresh) {
-    const el = globalObj.document.createElement('div');
-    const transformPropertyName = ('transform' in el.style ? 'transform' : '-webkit-transform');
-    storedTransformPropertyName_ = transformPropertyName;
-  }
-
-  return storedTransformPropertyName_;
-}
-
-// Determine whether the current browser supports CSS properties.
-function supportsCssCustomProperties(globalObj = window) {
-  if ('CSS' in globalObj) {
-    return globalObj.CSS.supports('(--color: red)');
-  }
-  return false;
-}
-
-// Determine whether the current browser supports passive event listeners, and if so, use them.
-function applyPassive(globalObj = window, forceRefresh = false) {
-  if (supportsPassive_ === undefined || forceRefresh) {
-    let isSupported = false;
-    try {
-      globalObj.document.addEventListener('test', null, {get passive() {
-        isSupported = true;
-      }});
-    } catch (e) { }
-
-    supportsPassive_ = isSupported;
-  }
-
-  return supportsPassive_ ? {passive: true} : false;
-}
-
-// Save the tab state for an element.
-function saveElementTabState(el) {
-  if (el.hasAttribute('tabindex')) {
-    el.setAttribute(TAB_DATA, el.getAttribute('tabindex'));
-  }
-  el.setAttribute(TAB_DATA_HANDLED, true);
-}
-
-// Restore the tab state for an element, if it was saved.
-function restoreElementTabState(el) {
-  // Only modify elements we've already handled, in case anything was dynamically added since we saved state.
-  if (el.hasAttribute(TAB_DATA_HANDLED)) {
-    if (el.hasAttribute(TAB_DATA)) {
-      el.setAttribute('tabindex', el.getAttribute(TAB_DATA));
-      el.removeAttribute(TAB_DATA);
-    } else {
-      el.removeAttribute('tabindex');
+  /**
+   * Focus in handler for the list items.
+   * @param evt
+   * @param {number} listItemIndex
+   */
+  handleFocusIn(evt, listItemIndex) {
+    if (listItemIndex >= 0) {
+      this.adapter_.setTabIndexForListItemChildren(listItemIndex, 0);
     }
-    el.removeAttribute(TAB_DATA_HANDLED);
+  }
+
+  /**
+   * Focus out handler for the list items.
+   * @param {Event} evt
+   * @param {number} listItemIndex
+   */
+  handleFocusOut(evt, listItemIndex) {
+    if (listItemIndex >= 0) {
+      this.adapter_.setTabIndexForListItemChildren(listItemIndex, -1);
+    }
+  }
+
+  /**
+   * Key handler for the list.
+   * @param {Event} evt
+   * @param {boolean} isRootListItem
+   * @param {number} listItemIndex
+   */
+  handleKeydown(evt, isRootListItem, listItemIndex) {
+    const arrowLeft = evt.key === 'ArrowLeft' || evt.keyCode === 37;
+    const arrowUp = evt.key === 'ArrowUp' || evt.keyCode === 38;
+    const arrowRight = evt.key === 'ArrowRight' || evt.keyCode === 39;
+    const arrowDown = evt.key === 'ArrowDown' || evt.keyCode === 40;
+    const isHome = evt.key === 'Home' || evt.keyCode === 36;
+    const isEnd = evt.key === 'End' || evt.keyCode === 35;
+    const isEnter = evt.key === 'Enter' || evt.keyCode === 13;
+    const isSpace = evt.key === 'Space' || evt.keyCode === 32;
+
+    let currentIndex = this.adapter_.getFocusedElementIndex();
+    if (currentIndex === -1) {
+      currentIndex = listItemIndex;
+      if (currentIndex < 0) {
+        // If this event doesn't have a mdc-list-item ancestor from the
+        // current list (not from a sublist), return early.
+        return;
+      }
+    }
+
+    if ((this.isVertical_ && arrowDown) || (!this.isVertical_ && arrowRight)) {
+      this.preventDefaultEvent_(evt);
+      this.focusNextElement(currentIndex);
+    } else if ((this.isVertical_ && arrowUp) || (!this.isVertical_ && arrowLeft)) {
+      this.preventDefaultEvent_(evt);
+      this.focusPrevElement(currentIndex);
+    } else if (isHome) {
+      this.preventDefaultEvent_(evt);
+      this.focusFirstElement();
+    } else if (isEnd) {
+      this.preventDefaultEvent_(evt);
+      this.focusLastElement();
+    } else if (this.isSingleSelectionList_ && (isEnter || isSpace)) {
+      this.preventDefaultEvent_(evt);
+      // Check if the space key was pressed on the list item or a child element.
+      if (isRootListItem) {
+        this.setSelectedIndex(currentIndex);
+
+        // Explicitly activate links, since we're preventing default on Enter, and Space doesn't activate them.
+        this.adapter_.followHref(currentIndex);
+      }
+    }
+  }
+
+  /**
+   * Click handler for the list.
+   */
+  handleClick() {
+    const currentIndex = this.adapter_.getFocusedElementIndex();
+
+    if (currentIndex === -1) return;
+
+    this.setSelectedIndex(currentIndex);
+  }
+
+  /**
+   * Ensures that preventDefault is only called if the containing element doesn't
+   * consume the event, and it will cause an unintended scroll.
+   * @param {Event} evt
+   * @private
+   */
+  preventDefaultEvent_(evt) {
+    const tagName = `${evt.target.tagName}`.toLowerCase();
+    if (ELEMENTS_KEY_ALLOWED_IN.indexOf(tagName) === -1) {
+      evt.preventDefault();
+    }
+  }
+
+  /**
+   * Focuses the next element on the list.
+   * @param {number} index
+   */
+  focusNextElement(index) {
+    const count = this.adapter_.getListItemCount();
+    let nextIndex = index + 1;
+    if (nextIndex >= count) {
+      if (this.wrapFocus_) {
+        nextIndex = 0;
+      } else {
+        // Return early because last item is already focused.
+        return;
+      }
+    }
+    this.adapter_.focusItemAtIndex(nextIndex);
+  }
+
+  /**
+   * Focuses the previous element on the list.
+   * @param {number} index
+   */
+  focusPrevElement(index) {
+    let prevIndex = index - 1;
+    if (prevIndex < 0) {
+      if (this.wrapFocus_) {
+        prevIndex = this.adapter_.getListItemCount() - 1;
+      } else {
+        // Return early because first item is already focused.
+        return;
+      }
+    }
+    this.adapter_.focusItemAtIndex(prevIndex);
+  }
+
+  focusFirstElement() {
+    if (this.adapter_.getListItemCount() > 0) {
+      this.adapter_.focusItemAtIndex(0);
+    }
+  }
+
+  focusLastElement() {
+    const lastIndex = this.adapter_.getListItemCount() - 1;
+    if (lastIndex >= 0) {
+      this.adapter_.focusItemAtIndex(lastIndex);
+    }
   }
 }
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCListFoundation);
 
 
 /***/ }),
@@ -447,27 +723,608 @@ function restoreElementTabState(el) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return MDCMenuSurfaceFoundation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AnchorMargin; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(17);
+/**
+ * @license
+ * Copyright 2018 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+/**
+ * @typedef {{
+ *   top: number,
+ *   right: number,
+ *   bottom: number,
+ *   left: number
+ * }}
+ */
+let AnchorMargin;
+
+/* eslint-disable no-unused-vars */
+/**
+ * @typedef {{
+ *   viewport: { width: number, height: number },
+ *   viewportDistance: {top: number, right: number, bottom: number, left: number},
+ *   anchorHeight: number,
+ *   anchorWidth: number,
+ *   surfaceHeight: number,
+ *   surfaceWidth: number,
+ *   bodyDimensions,
+ *   windowScroll,
+ * }}
+ */
+let AutoLayoutMeasurements;
+/* eslint-enable no-unused-vars */
+
+
+
+
+
+/**
+ * @extends {MDCFoundation<!MDCMenuSurfaceAdapter>}
+ */
+class MDCMenuSurfaceFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum{cssClasses} */
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* cssClasses */];
+  }
+
+  /** @return enum{string} */
+  static get strings() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["e" /* strings */];
+  }
+
+  /** @return enum {number} */
+  static get numbers() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["d" /* numbers */];
+  }
+
+  /** @return enum{number} */
+  static get Corner() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* Corner */];
+  }
+
+  /**
+   * {@see MDCMenuSurfaceAdapter} for typing information on parameters and return
+   * types.
+   * @return {!MDCMenuSurfaceAdapter}
+   */
+  static get defaultAdapter() {
+    return /** @type {!MDCMenuSurfaceAdapter} */ ({
+      addClass: () => {},
+      removeClass: () => {},
+      hasClass: () => false,
+      hasAnchor: () => false,
+      notifyClose: () => {},
+      notifyOpen: () => {},
+      isElementInContainer: () => false,
+      isRtl: () => false,
+      setTransformOrigin: () => {},
+      isFocused: () => false,
+      saveFocus: () => {},
+      restoreFocus: () => {},
+      isFirstElementFocused: () => {},
+      isLastElementFocused: () => {},
+      focusFirstElement: () => {},
+      focusLastElement: () => {},
+      getInnerDimensions: () => ({}),
+      getAnchorDimensions: () => ({}),
+      getWindowDimensions: () => ({}),
+      getBodyDimensions: () => ({}),
+      getWindowScroll: () => ({}),
+      setPosition: () => {},
+      setMaxHeight: () => {},
+    });
+  }
+
+  /** @param {!MDCMenuSurfaceAdapter} adapter */
+  constructor(adapter) {
+    super(Object.assign(MDCMenuSurfaceFoundation.defaultAdapter, adapter));
+
+    /** @private {boolean} */
+    this.isOpen_ = false;
+    /** @private {number} */
+    this.openAnimationEndTimerId_ = 0;
+    /** @private {number} */
+    this.closeAnimationEndTimerId_ = 0;
+    /** @private {number} */
+    this.animationRequestId_ = 0;
+    /** @private {!{ width: number, height: number }} */
+    this.dimensions_;
+    /** @private {!Corner} */
+    this.anchorCorner_ = __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* Corner */].TOP_START;
+    /** @private {!AnchorMargin} */
+    this.anchorMargin_ = {top: 0, right: 0, bottom: 0, left: 0};
+    /** @private {?AutoLayoutMeasurements} */
+    this.measures_ = null;
+    /** @private {boolean} */
+    this.quickOpen_ = false;
+    /** @private {boolean} */
+    this.hoistedElement_ = false;
+    /** @private {boolean} */
+    this.isFixedPosition_ = false;
+    /** @private {!{x: number, y: number}} */
+    this.position_ = {x: 0, y: 0};
+  }
+
+  init() {
+    const {ROOT, OPEN} = MDCMenuSurfaceFoundation.cssClasses;
+
+    if (!this.adapter_.hasClass(ROOT)) {
+      throw new Error(`${ROOT} class required in root element.`);
+    }
+
+    if (this.adapter_.hasClass(OPEN)) {
+      this.isOpen_ = true;
+    }
+  }
+
+  destroy() {
+    clearTimeout(this.openAnimationEndTimerId_);
+    clearTimeout(this.closeAnimationEndTimerId_);
+    // Cancel any currently running animations.
+    cancelAnimationFrame(this.animationRequestId_);
+  }
+
+  /**
+   * @param {!Corner} corner Default anchor corner alignment of top-left menu surface corner.
+   */
+  setAnchorCorner(corner) {
+    this.anchorCorner_ = corner;
+  }
+
+  /**
+   * @param {!AnchorMargin} margin set of margin values from anchor.
+   */
+  setAnchorMargin(margin) {
+    this.anchorMargin_.top = typeof margin.top === 'number' ? margin.top : 0;
+    this.anchorMargin_.right = typeof margin.right === 'number' ? margin.right : 0;
+    this.anchorMargin_.bottom = typeof margin.bottom === 'number' ? margin.bottom : 0;
+    this.anchorMargin_.left = typeof margin.left === 'number' ? margin.left : 0;
+  }
+
+  /**
+   * Used to indicate if the menu-surface is hoisted to the body.
+   * @param {boolean} isHoisted
+   */
+  setIsHoisted(isHoisted) {
+    this.hoistedElement_ = isHoisted;
+  }
+
+  /**
+   * Used to set the menu-surface calculations based on a fixed position menu.
+   * @param {boolean} isFixedPosition
+   */
+  setFixedPosition(isFixedPosition) {
+    this.isFixedPosition_ = isFixedPosition;
+  }
+
+  /**
+   * Sets the menu-surface position on the page.
+   * @param {number} x
+   * @param {number} y
+   */
+  setAbsolutePosition(x, y) {
+    this.position_.x = this.typeCheckisFinite_(x) ? x : 0;
+    this.position_.y = this.typeCheckisFinite_(y) ? y : 0;
+  }
+
+  /** @param {boolean} quickOpen */
+  setQuickOpen(quickOpen) {
+    this.quickOpen_ = quickOpen;
+  }
+
+  /**
+   * Handle clicks and close if not within menu-surface element.
+   * @param {!Event} evt
+   */
+  handleBodyClick(evt) {
+    const el = evt.target;
+
+    if (this.adapter_.isElementInContainer(el)) {
+      return;
+    }
+
+    this.close();
+  };
+
+  /**
+   * Handle keys that close the surface.
+   * @param {!Event} evt
+   */
+  handleKeydown(evt) {
+    const {keyCode, key, shiftKey} = evt;
+
+    const isEscape = key === 'Escape' || keyCode === 27;
+    const isTab = key === 'Tab' || keyCode === 9;
+
+    if (isEscape) {
+      this.close();
+    } else if (isTab) {
+      if (this.adapter_.isLastElementFocused() && !shiftKey) {
+        this.adapter_.focusFirstElement();
+        evt.preventDefault();
+      } else if (this.adapter_.isFirstElementFocused() && shiftKey) {
+        this.adapter_.focusLastElement();
+        evt.preventDefault();
+      }
+    }
+  }
+
+  /**
+   * @return {!AutoLayoutMeasurements} Measurements used to position menu surface popup.
+   */
+  getAutoLayoutMeasurements_() {
+    let anchorRect = this.adapter_.getAnchorDimensions();
+    const viewport = this.adapter_.getWindowDimensions();
+    const bodyDimensions = this.adapter_.getBodyDimensions();
+    const windowScroll = this.adapter_.getWindowScroll();
+
+    if (!anchorRect) {
+      anchorRect = /** @type {ClientRect} */ ({
+        x: this.position_.x,
+        y: this.position_.y,
+        top: this.position_.y,
+        bottom: this.position_.y,
+        left: this.position_.x,
+        right: this.position_.x,
+        height: 0,
+        width: 0,
+      });
+    }
+
+    return {
+      viewport,
+      bodyDimensions,
+      windowScroll,
+      viewportDistance: {
+        top: anchorRect.top,
+        right: viewport.width - anchorRect.right,
+        left: anchorRect.left,
+        bottom: viewport.height - anchorRect.bottom,
+      },
+      anchorHeight: anchorRect.height,
+      anchorWidth: anchorRect.width,
+      surfaceHeight: this.dimensions_.height,
+      surfaceWidth: this.dimensions_.width,
+    };
+  }
+
+  /**
+   * Computes the corner of the anchor from which to animate and position the menu surface.
+   * @return {!Corner}
+   * @private
+   */
+  getOriginCorner_() {
+    // Defaults: open from the top left.
+    let corner = __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* Corner */].TOP_LEFT;
+
+    const {viewportDistance, anchorHeight, anchorWidth, surfaceHeight, surfaceWidth} = this.measures_;
+    const isBottomAligned = Boolean(this.anchorCorner_ & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].BOTTOM);
+    const availableTop = isBottomAligned ? viewportDistance.top + anchorHeight + this.anchorMargin_.bottom
+      : viewportDistance.top + this.anchorMargin_.top;
+    const availableBottom = isBottomAligned ? viewportDistance.bottom - this.anchorMargin_.bottom
+      : viewportDistance.bottom + anchorHeight - this.anchorMargin_.top;
+
+    const topOverflow = surfaceHeight - availableTop;
+    const bottomOverflow = surfaceHeight - availableBottom;
+    if (bottomOverflow > 0 && topOverflow < bottomOverflow) {
+      corner |= __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].BOTTOM;
+    }
+
+    const isRtl = this.adapter_.isRtl();
+    const isFlipRtl = Boolean(this.anchorCorner_ & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].FLIP_RTL);
+    const avoidHorizontalOverlap = Boolean(this.anchorCorner_ & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].RIGHT);
+    const isAlignedRight = (avoidHorizontalOverlap && !isRtl) ||
+      (!avoidHorizontalOverlap && isFlipRtl && isRtl);
+    const availableLeft = isAlignedRight ? viewportDistance.left + anchorWidth + this.anchorMargin_.right :
+      viewportDistance.left + this.anchorMargin_.left;
+    const availableRight = isAlignedRight ? viewportDistance.right - this.anchorMargin_.right :
+      viewportDistance.right + anchorWidth - this.anchorMargin_.left;
+
+    const leftOverflow = surfaceWidth - availableLeft;
+    const rightOverflow = surfaceWidth - availableRight;
+
+    if ((leftOverflow < 0 && isAlignedRight && isRtl) ||
+        (avoidHorizontalOverlap && !isAlignedRight && leftOverflow < 0) ||
+        (rightOverflow > 0 && leftOverflow < rightOverflow)) {
+      corner |= __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].RIGHT;
+    }
+
+    return /** @type {Corner} */ (corner);
+  }
+
+  /**
+   * @param {!Corner} corner Origin corner of the menu surface.
+   * @return {number} Horizontal offset of menu surface origin corner from corresponding anchor corner.
+   * @private
+   */
+  getHorizontalOriginOffset_(corner) {
+    const {anchorWidth} = this.measures_;
+    // isRightAligned corresponds to using the 'right' property on the surface.
+    const isRightAligned = Boolean(corner & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].RIGHT);
+    const avoidHorizontalOverlap = Boolean(this.anchorCorner_ & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].RIGHT);
+
+    if (isRightAligned) {
+      const rightOffset = avoidHorizontalOverlap ? anchorWidth - this.anchorMargin_.left : this.anchorMargin_.right;
+
+      // For hoisted or fixed elements, adjust the offset by the difference between viewport width and body width so
+      // when we calculate the right value (`adjustPositionForHoistedElement_`) based on the element position,
+      // the right property is correct.
+      if (this.hoistedElement_ || this.isFixedPosition_) {
+        return rightOffset - (this.measures_.viewport.width - this.measures_.bodyDimensions.width);
+      }
+
+      return rightOffset;
+    }
+
+    return avoidHorizontalOverlap ? anchorWidth - this.anchorMargin_.right : this.anchorMargin_.left;
+  }
+
+  /**
+   * @param {!Corner} corner Origin corner of the menu surface.
+   * @return {number} Vertical offset of menu surface origin corner from corresponding anchor corner.
+   * @private
+   */
+  getVerticalOriginOffset_(corner) {
+    const {anchorHeight} = this.measures_;
+    const isBottomAligned = Boolean(corner & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].BOTTOM);
+    const avoidVerticalOverlap = Boolean(this.anchorCorner_ & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].BOTTOM);
+    let y = 0;
+
+    if (isBottomAligned) {
+      y = avoidVerticalOverlap ? anchorHeight - this.anchorMargin_.top : -this.anchorMargin_.bottom;
+    } else {
+      y = avoidVerticalOverlap ? (anchorHeight + this.anchorMargin_.bottom) : this.anchorMargin_.top;
+    }
+    return y;
+  }
+
+  /**
+   * @param {!Corner} corner Origin corner of the menu surface.
+   * @return {number} Maximum height of the menu surface, based on available space. 0 indicates should not be set.
+   * @private
+   */
+  getMenuSurfaceMaxHeight_(corner) {
+    let maxHeight = 0;
+    const {viewportDistance} = this.measures_;
+    const isBottomAligned = Boolean(corner & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].BOTTOM);
+    const {MARGIN_TO_EDGE} = MDCMenuSurfaceFoundation.numbers;
+
+    // When maximum height is not specified, it is handled from css.
+    if (isBottomAligned) {
+      maxHeight = viewportDistance.top + this.anchorMargin_.top - MARGIN_TO_EDGE;
+      if (!(this.anchorCorner_ & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].BOTTOM)) {
+        maxHeight += this.measures_.anchorHeight;
+      }
+    } else {
+      maxHeight = viewportDistance.bottom - this.anchorMargin_.bottom + this.measures_.anchorHeight - MARGIN_TO_EDGE;
+      if (this.anchorCorner_ & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].BOTTOM) {
+        maxHeight -= this.measures_.anchorHeight;
+      }
+    }
+
+    return maxHeight;
+  }
+
+  /** @private */
+  autoPosition_() {
+    // Compute measurements for autoposition methods reuse.
+    this.measures_ = this.getAutoLayoutMeasurements_();
+
+    const corner = this.getOriginCorner_();
+    const maxMenuSurfaceHeight = this.getMenuSurfaceMaxHeight_(corner);
+    const verticalAlignment = (corner & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].BOTTOM) ? 'bottom' : 'top';
+    let horizontalAlignment = (corner & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].RIGHT) ? 'right' : 'left';
+    const horizontalOffset = this.getHorizontalOriginOffset_(corner);
+    const verticalOffset = this.getVerticalOriginOffset_(corner);
+    let position = {
+      [horizontalAlignment]: horizontalOffset ? horizontalOffset : '0',
+      [verticalAlignment]: verticalOffset ? verticalOffset : '0',
+    };
+    const {anchorWidth, surfaceWidth} = this.measures_;
+    // Center align when anchor width is comparable or greater than menu surface, otherwise keep corner.
+    if (anchorWidth / surfaceWidth > __WEBPACK_IMPORTED_MODULE_2__constants__["d" /* numbers */].ANCHOR_TO_MENU_SURFACE_WIDTH_RATIO) {
+      horizontalAlignment = 'center';
+    }
+
+    // If the menu-surface has been hoisted to the body, it's no longer relative to the anchor element
+    if (this.hoistedElement_ || this.isFixedPosition_) {
+      position = this.adjustPositionForHoistedElement_(position);
+    }
+
+    for (const prop in position) {
+      if (position.hasOwnProperty(prop) && position[prop] !== '0') {
+        position[prop] = `${parseInt(position[prop], 10)}px`;
+      }
+    }
+
+    this.adapter_.setTransformOrigin(`${horizontalAlignment} ${verticalAlignment}`);
+    this.adapter_.setPosition(position);
+    this.adapter_.setMaxHeight(maxMenuSurfaceHeight ? maxMenuSurfaceHeight + 'px' : '');
+
+    // Clear measures after positioning is complete.
+    this.measures_ = null;
+  }
+
+  /**
+   * Calculates the offsets for positioning the menu-surface when the menu-surface has been
+   * hoisted to the body.
+   * @param {!{
+   *   top: (string|undefined),
+   *   right: (string|undefined),
+   *   bottom: (string|undefined),
+   *   left: (string|undefined)
+   * }} position
+   * @return {!{
+   *   top: (string|undefined),
+   *   right: (string|undefined),
+   *   bottom: (string|undefined),
+   *   left: (string|undefined)
+   * }} position
+   * @private
+   */
+  adjustPositionForHoistedElement_(position) {
+    const {bodyDimensions, windowScroll, viewport, viewportDistance} = this.measures_;
+
+    for (const prop in position) {
+      if (position.hasOwnProperty(prop)) {
+        // Hoisted surfaces need to have the anchor elements location on the page added to the
+        // position properties for proper alignment on the body.
+        if (viewportDistance.hasOwnProperty(prop)) {
+          position[prop] = parseInt(position[prop], 10) + viewportDistance[prop];
+        }
+
+        // Surfaces that are absolutely positioned need to have additional calculations for scroll
+        // and bottom positioning.
+        if (!this.isFixedPosition_ && prop === 'top') {
+          position[prop] = parseInt(position[prop], 10) + windowScroll.y;
+        } else if (!this.isFixedPosition_ && prop === 'bottom') {
+          position[prop] = bodyDimensions.height - (viewport.height + windowScroll.y) + parseInt(position[prop], 10);
+        }
+      }
+    }
+
+    return position;
+  }
+
+  /**
+   * Open the menu surface.
+   */
+  open() {
+    this.adapter_.saveFocus();
+
+    if (!this.quickOpen_) {
+      this.adapter_.addClass(MDCMenuSurfaceFoundation.cssClasses.ANIMATING_OPEN);
+    }
+
+    this.animationRequestId_ = requestAnimationFrame(() => {
+      this.adapter_.addClass(MDCMenuSurfaceFoundation.cssClasses.OPEN);
+      this.dimensions_ = this.adapter_.getInnerDimensions();
+      this.autoPosition_();
+      if (this.quickOpen_) {
+        this.adapter_.notifyOpen();
+      } else {
+        this.openAnimationEndTimerId_ = setTimeout(() => {
+          this.openAnimationEndTimerId_ = 0;
+          this.adapter_.removeClass(MDCMenuSurfaceFoundation.cssClasses.ANIMATING_OPEN);
+          this.adapter_.notifyOpen();
+        }, __WEBPACK_IMPORTED_MODULE_2__constants__["d" /* numbers */].TRANSITION_OPEN_DURATION);
+      }
+    });
+    this.isOpen_ = true;
+  }
+
+  /**
+   * Closes the menu surface.
+   */
+  close() {
+    if (!this.quickOpen_) {
+      this.adapter_.addClass(MDCMenuSurfaceFoundation.cssClasses.ANIMATING_CLOSED);
+    }
+
+    requestAnimationFrame(() => {
+      this.adapter_.removeClass(MDCMenuSurfaceFoundation.cssClasses.OPEN);
+      if (this.quickOpen_) {
+        this.adapter_.notifyClose();
+      } else {
+        this.closeAnimationEndTimerId_ = setTimeout(() => {
+          this.closeAnimationEndTimerId_ = 0;
+          this.adapter_.removeClass(MDCMenuSurfaceFoundation.cssClasses.ANIMATING_CLOSED);
+          this.adapter_.notifyClose();
+        }, __WEBPACK_IMPORTED_MODULE_2__constants__["d" /* numbers */].TRANSITION_CLOSE_DURATION);
+      }
+    });
+
+    this.isOpen_ = false;
+    this.maybeRestoreFocus_();
+  }
+
+  /**
+   * The last focused element when the menu surface was opened should regain focus, if the user is
+   * focused on or within the menu surface when it is closed.
+   * @private
+   */
+  maybeRestoreFocus_() {
+    if (this.adapter_.isFocused() || this.adapter_.isElementInContainer(document.activeElement)) {
+      this.adapter_.restoreFocus();
+    }
+  }
+
+  /** @return {boolean} */
+  isOpen() {
+    return this.isOpen_;
+  }
+
+  /**
+   * isFinite that doesn't force conversion to number type.
+   * Equivalent to Number.isFinite in ES2015, but is not included in IE11.
+   * @param {number} num
+   * @return {boolean}
+   * @private
+   */
+  typeCheckisFinite_(num) {
+    return typeof num === 'number' && isFinite(num);
+  }
+}
+
+
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(28);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MDCDialogFoundation", function() { return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"]; });
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "util", function() { return __WEBPACK_IMPORTED_MODULE_3__util__; });
 /**
- * Copyright 2017 Google Inc. All Rights Reserved.
+ * @license
+ * Copyright 2017 Google Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 
 
@@ -545,25 +1402,31 @@ class MDCDialog extends __WEBPACK_IMPORTED_MODULE_0__material_base_index__["a" /
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /**
  * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
+ * Copyright 2016 Google Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 
 /* eslint no-unused-vars: [2, {"args": "none"}] */
@@ -662,7 +1525,7 @@ class MDCRippleAdapter {
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -672,19 +1535,25 @@ class MDCRippleAdapter {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getNormalizedEventCoords; });
 /**
  * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
+ * Copyright 2016 Google Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 
 /**
@@ -819,7 +1688,1105 @@ function getNormalizedEventCoords(ev, pageOffset, clientRect) {
 
 
 /***/ }),
-/* 8 */
+/* 9 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__adapter__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_base_foundation__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(10);
+/**
+ * @license
+ * Copyright 2018 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+
+
+
+
+/**
+ * @extends {MDCFoundation<!MDCDrawerAdapter>}
+ */
+class MDCDismissibleDrawerFoundation extends __WEBPACK_IMPORTED_MODULE_1__material_base_foundation__["a" /* default */] {
+  /** @return enum {string} */
+  static get strings() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */];
+  }
+
+  /** @return enum {string} */
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+  }
+
+  static get defaultAdapter() {
+    return /** @type {!MDCDrawerAdapter} */ ({
+      addClass: (/* className: string */) => {},
+      removeClass: (/* className: string */) => {},
+      hasClass: (/* className: string */) => {},
+      elementHasClass: (/* element: !Element, className: string */) => {},
+      computeBoundingRect: () => {},
+      notifyClose: () => {},
+      notifyOpen: () => {},
+      saveFocus: () => {},
+      restoreFocus: () => {},
+      focusActiveNavigationItem: () => {},
+      trapFocus: () => {},
+      releaseFocus: () => {},
+    });
+  }
+
+  /**
+   * Function to open the drawer.
+   */
+  open() {
+    if (this.isOpen() || this.isOpening() || this.isClosing()) {
+      return;
+    }
+
+    this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].OPEN);
+    this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].ANIMATE);
+    this.adapter_.computeBoundingRect(); // Force reflow.
+    this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].OPENING);
+
+    this.adapter_.saveFocus();
+  }
+
+  /**
+   * Function to close the drawer.
+   */
+  close() {
+    if (!this.isOpen() || this.isOpening() || this.isClosing()) {
+      return;
+    }
+
+    this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].CLOSING);
+  }
+
+  /**
+   * Extension point for when drawer finishes open animation.
+   * @protected
+   */
+  opened() {}
+
+  /**
+   * Extension point for when drawer finishes close animation.
+   * @protected
+   */
+  closed() {}
+
+  /**
+   * Returns true if drawer is in open state.
+   * @return {boolean}
+   */
+  isOpen() {
+    return this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].OPEN);
+  }
+
+  /**
+   * Returns true if drawer is animating open.
+   * @return {boolean}
+   */
+  isOpening() {
+    return this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].OPENING);
+  }
+
+  /**
+   * Returns true if drawer is animating closed.
+   * @return {boolean}
+   */
+  isClosing() {
+    return this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].CLOSING);
+  }
+
+  /**
+   * Keydown handler to close drawer when key is escape.
+   * @param evt
+   */
+  handleKeydown(evt) {
+    const {keyCode, key} = evt;
+
+    const isEscape = key === 'Escape' || keyCode === 27;
+    if (isEscape) {
+      this.close();
+    }
+  }
+
+  /**
+   * Handles a transition end event on the root element.
+   * @param {!Event} evt
+   */
+  handleTransitionEnd(evt) {
+    const {OPENING, CLOSING, OPEN, ANIMATE, ROOT} = __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+
+    // In Edge, transitionend on ripple pseudo-elements yields a target without classList, so check for Element first.
+    const isElement = evt.target instanceof Element;
+    if (!isElement || !this.adapter_.elementHasClass(/** @type {!Element} */ (evt.target), ROOT)) {
+      return;
+    }
+
+    if (this.isClosing()) {
+      this.adapter_.removeClass(OPEN);
+      this.adapter_.restoreFocus();
+      this.closed();
+      this.adapter_.notifyClose();
+    } else {
+      this.adapter_.focusActiveNavigationItem();
+      this.opened();
+      this.adapter_.notifyOpen();
+    }
+
+    this.adapter_.removeClass(ANIMATE);
+    this.adapter_.removeClass(OPENING);
+    this.adapter_.removeClass(CLOSING);
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCDismissibleDrawerFoundation);
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return strings; });
+/**
+ * @license
+ * Copyright 2016 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+/** @enum {string} */
+const cssClasses = {
+  ROOT: 'mdc-drawer',
+  DISMISSIBLE: 'mdc-drawer--dismissible',
+  MODAL: 'mdc-drawer--modal',
+  OPEN: 'mdc-drawer--open',
+  ANIMATE: 'mdc-drawer--animate',
+  OPENING: 'mdc-drawer--opening',
+  CLOSING: 'mdc-drawer--closing',
+};
+
+/** @enum {string} */
+const strings = {
+  APP_CONTENT_SELECTOR: '.mdc-drawer-app-content',
+  SCRIM_SELECTOR: '.mdc-drawer-scrim',
+  CLOSE_EVENT: 'MDCDrawer:closed',
+  OPEN_EVENT: 'MDCDrawer:opened',
+};
+
+
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCList; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(13);
+/* unused harmony reexport MDCListFoundation */
+/**
+ * @license
+ * Copyright 2018 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+
+
+
+
+
+/**
+ * @extends MDCComponent<!MDCListFoundation>
+ */
+class MDCList extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
+  /** @param {...?} args */
+  constructor(...args) {
+    super(...args);
+    /** @private {!Function} */
+    this.handleKeydown_;
+    /** @private {!Function} */
+    this.handleClick_;
+    /** @private {!Function} */
+    this.focusInEventListener_;
+    /** @private {!Function} */
+    this.focusOutEventListener_;
+  }
+
+  /**
+   * @param {!Element} root
+   * @return {!MDCList}
+   */
+  static attachTo(root) {
+    return new MDCList(root);
+  }
+
+  destroy() {
+    this.root_.removeEventListener('keydown', this.handleKeydown_);
+    this.root_.removeEventListener('click', this.handleClick_);
+    this.root_.removeEventListener('focusin', this.focusInEventListener_);
+    this.root_.removeEventListener('focusout', this.focusOutEventListener_);
+  }
+
+  initialSyncWithDOM() {
+    this.handleClick_ = this.foundation_.handleClick.bind(this.foundation_);
+    this.handleKeydown_ = this.handleKeydownEvent_.bind(this);
+    this.focusInEventListener_ = this.handleFocusInEvent_.bind(this);
+    this.focusOutEventListener_ = this.handleFocusOutEvent_.bind(this);
+    this.root_.addEventListener('keydown', this.handleKeydown_);
+    this.root_.addEventListener('focusin', this.focusInEventListener_);
+    this.root_.addEventListener('focusout', this.focusOutEventListener_);
+    this.layout();
+    this.initializeListType();
+  }
+
+  layout() {
+    const direction = this.root_.getAttribute(__WEBPACK_IMPORTED_MODULE_3__constants__["b" /* strings */].ARIA_ORIENTATION);
+    this.vertical = direction !== __WEBPACK_IMPORTED_MODULE_3__constants__["b" /* strings */].ARIA_ORIENTATION_HORIZONTAL;
+
+    // List items need to have at least tabindex=-1 to be focusable.
+    [].slice.call(this.root_.querySelectorAll('.mdc-list-item:not([tabindex])'))
+      .forEach((ele) => {
+        ele.setAttribute('tabindex', -1);
+      });
+
+    // Child button/a elements are not tabbable until the list item is focused.
+    [].slice.call(this.root_.querySelectorAll(__WEBPACK_IMPORTED_MODULE_3__constants__["b" /* strings */].FOCUSABLE_CHILD_ELEMENTS))
+      .forEach((ele) => ele.setAttribute('tabindex', -1));
+  }
+
+  /**
+   * Used to figure out which list item this event is targetting. Or returns -1 if
+   * there is no list item
+   * @param {Event} evt
+   * @private
+   */
+  getListItemIndex_(evt) {
+    let eventTarget = /** @type {HTMLElement} */ (evt.target);
+    let index = -1;
+
+    // Find the first ancestor that is a list item or the list.
+    while (!eventTarget.classList.contains(__WEBPACK_IMPORTED_MODULE_3__constants__["a" /* cssClasses */].LIST_ITEM_CLASS)
+    && !eventTarget.classList.contains(__WEBPACK_IMPORTED_MODULE_3__constants__["a" /* cssClasses */].ROOT)) {
+      eventTarget = eventTarget.parentElement;
+    }
+
+    // Get the index of the element if it is a list item.
+    if (eventTarget.classList.contains(__WEBPACK_IMPORTED_MODULE_3__constants__["a" /* cssClasses */].LIST_ITEM_CLASS)) {
+      index = this.listElements.indexOf(eventTarget);
+    }
+
+    return index;
+  }
+
+  /**
+   * Used to figure out which element was clicked before sending the event to the foundation.
+   * @param {Event} evt
+   * @private
+   */
+  handleFocusInEvent_(evt) {
+    const index = this.getListItemIndex_(evt);
+    this.foundation_.handleFocusIn(evt, index);
+  }
+
+  /**
+   * Used to figure out which element was clicked before sending the event to the foundation.
+   * @param {Event} evt
+   * @private
+   */
+  handleFocusOutEvent_(evt) {
+    const index = this.getListItemIndex_(evt);
+    this.foundation_.handleFocusOut(evt, index);
+  }
+
+  /**
+   * Used to figure out which element was clicked before sending the event to the foundation.
+   * @param {Event} evt
+   * @private
+   */
+  handleKeydownEvent_(evt) {
+    const index = this.getListItemIndex_(evt);
+
+    if (index >= 0) {
+      this.foundation_.handleKeydown(evt, evt.target.classList.contains(__WEBPACK_IMPORTED_MODULE_3__constants__["a" /* cssClasses */].LIST_ITEM_CLASS), index);
+    }
+  }
+
+  initializeListType() {
+    // Automatically set single selection if selected/activated classes are present.
+    const preselectedElement =
+      this.root_.querySelector(`.${__WEBPACK_IMPORTED_MODULE_3__constants__["a" /* cssClasses */].LIST_ITEM_ACTIVATED_CLASS}, .${__WEBPACK_IMPORTED_MODULE_3__constants__["a" /* cssClasses */].LIST_ITEM_SELECTED_CLASS}`);
+
+    if (preselectedElement) {
+      if (preselectedElement.classList.contains(__WEBPACK_IMPORTED_MODULE_3__constants__["a" /* cssClasses */].LIST_ITEM_ACTIVATED_CLASS)) {
+        this.foundation_.setUseActivatedClass(true);
+      }
+
+      this.singleSelection = true;
+      this.selectedIndex = this.listElements.indexOf(preselectedElement);
+    }
+  }
+
+  /** @param {boolean} value */
+  set vertical(value) {
+    this.foundation_.setVerticalOrientation(value);
+  }
+
+  /** @return Array<!Element>*/
+  get listElements() {
+    return [].slice.call(this.root_.querySelectorAll(__WEBPACK_IMPORTED_MODULE_3__constants__["b" /* strings */].ENABLED_ITEMS_SELECTOR));
+  }
+
+  /** @param {boolean} value */
+  set wrapFocus(value) {
+    this.foundation_.setWrapFocus(value);
+  }
+
+  /** @param {boolean} isSingleSelectionList */
+  set singleSelection(isSingleSelectionList) {
+    if (isSingleSelectionList) {
+      this.root_.addEventListener('click', this.handleClick_);
+    } else {
+      this.root_.removeEventListener('click', this.handleClick_);
+    }
+
+    this.foundation_.setSingleSelection(isSingleSelectionList);
+  }
+
+  /** @param {number} index */
+  set selectedIndex(index) {
+    this.foundation_.setSelectedIndex(index);
+  }
+
+  /** @return {!MDCListFoundation} */
+  getDefaultFoundation() {
+    return new __WEBPACK_IMPORTED_MODULE_1__foundation__["a" /* default */](/** @type {!MDCListAdapter} */ (Object.assign({
+      getListItemCount: () => this.listElements.length,
+      getFocusedElementIndex: () => this.listElements.indexOf(document.activeElement),
+      setAttributeForElementIndex: (index, attr, value) => {
+        const element = this.listElements[index];
+        if (element) {
+          element.setAttribute(attr, value);
+        }
+      },
+      removeAttributeForElementIndex: (index, attr) => {
+        const element = this.listElements[index];
+        if (element) {
+          element.removeAttribute(attr);
+        }
+      },
+      addClassForElementIndex: (index, className) => {
+        const element = this.listElements[index];
+        if (element) {
+          element.classList.add(className);
+        }
+      },
+      removeClassForElementIndex: (index, className) => {
+        const element = this.listElements[index];
+        if (element) {
+          element.classList.remove(className);
+        }
+      },
+      focusItemAtIndex: (index) => {
+        const element = this.listElements[index];
+        if (element) {
+          element.focus();
+        }
+      },
+      setTabIndexForListItemChildren: (listItemIndex, tabIndexValue) => {
+        const element = this.listElements[listItemIndex];
+        const listItemChildren = [].slice.call(element.querySelectorAll(__WEBPACK_IMPORTED_MODULE_3__constants__["b" /* strings */].FOCUSABLE_CHILD_ELEMENTS));
+        listItemChildren.forEach((ele) => ele.setAttribute('tabindex', tabIndexValue));
+      },
+      followHref: (index) => {
+        const listItem = this.listElements[index];
+        if (listItem && listItem.href) {
+          listItem.click();
+        }
+      },
+    })));
+  }
+}
+
+
+
+
+/***/ }),
+/* 12 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/**
+ * @license
+ * Copyright 2018 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+/* eslint no-unused-vars: [2, {"args": "none"}] */
+
+/**
+ * Adapter for MDC List. Provides an interface for managing focus.
+ *
+ * Additionally, provides type information for the adapter to the Closure
+ * compiler.
+ *
+ * Implement this adapter for your framework of choice to delegate updates to
+ * the component in your framework of choice. See architecture documentation
+ * for more details.
+ * https://github.com/material-components/material-components-web/blob/master/docs/code/architecture.md
+ *
+ * @record
+ */
+class MDCListAdapter {
+  /** @return {number} */
+  getListItemCount() {}
+
+  /**
+   * @return {number} */
+  getFocusedElementIndex() {}
+
+  /**
+   * @param {number} index
+   * @param {string} attribute
+   * @param {string} value
+   */
+  setAttributeForElementIndex(index, attribute, value) {}
+
+  /**
+   * @param {number} index
+   * @param {string} attribute
+   */
+  removeAttributeForElementIndex(index, attribute) {}
+
+  /**
+   * @param {number} index
+   * @param {string} className
+   */
+  addClassForElementIndex(index, className) {}
+
+  /**
+   * @param {number} index
+   * @param {string} className
+   */
+  removeClassForElementIndex(index, className) {}
+
+  /**
+   * Focuses list item at the index specified.
+   * @param {number} index
+   */
+  focusItemAtIndex(index) {}
+
+  /**
+   * Sets the tabindex to the value specified for all button/a element children of
+   * the list item at the index specified.
+   * @param {number} listItemIndex
+   * @param {number} tabIndexValue
+   */
+  setTabIndexForListItemChildren(listItemIndex, tabIndexValue) {}
+
+  /**
+   * If the given element has an href, follows the link.
+   * @param {!Element} ele
+   */
+  followHref(ele) {}
+}
+
+/* unused harmony default export */ var _unused_webpack_default_export = (MDCListAdapter);
+
+
+/***/ }),
+/* 13 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return strings; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
+/**
+ * @license
+ * Copyright 2018 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+/** @enum {string} */
+const cssClasses = {
+  ROOT: 'mdc-list',
+  LIST_ITEM_CLASS: 'mdc-list-item',
+  LIST_ITEM_SELECTED_CLASS: 'mdc-list-item--selected',
+  LIST_ITEM_ACTIVATED_CLASS: 'mdc-list-item--activated',
+};
+
+/** @enum {string} */
+const strings = {
+  ARIA_ORIENTATION: 'aria-orientation',
+  ARIA_ORIENTATION_HORIZONTAL: 'horizontal',
+  ARIA_SELECTED: 'aria-selected',
+  FOCUSABLE_CHILD_ELEMENTS: `.${cssClasses.LIST_ITEM_CLASS} button:not(:disabled), .${cssClasses.LIST_ITEM_CLASS} a`,
+  ENABLED_ITEMS_SELECTOR: '.mdc-list-item:not(.mdc-list-item--disabled)',
+};
+
+
+
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var tabbable = __webpack_require__(36);
+var xtend = __webpack_require__(37);
+
+var listeningFocusTrap = null;
+
+function focusTrap(element, userOptions) {
+  var doc = document;
+  var container =
+    typeof element === 'string' ? doc.querySelector(element) : element;
+
+  var config = xtend(
+    {
+      returnFocusOnDeactivate: true,
+      escapeDeactivates: true
+    },
+    userOptions
+  );
+
+  var state = {
+    firstTabbableNode: null,
+    lastTabbableNode: null,
+    nodeFocusedBeforeActivation: null,
+    mostRecentlyFocusedNode: null,
+    active: false,
+    paused: false
+  };
+
+  var trap = {
+    activate: activate,
+    deactivate: deactivate,
+    pause: pause,
+    unpause: unpause
+  };
+
+  return trap;
+
+  function activate(activateOptions) {
+    if (state.active) return;
+
+    updateTabbableNodes();
+
+    state.active = true;
+    state.paused = false;
+    state.nodeFocusedBeforeActivation = doc.activeElement;
+
+    var onActivate =
+      activateOptions && activateOptions.onActivate
+        ? activateOptions.onActivate
+        : config.onActivate;
+    if (onActivate) {
+      onActivate();
+    }
+
+    addListeners();
+    return trap;
+  }
+
+  function deactivate(deactivateOptions) {
+    if (!state.active) return;
+
+    removeListeners();
+    state.active = false;
+    state.paused = false;
+
+    var onDeactivate =
+      deactivateOptions && deactivateOptions.onDeactivate !== undefined
+        ? deactivateOptions.onDeactivate
+        : config.onDeactivate;
+    if (onDeactivate) {
+      onDeactivate();
+    }
+
+    var returnFocus =
+      deactivateOptions && deactivateOptions.returnFocus !== undefined
+        ? deactivateOptions.returnFocus
+        : config.returnFocusOnDeactivate;
+    if (returnFocus) {
+      delay(function() {
+        tryFocus(state.nodeFocusedBeforeActivation);
+      });
+    }
+
+    return trap;
+  }
+
+  function pause() {
+    if (state.paused || !state.active) return;
+    state.paused = true;
+    removeListeners();
+  }
+
+  function unpause() {
+    if (!state.paused || !state.active) return;
+    state.paused = false;
+    addListeners();
+  }
+
+  function addListeners() {
+    if (!state.active) return;
+
+    // There can be only one listening focus trap at a time
+    if (listeningFocusTrap) {
+      listeningFocusTrap.pause();
+    }
+    listeningFocusTrap = trap;
+
+    updateTabbableNodes();
+
+    // Delay ensures that the focused element doesn't capture the event
+    // that caused the focus trap activation.
+    delay(function() {
+      tryFocus(getInitialFocusNode());
+    });
+    doc.addEventListener('focusin', checkFocusIn, true);
+    doc.addEventListener('mousedown', checkPointerDown, true);
+    doc.addEventListener('touchstart', checkPointerDown, true);
+    doc.addEventListener('click', checkClick, true);
+    doc.addEventListener('keydown', checkKey, true);
+
+    return trap;
+  }
+
+  function removeListeners() {
+    if (!state.active || listeningFocusTrap !== trap) return;
+
+    doc.removeEventListener('focusin', checkFocusIn, true);
+    doc.removeEventListener('mousedown', checkPointerDown, true);
+    doc.removeEventListener('touchstart', checkPointerDown, true);
+    doc.removeEventListener('click', checkClick, true);
+    doc.removeEventListener('keydown', checkKey, true);
+
+    listeningFocusTrap = null;
+
+    return trap;
+  }
+
+  function getNodeForOption(optionName) {
+    var optionValue = config[optionName];
+    var node = optionValue;
+    if (!optionValue) {
+      return null;
+    }
+    if (typeof optionValue === 'string') {
+      node = doc.querySelector(optionValue);
+      if (!node) {
+        throw new Error('`' + optionName + '` refers to no known node');
+      }
+    }
+    if (typeof optionValue === 'function') {
+      node = optionValue();
+      if (!node) {
+        throw new Error('`' + optionName + '` did not return a node');
+      }
+    }
+    return node;
+  }
+
+  function getInitialFocusNode() {
+    var node;
+    if (getNodeForOption('initialFocus') !== null) {
+      node = getNodeForOption('initialFocus');
+    } else if (container.contains(doc.activeElement)) {
+      node = doc.activeElement;
+    } else {
+      node = state.firstTabbableNode || getNodeForOption('fallbackFocus');
+    }
+
+    if (!node) {
+      throw new Error(
+        "You can't have a focus-trap without at least one focusable element"
+      );
+    }
+
+    return node;
+  }
+
+  // This needs to be done on mousedown and touchstart instead of click
+  // so that it precedes the focus event.
+  function checkPointerDown(e) {
+    if (container.contains(e.target)) return;
+    if (config.clickOutsideDeactivates) {
+      deactivate({
+        returnFocus: !tabbable.isFocusable(e.target)
+      });
+    } else {
+      e.preventDefault();
+    }
+  }
+
+  // In case focus escapes the trap for some strange reason, pull it back in.
+  function checkFocusIn(e) {
+    // In Firefox when you Tab out of an iframe the Document is briefly focused.
+    if (container.contains(e.target) || e.target instanceof Document) {
+      return;
+    }
+    e.stopImmediatePropagation();
+    tryFocus(state.mostRecentlyFocusedNode || getInitialFocusNode());
+  }
+
+  function checkKey(e) {
+    if (config.escapeDeactivates !== false && isEscapeEvent(e)) {
+      e.preventDefault();
+      deactivate();
+      return;
+    }
+    if (isTabEvent(e)) {
+      checkTab(e);
+      return;
+    }
+  }
+
+  // Hijack Tab events on the first and last focusable nodes of the trap,
+  // in order to prevent focus from escaping. If it escapes for even a
+  // moment it can end up scrolling the page and causing confusion so we
+  // kind of need to capture the action at the keydown phase.
+  function checkTab(e) {
+    updateTabbableNodes();
+    if (e.shiftKey && e.target === state.firstTabbableNode) {
+      e.preventDefault();
+      tryFocus(state.lastTabbableNode);
+      return;
+    }
+    if (!e.shiftKey && e.target === state.lastTabbableNode) {
+      e.preventDefault();
+      tryFocus(state.firstTabbableNode);
+      return;
+    }
+  }
+
+  function checkClick(e) {
+    if (config.clickOutsideDeactivates) return;
+    if (container.contains(e.target)) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+  }
+
+  function updateTabbableNodes() {
+    var tabbableNodes = tabbable(container);
+    state.firstTabbableNode = tabbableNodes[0] || getInitialFocusNode();
+    state.lastTabbableNode =
+      tabbableNodes[tabbableNodes.length - 1] || getInitialFocusNode();
+  }
+
+  function tryFocus(node) {
+    if (node === doc.activeElement) return;
+    if (!node || !node.focus) {
+      tryFocus(getInitialFocusNode());
+      return;
+    }
+
+    node.focus();
+    state.mostRecentlyFocusedNode = node;
+    if (isSelectableInput(node)) {
+      node.select();
+    }
+  }
+}
+
+function isSelectableInput(node) {
+  return (
+    node.tagName &&
+    node.tagName.toLowerCase() === 'input' &&
+    typeof node.select === 'function'
+  );
+}
+
+function isEscapeEvent(e) {
+  return e.key === 'Escape' || e.key === 'Esc' || e.keyCode === 27;
+}
+
+function isTabEvent(e) {
+  return e.key === 'Tab' || e.keyCode === 9;
+}
+
+function delay(fn) {
+  return setTimeout(fn, 0);
+}
+
+module.exports = focusTrap;
+
+
+/***/ }),
+/* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return strings; });
+/**
+ * @license
+ * Copyright 2018 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+/** @enum {string} */
+const cssClasses = {
+  ROOT: 'mdc-menu',
+  MENU_SELECTED_LIST_ITEM: 'mdc-menu-item--selected',
+  MENU_SELECTION_GROUP: 'mdc-menu__selection-group',
+};
+
+/** @enum {string} */
+const strings = {
+  SELECTED_EVENT: 'MDCMenu:selected',
+  ARIA_SELECTED_ATTR: 'aria-selected',
+  LIST_SELECTOR: '.mdc-list',
+  CHECKBOX_SELECTOR: 'input[type="checkbox"]',
+};
+
+
+
+
+/***/ }),
+/* 16 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export MDCMenuSurfaceAdapter */
+/**
+ * @license
+ * Copyright 2018 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+/* eslint no-unused-vars: [2, {"args": "none"}] */
+
+/**
+ * Adapter for MDCMenuSurface. Provides an interface for managing
+ * - classes
+ * - dom
+ * - focus
+ * - position
+ * - dimensions
+ * - event handlers
+ *
+ * Additionally, provides type information for the adapter to the Closure
+ * compiler.
+ *
+ * Implement this adapter for your framework of choice to delegate updates to
+ * the component in your framework of choice. See architecture documentation
+ * for more details.
+ * https://github.com/material-components/material-components-web/blob/master/docs/code/architecture.md
+ *
+ * @record
+ */
+class MDCMenuSurfaceAdapter {
+  /** @param {string} className */
+  addClass(className) {}
+
+  /** @param {string} className */
+  removeClass(className) {}
+
+  /**
+   * @param {string} className
+   * @return {boolean}
+   */
+  hasClass(className) {}
+
+  /** @return {boolean} */
+  hasAnchor() {}
+
+  /** Emits an event when the menu surface is closed. */
+  notifyClose() {}
+
+  /** Emits an event when the menu surface is opened. */
+  notifyOpen() {}
+
+  /**
+   * @return {boolean}
+   * @param {EventTarget} el
+   */
+  isElementInContainer(el) {}
+
+  /** @return {boolean} */
+  isRtl() {}
+
+  /** @param {string} origin */
+  setTransformOrigin(origin) {}
+
+  /** @return {boolean} */
+  isFocused() {}
+
+  /** Saves the element that was focused before the menu surface was opened. */
+  saveFocus() {}
+
+  /** Restores focus to the element that was focused before the menu surface was opened. */
+  restoreFocus() {}
+
+  /** @return {boolean} */
+  isFirstElementFocused() {}
+
+  /** @return {boolean} */
+  isLastElementFocused() {}
+
+  /** Focuses the first focusable element in the menu-surface. */
+  focusFirstElement() {}
+
+  /** Focuses the first focusable element in the menu-surface. */
+  focusLastElement() {}
+
+  /** @return {!{width: number, height: number}} */
+  getInnerDimensions() {}
+
+  /** @return {!{width: number, height: number, top: number, right: number, bottom: number, left: number}} */
+  getAnchorDimensions() {}
+
+  /** @return {!{ width: number, height: number }} */
+  getWindowDimensions() {}
+
+  /** @return {!{ width: number, height: number }} */
+  getBodyDimensions() {}
+
+  /** @return {!{ width: number, height: number }} */
+  getWindowScroll() {}
+
+  /** @param {!{
+  *   top: (string|undefined),
+  *   right: (string|undefined),
+  *   bottom: (string|undefined),
+  *   left: (string|undefined)
+  * }} position */
+  setPosition(position) {}
+
+  /** @param {string} height */
+  setMaxHeight(height) {}
+}
+
+
+
+
+/***/ }),
+/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -830,54 +2797,55 @@ function getNormalizedEventCoords(ev, pageOffset, clientRect) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Corner; });
 /**
  * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
+ * Copyright 2018 Google Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 
 /** @enum {string} */
 const cssClasses = {
-  ROOT: 'mdc-menu',
-  OPEN: 'mdc-menu--open',
-  ANIMATING_OPEN: 'mdc-menu--animating-open',
-  ANIMATING_CLOSED: 'mdc-menu--animating-closed',
-  SELECTED_LIST_ITEM: 'mdc-list-item--selected',
+  ANCHOR: 'mdc-menu-surface--anchor',
+  ANIMATING_CLOSED: 'mdc-menu-surface--animating-closed',
+  ANIMATING_OPEN: 'mdc-menu-surface--animating-open',
+  FIXED: 'mdc-menu-surface--fixed',
+  OPEN: 'mdc-menu-surface--open',
+  ROOT: 'mdc-menu-surface',
 };
 
 /** @enum {string} */
 const strings = {
-  ITEMS_SELECTOR: '.mdc-menu__items',
-  SELECTED_EVENT: 'MDCMenu:selected',
-  CANCEL_EVENT: 'MDCMenu:cancel',
-  ARIA_DISABLED_ATTR: 'aria-disabled',
+  CLOSED_EVENT: 'MDCMenuSurface:closed',
+  OPENED_EVENT: 'MDCMenuSurface:opened',
+  FOCUSABLE_ELEMENTS: 'button:not(:disabled), [href]:not([aria-disabled="true"]), input:not(:disabled), ' +
+  'select:not(:disabled), textarea:not(:disabled), [tabindex]:not([tabindex="-1"]):not([aria-disabled="true"])',
 };
 
 /** @enum {number} */
 const numbers = {
-  // Amount of time to wait before triggering a selected event on the menu. Note that this time
-  // will most likely be bumped up once interactive lists are supported to allow for the ripple to
-  // animate before closing the menu
-  SELECTED_TRIGGER_DELAY: 50,
-  // Total duration of menu open animation.
+  // Total duration of menu-surface open animation.
   TRANSITION_OPEN_DURATION: 120,
-  // Total duration of menu close animation.
+  // Total duration of menu-surface close animation.
   TRANSITION_CLOSE_DURATION: 75,
-  // Margin left to the edge of the viewport when menu is at maximum possible height.
+  // Margin left to the edge of the viewport when menu-surface is at maximum possible height.
   MARGIN_TO_EDGE: 32,
-  // Ratio of anchor width to menu width for switching from corner positioning to center positioning.
-  ANCHOR_TO_MENU_WIDTH_RATIO: 0.67,
-  // Ratio of vertical offset to menu height for switching from corner to mid-way origin positioning.
-  OFFSET_TO_MENU_HEIGHT_RATIO: 0.1,
+  // Ratio of anchor width to menu-surface width for switching from corner positioning to center positioning.
+  ANCHOR_TO_MENU_SURFACE_WIDTH_RATIO: 0.67,
 };
 
 /**
@@ -892,7 +2860,7 @@ const CornerBit = {
 };
 
 /**
- * Enum for representing an element corner for positioning the menu.
+ * Enum for representing an element corner for positioning the menu-surface.
  *
  * The START constants map to LEFT if element directionality is left
  * to right and RIGHT if the directionality is right to left.
@@ -914,9 +2882,8 @@ const Corner = {
 
 
 
-
 /***/ }),
-/* 9 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -11287,15 +13254,15 @@ return jQuery;
 
 
 /***/ }),
-/* 10 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(11);
-module.exports = __webpack_require__(42);
+__webpack_require__(20);
+module.exports = __webpack_require__(48);
 
 
 /***/ }),
-/* 11 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11303,7 +13270,7 @@ module.exports = __webpack_require__(42);
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _components = __webpack_require__(12);
+var _components = __webpack_require__(21);
 
 var _components2 = _interopRequireDefault(_components);
 
@@ -11360,7 +13327,7 @@ var app = function app() {
 window.addEventListener('load', app);
 
 /***/ }),
-/* 12 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11370,27 +13337,27 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _VintDialogActivation = __webpack_require__(13);
+var _VintDialogActivation = __webpack_require__(22);
 
 var _VintDialogActivation2 = _interopRequireDefault(_VintDialogActivation);
 
-var _VintDialogContainer = __webpack_require__(22);
+var _VintDialogContainer = __webpack_require__(31);
 
 var _VintDialogContainer2 = _interopRequireDefault(_VintDialogContainer);
 
-var _VintDrawerActivation = __webpack_require__(23);
+var _VintDrawerActivation = __webpack_require__(32);
 
 var _VintDrawerActivation2 = _interopRequireDefault(_VintDrawerActivation);
 
-var _VintMenuAnchor = __webpack_require__(33);
+var _VintMenuAnchor = __webpack_require__(38);
 
 var _VintMenuAnchor2 = _interopRequireDefault(_VintMenuAnchor);
 
-var _VintSelect = __webpack_require__(38);
+var _VintSelect = __webpack_require__(44);
 
 var _VintSelect2 = _interopRequireDefault(_VintSelect);
 
-var _VintTextarea = __webpack_require__(40);
+var _VintTextarea = __webpack_require__(46);
 
 var _VintTextarea2 = _interopRequireDefault(_VintTextarea);
 
@@ -11406,7 +13373,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 13 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11418,7 +13385,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _dialog = __webpack_require__(5);
+var _dialog = __webpack_require__(6);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -11472,33 +13439,39 @@ VintDialogActivation.constants = {
 exports.default = VintDialogActivation;
 
 /***/ }),
-/* 14 */
+/* 23 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCRipple; });
 /* unused harmony export RippleCapableSurface */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(8);
 /* unused harmony reexport MDCRippleFoundation */
 /* unused harmony reexport util */
 /**
  * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
+ * Copyright 2016 Google Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 
 
@@ -11640,29 +13613,35 @@ RippleCapableSurface.prototype.disabled;
 
 
 /***/ }),
-/* 15 */
+/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(8);
 /**
  * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
+ * Copyright 2016 Google Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 
 
@@ -12255,7 +14234,7 @@ class MDCRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_fou
 
 
 /***/ }),
-/* 16 */
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12264,19 +14243,25 @@ class MDCRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_fou
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return numbers; });
 /**
  * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
+ * Copyright 2016 Google Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 
 const cssClasses = {
@@ -12311,26 +14296,33 @@ const numbers = {
 
 
 /***/ }),
-/* 17 */
+/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(27);
 /**
- * Copyright 2017 Google Inc. All Rights Reserved.
+ * @license
+ * Copyright 2017 Google Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 
 
@@ -12473,7 +14465,7 @@ class MDCDialogFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_ind
 
 
 /***/ }),
-/* 18 */
+/* 27 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12481,19 +14473,26 @@ class MDCDialogFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_ind
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return strings; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return numbers; });
 /**
- * Copyright 2016 Google Inc. All Rights Reserved.
+ * @license
+ * Copyright 2016 Google Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 
 const cssClasses = {
@@ -12522,28 +14521,35 @@ const numbers = {
 
 
 /***/ }),
-/* 19 */
+/* 28 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["createFocusTrapInstance"] = createFocusTrapInstance;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_focus_trap__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_focus_trap__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_focus_trap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_focus_trap__);
 /**
- * Copyright 2016 Google Inc. All Rights Reserved.
+ * @license
+ * Copyright 2016 Google Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 
 
@@ -12557,10 +14563,10 @@ function createFocusTrapInstance(surfaceEl, acceptButtonEl, focusTrapFactory = _
 
 
 /***/ }),
-/* 20 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var tabbable = __webpack_require__(21);
+var tabbable = __webpack_require__(30);
 
 var listeningFocusTrap = null;
 
@@ -12821,7 +14827,7 @@ module.exports = focusTrap;
 
 
 /***/ }),
-/* 21 */
+/* 30 */
 /***/ (function(module, exports) {
 
 module.exports = function(el, options) {
@@ -12944,7 +14950,7 @@ function createIsUnavailable(elementDocument) {
 
 
 /***/ }),
-/* 22 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12956,7 +14962,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _dialog = __webpack_require__(5);
+var _dialog = __webpack_require__(6);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -13004,7 +15010,7 @@ VintDialogContainer.classes = {
 exports.default = VintDialogContainer;
 
 /***/ }),
-/* 23 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13016,7 +15022,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _drawer = __webpack_require__(24);
+var _drawer = __webpack_require__(33);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -13043,15 +15049,14 @@ function VintDrawerActivation(element) {
   var drawer = document.querySelector('.' + VintDrawerActivation.classes.DRAWER + '#' + drawerId);
   this.state = {
     drawer: drawer,
-    isPersistent: drawer.classList.contains(VintDrawerActivation.classes.DRAWER_PERSISTENT),
-    isTemporary: drawer.classList.contains(VintDrawerActivation.classes.DRAWER_TEMPORARY)
+    isModal: drawer.classList.contains(VintDrawerActivation.classes.DRAWER_MODAL)
   };
 
   if (!this.state.drawer) {
     return;
   }
   this.state = _extends({}, this.state, {
-    mdcDrawer: this.state.isPersistent ? new _drawer.MDCPersistentDrawer(this.state.drawer) : new _drawer.MDCTemporaryDrawer(this.state.drawer)
+    mdcDrawer: this.state.isModal ? new _drawer.MDCDrawer(this.state.drawer) : null
   });
 
   element.addEventListener('click', function () {
@@ -13067,72 +15072,52 @@ function VintDrawerActivation(element) {
 VintDrawerActivation.classes = {
   COMPONENT: 'drawer-activation',
   DRAWER: 'drawer',
-  DRAWER_TEMPORARY: 'mdc-drawer--temporary',
-  DRAWER_PERSISTENT: 'mdc-drawer--persistent' };
+  DRAWER_MODAL: 'mdc-drawer--modal' };
 VintDrawerActivation.constants = {
   DRAWER_ACTIVATION_DATASET: 'drawerActivation' };
 exports.default = VintDrawerActivation;
 
 /***/ }),
-/* 24 */
+/* 33 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__temporary__ = __webpack_require__(25);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MDCTemporaryDrawer", function() { return __WEBPACK_IMPORTED_MODULE_1__temporary__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MDCTemporaryDrawerFoundation", function() { return __WEBPACK_IMPORTED_MODULE_1__temporary__["b"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__persistent__ = __webpack_require__(30);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MDCPersistentDrawer", function() { return __WEBPACK_IMPORTED_MODULE_2__persistent__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MDCPersistentDrawerFoundation", function() { return __WEBPACK_IMPORTED_MODULE_2__persistent__["b"]; });
-/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "util", function() { return __WEBPACK_IMPORTED_MODULE_0__util__; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCDrawer", function() { return MDCDrawer; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dismissible_foundation__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modal_foundation__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__adapter__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__material_list_index__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_list_foundation__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__constants__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__util__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_focus_trap__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_focus_trap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_focus_trap__);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MDCDismissibleDrawerFoundation", function() { return __WEBPACK_IMPORTED_MODULE_1__dismissible_foundation__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MDCModalDrawerFoundation", function() { return __WEBPACK_IMPORTED_MODULE_2__modal_foundation__["a"]; });
+/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "util", function() { return __WEBPACK_IMPORTED_MODULE_7__util__; });
 /**
- * Copyright 2016 Google Inc. All Rights Reserved.
+ * @license
+ * Copyright 2016 Google Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-
-
-
-
-/***/ }),
-/* 25 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util__ = __webpack_require__(4);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__foundation__["a"]; });
-/* unused harmony reexport util */
-/**
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 
 
@@ -13142,718 +15127,509 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-class MDCTemporaryDrawer extends __WEBPACK_IMPORTED_MODULE_0__material_base_index__["a" /* MDCComponent */] {
-  static attachTo(root) {
-    return new MDCTemporaryDrawer(root);
+
+
+/**
+ * @extends {MDCComponent<!MDCDismissibleDrawerFoundation>}
+ * @final
+ */
+class MDCDrawer extends __WEBPACK_IMPORTED_MODULE_0__material_base_index__["a" /* MDCComponent */] {
+  /**
+   * @param {...?} args
+   */
+  constructor(...args) {
+    super(...args);
+
+    /** @private {!Element} */
+    this.previousFocus_;
+
+    /** @private {!Function} */
+    this.handleKeydown_;
+
+    /** @private {!Function} */
+    this.handleTransitionEnd_;
+
+    /** @private {!Function} */
+    this.focusTrapFactory_;
+
+    /** @private {!FocusTrapInstance} */
+    this.focusTrap_;
+
+    /** @private {?Element} */
+    this.scrim_;
+
+    /** @private {?Function} */
+    this.handleScrimClick_;
+
+    /** @private {?MDCList} */
+    this.list_;
   }
 
+  /**
+   * @param {!Element} root
+   * @return {!MDCDrawer}
+   */
+  static attachTo(root) {
+    return new MDCDrawer(root);
+  }
+
+  /**
+   * Returns true if drawer is in the open position.
+   * @return {boolean}
+   */
   get open() {
     return this.foundation_.isOpen();
   }
 
-  set open(value) {
-    if (value) {
+  /**
+   * Toggles the drawer open and closed.
+   * @param {boolean} isOpen
+   */
+  set open(isOpen) {
+    if (isOpen) {
       this.foundation_.open();
     } else {
       this.foundation_.close();
     }
   }
 
-  /* Return the drawer element inside the component. */
-  get drawer() {
-    return this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_1__foundation__["a" /* default */].strings.DRAWER_SELECTOR);
+  initialize(
+    focusTrapFactory = __WEBPACK_IMPORTED_MODULE_8_focus_trap___default.a,
+    listFactory = (el) => new __WEBPACK_IMPORTED_MODULE_4__material_list_index__["a" /* MDCList */](el)) {
+    const listEl = /** @type {!Element} */ (this.root_.querySelector(`.${__WEBPACK_IMPORTED_MODULE_5__material_list_foundation__["a" /* default */].cssClasses.ROOT}`));
+    if (listEl) {
+      this.list_ = listFactory(listEl);
+      this.list_.wrapFocus = true;
+    }
+    this.focusTrapFactory_ = focusTrapFactory;
+  }
+
+  initialSyncWithDOM() {
+    const {MODAL} = __WEBPACK_IMPORTED_MODULE_1__dismissible_foundation__["a" /* default */].cssClasses;
+
+    if (this.root_.classList.contains(MODAL)) {
+      const {SCRIM_SELECTOR} = __WEBPACK_IMPORTED_MODULE_1__dismissible_foundation__["a" /* default */].strings;
+      this.scrim_ = /** @type {!Element} */ (this.root_.parentElement.querySelector(SCRIM_SELECTOR));
+      this.handleScrimClick_ = () => /** @type {!MDCModalDrawerFoundation} */ (this.foundation_).handleScrimClick();
+      this.scrim_.addEventListener('click', this.handleScrimClick_);
+      this.focusTrap_ = __WEBPACK_IMPORTED_MODULE_7__util__["createFocusTrapInstance"](this.root_, this.focusTrapFactory_);
+    }
+
+    this.handleKeydown_ = (evt) => this.foundation_.handleKeydown(evt);
+    this.handleTransitionEnd_ = (evt) => this.foundation_.handleTransitionEnd(evt);
+
+    this.root_.addEventListener('keydown', this.handleKeydown_);
+    this.root_.addEventListener('transitionend', this.handleTransitionEnd_);
+  }
+
+  destroy() {
+    this.root_.removeEventListener('keydown', this.handleKeydown_);
+    this.root_.removeEventListener('transitionend', this.handleTransitionEnd_);
+
+    if (this.list_) {
+      this.list_.destroy();
+    }
+
+    const {MODAL} = __WEBPACK_IMPORTED_MODULE_1__dismissible_foundation__["a" /* default */].cssClasses;
+    if (this.root_.classList.contains(MODAL)) {
+      this.scrim_.removeEventListener('click', /** @type {!Function} */ (this.handleScrimClick_));
+      // Ensure drawer is closed to hide scrim and release focus
+      this.open = false;
+    }
   }
 
   getDefaultFoundation() {
-    const {FOCUSABLE_ELEMENTS, OPACITY_VAR_NAME} = __WEBPACK_IMPORTED_MODULE_1__foundation__["a" /* default */].strings;
-
-    return new __WEBPACK_IMPORTED_MODULE_1__foundation__["a" /* default */]({
+    /** @type {!MDCDrawerAdapter} */
+    const adapter = /** @type {!MDCDrawerAdapter} */ (Object.assign({
       addClass: (className) => this.root_.classList.add(className),
       removeClass: (className) => this.root_.classList.remove(className),
       hasClass: (className) => this.root_.classList.contains(className),
-      addBodyClass: (className) => document.body.classList.add(className),
-      removeBodyClass: (className) => document.body.classList.remove(className),
-      eventTargetHasClass: (target, className) => target.classList.contains(className),
-      hasNecessaryDom: () => Boolean(this.drawer),
-      registerInteractionHandler: (evt, handler) =>
-        this.root_.addEventListener(__WEBPACK_IMPORTED_MODULE_2__util__["remapEvent"](evt), handler, __WEBPACK_IMPORTED_MODULE_2__util__["applyPassive"]()),
-      deregisterInteractionHandler: (evt, handler) =>
-        this.root_.removeEventListener(__WEBPACK_IMPORTED_MODULE_2__util__["remapEvent"](evt), handler, __WEBPACK_IMPORTED_MODULE_2__util__["applyPassive"]()),
-      registerDrawerInteractionHandler: (evt, handler) =>
-        this.drawer.addEventListener(__WEBPACK_IMPORTED_MODULE_2__util__["remapEvent"](evt), handler),
-      deregisterDrawerInteractionHandler: (evt, handler) =>
-        this.drawer.removeEventListener(__WEBPACK_IMPORTED_MODULE_2__util__["remapEvent"](evt), handler),
-      registerTransitionEndHandler: (handler) => this.drawer.addEventListener('transitionend', handler),
-      deregisterTransitionEndHandler: (handler) => this.drawer.removeEventListener('transitionend', handler),
-      registerDocumentKeydownHandler: (handler) => document.addEventListener('keydown', handler),
-      deregisterDocumentKeydownHandler: (handler) => document.removeEventListener('keydown', handler),
-      getDrawerWidth: () => this.drawer.offsetWidth,
-      setTranslateX: (value) => this.drawer.style.setProperty(
-        __WEBPACK_IMPORTED_MODULE_2__util__["getTransformPropertyName"](), value === null ? null : `translateX(${value}px)`),
-      updateCssVariable: (value) => {
-        if (__WEBPACK_IMPORTED_MODULE_2__util__["supportsCssCustomProperties"]()) {
-          this.root_.style.setProperty(OPACITY_VAR_NAME, value);
+      elementHasClass: (element, className) => element.classList.contains(className),
+      computeBoundingRect: () => this.root_.getBoundingClientRect(),
+      saveFocus: () => {
+        this.previousFocus_ = document.activeElement;
+      },
+      restoreFocus: () => {
+        const previousFocus = this.previousFocus_ && this.previousFocus_.focus;
+        if (this.root_.contains(document.activeElement) && previousFocus) {
+          this.previousFocus_.focus();
         }
       },
-      getFocusableElements: () => this.drawer.querySelectorAll(FOCUSABLE_ELEMENTS),
-      saveElementTabState: (el) => __WEBPACK_IMPORTED_MODULE_2__util__["saveElementTabState"](el),
-      restoreElementTabState: (el) => __WEBPACK_IMPORTED_MODULE_2__util__["restoreElementTabState"](el),
-      makeElementUntabbable: (el) => el.setAttribute('tabindex', -1),
-      notifyOpen: () => this.emit(__WEBPACK_IMPORTED_MODULE_1__foundation__["a" /* default */].strings.OPEN_EVENT),
-      notifyClose: () => this.emit(__WEBPACK_IMPORTED_MODULE_1__foundation__["a" /* default */].strings.CLOSE_EVENT),
-      isRtl: () => getComputedStyle(this.root_).getPropertyValue('direction') === 'rtl',
-      isDrawer: (el) => el === this.drawer,
-    });
-  }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = MDCTemporaryDrawer;
+      focusActiveNavigationItem: () => {
+        const activeNavItemEl = this.root_.querySelector(`.${__WEBPACK_IMPORTED_MODULE_5__material_list_foundation__["a" /* default */].cssClasses.LIST_ITEM_ACTIVATED_CLASS}`);
+        if (activeNavItemEl) {
+          activeNavItemEl.focus();
+        }
+      },
+      notifyClose: () => this.emit(__WEBPACK_IMPORTED_MODULE_6__constants__["b" /* strings */].CLOSE_EVENT, {}, true /* shouldBubble */),
+      notifyOpen: () => this.emit(__WEBPACK_IMPORTED_MODULE_6__constants__["b" /* strings */].OPEN_EVENT, {}, true /* shouldBubble */),
+      trapFocus: () => this.focusTrap_.activate(),
+      releaseFocus: () => this.focusTrap_.deactivate(),
+    }));
 
-
-
-/***/ }),
-/* 26 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__slidable_index__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(29);
-/**
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-
-class MDCTemporaryDrawerFoundation extends __WEBPACK_IMPORTED_MODULE_0__slidable_index__["b" /* MDCSlidableDrawerFoundation */] {
-  static get cssClasses() {
-    return __WEBPACK_IMPORTED_MODULE_1__constants__["a" /* cssClasses */];
-  }
-
-  static get strings() {
-    return __WEBPACK_IMPORTED_MODULE_1__constants__["b" /* strings */];
-  }
-
-  static get defaultAdapter() {
-    return Object.assign(__WEBPACK_IMPORTED_MODULE_0__slidable_index__["b" /* MDCSlidableDrawerFoundation */].defaultAdapter, {
-      addBodyClass: (/* className: string */) => {},
-      removeBodyClass: (/* className: string */) => {},
-      isDrawer: () => false,
-      updateCssVariable: (/* value: string */) => {},
-      eventTargetHasClass: (/* target: EventTarget, className: string */) => /* boolean */ false,
-    });
-  }
-
-  constructor(adapter) {
-    super(
-      Object.assign(MDCTemporaryDrawerFoundation.defaultAdapter, adapter),
-      MDCTemporaryDrawerFoundation.cssClasses.ROOT,
-      MDCTemporaryDrawerFoundation.cssClasses.ANIMATING,
-      MDCTemporaryDrawerFoundation.cssClasses.OPEN);
-
-    this.componentClickHandler_ = (evt) => {
-      if (this.adapter_.eventTargetHasClass(evt.target, __WEBPACK_IMPORTED_MODULE_1__constants__["a" /* cssClasses */].ROOT)) {
-        this.close(true);
-      }
-    };
-  }
-
-  init() {
-    super.init();
-
-    // Make browser aware of custom property being used in this element.
-    // Workaround for certain types of hard-to-reproduce heisenbugs.
-    this.adapter_.updateCssVariable(0);
-    this.adapter_.registerInteractionHandler('click', this.componentClickHandler_);
-  }
-
-  destroy() {
-    super.destroy();
-
-    this.adapter_.deregisterInteractionHandler('click', this.componentClickHandler_);
-    this.enableScroll_();
-  }
-
-  open() {
-    this.disableScroll_();
-    // Make sure custom property values are cleared before starting.
-    this.adapter_.updateCssVariable('');
-
-    super.open();
-  }
-
-  close() {
-    // Make sure custom property values are cleared before making any changes.
-    this.adapter_.updateCssVariable('');
-
-    super.close();
-  }
-
-  prepareForTouchEnd_() {
-    super.prepareForTouchEnd_();
-
-    this.adapter_.updateCssVariable('');
-  }
-
-  updateDrawer_() {
-    super.updateDrawer_();
-
-    const newOpacity = Math.max(0, 1 + this.direction_ * (this.newPosition_ / this.drawerWidth_));
-    this.adapter_.updateCssVariable(newOpacity);
-  }
-
-  isRootTransitioningEventTarget_(el) {
-    return this.adapter_.isDrawer(el);
-  }
-
-  handleTransitionEnd_(evt) {
-    super.handleTransitionEnd_(evt);
-    if (!this.isOpen_) {
-      this.enableScroll_();
-    }
-  };
-
-  disableScroll_() {
-    this.adapter_.addBodyClass(__WEBPACK_IMPORTED_MODULE_1__constants__["a" /* cssClasses */].SCROLL_LOCK);
-  }
-
-  enableScroll_() {
-    this.adapter_.removeBodyClass(__WEBPACK_IMPORTED_MODULE_1__constants__["a" /* cssClasses */].SCROLL_LOCK);
-  }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = MDCTemporaryDrawerFoundation;
-
-
-
-/***/ }),
-/* 27 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/**
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-const FOCUSABLE_ELEMENTS =
-  'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), ' +
-  'button:not([disabled]), iframe, object, embed, [tabindex], [contenteditable]';
-/* harmony export (immutable) */ __webpack_exports__["a"] = FOCUSABLE_ELEMENTS;
-
-
-
-/***/ }),
-/* 28 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(0);
-/**
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-class MDCSlidableDrawerFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_index__["b" /* MDCFoundation */] {
-  static get defaultAdapter() {
-    return {
-      addClass: (/* className: string */) => {},
-      removeClass: (/* className: string */) => {},
-      hasClass: (/* className: string */) => {},
-      hasNecessaryDom: () => /* boolean */ false,
-      registerInteractionHandler: (/* evt: string, handler: EventListener */) => {},
-      deregisterInteractionHandler: (/* evt: string, handler: EventListener */) => {},
-      registerDrawerInteractionHandler: (/* evt: string, handler: EventListener */) => {},
-      deregisterDrawerInteractionHandler: (/* evt: string, handler: EventListener */) => {},
-      registerTransitionEndHandler: (/* handler: EventListener */) => {},
-      deregisterTransitionEndHandler: (/* handler: EventListener */) => {},
-      registerDocumentKeydownHandler: (/* handler: EventListener */) => {},
-      deregisterDocumentKeydownHandler: (/* handler: EventListener */) => {},
-      setTranslateX: (/* value: number | null */) => {},
-      getFocusableElements: () => /* NodeList */ {},
-      saveElementTabState: (/* el: Element */) => {},
-      restoreElementTabState: (/* el: Element */) => {},
-      makeElementUntabbable: (/* el: Element */) => {},
-      notifyOpen: () => {},
-      notifyClose: () => {},
-      isRtl: () => /* boolean */ false,
-      getDrawerWidth: () => /* number */ 0,
-    };
-  }
-
-  constructor(adapter, rootCssClass, animatingCssClass, openCssClass) {
-    super(Object.assign(MDCSlidableDrawerFoundation.defaultAdapter, adapter));
-
-    this.rootCssClass_ = rootCssClass;
-    this.animatingCssClass_ = animatingCssClass;
-    this.openCssClass_ = openCssClass;
-
-    this.transitionEndHandler_ = (evt) => this.handleTransitionEnd_(evt);
-
-    this.inert_ = false;
-
-    this.componentTouchStartHandler_ = (evt) => this.handleTouchStart_(evt);
-    this.componentTouchMoveHandler_ = (evt) => this.handleTouchMove_(evt);
-    this.componentTouchEndHandler_ = (evt) => this.handleTouchEnd_(evt);
-    this.documentKeydownHandler_ = (evt) => {
-      if (evt.key && evt.key === 'Escape' || evt.keyCode === 27) {
-        this.close();
-      }
-    };
-  }
-
-  init() {
-    const ROOT = this.rootCssClass_;
-    const OPEN = this.openCssClass_;
-
-    if (!this.adapter_.hasClass(ROOT)) {
-      throw new Error(`${ROOT} class required in root element.`);
-    }
-
-    if (!this.adapter_.hasNecessaryDom()) {
-      throw new Error(`Required DOM nodes missing in ${ROOT} component.`);
-    }
-
-    if (this.adapter_.hasClass(OPEN)) {
-      this.isOpen_ = true;
+    const {DISMISSIBLE, MODAL} = __WEBPACK_IMPORTED_MODULE_1__dismissible_foundation__["a" /* default */].cssClasses;
+    if (this.root_.classList.contains(DISMISSIBLE)) {
+      return new __WEBPACK_IMPORTED_MODULE_1__dismissible_foundation__["a" /* default */](adapter);
+    } else if (this.root_.classList.contains(MODAL)) {
+      return new __WEBPACK_IMPORTED_MODULE_2__modal_foundation__["a" /* default */](adapter);
     } else {
-      this.detabinate_();
-      this.isOpen_ = false;
+      throw new Error(
+        `MDCDrawer: Failed to instantiate component. Supported variants are ${DISMISSIBLE} and ${MODAL}.`);
     }
-
-    this.adapter_.registerDrawerInteractionHandler('touchstart', this.componentTouchStartHandler_);
-    this.adapter_.registerInteractionHandler('touchmove', this.componentTouchMoveHandler_);
-    this.adapter_.registerInteractionHandler('touchend', this.componentTouchEndHandler_);
   }
+}
 
-  destroy() {
-    this.adapter_.deregisterDrawerInteractionHandler('touchstart', this.componentTouchStartHandler_);
-    this.adapter_.deregisterInteractionHandler('touchmove', this.componentTouchMoveHandler_);
-    this.adapter_.deregisterInteractionHandler('touchend', this.componentTouchEndHandler_);
-    // Deregister the document keydown handler just in case the component is destroyed while the menu is open.
-    this.adapter_.deregisterDocumentKeydownHandler(this.documentKeydownHandler_);
-  }
 
-  open() {
-    this.adapter_.registerTransitionEndHandler(this.transitionEndHandler_);
-    this.adapter_.registerDocumentKeydownHandler(this.documentKeydownHandler_);
-    this.adapter_.addClass(this.animatingCssClass_);
-    this.adapter_.addClass(this.openCssClass_);
-    this.retabinate_();
-    // Debounce multiple calls
-    if (!this.isOpen_) {
-      this.adapter_.notifyOpen();
-    }
-    this.isOpen_ = true;
-  }
 
-  close() {
-    this.adapter_.deregisterDocumentKeydownHandler(this.documentKeydownHandler_);
-    this.adapter_.registerTransitionEndHandler(this.transitionEndHandler_);
-    this.adapter_.addClass(this.animatingCssClass_);
-    this.adapter_.removeClass(this.openCssClass_);
-    this.detabinate_();
-    // Debounce multiple calls
-    if (this.isOpen_) {
-      this.adapter_.notifyClose();
-    }
-    this.isOpen_ = false;
-  }
 
-  isOpen() {
-    return this.isOpen_;
+/***/ }),
+/* 34 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__adapter__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dismissible_foundation__ = __webpack_require__(9);
+/**
+ * @license
+ * Copyright 2018 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+
+
+
+/**
+ * @extends {MDCDismissibleDrawerFoundation<!MDCDrawerAdapter>}
+ */
+class MDCModalDrawerFoundation extends __WEBPACK_IMPORTED_MODULE_1__dismissible_foundation__["a" /* default */] {
+  /**
+   * Called when drawer finishes open animation.
+   * @override
+   */
+  opened() {
+    this.adapter_.trapFocus();
   }
 
   /**
-   *  Render all children of the drawer inert when it's closed.
+   * Called when drawer finishes close animation.
+   * @override
    */
-  detabinate_() {
-    if (this.inert_) {
-      return;
-    }
-
-    const elements = this.adapter_.getFocusableElements();
-    if (elements) {
-      for (let i = 0; i < elements.length; i++) {
-        this.adapter_.saveElementTabState(elements[i]);
-        this.adapter_.makeElementUntabbable(elements[i]);
-      }
-    }
-
-    this.inert_ = true;
+  closed() {
+    this.adapter_.releaseFocus();
   }
 
   /**
-   *  Make all children of the drawer tabbable again when it's open.
+   * Handles click event on scrim.
    */
-  retabinate_() {
-    if (!this.inert_) {
-      return;
-    }
+  handleScrimClick() {
+    this.close();
+  }
+}
 
-    const elements = this.adapter_.getFocusableElements();
-    if (elements) {
-      for (let i = 0; i < elements.length; i++) {
-        this.adapter_.restoreElementTabState(elements[i]);
-      }
-    }
+/* harmony default export */ __webpack_exports__["a"] = (MDCModalDrawerFoundation);
 
-    this.inert_ = false;
+
+/***/ }),
+/* 35 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createFocusTrapInstance", function() { return createFocusTrapInstance; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_focus_trap__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_focus_trap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_focus_trap__);
+/**
+ * @license
+ * Copyright 2016 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+
+
+/**
+ * @param {!Element} surfaceEl
+ * @param {!Function} focusTrapFactory
+ * @return {!FocusTrapInstance}
+ */
+function createFocusTrapInstance(surfaceEl, focusTrapFactory = __WEBPACK_IMPORTED_MODULE_0_focus_trap___default.a) {
+  return focusTrapFactory(surfaceEl, {
+    clickOutsideDeactivates: true,
+    initialFocus: false, // Navigation drawer handles focusing on active nav item.
+    escapeDeactivates: false, // Navigation drawer handles ESC.
+    returnFocusOnDeactivate: false, // Navigation drawer handles restore focus.
+  });
+}
+
+
+
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports) {
+
+var candidateSelectors = [
+  'input',
+  'select',
+  'textarea',
+  'a[href]',
+  'button',
+  '[tabindex]',
+  'audio[controls]',
+  'video[controls]',
+  '[contenteditable]:not([contenteditable="false"])',
+];
+var candidateSelector = candidateSelectors.join(',');
+
+var matches = typeof Element === 'undefined'
+  ? function () {}
+  : Element.prototype.matches || Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+
+function tabbable(el, options) {
+  options = options || {};
+
+  var elementDocument = el.ownerDocument || el;
+  var regularTabbables = [];
+  var orderedTabbables = [];
+
+  var untouchabilityChecker = new UntouchabilityChecker(elementDocument);
+  var candidates = el.querySelectorAll(candidateSelector);
+
+  if (options.includeContainer) {
+    if (matches.call(el, candidateSelector)) {
+      candidates = Array.prototype.slice.apply(candidates);
+      candidates.unshift(el);
+    }
   }
 
-  handleTouchStart_(evt) {
-    if (!this.adapter_.hasClass(this.openCssClass_)) {
-      return;
-    }
-    if (evt.pointerType && evt.pointerType !== 'touch') {
-      return;
-    }
+  var i, candidate, candidateTabindex;
+  for (i = 0; i < candidates.length; i++) {
+    candidate = candidates[i];
 
-    this.direction_ = this.adapter_.isRtl() ? -1 : 1;
-    this.drawerWidth_ = this.adapter_.getDrawerWidth();
-    this.startX_ = evt.touches ? evt.touches[0].pageX : evt.pageX;
-    this.currentX_ = this.startX_;
+    if (!isNodeMatchingSelectorTabbable(candidate, untouchabilityChecker)) continue;
 
-    this.updateRaf_ = requestAnimationFrame(this.updateDrawer_.bind(this));
-  }
-
-  handleTouchMove_(evt) {
-    if (evt.pointerType && evt.pointerType !== 'touch') {
-      return;
-    }
-
-    this.currentX_ = evt.touches ? evt.touches[0].pageX : evt.pageX;
-  }
-
-  handleTouchEnd_(evt) {
-    if (evt.pointerType && evt.pointerType !== 'touch') {
-      return;
-    }
-
-    this.prepareForTouchEnd_();
-
-    // Did the user close the drawer by more than 50%?
-    if (Math.abs(this.newPosition_ / this.drawerWidth_) >= 0.5) {
-      this.close();
+    candidateTabindex = getTabindex(candidate);
+    if (candidateTabindex === 0) {
+      regularTabbables.push(candidate);
     } else {
-      // Triggering an open here means we'll get a nice animation back to the fully open state.
-      this.open();
+      orderedTabbables.push({
+        documentOrder: i,
+        tabIndex: candidateTabindex,
+        node: candidate,
+      });
     }
   }
 
-  prepareForTouchEnd_() {
-    cancelAnimationFrame(this.updateRaf_);
-    this.adapter_.setTranslateX(null);
-  }
+  var tabbableNodes = orderedTabbables
+    .sort(sortOrderedTabbables)
+    .map(function(a) { return a.node })
+    .concat(regularTabbables);
 
-  updateDrawer_() {
-    this.updateRaf_ = requestAnimationFrame(this.updateDrawer_.bind(this));
-    this.adapter_.setTranslateX(this.newPosition_);
-  }
+  return tabbableNodes;
+}
 
-  get newPosition_() {
-    let newPos = null;
+tabbable.isTabbable = isTabbable;
+tabbable.isFocusable = isFocusable;
 
-    if (this.direction_ === 1) {
-      newPos = Math.min(0, this.currentX_ - this.startX_);
-    } else {
-      newPos = Math.max(0, this.currentX_ - this.startX_);
-    }
-
-    return newPos;
-  }
-
-  isRootTransitioningEventTarget_() {
-    // Classes extending MDCSlidableDrawerFoundation should implement this method to return true or false
-    // if the event target is the root event target currently transitioning.
+function isNodeMatchingSelectorTabbable(node, untouchabilityChecker) {
+  if (
+    !isNodeMatchingSelectorFocusable(node, untouchabilityChecker)
+    || isNonTabbableRadio(node)
+    || getTabindex(node) < 0
+  ) {
     return false;
   }
-
-  handleTransitionEnd_(evt) {
-    if (this.isRootTransitioningEventTarget_(evt.target)) {
-      this.adapter_.removeClass(this.animatingCssClass_);
-      this.adapter_.deregisterTransitionEndHandler(this.transitionEndHandler_);
-    }
-  };
+  return true;
 }
-/* harmony export (immutable) */ __webpack_exports__["a"] = MDCSlidableDrawerFoundation;
 
+function isTabbable(node, untouchabilityChecker) {
+  if (!node) throw new Error('No node provided');
+  if (matches.call(node, candidateSelector) === false) return false;
+  return isNodeMatchingSelectorTabbable(node, untouchabilityChecker);
+}
 
-
-/***/ }),
-/* 29 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__slidable_index__ = __webpack_require__(2);
-/**
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-const cssClasses = {
-  ROOT: 'mdc-drawer--temporary',
-  OPEN: 'mdc-drawer--open',
-  ANIMATING: 'mdc-drawer--animating',
-  SCROLL_LOCK: 'mdc-drawer-scroll-lock',
-};
-/* harmony export (immutable) */ __webpack_exports__["a"] = cssClasses;
-
-
-const strings = {
-  DRAWER_SELECTOR: '.mdc-drawer--temporary .mdc-drawer__drawer',
-  OPACITY_VAR_NAME: '--mdc-temporary-drawer-opacity',
-  FOCUSABLE_ELEMENTS: __WEBPACK_IMPORTED_MODULE_0__slidable_index__["a" /* FOCUSABLE_ELEMENTS */],
-  OPEN_EVENT: 'MDCTemporaryDrawer:open',
-  CLOSE_EVENT: 'MDCTemporaryDrawer:close',
-};
-/* harmony export (immutable) */ __webpack_exports__["b"] = strings;
-
-
-
-/***/ }),
-/* 30 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util__ = __webpack_require__(4);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__foundation__["a"]; });
-/* unused harmony reexport util */
-/**
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-
-
-
-
-
-class MDCPersistentDrawer extends __WEBPACK_IMPORTED_MODULE_0__material_base_index__["a" /* MDCComponent */] {
-  static attachTo(root) {
-    return new MDCPersistentDrawer(root);
+function isNodeMatchingSelectorFocusable(node, untouchabilityChecker) {
+  untouchabilityChecker = untouchabilityChecker || new UntouchabilityChecker(node.ownerDocument || node);
+  if (
+    node.disabled
+    || isHiddenInput(node)
+    || untouchabilityChecker.isUntouchable(node)
+  ) {
+    return false;
   }
+  return true;
+}
 
-  get open() {
-    return this.foundation_.isOpen();
+var focusableCandidateSelector = candidateSelectors.concat('iframe').join(',');
+function isFocusable(node, untouchabilityChecker) {
+  if (!node) throw new Error('No node provided');
+  if (matches.call(node, focusableCandidateSelector) === false) return false;
+  return isNodeMatchingSelectorFocusable(node, untouchabilityChecker);
+}
+
+function getTabindex(node) {
+  var tabindexAttr = parseInt(node.getAttribute('tabindex'), 10);
+  if (!isNaN(tabindexAttr)) return tabindexAttr;
+  // Browsers do not return `tabIndex` correctly for contentEditable nodes;
+  // so if they don't have a tabindex attribute specifically set, assume it's 0.
+  if (isContentEditable(node)) return 0;
+  return node.tabIndex;
+}
+
+function sortOrderedTabbables(a, b) {
+  return a.tabIndex === b.tabIndex ? a.documentOrder - b.documentOrder : a.tabIndex - b.tabIndex;
+}
+
+// Array.prototype.find not available in IE.
+function find(list, predicate) {
+  for (var i = 0, length = list.length; i < length; i++) {
+    if (predicate(list[i])) return list[i];
   }
+}
 
-  set open(value) {
-    if (value) {
-      this.foundation_.open();
-    } else {
-      this.foundation_.close();
+function isContentEditable(node) {
+  return node.contentEditable === 'true';
+}
+
+function isInput(node) {
+  return node.tagName === 'INPUT';
+}
+
+function isHiddenInput(node) {
+  return isInput(node) && node.type === 'hidden';
+}
+
+function isRadio(node) {
+  return isInput(node) && node.type === 'radio';
+}
+
+function isNonTabbableRadio(node) {
+  return isRadio(node) && !isTabbableRadio(node);
+}
+
+function getCheckedRadio(nodes) {
+  for (var i = 0; i < nodes.length; i++) {
+    if (nodes[i].checked) {
+      return nodes[i];
     }
   }
-
-  // Return the drawer element inside the component.
-  get drawer() {
-    return this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_1__foundation__["a" /* default */].strings.DRAWER_SELECTOR);
-  }
-
-  getDefaultFoundation() {
-    const {FOCUSABLE_ELEMENTS} = __WEBPACK_IMPORTED_MODULE_1__foundation__["a" /* default */].strings;
-
-    return new __WEBPACK_IMPORTED_MODULE_1__foundation__["a" /* default */]({
-      addClass: (className) => this.root_.classList.add(className),
-      removeClass: (className) => this.root_.classList.remove(className),
-      hasClass: (className) => this.root_.classList.contains(className),
-      hasNecessaryDom: () => Boolean(this.drawer),
-      registerInteractionHandler: (evt, handler) =>
-        this.root_.addEventListener(__WEBPACK_IMPORTED_MODULE_2__util__["remapEvent"](evt), handler, __WEBPACK_IMPORTED_MODULE_2__util__["applyPassive"]()),
-      deregisterInteractionHandler: (evt, handler) =>
-        this.root_.removeEventListener(__WEBPACK_IMPORTED_MODULE_2__util__["remapEvent"](evt), handler, __WEBPACK_IMPORTED_MODULE_2__util__["applyPassive"]()),
-      registerDrawerInteractionHandler: (evt, handler) =>
-        this.drawer.addEventListener(__WEBPACK_IMPORTED_MODULE_2__util__["remapEvent"](evt), handler),
-      deregisterDrawerInteractionHandler: (evt, handler) =>
-        this.drawer.removeEventListener(__WEBPACK_IMPORTED_MODULE_2__util__["remapEvent"](evt), handler),
-      registerTransitionEndHandler: (handler) =>
-        this.root_.addEventListener('transitionend', handler),
-      deregisterTransitionEndHandler: (handler) =>
-        this.root_.removeEventListener('transitionend', handler),
-      registerDocumentKeydownHandler: (handler) => document.addEventListener('keydown', handler),
-      deregisterDocumentKeydownHandler: (handler) => document.removeEventListener('keydown', handler),
-      getDrawerWidth: () => this.drawer.offsetWidth,
-      setTranslateX: (value) => this.drawer.style.setProperty(
-        __WEBPACK_IMPORTED_MODULE_2__util__["getTransformPropertyName"](), value === null ? null : `translateX(${value}px)`),
-      getFocusableElements: () => this.drawer.querySelectorAll(FOCUSABLE_ELEMENTS),
-      saveElementTabState: (el) => __WEBPACK_IMPORTED_MODULE_2__util__["saveElementTabState"](el),
-      restoreElementTabState: (el) => __WEBPACK_IMPORTED_MODULE_2__util__["restoreElementTabState"](el),
-      makeElementUntabbable: (el) => el.setAttribute('tabindex', -1),
-      notifyOpen: () => this.emit(__WEBPACK_IMPORTED_MODULE_1__foundation__["a" /* default */].strings.OPEN_EVENT),
-      notifyClose: () => this.emit(__WEBPACK_IMPORTED_MODULE_1__foundation__["a" /* default */].strings.CLOSE_EVENT),
-      isRtl: () => getComputedStyle(this.root_).getPropertyValue('direction') === 'rtl',
-      isDrawer: (el) => el === this.drawer,
-    });
-  }
 }
-/* harmony export (immutable) */ __webpack_exports__["a"] = MDCPersistentDrawer;
 
-
-
-/***/ }),
-/* 31 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__slidable_index__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(32);
-/**
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-
-class MDCPersistentDrawerFoundation extends __WEBPACK_IMPORTED_MODULE_0__slidable_index__["b" /* MDCSlidableDrawerFoundation */] {
-  static get cssClasses() {
-    return __WEBPACK_IMPORTED_MODULE_1__constants__["a" /* cssClasses */];
-  }
-
-  static get strings() {
-    return __WEBPACK_IMPORTED_MODULE_1__constants__["b" /* strings */];
-  }
-
-  static get defaultAdapter() {
-    return Object.assign(__WEBPACK_IMPORTED_MODULE_0__slidable_index__["b" /* MDCSlidableDrawerFoundation */].defaultAdapter, {
-      isDrawer: () => false,
-    });
-  }
-
-  constructor(adapter) {
-    super(
-      Object.assign(MDCPersistentDrawerFoundation.defaultAdapter, adapter),
-      MDCPersistentDrawerFoundation.cssClasses.ROOT,
-      MDCPersistentDrawerFoundation.cssClasses.ANIMATING,
-      MDCPersistentDrawerFoundation.cssClasses.OPEN);
-  }
-
-  isRootTransitioningEventTarget_(el) {
-    return this.adapter_.isDrawer(el);
-  }
+function isTabbableRadio(node) {
+  if (!node.name) return true;
+  // This won't account for the edge case where you have radio groups with the same
+  // in separate forms on the same page.
+  var radioSet = node.ownerDocument.querySelectorAll('input[type="radio"][name="' + node.name + '"]');
+  var checked = getCheckedRadio(radioSet);
+  return !checked || checked === node;
 }
-/* harmony export (immutable) */ __webpack_exports__["a"] = MDCPersistentDrawerFoundation;
 
+// An element is "untouchable" if *it or one of its ancestors* has
+// `visibility: hidden` or `display: none`.
+function UntouchabilityChecker(elementDocument) {
+  this.doc = elementDocument;
+  // Node cache must be refreshed on every check, in case
+  // the content of the element has changed. The cache contains tuples
+  // mapping nodes to their boolean result.
+  this.cache = [];
+}
+
+// getComputedStyle accurately reflects `visibility: hidden` of ancestors
+// but not `display: none`, so we need to recursively check parents.
+UntouchabilityChecker.prototype.hasDisplayNone = function hasDisplayNone(node, nodeComputedStyle) {
+  if (node === this.doc.documentElement) return false;
+
+    // Search for a cached result.
+    var cached = find(this.cache, function(item) {
+      return item === node;
+    });
+    if (cached) return cached[1];
+
+    nodeComputedStyle = nodeComputedStyle || this.doc.defaultView.getComputedStyle(node);
+
+    var result = false;
+
+    if (nodeComputedStyle.display === 'none') {
+      result = true;
+    } else if (node.parentNode) {
+      result = this.hasDisplayNone(node.parentNode);
+    }
+
+    this.cache.push([node, result]);
+
+    return result;
+}
+
+UntouchabilityChecker.prototype.isUntouchable = function isUntouchable(node) {
+  if (node === this.doc.documentElement) return false;
+  var computedStyle = this.doc.defaultView.getComputedStyle(node);
+  if (this.hasDisplayNone(node, computedStyle)) return true;
+  return computedStyle.visibility === 'hidden';
+}
+
+module.exports = tabbable;
 
 
 /***/ }),
-/* 32 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 37 */
+/***/ (function(module, exports) {
 
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__slidable_index__ = __webpack_require__(2);
-/**
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+module.exports = extend
 
+var hasOwnProperty = Object.prototype.hasOwnProperty;
 
+function extend() {
+    var target = {}
 
-const cssClasses = {
-  ROOT: 'mdc-drawer--persistent',
-  OPEN: 'mdc-drawer--open',
-  ANIMATING: 'mdc-drawer--animating',
-};
-/* harmony export (immutable) */ __webpack_exports__["a"] = cssClasses;
+    for (var i = 0; i < arguments.length; i++) {
+        var source = arguments[i]
 
+        for (var key in source) {
+            if (hasOwnProperty.call(source, key)) {
+                target[key] = source[key]
+            }
+        }
+    }
 
-const strings = {
-  DRAWER_SELECTOR: '.mdc-drawer--persistent .mdc-drawer__drawer',
-  FOCUSABLE_ELEMENTS: __WEBPACK_IMPORTED_MODULE_0__slidable_index__["a" /* FOCUSABLE_ELEMENTS */],
-  OPEN_EVENT: 'MDCPersistentDrawer:open',
-  CLOSE_EVENT: 'MDCPersistentDrawer:close',
-};
-/* harmony export (immutable) */ __webpack_exports__["b"] = strings;
-
+    return target
+}
 
 
 /***/ }),
-/* 33 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13865,7 +15641,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _menu = __webpack_require__(34);
+var _menu = __webpack_require__(39);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -13912,36 +15688,45 @@ VintMenuAnchor.classes = {
 exports.default = VintMenuAnchor;
 
 /***/ }),
-/* 34 */
+/* 39 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCMenu", function() { return MDCMenu; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(8);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MDCMenuFoundation", function() { return __WEBPACK_IMPORTED_MODULE_2__foundation__["b"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "AnchorMargin", function() { return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Corner", function() { return __WEBPACK_IMPORTED_MODULE_3__constants__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "CornerBit", function() { return __WEBPACK_IMPORTED_MODULE_3__constants__["b"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_menu_surface_index__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__material_menu_surface_foundation__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_list_index__ = __webpack_require__(11);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MDCMenuFoundation", function() { return __WEBPACK_IMPORTED_MODULE_1__foundation__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "AnchorMargin", function() { return __WEBPACK_IMPORTED_MODULE_4__material_menu_surface_foundation__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Corner", function() { return __WEBPACK_IMPORTED_MODULE_3__material_menu_surface_index__["a"]; });
 /**
  * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
+ * Copyright 2018 Google Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
+
+
 
 
 
@@ -13955,79 +15740,99 @@ class MDCMenu extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a"
   /** @param {...?} args */
   constructor(...args) {
     super(...args);
-    /** @private {!Element} */
-    this.previousFocus_;
+    /** @private {!MDCMenuSurface} */
+    this.menuSurface_;
+    /** @private {!MDCList} */
+    this.list_;
+    /** @private {!Function} */
+    this.handleKeydown_;
+    /** @private {!Function} */
+    this.handleClick_;
+    /** @private {!Function} */
+    this.afterOpenedCallback_;
   }
 
   /**
-   * @param {!Element} root
+   * @param {!HTMLElement} root
    * @return {!MDCMenu}
    */
   static attachTo(root) {
     return new MDCMenu(root);
   }
 
+  initialize(
+    menuSurfaceFactory = (el) => new __WEBPACK_IMPORTED_MODULE_3__material_menu_surface_index__["b" /* MDCMenuSurface */](el),
+    listFactory = (el) => new __WEBPACK_IMPORTED_MODULE_5__material_list_index__["a" /* MDCList */](el)) {
+    this.menuSurface_ = menuSurfaceFactory(this.root_);
+
+    const list = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].LIST_SELECTOR);
+    if (list) {
+      this.list_ = listFactory(list);
+      this.list_.wrapFocus = true;
+    }
+  }
+
+  initialSyncWithDOM() {
+    this.afterOpenedCallback_ = () => this.handleAfterOpened_();
+    this.handleKeydown_ = (evt) => this.foundation_.handleKeydown(evt);
+    this.handleClick_ = (evt) => this.foundation_.handleClick(evt);
+
+    this.menuSurface_.listen(__WEBPACK_IMPORTED_MODULE_4__material_menu_surface_foundation__["b" /* MDCMenuSurfaceFoundation */].strings.OPENED_EVENT, this.afterOpenedCallback_);
+    this.listen('keydown', this.handleKeydown_);
+    this.listen('click', this.handleClick_);
+  }
+
+  destroy() {
+    if (this.list_) {
+      this.list_.destroy();
+    }
+
+    this.menuSurface_.destroy();
+    this.menuSurface_.unlisten(__WEBPACK_IMPORTED_MODULE_4__material_menu_surface_foundation__["b" /* MDCMenuSurfaceFoundation */].strings.OPENED_EVENT, this.afterOpenedCallback_);
+    this.unlisten('keydown', this.handleKeydown_);
+    this.unlisten('click', this.handleClick_);
+    super.destroy();
+  }
+
   /** @return {boolean} */
   get open() {
-    return this.foundation_.isOpen();
+    return this.menuSurface_.open;
   }
 
   /** @param {boolean} value */
   set open(value) {
-    if (value) {
-      this.foundation_.open();
-    } else {
-      this.foundation_.close();
-    }
-  }
-
-  /** @param {{focusIndex: ?number}=} options */
-  show({focusIndex = null} = {}) {
-    this.foundation_.open({focusIndex: focusIndex});
-  }
-
-  hide() {
-    this.foundation_.close();
+    this.menuSurface_.open = value;
   }
 
   /**
-   * @param {Corner} corner Default anchor corner alignment of top-left
+   * @param {!Corner} corner Default anchor corner alignment of top-left
    *     menu corner.
    */
   setAnchorCorner(corner) {
-    this.foundation_.setAnchorCorner(corner);
+    this.menuSurface_.setAnchorCorner(corner);
   }
 
   /**
-   * @param {AnchorMargin} margin
+   * @param {!AnchorMargin} margin
    */
   setAnchorMargin(margin) {
-    this.foundation_.setAnchorMargin(margin);
-  }
-
-  /**
-   * Return the item container element inside the component.
-   * @return {?Element}
-   */
-  get itemsContainer_() {
-    return this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_2__foundation__["b" /* MDCMenuFoundation */].strings.ITEMS_SELECTOR);
+    this.menuSurface_.setAnchorMargin(margin);
   }
 
   /**
    * Return the items within the menu. Note that this only contains the set of elements within
    * the items container that are proper list items, and not supplemental / presentational DOM
    * elements.
-   * @return {!Array<!Element>}
+   * @return {!Array<!HTMLElement>}
    */
   get items() {
-    const {itemsContainer_: itemsContainer} = this;
-    return [].slice.call(itemsContainer.querySelectorAll('.mdc-list-item[role]'));
+    return this.list_.listElements;
   }
 
   /**
-   * Return the item within the menu that is selected.
+   * Return the item within the menu at the index specified.
    * @param {number} index
-   * @return {?Element}
+   * @return {?HTMLElement}
    */
   getOptionByIndex(index) {
     const items = this.items;
@@ -14039,19 +15844,661 @@ class MDCMenu extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a"
     }
   }
 
-  /** @param {number} index */
-  set selectedItemIndex(index) {
-    this.foundation_.setSelectedIndex(index);
+  /** @param {boolean} quickOpen */
+  set quickOpen(quickOpen) {
+    this.menuSurface_.quickOpen = quickOpen;
   }
 
-  /** @return {number} */
-  get selectedItemIndex() {
-    return this.foundation_.getSelectedIndex();
+  /** @param {boolean} isFixed */
+  setFixedPosition(isFixed) {
+    this.menuSurface_.setFixedPosition(isFixed);
   }
 
-  /** @param {!boolean} rememberSelection */
-  set rememberSelection(rememberSelection) {
-    this.foundation_.setRememberSelection(rememberSelection);
+  hoistMenuToBody() {
+    this.menuSurface_.hoistMenuToBody();
+  }
+
+  /** @param {boolean} isHoisted */
+  setIsHoisted(isHoisted) {
+    this.menuSurface_.setIsHoisted(isHoisted);
+  }
+
+  /**
+   * @param {number} x
+   * @param {number} y
+   */
+  setAbsolutePosition(x, y) {
+    this.menuSurface_.setAbsolutePosition(x, y);
+  }
+
+  /**
+   * Sets the element that the menu-surface is anchored to.
+   * @param {!HTMLElement} element
+   */
+  setAnchorElement(element) {
+    this.menuSurface_.anchorElement = element;
+  }
+
+  handleAfterOpened_() {
+    const list = this.items;
+    if (list.length > 0) {
+      list[0].focus();
+    }
+  }
+
+  /** @return {!MDCMenuFoundation} */
+  getDefaultFoundation() {
+    return new __WEBPACK_IMPORTED_MODULE_1__foundation__["a" /* MDCMenuFoundation */]({
+      addClassToElementAtIndex: (index, className) => {
+        const list = this.items;
+        list[index].classList.add(className);
+      },
+      removeClassFromElementAtIndex: (index, className) => {
+        const list = this.items;
+        list[index].classList.remove(className);
+      },
+      addAttributeToElementAtIndex: (index, attr, value) => {
+        const list = this.items;
+        list[index].setAttribute(attr, value);
+      },
+      removeAttributeFromElementAtIndex: (index, attr) => {
+        const list = this.items;
+        list[index].removeAttribute(attr);
+      },
+      elementContainsClass: (element, className) => element.classList.contains(className),
+      closeSurface: () => this.open = false,
+      getElementIndex: (element) => this.items.indexOf(element),
+      getParentElement: (element) => element.parentElement,
+      getSelectedElementIndex: (selectionGroup) => {
+        return this.items.indexOf(selectionGroup.querySelector(`.${__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].MENU_SELECTED_LIST_ITEM}`));
+      },
+      notifySelected: (evtData) => this.emit(__WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].SELECTED_EVENT, {
+        index: evtData.index,
+        item: this.items[evtData.index],
+      }),
+      getCheckboxAtIndex: (index) => {
+        const list = this.items;
+        return list[index].querySelector(__WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].CHECKBOX_SELECTOR);
+      },
+      toggleCheckbox: (checkBox) => {
+        checkBox.checked = !checkBox.checked;
+        const event = document.createEvent('Event');
+        event.initEvent('change', false, true);
+        checkBox.dispatchEvent(event);
+      },
+    });
+  }
+}
+
+
+
+
+/***/ }),
+/* 40 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCMenuFoundation; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_menu_surface_foundation__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__material_list_foundation__ = __webpack_require__(4);
+/**
+ * @license
+ * Copyright 2018 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+
+
+
+
+
+
+const ELEMENTS_KEY_ALLOWED_IN = ['input', 'button', 'textarea', 'select'];
+
+/**
+ * @extends {MDCFoundation<!MDCMenuAdapter>}
+ */
+class MDCMenuFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum{cssClasses} */
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+  }
+
+  /** @return enum{strings} */
+  static get strings() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */];
+  }
+
+  /**
+   * {@see MDCMenuAdapter} for typing information on parameters and return
+   * types.
+   * @return {!MDCMenuAdapter}
+   */
+  static get defaultAdapter() {
+    return /** @type {!MDCMenuAdapter} */ ({
+      addClassToElementAtIndex: () => {},
+      removeClassFromElementAtIndex: () => {},
+      addAttributeToElementAtIndex: () => {},
+      removeAttributeFromElementAtIndex: () => {},
+      elementContainsClass: () => {},
+      closeSurface: () => {},
+      getElementIndex: () => {},
+      getParentElement: () => {},
+      getSelectedElementIndex: () => {},
+      notifySelected: () => {},
+      getCheckboxAtIndex: () => {},
+      toggleCheckbox: () => {},
+    });
+  }
+
+  /** @param {!MDCMenuAdapter} adapter */
+  constructor(adapter) {
+    super(Object.assign(MDCMenuFoundation.defaultAdapter, adapter));
+
+    /** @type {number} */
+    this.closeAnimationEndTimerId_ = 0;
+  }
+
+  destroy() {
+    if (this.closeAnimationEndTimerId_) {
+      clearTimeout(this.closeAnimationEndTimerId_);
+    }
+
+    this.adapter_.closeSurface();
+  }
+
+  /**
+   * Handler function for the keydown events.
+   * @param {!Event} evt
+   */
+  handleKeydown(evt) {
+    const {key, keyCode} = evt;
+
+    const isSpace = key === 'Space' || keyCode === 32;
+    const isEnter = key === 'Enter' || keyCode === 13;
+    const isTab = key === 'Tab' || keyCode === 9;
+
+    if (isSpace || isEnter) {
+      this.handleAction_(evt);
+    } else if (isTab) {
+      this.adapter_.closeSurface();
+    }
+  }
+
+  /**
+   * Handler function for the click events.
+   * @param {!Event} evt
+   */
+  handleClick(evt) {
+    this.handleAction_(evt);
+  }
+
+  /**
+   * Combined action handling for click/keypress events.
+   * @param {!Event} evt
+   * @private
+   */
+  handleAction_(evt) {
+    const listItem = this.getListItem_(/** @type {HTMLElement} */ (evt.target));
+    if (listItem) {
+      this.handleSelection_(listItem);
+      this.preventDefaultEvent_(evt);
+    }
+  }
+
+  /**
+   * Handler for a selected list item.
+   * @param {?HTMLElement} listItem
+   * @private
+   */
+  handleSelection_(listItem) {
+    const index = this.adapter_.getElementIndex(listItem);
+    if (index < 0) {
+      return;
+    }
+
+    this.adapter_.notifySelected({index});
+    this.adapter_.closeSurface();
+
+    const checkbox = this.adapter_.getCheckboxAtIndex(index);
+    if (checkbox) {
+      this.adapter_.toggleCheckbox(/** @type {!HTMLElement} */ (checkbox));
+    }
+
+    // Wait for the menu to close before adding/removing classes that affect styles.
+    this.closeAnimationEndTimerId_ = setTimeout(() => {
+      const selectionGroup = this.getSelectionGroup_(listItem);
+
+      if (selectionGroup !== null) {
+        this.handleSelectionGroup_(/** @type {!HTMLElement} */ (selectionGroup), index);
+      }
+    }, __WEBPACK_IMPORTED_MODULE_3__material_menu_surface_foundation__["b" /* MDCMenuSurfaceFoundation */].numbers.TRANSITION_CLOSE_DURATION);
+  }
+
+  /**
+   * Handles toggling the selected classes in a selection group when a
+   * selection is made.
+   * @param {!HTMLElement} selectionGroup
+   * @param {number} index The selected index value
+   * @private
+   */
+  handleSelectionGroup_(selectionGroup, index) {
+    // De-select the previous selection in this group.
+    const selectedIndex = this.adapter_.getSelectedElementIndex(selectionGroup);
+    if (selectedIndex >= 0) {
+      this.adapter_.removeAttributeFromElementAtIndex(selectedIndex, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ARIA_SELECTED_ATTR);
+      this.adapter_.removeClassFromElementAtIndex(selectedIndex, __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].MENU_SELECTED_LIST_ITEM);
+    }
+    // Select the new list item in this group.
+    this.adapter_.addClassToElementAtIndex(index, __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].MENU_SELECTED_LIST_ITEM);
+    this.adapter_.addAttributeToElementAtIndex(index, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ARIA_SELECTED_ATTR, 'true');
+  }
+
+  /**
+   * Returns the parent selection group of an element if one exists.
+   * @param listItem
+   * @return {?HTMLElement} parent selection group element or null.
+   * @private
+   */
+  getSelectionGroup_(listItem) {
+    let parent = this.adapter_.getParentElement(listItem);
+    let isGroup = this.adapter_.elementContainsClass(parent, __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].MENU_SELECTION_GROUP);
+
+    // Iterate through ancestors until we find the group or get to the list.
+    while (!isGroup && !this.adapter_.elementContainsClass(parent, __WEBPACK_IMPORTED_MODULE_4__material_list_foundation__["a" /* default */].cssClasses.ROOT)) {
+      parent = this.adapter_.getParentElement(parent);
+      isGroup = this.adapter_.elementContainsClass(parent, __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].MENU_SELECTION_GROUP);
+    }
+
+    if (isGroup) {
+      return parent;
+    } else {
+      return null;
+    }
+  }
+
+  /**
+   * Find the first ancestor with the mdc-list-item class.
+   * @param {?HTMLElement} target
+   * @return {?HTMLElement}
+   * @private
+   */
+  getListItem_(target) {
+    let isListItem = this.adapter_.elementContainsClass(target, __WEBPACK_IMPORTED_MODULE_4__material_list_foundation__["a" /* default */].cssClasses.LIST_ITEM_CLASS);
+
+    while (!isListItem) {
+      target = this.adapter_.getParentElement(target);
+      if (target) {
+        isListItem = this.adapter_.elementContainsClass(target, __WEBPACK_IMPORTED_MODULE_4__material_list_foundation__["a" /* default */].cssClasses.LIST_ITEM_CLASS);
+      } else { // target has no parent element.
+        return null;
+      }
+    }
+
+    return target;
+  }
+
+  /**
+   * Ensures that preventDefault is only called if the containing element doesn't
+   * consume the event, and it will cause an unintended scroll.
+   * @param {!Event} evt
+   * @private
+   */
+  preventDefaultEvent_(evt) {
+    const target = /** @type {!HTMLElement} */ (evt.target);
+    const tagName = `${target.tagName}`.toLowerCase();
+    if (ELEMENTS_KEY_ALLOWED_IN.indexOf(tagName) === -1) {
+      evt.preventDefault();
+    }
+  }
+}
+
+
+
+
+/***/ }),
+/* 41 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export MDCMenuAdapter */
+/**
+ * @license
+ * Copyright 2018 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+/* eslint no-unused-vars: [2, {"args": "none"}] */
+
+/**
+ * Adapter for MDC Menu. Provides an interface for managing
+ * - selected element classes
+ * - get focused elements
+ * - toggling a checkbox inside a list item
+ *
+ * Additionally, provides type information for the adapter to the Closure
+ * compiler.
+ *
+ * Implement this adapter for your framework of choice to delegate updates to
+ * the component in your framework of choice. See architecture documentation
+ * for more details.
+ * https://github.com/material-components/material-components-web/blob/master/docs/code/architecture.md
+ *
+ * @record
+ */
+class MDCMenuAdapter {
+  /**
+   * Adds a class to the element at the index provided.
+   * @param {number} index
+   * @param {string} className
+   */
+  addClassToElementAtIndex(index, className) {}
+
+  /**
+   * Removes a class from the element at the index provided
+   * @param {number} index
+   * @param {string} className
+   */
+  removeClassFromElementAtIndex(index, className) {}
+
+  /**
+   * Adds an attribute, with value, to the element at the index provided.
+   * @param {number} index
+   * @param {string} attr
+   * @param {string} value
+   */
+  addAttributeToElementAtIndex(index, attr, value) {}
+
+  /**
+   * Removes an attribute from an element at the index provided.
+   * @param {number} index
+   * @param {string} attr
+   */
+  removeAttributeFromElementAtIndex(index, attr) {}
+
+  /**
+   * Returns true if the element contains the className.
+   * @param {?HTMLElement} element
+   * @param {string} className
+   * @return {boolean} true if the element contains the className
+   */
+  elementContainsClass(element, className) {}
+
+  /**
+   * Closes the menu-surface.
+   */
+  closeSurface() {}
+
+  /**
+   * Returns the index for the element provided.
+   * @param {?HTMLElement} element
+   * @return {number} index of the element in the list or -1 if it is not in the list.
+   */
+  getElementIndex(element) {}
+
+  /**
+   * Returns the parentElement of the provided element.
+   * @param {?HTMLElement} element
+   * @return {?HTMLElement} parentElement of the element provided.
+   */
+  getParentElement(element) {}
+
+  /**
+   * Returns the element within the selectionGroup containing the selected element class.
+   * @param {!HTMLElement} selectionGroup
+   * @return {number} element within the selectionGroup that contains the selected element class.
+   */
+  getSelectedElementIndex(selectionGroup) {}
+
+  /**
+   * Emits an event using the evtData.
+   * @param {{
+ *    index: number
+ *   }} evtData
+   */
+  notifySelected(evtData) {}
+
+  /**
+   * Returns the checkbox contained within the element at the index specified.
+   * @param {number} index
+   * @return {?HTMLElement} checkbox
+   */
+  getCheckboxAtIndex(index) {}
+
+  /**
+   * Toggles the checkbox within a list item.
+   * @param {!HTMLElement} target
+   */
+  toggleCheckbox(target) {}
+}
+
+
+
+
+/***/ }),
+/* 42 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return MDCMenuSurface; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__adapter__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__constants__ = __webpack_require__(17);
+/* unused harmony reexport MDCMenuSurfaceFoundation */
+/* unused harmony reexport AnchorMargin */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_4__constants__["a"]; });
+/* unused harmony reexport CornerBit */
+/* unused harmony reexport util */
+/**
+ * @license
+ * Copyright 2018 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+
+
+
+
+
+
+/**
+ * @extends MDCComponent<!MDCMenuSurfaceFoundation>
+ */
+class MDCMenuSurface extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
+  /** @param {...?} args */
+  constructor(...args) {
+    super(...args);
+
+    /** @private {!Element} */
+    this.previousFocus_;
+    /** @private {!Element} */
+    this.anchorElement;
+    /** @private {Element} */
+    this.firstFocusableElement_;
+    /** @private {Element} */
+    this.lastFocusableElement_;
+    /** @private {!Function} */
+    this.handleKeydown_;
+    /** @private {!Function} */
+    this.handleBodyClick_;
+    /** @private {!Function} */
+    this.registerBodyClickListener_;
+    /** @private {!Function} */
+    this.deregisterBodyClickListener_;
+  }
+
+  /**
+   * @param {!Element} root
+   * @return {!MDCMenuSurface}
+   */
+  static attachTo(root) {
+    return new MDCMenuSurface(root);
+  }
+
+  initialSyncWithDOM() {
+    if (this.root_.parentElement && this.root_.parentElement.classList.contains(__WEBPACK_IMPORTED_MODULE_4__constants__["c" /* cssClasses */].ANCHOR)) {
+      this.anchorElement = this.root_.parentElement;
+    }
+
+    if (this.root_.classList.contains(__WEBPACK_IMPORTED_MODULE_4__constants__["c" /* cssClasses */].FIXED)) {
+      this.setFixedPosition(true);
+    }
+
+    this.handleKeydown_ = (evt) => this.foundation_.handleKeydown(evt);
+    this.handleBodyClick_ = (evt) => this.foundation_.handleBodyClick(evt);
+
+    this.registerBodyClickListener_ = () => document.body.addEventListener('click', this.handleBodyClick_);
+    this.deregisterBodyClickListener_ = () => document.body.removeEventListener('click', this.handleBodyClick_);
+
+    this.root_.addEventListener('keydown', this.handleKeydown_);
+    this.root_.addEventListener(__WEBPACK_IMPORTED_MODULE_4__constants__["e" /* strings */].OPENED_EVENT, this.registerBodyClickListener_);
+    this.root_.addEventListener(__WEBPACK_IMPORTED_MODULE_4__constants__["e" /* strings */].CLOSED_EVENT, this.deregisterBodyClickListener_);
+  }
+
+  destroy() {
+    this.root_.removeEventListener('keydown', this.handleKeydown_);
+    this.root_.removeEventListener(__WEBPACK_IMPORTED_MODULE_4__constants__["e" /* strings */].OPENED_EVENT, this.registerBodyClickListener_);
+    this.root_.removeEventListener(__WEBPACK_IMPORTED_MODULE_4__constants__["e" /* strings */].CLOSED_EVENT, this.deregisterBodyClickListener_);
+    super.destroy();
+  }
+
+  /** @return {boolean} */
+  get open() {
+    return this.foundation_.isOpen();
+  }
+
+  /** @param {boolean} value */
+  set open(value) {
+    if (value) {
+      const focusableElements = this.root_.querySelectorAll(__WEBPACK_IMPORTED_MODULE_4__constants__["e" /* strings */].FOCUSABLE_ELEMENTS);
+      this.firstFocusableElement_ = focusableElements.length > 0 ? focusableElements[0] : null;
+      this.lastFocusableElement_ = focusableElements.length > 0 ?
+        focusableElements[focusableElements.length - 1] : null;
+      this.foundation_.open();
+    } else {
+      this.foundation_.close();
+    }
+  }
+
+  /**
+   * Removes the menu-surface from it's current location and appends it to the
+   * body to overcome any overflow:hidden issues.
+   */
+  hoistMenuToBody() {
+    document.body.appendChild(this.root_.parentElement.removeChild(this.root_));
+    this.setIsHoisted(true);
+  }
+
+  /**
+   * Sets the foundation to use page offsets for an positioning when the menu
+   * is hoisted to the body.
+   * @param {boolean} isHoisted
+   */
+  setIsHoisted(isHoisted) {
+    this.foundation_.setIsHoisted(isHoisted);
+  }
+
+  /**
+   * Sets the element that the menu-surface is anchored to.
+   * @param {!Element} element
+   */
+  setMenuSurfaceAnchorElement(element) {
+    this.anchorElement = element;
+  }
+
+  /**
+   * Sets the menu-surface to position: fixed.
+   * @param {boolean} isFixed
+   */
+  setFixedPosition(isFixed) {
+    if (isFixed) {
+      this.root_.classList.add(__WEBPACK_IMPORTED_MODULE_4__constants__["c" /* cssClasses */].FIXED);
+    } else {
+      this.root_.classList.remove(__WEBPACK_IMPORTED_MODULE_4__constants__["c" /* cssClasses */].FIXED);
+    }
+
+    this.foundation_.setFixedPosition(isFixed);
+  }
+
+  /**
+   * Sets the absolute x/y position to position based on. Requires the menu to be hoisted.
+   * @param {number} x
+   * @param {number} y
+   */
+  setAbsolutePosition(x, y) {
+    this.foundation_.setAbsolutePosition(x, y);
+    this.setIsHoisted(true);
+  }
+
+  /**
+   * @param {!Corner} corner Default anchor corner alignment of top-left
+   *     surface corner.
+   */
+  setAnchorCorner(corner) {
+    this.foundation_.setAnchorCorner(corner);
+  }
+
+  /**
+   * @param {!AnchorMargin} margin
+   */
+  setAnchorMargin(margin) {
+    this.foundation_.setAnchorMargin(margin);
   }
 
   /** @param {boolean} quickOpen */
@@ -14059,49 +16506,86 @@ class MDCMenu extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a"
     this.foundation_.setQuickOpen(quickOpen);
   }
 
-  /** @return {!MDCMenuFoundation} */
+  /** @return {!MDCMenuSurfaceFoundation} */
   getDefaultFoundation() {
-    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["b" /* MDCMenuFoundation */]({
-      addClass: (className) => this.root_.classList.add(className),
-      removeClass: (className) => this.root_.classList.remove(className),
-      hasClass: (className) => this.root_.classList.contains(className),
-      hasNecessaryDom: () => Boolean(this.itemsContainer_),
-      getAttributeForEventTarget: (target, attributeName) => target.getAttribute(attributeName),
-      getInnerDimensions: () => {
-        const {itemsContainer_: itemsContainer} = this;
-        return {width: itemsContainer.offsetWidth, height: itemsContainer.offsetHeight};
+    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["b" /* MDCMenuSurfaceFoundation */](
+      /** @type {!MDCMenuSurfaceAdapter} */ (Object.assign({
+        addClass: (className) => this.root_.classList.add(className),
+        removeClass: (className) => this.root_.classList.remove(className),
+        hasClass: (className) => this.root_.classList.contains(className),
+        hasAnchor: () => !!this.anchorElement,
+        notifyClose: () => this.emit(__WEBPACK_IMPORTED_MODULE_2__foundation__["b" /* MDCMenuSurfaceFoundation */].strings.CLOSED_EVENT, {}),
+        notifyOpen: () => this.emit(__WEBPACK_IMPORTED_MODULE_2__foundation__["b" /* MDCMenuSurfaceFoundation */].strings.OPENED_EVENT, {}),
+        isElementInContainer: (el) => this.root_ === el || this.root_.contains(el),
+        isRtl: () => getComputedStyle(this.root_).getPropertyValue('direction') === 'rtl',
+        setTransformOrigin: (origin) => {
+          this.root_.style[`${__WEBPACK_IMPORTED_MODULE_1__util__["a" /* getTransformPropertyName */](window)}-origin`] = origin;
+        },
       },
-      hasAnchor: () => this.root_.parentElement && this.root_.parentElement.classList.contains('mdc-menu-anchor'),
-      getAnchorDimensions: () => this.root_.parentElement.getBoundingClientRect(),
-      getWindowDimensions: () => {
-        return {width: window.innerWidth, height: window.innerHeight};
-      },
-      getNumberOfItems: () => this.items.length,
-      registerInteractionHandler: (type, handler) => this.root_.addEventListener(type, handler),
-      deregisterInteractionHandler: (type, handler) => this.root_.removeEventListener(type, handler),
-      registerBodyClickHandler: (handler) => document.body.addEventListener('click', handler),
-      deregisterBodyClickHandler: (handler) => document.body.removeEventListener('click', handler),
-      getIndexForEventTarget: (target) => this.items.indexOf(target),
-      notifySelected: (evtData) => this.emit(__WEBPACK_IMPORTED_MODULE_2__foundation__["b" /* MDCMenuFoundation */].strings.SELECTED_EVENT, {
-        index: evtData.index,
-        item: this.items[evtData.index],
-      }),
-      notifyCancel: () => this.emit(__WEBPACK_IMPORTED_MODULE_2__foundation__["b" /* MDCMenuFoundation */].strings.CANCEL_EVENT, {}),
+      this.getFocusAdapterMethods_(),
+      this.getDimensionAdapterMethods_())
+      ));
+  }
+
+  /**
+   * @return {!{
+   * isFocused: function(): boolean,
+   * saveFocus: function(),
+   * restoreFocus: function(),
+   * isFirstElementFocused: function(): boolean,
+   * isLastElementFocused: function(): boolean,
+   * focusFirstElement: function(),
+   * focusLastElement: function(),
+   * }}
+   * @private
+   */
+  getFocusAdapterMethods_() {
+    return {
+      isFocused: () => document.activeElement === this.root_,
       saveFocus: () => {
         this.previousFocus_ = document.activeElement;
       },
       restoreFocus: () => {
-        if (this.previousFocus_ && this.previousFocus_.focus) {
-          this.previousFocus_.focus();
+        if (this.root_.contains(document.activeElement)) {
+          if (this.previousFocus_ && this.previousFocus_.focus) {
+            this.previousFocus_.focus();
+          }
         }
       },
-      isFocused: () => document.activeElement === this.root_,
-      focus: () => this.root_.focus(),
-      getFocusedItemIndex: () => this.items.indexOf(document.activeElement),
-      focusItemAtIndex: (index) => this.items[index].focus(),
-      isRtl: () => getComputedStyle(this.root_).getPropertyValue('direction') === 'rtl',
-      setTransformOrigin: (origin) => {
-        this.root_.style[`${Object(__WEBPACK_IMPORTED_MODULE_1__util__["a" /* getTransformPropertyName */])(window)}-origin`] = origin;
+      isFirstElementFocused: () =>
+        this.firstFocusableElement_ && this.firstFocusableElement_ === document.activeElement,
+      isLastElementFocused: () =>
+        this.lastFocusableElement_ && this.lastFocusableElement_ === document.activeElement,
+      focusFirstElement: () =>
+        this.firstFocusableElement_ && this.firstFocusableElement_.focus && this.firstFocusableElement_.focus(),
+      focusLastElement: () =>
+        this.lastFocusableElement_ && this.lastFocusableElement_.focus && this.lastFocusableElement_.focus(),
+    };
+  }
+
+  /**
+   * @return {!{
+   * getInnerDimensions: function(),
+   * getAnchorDimensions: function(): (HTMLElement | null | * | ClientRect),
+   * getWindowDimensions: function(),
+   * setPosition: function(*),
+   * setMaxHeight: function(string)}}
+   * @private
+   */
+  getDimensionAdapterMethods_() {
+    return {
+      getInnerDimensions: () => {
+        return {width: this.root_.offsetWidth, height: this.root_.offsetHeight};
+      },
+      getAnchorDimensions: () => this.anchorElement && this.anchorElement.getBoundingClientRect(),
+      getWindowDimensions: () => {
+        return {width: window.innerWidth, height: window.innerHeight};
+      },
+      getBodyDimensions: () => {
+        return {width: document.body.clientWidth, height: document.body.clientHeight};
+      },
+      getWindowScroll: () => {
+        return {x: window.pageXOffset, y: window.pageYOffset};
       },
       setPosition: (position) => {
         this.root_.style.left = 'left' in position ? position.left : null;
@@ -14112,11 +16596,7 @@ class MDCMenu extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a"
       setMaxHeight: (height) => {
         this.root_.style.maxHeight = height;
       },
-      setAttrForOptionAtIndex: (index, attr, value) => this.items[index].setAttribute(attr, value),
-      rmAttrForOptionAtIndex: (index, attr) => this.items[index].removeAttribute(attr),
-      addClassForOptionAtIndex: (index, className) => this.items[index].classList.add(className),
-      rmClassForOptionAtIndex: (index, className) => this.items[index].classList.remove(className),
-    });
+    };
   }
 }
 
@@ -14124,27 +16604,32 @@ class MDCMenu extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a"
 
 
 /***/ }),
-/* 35 */
+/* 43 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getTransformPropertyName; });
-/* unused harmony export clamp */
-/* unused harmony export bezierProgress */
 /**
- * Copyright 2016 Google Inc. All Rights Reserved.
+ * @license
+ * Copyright 2018 Google Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 
 /** @type {string|undefined} */
@@ -14166,963 +16651,11 @@ function getTransformPropertyName(globalObj, forceRefresh = false) {
   return storedTransformPropertyName_;
 }
 
-/**
- * Clamps a value between the minimum and the maximum, returning the clamped value.
- * @param {number} value
- * @param {number} min
- * @param {number} max
- * @return {number}
- */
-function clamp(value, min = 0, max = 1) {
-  return Math.min(max, Math.max(min, value));
-}
-
-
-/**
- * Returns the easing value to apply at time t, for a given cubic bezier curve.
- * Control points P0 and P3 are assumed to be (0,0) and (1,1), respectively.
- * Parameters are as follows:
- * - time: The current time in the animation, scaled between 0 and 1.
- * - x1: The x value of control point P1.
- * - y1: The y value of control point P1.
- * - x2: The x value of control point P2.
- * - y2: The y value of control point P2.
- * @param {number} time
- * @param {number} x1
- * @param {number} y1
- * @param {number} x2
- * @param {number} y2
- * @return {number}
- */
-function bezierProgress(time, x1, y1, x2, y2) {
-  return getBezierCoordinate_(solvePositionFromXValue_(time, x1, x2), y1, y2);
-}
-
-/**
- * Compute a single coordinate at a position point between 0 and 1.
- * c1 and c2 are the matching coordinate on control points P1 and P2, respectively.
- * Control points P0 and P3 are assumed to be (0,0) and (1,1), respectively.
- * Adapted from https://github.com/google/closure-library/blob/master/closure/goog/math/bezier.js.
- * @param {number} t
- * @param {number} c1
- * @param {number} c2
- * @return {number}
- */
-function getBezierCoordinate_(t, c1, c2) {
-  // Special case start and end.
-  if (t === 0 || t === 1) {
-    return t;
-  }
-
-  // Step one - from 4 points to 3
-  let ic0 = t * c1;
-  let ic1 = c1 + t * (c2 - c1);
-  const ic2 = c2 + t * (1 - c2);
-
-  // Step two - from 3 points to 2
-  ic0 += t * (ic1 - ic0);
-  ic1 += t * (ic2 - ic1);
-
-  // Final step - last point
-  return ic0 + t * (ic1 - ic0);
-}
-
-/**
- * Project a point onto the Bezier curve, from a given X. Calculates the position t along the curve.
- * Adapted from https://github.com/google/closure-library/blob/master/closure/goog/math/bezier.js.
- * @param {number} xVal
- * @param {number} x1
- * @param {number} x2
- * @return {number}
- */
-function solvePositionFromXValue_(xVal, x1, x2) {
-  const EPSILON = 1e-6;
-  const MAX_ITERATIONS = 8;
-
-  if (xVal <= 0) {
-    return 0;
-  } else if (xVal >= 1) {
-    return 1;
-  }
-
-  // Initial estimate of t using linear interpolation.
-  let t = xVal;
-
-  // Try gradient descent to solve for t. If it works, it is very fast.
-  let tMin = 0;
-  let tMax = 1;
-  let value = 0;
-  for (let i = 0; i < MAX_ITERATIONS; i++) {
-    value = getBezierCoordinate_(t, x1, x2);
-    const derivative = (getBezierCoordinate_(t + EPSILON, x1, x2) - value) / EPSILON;
-    if (Math.abs(value - xVal) < EPSILON) {
-      return t;
-    } else if (Math.abs(derivative) < EPSILON) {
-      break;
-    } else {
-      if (value < xVal) {
-        tMin = t;
-      } else {
-        tMax = t;
-      }
-      t -= (value - xVal) / derivative;
-    }
-  }
-
-  // If the gradient descent got stuck in a local minimum, e.g. because
-  // the derivative was close to 0, use a Dichotomy refinement instead.
-  // We limit the number of interations to 8.
-  for (let i = 0; Math.abs(value - xVal) > EPSILON && i < MAX_ITERATIONS; i++) {
-    if (value < xVal) {
-      tMin = t;
-      t = (t + tMax) / 2;
-    } else {
-      tMax = t;
-      t = (t + tMin) / 2;
-    }
-    value = getBezierCoordinate_(t, x1, x2);
-  }
-  return t;
-}
-
 
 
 
 /***/ }),
-/* 36 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return MDCMenuFoundation; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AnchorMargin; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(8);
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/**
- * @typedef {{
- *   top: number,
- *   right: number,
- *   bottom: number,
- *   left: number
- * }}
- */
-let AnchorMargin;
-
-/* eslint-disable no-unused-vars */
-/**
- * @typedef {{
- *   viewport: { width: number, height: number },
- *   viewportDistance: {top: number, right: number, bottom: number, left: number},
- *   anchorHeight: number,
- *   anchorWidth: number,
- *   menuHeight: number,
- *   menuWidth: number,
- * }}
- */
-let AutoLayoutMeasurements;
-/* eslint-enable no-unused-vars */
-
-
-
-
-
-/**
- * @extends {MDCFoundation<!MDCMenuAdapter>}
- */
-class MDCMenuFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
-  /** @return enum{cssClasses} */
-  static get cssClasses() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* cssClasses */];
-  }
-
-  /** @return enum{strings} */
-  static get strings() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["e" /* strings */];
-  }
-
-  /** @return enum{numbers} */
-  static get numbers() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["d" /* numbers */];
-  }
-
-  /** @return enum{number} */
-  static get Corner() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* Corner */];
-  }
-
-  /**
-   * {@see MDCMenuAdapter} for typing information on parameters and return
-   * types.
-   * @return {!MDCMenuAdapter}
-   */
-  static get defaultAdapter() {
-    return /** @type {!MDCMenuAdapter} */ ({
-      addClass: () => {},
-      removeClass: () => {},
-      hasClass: () => false,
-      hasNecessaryDom: () => false,
-      getAttributeForEventTarget: () => {},
-      getInnerDimensions: () => ({}),
-      hasAnchor: () => false,
-      getAnchorDimensions: () => ({}),
-      getWindowDimensions: () => ({}),
-      getNumberOfItems: () => 0,
-      registerInteractionHandler: () => {},
-      deregisterInteractionHandler: () => {},
-      registerBodyClickHandler: () => {},
-      deregisterBodyClickHandler: () => {},
-      getIndexForEventTarget: () => 0,
-      notifySelected: () => {},
-      notifyCancel: () => {},
-      saveFocus: () => {},
-      restoreFocus: () => {},
-      isFocused: () => false,
-      focus: () => {},
-      getFocusedItemIndex: () => -1,
-      focusItemAtIndex: () => {},
-      isRtl: () => false,
-      setTransformOrigin: () => {},
-      setPosition: () => {},
-      setMaxHeight: () => {},
-      setAttrForOptionAtIndex: () => {},
-      rmAttrForOptionAtIndex: () => {},
-      addClassForOptionAtIndex: () => {},
-      rmClassForOptionAtIndex: () => {},
-    });
-  }
-
-  /** @param {!MDCMenuAdapter} adapter */
-  constructor(adapter) {
-    super(Object.assign(MDCMenuFoundation.defaultAdapter, adapter));
-
-    /** @private {function(!Event)} */
-    this.clickHandler_ = (evt) => this.handlePossibleSelected_(evt);
-    /** @private {function(!Event)} */
-    this.keydownHandler_ = (evt) => this.handleKeyboardDown_(evt);
-    /** @private {function(!Event)} */
-    this.keyupHandler_ = (evt) => this.handleKeyboardUp_(evt);
-    /** @private {function(!Event)} */
-    this.documentClickHandler_ = (evt) => this.handleDocumentClick_(evt);
-    /** @private {boolean} */
-    this.isOpen_ = false;
-    /** @private {number} */
-    this.openAnimationEndTimerId_ = 0;
-    /** @private {number} */
-    this.closeAnimationEndTimerId_ = 0;
-    /** @private {number} */
-    this.selectedTriggerTimerId_ = 0;
-    /** @private {number} */
-    this.animationRequestId_ = 0;
-    /** @private {!{ width: number, height: number }} */
-    this.dimensions_;
-    /** @private {number} */
-    this.itemHeight_;
-    /** @private {Corner} */
-    this.anchorCorner_ = __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* Corner */].TOP_START;
-    /** @private {AnchorMargin} */
-    this.anchorMargin_ = {top: 0, right: 0, bottom: 0, left: 0};
-    /** @private {?AutoLayoutMeasurements} */
-    this.measures_ = null;
-    /** @private {number} */
-    this.selectedIndex_ = -1;
-    /** @private {boolean} */
-    this.rememberSelection_ = false;
-    /** @private {boolean} */
-    this.quickOpen_ = false;
-
-    // A keyup event on the menu needs to have a corresponding keydown
-    // event on the menu. If the user opens the menu with a keydown event on a
-    // button, the menu will only get the key up event causing buggy behavior with selected elements.
-    /** @private {boolean} */
-    this.keyDownWithinMenu_ = false;
-  }
-
-  init() {
-    const {ROOT, OPEN} = MDCMenuFoundation.cssClasses;
-
-    if (!this.adapter_.hasClass(ROOT)) {
-      throw new Error(`${ROOT} class required in root element.`);
-    }
-
-    if (!this.adapter_.hasNecessaryDom()) {
-      throw new Error(`Required DOM nodes missing in ${ROOT} component.`);
-    }
-
-    if (this.adapter_.hasClass(OPEN)) {
-      this.isOpen_ = true;
-    }
-
-    this.adapter_.registerInteractionHandler('click', this.clickHandler_);
-    this.adapter_.registerInteractionHandler('keyup', this.keyupHandler_);
-    this.adapter_.registerInteractionHandler('keydown', this.keydownHandler_);
-  }
-
-  destroy() {
-    clearTimeout(this.selectedTriggerTimerId_);
-    clearTimeout(this.openAnimationEndTimerId_);
-    clearTimeout(this.closeAnimationEndTimerId_);
-    // Cancel any currently running animations.
-    cancelAnimationFrame(this.animationRequestId_);
-    this.adapter_.deregisterInteractionHandler('click', this.clickHandler_);
-    this.adapter_.deregisterInteractionHandler('keyup', this.keyupHandler_);
-    this.adapter_.deregisterInteractionHandler('keydown', this.keydownHandler_);
-    this.adapter_.deregisterBodyClickHandler(this.documentClickHandler_);
-  }
-
-  /**
-   * @param {!Corner} corner Default anchor corner alignment of top-left menu corner.
-   */
-  setAnchorCorner(corner) {
-    this.anchorCorner_ = corner;
-  }
-
-  /**
-   * @param {!AnchorMargin} margin 4-plet of margins from anchor.
-   */
-  setAnchorMargin(margin) {
-    this.anchorMargin_.top = typeof margin.top === 'number' ? margin.top : 0;
-    this.anchorMargin_.right = typeof margin.right === 'number' ? margin.right : 0;
-    this.anchorMargin_.bottom = typeof margin.bottom === 'number' ? margin.bottom : 0;
-    this.anchorMargin_.left = typeof margin.left === 'number' ? margin.left : 0;
-  }
-
-  /** @param {boolean} rememberSelection */
-  setRememberSelection(rememberSelection) {
-    this.rememberSelection_ = rememberSelection;
-    this.setSelectedIndex(-1);
-  }
-
-  /** @param {boolean} quickOpen */
-  setQuickOpen(quickOpen) {
-    this.quickOpen_ = quickOpen;
-  }
-
-  /**
-   * @param {?number} focusIndex
-   * @private
-   */
-  focusOnOpen_(focusIndex) {
-    if (focusIndex === null) {
-      // If this instance of MDCMenu remembers selections, and the user has
-      // made a selection, then focus the last selected item
-      if (this.rememberSelection_ && this.selectedIndex_ >= 0) {
-        this.adapter_.focusItemAtIndex(this.selectedIndex_);
-        return;
-      }
-
-      this.adapter_.focus();
-      // If that doesn't work, focus first item instead.
-      if (!this.adapter_.isFocused()) {
-        this.adapter_.focusItemAtIndex(0);
-      }
-    } else {
-      this.adapter_.focusItemAtIndex(focusIndex);
-    }
-  }
-
-  /**
-   * Handle clicks and cancel the menu if not a child list-item
-   * @param {!Event} evt
-   * @private
-   */
-  handleDocumentClick_(evt) {
-    let el = evt.target;
-
-    while (el && el !== document.documentElement) {
-      if (this.adapter_.getIndexForEventTarget(el) !== -1) {
-        return;
-      }
-      el = el.parentNode;
-    }
-
-    this.adapter_.notifyCancel();
-    this.close(evt);
-  };
-
-  /**
-   * Handle keys that we want to repeat on hold (tab and arrows).
-   * @param {!Event} evt
-   * @return {boolean}
-   * @private
-   */
-  handleKeyboardDown_(evt) {
-    // Do nothing if Alt, Ctrl or Meta are pressed.
-    if (evt.altKey || evt.ctrlKey || evt.metaKey) {
-      return true;
-    }
-
-    const {keyCode, key, shiftKey} = evt;
-    const isTab = key === 'Tab' || keyCode === 9;
-    const isArrowUp = key === 'ArrowUp' || keyCode === 38;
-    const isArrowDown = key === 'ArrowDown' || keyCode === 40;
-    const isSpace = key === 'Space' || keyCode === 32;
-    const isEnter = key === 'Enter' || keyCode === 13;
-    // The menu needs to know if the keydown event was triggered on the menu
-    this.keyDownWithinMenu_ = isEnter || isSpace;
-
-    const focusedItemIndex = this.adapter_.getFocusedItemIndex();
-    const lastItemIndex = this.adapter_.getNumberOfItems() - 1;
-
-    if (shiftKey && isTab && focusedItemIndex === 0) {
-      this.adapter_.focusItemAtIndex(lastItemIndex);
-      evt.preventDefault();
-      return false;
-    }
-
-    if (!shiftKey && isTab && focusedItemIndex === lastItemIndex) {
-      this.adapter_.focusItemAtIndex(0);
-      evt.preventDefault();
-      return false;
-    }
-
-    // Ensure Arrow{Up,Down} and space do not cause inadvertent scrolling
-    if (isArrowUp || isArrowDown || isSpace) {
-      evt.preventDefault();
-    }
-
-    if (isArrowUp) {
-      if (focusedItemIndex === 0 || this.adapter_.isFocused()) {
-        this.adapter_.focusItemAtIndex(lastItemIndex);
-      } else {
-        this.adapter_.focusItemAtIndex(focusedItemIndex - 1);
-      }
-    } else if (isArrowDown) {
-      if (focusedItemIndex === lastItemIndex || this.adapter_.isFocused()) {
-        this.adapter_.focusItemAtIndex(0);
-      } else {
-        this.adapter_.focusItemAtIndex(focusedItemIndex + 1);
-      }
-    }
-
-    return true;
-  }
-
-  /**
-   * Handle keys that we don't want to repeat on hold (Enter, Space, Escape).
-   * @param {!Event} evt
-   * @return {boolean}
-   * @private
-   */
-  handleKeyboardUp_(evt) {
-    // Do nothing if Alt, Ctrl or Meta are pressed.
-    if (evt.altKey || evt.ctrlKey || evt.metaKey) {
-      return true;
-    }
-
-    const {keyCode, key} = evt;
-    const isEnter = key === 'Enter' || keyCode === 13;
-    const isSpace = key === 'Space' || keyCode === 32;
-    const isEscape = key === 'Escape' || keyCode === 27;
-
-    if (isEnter || isSpace) {
-      // If the keydown event didn't occur on the menu, then it should
-      // disregard the possible selected event.
-      if (this.keyDownWithinMenu_) {
-        this.handlePossibleSelected_(evt);
-      }
-      this.keyDownWithinMenu_ = false;
-    }
-
-    if (isEscape) {
-      this.adapter_.notifyCancel();
-      this.close();
-    }
-
-    return true;
-  }
-
-  /**
-   * @param {!Event} evt
-   * @private
-   */
-  handlePossibleSelected_(evt) {
-    if (this.adapter_.getAttributeForEventTarget(evt.target, __WEBPACK_IMPORTED_MODULE_2__constants__["e" /* strings */].ARIA_DISABLED_ATTR) === 'true') {
-      return;
-    }
-    const targetIndex = this.adapter_.getIndexForEventTarget(evt.target);
-    if (targetIndex < 0) {
-      return;
-    }
-    // Debounce multiple selections
-    if (this.selectedTriggerTimerId_) {
-      return;
-    }
-    this.selectedTriggerTimerId_ = setTimeout(() => {
-      this.selectedTriggerTimerId_ = 0;
-      this.close();
-      if (this.rememberSelection_) {
-        this.setSelectedIndex(targetIndex);
-      }
-      this.adapter_.notifySelected({index: targetIndex});
-    }, __WEBPACK_IMPORTED_MODULE_2__constants__["d" /* numbers */].SELECTED_TRIGGER_DELAY);
-  }
-
-  /**
-   * @return {AutoLayoutMeasurements} Measurements used to position menu popup.
-   */
-  getAutoLayoutMeasurements_() {
-    const anchorRect = this.adapter_.getAnchorDimensions();
-    const viewport = this.adapter_.getWindowDimensions();
-
-    return {
-      viewport: viewport,
-      viewportDistance: {
-        top: anchorRect.top,
-        right: viewport.width - anchorRect.right,
-        left: anchorRect.left,
-        bottom: viewport.height - anchorRect.bottom,
-      },
-      anchorHeight: anchorRect.height,
-      anchorWidth: anchorRect.width,
-      menuHeight: this.dimensions_.height,
-      menuWidth: this.dimensions_.width,
-    };
-  }
-
-  /**
-   * Computes the corner of the anchor from which to animate and position the menu.
-   * @return {Corner}
-   * @private
-   */
-  getOriginCorner_() {
-    // Defaults: open from the top left.
-    let corner = __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* Corner */].TOP_LEFT;
-
-    const {viewportDistance, anchorHeight, anchorWidth, menuHeight, menuWidth} = this.measures_;
-    const isBottomAligned = Boolean(this.anchorCorner_ & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].BOTTOM);
-    const availableTop = isBottomAligned ? viewportDistance.top + anchorHeight + this.anchorMargin_.bottom
-      : viewportDistance.top + this.anchorMargin_.top;
-    const availableBottom = isBottomAligned ? viewportDistance.bottom - this.anchorMargin_.bottom
-      : viewportDistance.bottom + anchorHeight - this.anchorMargin_.top;
-
-    const topOverflow = menuHeight - availableTop;
-    const bottomOverflow = menuHeight - availableBottom;
-    if (bottomOverflow > 0 && topOverflow < bottomOverflow) {
-      corner |= __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].BOTTOM;
-    }
-
-    const isRtl = this.adapter_.isRtl();
-    const isFlipRtl = Boolean(this.anchorCorner_ & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].FLIP_RTL);
-    const avoidHorizontalOverlap = Boolean(this.anchorCorner_ & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].RIGHT);
-    const isAlignedRight = (avoidHorizontalOverlap && !isRtl) ||
-      (!avoidHorizontalOverlap && isFlipRtl && isRtl);
-    const availableLeft = isAlignedRight ? viewportDistance.left + anchorWidth + this.anchorMargin_.right :
-      viewportDistance.left + this.anchorMargin_.left;
-    const availableRight = isAlignedRight ? viewportDistance.right - this.anchorMargin_.right :
-      viewportDistance.right + anchorWidth - this.anchorMargin_.left;
-
-    const leftOverflow = menuWidth - availableLeft;
-    const rightOverflow = menuWidth - availableRight;
-
-    if ((leftOverflow < 0 && isAlignedRight && isRtl) ||
-        (avoidHorizontalOverlap && !isAlignedRight && leftOverflow < 0) ||
-        (rightOverflow > 0 && leftOverflow < rightOverflow)) {
-      corner |= __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].RIGHT;
-    }
-
-    return corner;
-  }
-
-  /**
-   * @param {Corner} corner Origin corner of the menu.
-   * @return {number} Horizontal offset of menu origin corner from corresponding anchor corner.
-   * @private
-   */
-  getHorizontalOriginOffset_(corner) {
-    const {anchorWidth} = this.measures_;
-    const isRightAligned = Boolean(corner & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].RIGHT);
-    const avoidHorizontalOverlap = Boolean(this.anchorCorner_ & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].RIGHT);
-    let x = 0;
-    if (isRightAligned) {
-      const rightOffset = avoidHorizontalOverlap ? anchorWidth - this.anchorMargin_.left : this.anchorMargin_.right;
-      x = rightOffset;
-    } else {
-      const leftOffset = avoidHorizontalOverlap ? anchorWidth - this.anchorMargin_.right : this.anchorMargin_.left;
-      x = leftOffset;
-    }
-    return x;
-  }
-
-  /**
-   * @param {Corner} corner Origin corner of the menu.
-   * @return {number} Vertical offset of menu origin corner from corresponding anchor corner.
-   * @private
-   */
-  getVerticalOriginOffset_(corner) {
-    const {viewport, viewportDistance, anchorHeight, menuHeight} = this.measures_;
-    const isBottomAligned = Boolean(corner & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].BOTTOM);
-    const {MARGIN_TO_EDGE} = MDCMenuFoundation.numbers;
-    const avoidVerticalOverlap = Boolean(this.anchorCorner_ & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].BOTTOM);
-    const canOverlapVertically = !avoidVerticalOverlap;
-    let y = 0;
-
-    if (isBottomAligned) {
-      y = avoidVerticalOverlap ? anchorHeight - this.anchorMargin_.top : -this.anchorMargin_.bottom;
-      // adjust for when menu can overlap anchor, but too tall to be aligned to bottom
-      // anchor corner. Bottom margin is ignored in such cases.
-      if (canOverlapVertically && menuHeight > viewportDistance.top + anchorHeight) {
-        y = -(Math.min(menuHeight, viewport.height - MARGIN_TO_EDGE) - (viewportDistance.top + anchorHeight));
-      }
-    } else {
-      y = avoidVerticalOverlap ? (anchorHeight + this.anchorMargin_.bottom) : this.anchorMargin_.top;
-      // adjust for when menu can overlap anchor, but too tall to be aligned to top
-      // anchor corners. Top margin is ignored in that case.
-      if (canOverlapVertically && menuHeight > viewportDistance.bottom + anchorHeight) {
-        y = -(Math.min(menuHeight, viewport.height - MARGIN_TO_EDGE) - (viewportDistance.bottom + anchorHeight));
-      }
-    }
-    return y;
-  }
-
-  /**
-   * @param {Corner} corner Origin corner of the menu.
-   * @return {number} Maximum height of the menu, based on available space. 0 indicates should not be set.
-   * @private
-   */
-  getMenuMaxHeight_(corner) {
-    let maxHeight = 0;
-    const {viewportDistance} = this.measures_;
-    const isBottomAligned = Boolean(corner & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].BOTTOM);
-
-    // When maximum height is not specified, it is handled from css.
-    if (this.anchorCorner_ & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].BOTTOM) {
-      if (isBottomAligned) {
-        maxHeight = viewportDistance.top + this.anchorMargin_.top;
-      } else {
-        maxHeight = viewportDistance.bottom - this.anchorMargin_.bottom;
-      }
-    }
-
-    return maxHeight;
-  }
-
-  /** @private */
-  autoPosition_() {
-    if (!this.adapter_.hasAnchor()) {
-      return;
-    }
-
-    // Compute measurements for autoposition methods reuse.
-    this.measures_ = this.getAutoLayoutMeasurements_();
-
-    const corner = this.getOriginCorner_();
-    const maxMenuHeight = this.getMenuMaxHeight_(corner);
-    let verticalAlignment = (corner & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].BOTTOM) ? 'bottom' : 'top';
-    let horizontalAlignment = (corner & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].RIGHT) ? 'right' : 'left';
-    const horizontalOffset = this.getHorizontalOriginOffset_(corner);
-    const verticalOffset = this.getVerticalOriginOffset_(corner);
-    const position = {
-      [horizontalAlignment]: horizontalOffset ? horizontalOffset + 'px' : '0',
-      [verticalAlignment]: verticalOffset ? verticalOffset + 'px' : '0',
-    };
-    const {anchorWidth, menuHeight, menuWidth} = this.measures_;
-    // Center align when anchor width is comparable or greater than menu, otherwise keep corner.
-    if (anchorWidth / menuWidth > __WEBPACK_IMPORTED_MODULE_2__constants__["d" /* numbers */].ANCHOR_TO_MENU_WIDTH_RATIO) {
-      horizontalAlignment = 'center';
-    }
-
-    // Adjust vertical origin when menu is positioned with significant offset from anchor. This is done so that
-    // scale animation is "anchored" on the anchor.
-    if (!(this.anchorCorner_ & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].BOTTOM) &&
-        Math.abs(verticalOffset / menuHeight) > __WEBPACK_IMPORTED_MODULE_2__constants__["d" /* numbers */].OFFSET_TO_MENU_HEIGHT_RATIO) {
-      const verticalOffsetPercent = Math.abs(verticalOffset / menuHeight) * 100;
-      const originPercent = (corner & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].BOTTOM) ? 100 - verticalOffsetPercent : verticalOffsetPercent;
-      verticalAlignment = Math.round(originPercent * 100) / 100 + '%';
-    }
-
-    this.adapter_.setTransformOrigin(`${horizontalAlignment} ${verticalAlignment}`);
-    this.adapter_.setPosition(position);
-    this.adapter_.setMaxHeight(maxMenuHeight ? maxMenuHeight + 'px' : '');
-
-    // Clear measures after positioning is complete.
-    this.measures_ = null;
-  }
-
-  /**
-   * Open the menu.
-   * @param {{focusIndex: ?number}=} options
-   */
-  open({focusIndex = null} = {}) {
-    this.adapter_.saveFocus();
-
-    if (!this.quickOpen_) {
-      this.adapter_.addClass(MDCMenuFoundation.cssClasses.ANIMATING_OPEN);
-    }
-
-    this.animationRequestId_ = requestAnimationFrame(() => {
-      this.dimensions_ = this.adapter_.getInnerDimensions();
-      this.autoPosition_();
-      this.adapter_.addClass(MDCMenuFoundation.cssClasses.OPEN);
-      this.focusOnOpen_(focusIndex);
-      this.adapter_.registerBodyClickHandler(this.documentClickHandler_);
-      if (!this.quickOpen_) {
-        this.openAnimationEndTimerId_ = setTimeout(() => {
-          this.openAnimationEndTimerId_ = 0;
-          this.adapter_.removeClass(MDCMenuFoundation.cssClasses.ANIMATING_OPEN);
-        }, __WEBPACK_IMPORTED_MODULE_2__constants__["d" /* numbers */].TRANSITION_OPEN_DURATION);
-      }
-    });
-    this.isOpen_ = true;
-  }
-
-  /**
-   * Closes the menu.
-   * @param {Event=} evt
-   */
-  close(evt = null) {
-    const targetIsDisabled = evt ?
-      this.adapter_.getAttributeForEventTarget(evt.target, __WEBPACK_IMPORTED_MODULE_2__constants__["e" /* strings */].ARIA_DISABLED_ATTR) === 'true' :
-      false;
-
-    if (targetIsDisabled) {
-      return;
-    }
-
-    this.adapter_.deregisterBodyClickHandler(this.documentClickHandler_);
-
-    if (!this.quickOpen_) {
-      this.adapter_.addClass(MDCMenuFoundation.cssClasses.ANIMATING_CLOSED);
-    }
-
-    requestAnimationFrame(() => {
-      this.adapter_.removeClass(MDCMenuFoundation.cssClasses.OPEN);
-      if (!this.quickOpen_) {
-        this.closeAnimationEndTimerId_ = setTimeout(() => {
-          this.closeAnimationEndTimerId_ = 0;
-          this.adapter_.removeClass(MDCMenuFoundation.cssClasses.ANIMATING_CLOSED);
-        }, __WEBPACK_IMPORTED_MODULE_2__constants__["d" /* numbers */].TRANSITION_CLOSE_DURATION);
-      }
-    });
-    this.isOpen_ = false;
-    this.adapter_.restoreFocus();
-  }
-
-  /** @return {boolean} */
-  isOpen() {
-    return this.isOpen_;
-  }
-
-  /** @return {number} */
-  getSelectedIndex() {
-    return this.selectedIndex_;
-  }
-
-  /**
-   * @param {number} index Index of the item to set as selected.
-   */
-  setSelectedIndex(index) {
-    if (index === this.selectedIndex_) {
-      return;
-    }
-
-    const prevSelectedIndex = this.selectedIndex_;
-    if (prevSelectedIndex >= 0) {
-      this.adapter_.rmAttrForOptionAtIndex(prevSelectedIndex, 'aria-selected');
-      this.adapter_.rmClassForOptionAtIndex(prevSelectedIndex, __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* cssClasses */].SELECTED_LIST_ITEM);
-    }
-
-    this.selectedIndex_ = index >= 0 && index < this.adapter_.getNumberOfItems() ? index : -1;
-    if (this.selectedIndex_ >= 0) {
-      this.adapter_.setAttrForOptionAtIndex(this.selectedIndex_, 'aria-selected', 'true');
-      this.adapter_.addClassForOptionAtIndex(this.selectedIndex_, __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* cssClasses */].SELECTED_LIST_ITEM);
-    }
-  }
-}
-
-
-
-
-/***/ }),
-/* 37 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export MDCMenuAdapter */
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/* eslint no-unused-vars: [2, {"args": "none"}] */
-
-/**
- * Adapter for MDC Menu. Provides an interface for managing
- * - classes
- * - dom
- * - focus
- * - position
- * - dimensions
- * - event handlers
- *
- * Additionally, provides type information for the adapter to the Closure
- * compiler.
- *
- * Implement this adapter for your framework of choice to delegate updates to
- * the component in your framework of choice. See architecture documentation
- * for more details.
- * https://github.com/material-components/material-components-web/blob/master/docs/code/architecture.md
- *
- * @record
- */
-class MDCMenuAdapter {
-  /** @param {string} className */
-  addClass(className) {}
-
-  /** @param {string} className */
-  removeClass(className) {}
-
-  /**
-   * @param {string} className
-   * @return {boolean}
-   */
-  hasClass(className) {}
-
-  /** @return {boolean} */
-  hasNecessaryDom() {}
-
-  /**
-   * @param {EventTarget} target
-   * @param {string} attributeName
-   * @return {string}
-   */
-  getAttributeForEventTarget(target, attributeName) {}
-
-  /** @return {{ width: number, height: number }} */
-  getInnerDimensions() {}
-
-  /** @return {boolean} */
-  hasAnchor() {}
-
-  /** @return {{width: number, height: number, top: number, right: number, bottom: number, left: number}} */
-  getAnchorDimensions() {}
-
-  /** @return {{ width: number, height: number }} */
-  getWindowDimensions() {}
-
-  /** @return {number} */
-  getNumberOfItems() {}
-
-  /**
-   * @param {string} type
-   * @param {function(!Event)} handler
-   */
-  registerInteractionHandler(type, handler) {}
-
-  /**
-   * @param {string} type
-   * @param {function(!Event)} handler
-   */
-  deregisterInteractionHandler(type, handler) {}
-
-  /** @param {function(!Event)} handler */
-  registerBodyClickHandler(handler) {}
-
-  /** @param {function(!Event)} handler */
-  deregisterBodyClickHandler(handler) {}
-
-  /**
-   * @param {EventTarget} target
-   * @return {number}
-   */
-  getIndexForEventTarget(target) {}
-
-  /** @param {{index: number}} evtData */
-  notifySelected(evtData) {}
-
-  notifyCancel() {}
-
-  saveFocus() {}
-
-  restoreFocus() {}
-
-  /** @return {boolean} */
-  isFocused() {}
-
-  focus() {}
-
-  /** @return {number} */
-  getFocusedItemIndex() /* number */ {}
-
-  /** @param {number} index */
-  focusItemAtIndex(index) {}
-
-  /** @return {boolean} */
-  isRtl() {}
-
-  /** @param {string} origin */
-  setTransformOrigin(origin) {}
-
-  /** @param {{
-  *   top: (string|undefined),
-  *   right: (string|undefined),
-  *   bottom: (string|undefined),
-  *   left: (string|undefined)
-  * }} position */
-  setPosition(position) {}
-
-  /** @param {string} height */
-  setMaxHeight(height) {}
-
-  /**
-   * @param {number} index
-   * @param {string} attr
-   * @param {string} value
-   */
-  setAttrForOptionAtIndex(index, attr, value) {}
-
-  /**
-   * @param {number} index
-   * @param {string} attr
-   */
-  rmAttrForOptionAtIndex(index, attr) {}
-
-  /**
-   * @param {number} index
-   * @param {string} className
-   */
-  addClassForOptionAtIndex(index, className) {}
-
-  /**
-   * @param {number} index
-   * @param {string} className
-   */
-  rmClassForOptionAtIndex(index, className) {}
-}
-
-
-
-
-/***/ }),
-/* 38 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15134,11 +16667,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _jquery = __webpack_require__(9);
+var _jquery = __webpack_require__(18);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-__webpack_require__(39);
+__webpack_require__(45);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15189,7 +16722,7 @@ VintSelect2.classes = {
 exports.default = VintSelect2;
 
 /***/ }),
-/* 39 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;var require;/*!
@@ -15202,7 +16735,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 ;(function (factory) {
   if (true) {
     // AMD. Register as an anonymous module.
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(9)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(18)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -21045,7 +22578,7 @@ S2.define('jquery.select2',[
 
 
 /***/ }),
-/* 40 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21055,7 +22588,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _autosize = __webpack_require__(41);
+var _autosize = __webpack_require__(47);
 
 var _autosize2 = _interopRequireDefault(_autosize);
 
@@ -21095,7 +22628,7 @@ VintTextarea.classes = {
 exports.default = VintTextarea;
 
 /***/ }),
-/* 41 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -21391,7 +22924,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 });
 
 /***/ }),
-/* 42 */
+/* 48 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

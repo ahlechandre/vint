@@ -11,22 +11,22 @@
         {{ $text }}
     @else
         <span class="mdc-list-item__text">
-            <span class="mdc-list-item__primary-text">{{ $text['primary'] }}</span>
+            @if ($text['link'] ?? false)
+                <a class="mdc-list-item__primary-text" href="{{ $text['link'] }}">{{ $text['primary'] }}</a>
+            @else 
+                <span class="mdc-list-item__primary-text">{{ $text['primary'] }}</span>        
+            @endif
             <span class="mdc-list-item__secondary-text">{{ $text['secondary'] }}</span>
         </span>
     @endif
-
+    
     @if ($meta ?? false)
-        @if ($meta['icon'] ?? false)
-            <span class="mdc-list-item__meta material-icons" aria-hidden="true">{{ $meta['icon'] }}</span>    
-        @elseif ($meta['iconButton'] ?? false)
-            @iconButton(component_with_classes($meta['iconButton'], [
-                'mdc-list-item__meta'
-            ])) @endiconButton
-        @elseif ($meta['menuAnchor'] ?? false)
-            @menuAnchor(component_with_classes($meta['menuAnchor'], [
-                'mdc-list-item__meta'
-            ])) @endmenuAnchor      
-        @endif
+        @listItemMeta($meta) @endlistItemMeta
+    @elseif ($metas ?? false)
+        <span class="mdc-list-item__meta">
+            @foreach($metas as $meta)
+                @listItemMeta($meta) @endlistItemMeta    
+            @endforeach
+        </span>
     @endif
 </li>

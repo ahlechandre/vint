@@ -1,3 +1,13 @@
+.menu .list .list-item {
+  height: 48px;
+}
+
+.list {
+  form {
+    display: inherit;
+  }
+}
+
 .list--paginable {
   .list-item {
     border-radius: 4px;

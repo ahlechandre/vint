@@ -24,6 +24,10 @@
 }
 
 .text-field--textarea {
+  .text-field__input {
+    background-color: whitesmoke;
+  } 
+
   &:not(.mdc-text-field--focused) {
     border-bottom-color: transparent!important;
   }

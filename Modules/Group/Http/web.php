@@ -22,8 +22,13 @@ Route::middleware('auth')
         Route::resource('groups', 'GroupController')
             ->only(['create', 'store', 'edit', 'update']);
 
-        // Grupo > Membro
-        Route::put('groups/{group}/members/{member}', 'GroupMemberController@toggle');
+        // Grupo > Solicitações de membros
+        Route::get('groups/{group}/members-requests', 'GroupMemberController@requests');
+        Route::put('groups/{group}/members-requests/{member?}', 'GroupMemberController@approve');
+        Route::delete('groups/{group}/members-requests/{member?}', 'GroupMemberController@deny');
+
+        // Grupo > Alternar Membro
+        Route::put('groups/{group}/members-toggle/{member}', 'GroupMemberController@toggle');
 
         // Grupo > Programas
         Route::resource('groups/{group}/programs', 'GroupProgramController')
@@ -89,6 +94,10 @@ Route::middleware('auth')
 // Grupos
 Route::resource('groups', 'GroupController')
     ->only(['index', 'show']);
+
+// Grupo > Membros
+Route::resource('groups/{group}/members', 'GroupMemberController')
+    ->only(['index']);
 
 // Grupo > Programas
 Route::get('groups/{group}/programs', 'GroupProgramController@index');
