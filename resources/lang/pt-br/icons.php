@@ -26,6 +26,8 @@ return [
     // Módulo / Grupo.
     'groups' => 'group', 
     'group' => 'group', 
+
+    // Módulo / Membros.
     'servant' => 'supervisor_account', 
     'student' => 'school', 
     'collaborator' => 'sentiment_satisfied_alt',
@@ -36,6 +38,9 @@ return [
     'cpf' => 'perm_identity',
     'member' => 'person',
     'members' => 'person',
+    'requested_group' => 'check',
+    'request_group' => 'outlined_flag',
+    'leave_group' => 'close',
 
     'name' => 'text_format',
     'title' => 'text_format',

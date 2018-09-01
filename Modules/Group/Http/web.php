@@ -22,6 +22,9 @@ Route::middleware('auth')
         Route::resource('groups', 'GroupController')
             ->only(['create', 'store', 'edit', 'update']);
 
+        // Grupo > Membro
+        Route::put('groups/{group}/members/{member}', 'GroupMemberController@toggle');
+
         // Grupo > Programas
         Route::resource('groups/{group}/programs', 'GroupProgramController')
             ->only(['create', 'store']);
@@ -29,6 +32,7 @@ Route::middleware('auth')
         // Programas
         Route::resource('programs', 'ProgramController')
             ->only(['edit', 'update']);
+
 
         // /**
         //  * ----------------------------------------

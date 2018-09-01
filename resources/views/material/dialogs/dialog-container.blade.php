@@ -13,9 +13,19 @@
         ])) @endiconButton        
     @endif
 
-    @dialog(component_with_classes($dialog, [
-        'dialog-container__dialog'
-    ]))
-        {{ $slot }}
-    @enddialog
+    @if ($form ?? false)
+        @form($form)
+            @dialog(component_with_classes($dialog, [
+                'dialog-container__dialog'
+            ]))
+                {{ $slot }}
+            @enddialog        
+        @endform
+    @else
+        @dialog(component_with_classes($dialog, [
+            'dialog-container__dialog'
+        ]))
+            {{ $slot }}
+        @enddialog    
+    @endif
 </span>

@@ -170,7 +170,18 @@ class Group extends Model
     }
 
     /**
-     * 
+     *
+     * @param  \Modules\Member\Entities\Servant  $servant
+     * @return bool
+     */
+    public function isCoordinator(Servant $servant)
+    {
+        return $this->coordinators()
+            ->find($servant->member_user_id) ? true : false;
+    }
+
+    /**
+     *
      * @param  \Modules\User\Entities\User  $user
      * @return bool
      */
@@ -179,4 +190,38 @@ class Group extends Model
         return $this->coordinators()
             ->find($user->id) ? true : false;
     }
+
+    /**
+     *
+     * @param  \Modules\Member\Entities\Member  $member
+     * @return bool
+     */
+    public function isMember(Member $member)
+    {
+        return $this->members()
+            ->find($member->user_id) ? true : false;
+    }
+
+    /**
+     *
+     * @param  \Modules\Member\Entities\Member  $member
+     * @return bool
+     */
+    public function isApprovedMember(Member $member)
+    {
+        return $this->membersApproved()
+            ->find($member->user_id) ? true : false;
+    }
+
+
+    /**
+     *
+     * @param  \Modules\Member\Entities\Member  $member
+     * @return bool
+     */
+    public function isNotApprovedMember(Member $member)
+    {
+        return $this->membersNotApproved()
+            ->find($member->user_id) ? true : false;
+    }    
 }

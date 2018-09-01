@@ -25,36 +25,39 @@
     {{-- Inputs livres --}}
     {{ $slot }}
 
-    @gridInner
-        {{-- Quebra de linha. --}}
-        @cell @endcell
+    @if ((isset($withSubmit) && $withSubmit) || (isset($withCancel) && $withCancel))
+        @gridInner
+            {{-- Quebra de linha. --}}
+            @cell @endcell
 
-        @cell([
-            'classes' => ['mdc-layout-grid--align-right']
-        ])
-            {{-- Cancelar --}}
-            @if ($withCancel ?? false)
-                @button([
-                    'isLink' => true,
-                    'text' => __('actions.cancel'),
-                    'attrs' => [
-                        'href' => $action
-                    ],
-                ]) @endbutton        
-            @endif
+            @cell([
+                'classes' => ['mdc-layout-grid--align-right']
+            ])
+                {{-- Cancelar --}}
+                @if ($withCancel ?? false)
+                    @button([
+                        'isLink' => true,
+                        'text' => __('actions.cancel'),
+                        'attrs' => [
+                            'href' => $action
+                        ],
+                    ]) @endbutton        
+                @endif
 
-            {{-- Submeter --}}
-            @if ($withSubmit ?? false)
-                @button([
-                    'text' => __('actions.save'),
-                    'icon' => 'check',
-                    'classes' => ['mdc-button--outlined'],
-                    'attrs' => [
-                        'type' => 'submit'
-                    ]
-                ]) @endbutton
-            @endif
-        
-        @endcell
-    @endgridInner
+                {{-- Submeter --}}
+                @if ($withSubmit ?? false)
+                    @button([
+                        'text' => __('actions.save'),
+                        'icon' => 'check',
+                        'classes' => ['mdc-button--outlined'],
+                        'attrs' => [
+                            'type' => 'submit'
+                        ]
+                    ]) @endbutton
+                @endif
+            
+            @endcell
+        @endgridInner
+    
+    @endif
 </form>

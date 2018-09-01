@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'request_group' => 'Participar',
+    'requested_group' => 'Solicitado',
+    'leave_group' => 'Deixar grupo',
     'activation' => [
         '0' => 'Ativar',
         '1' => 'Desativar',

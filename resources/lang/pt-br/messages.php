@@ -37,6 +37,15 @@ return [
         ]
     ],
     
+    // Membros.
+    'members' => [
+        'dialogs' => [
+            'request_group_title' => 'Solicitar participação no grupo?',
+            'requested_group_title' => 'Cancelar solicitação para participar do grupo?',
+            'leave_group_title' => 'Deixar de participar do grupo?',
+        ]
+    ],
+
     // 'register' => [
     //     'congrats' => 'Parabéns, :name!',
     //     'success' => 'Aliqua anim aliqua culpa voluptate ad id anim consequat dolor ipsum. Adipisicing exercitation non exercitation mollit labore pariatur. Reprehenderit ullamco velit ipsum minim dolore nostrud consequat.

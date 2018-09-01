@@ -4,20 +4,47 @@
     'action' => auth()->check() && $user->isMember() ?
         [
             'dialogContainer' => [
-                'button' => [
-                    'text' => __('actions.request_participate'),
-                    'classes' => ['mdc-button--outlined']
+                'button' => $group->isMember($user->member) ?
+                    (
+                        $group->isApprovedMember($user->member) ?
+                            [
+                                'icon' => __('icons.leave_group'),
+                                'text' => __('actions.leave_group'),
+                                'classes' => ['mdc-button--outlined']
+                            ] :
+                            [
+                                'icon' => __('icons.requested_group'),
+                                'text' => __('actions.requested_group'),
+                                'classes' => ['mdc-button--outlined']
+                            ]
+                    ) :
+                    [
+                        'icon' => __('icons.request_group'),
+                        'text' => __('actions.request_group'),
+                        'classes' => ['mdc-button--unelevated']
+                    ],
+                'form' => [
+                    'action' => url("groups/{$group->id}/members/{$user->member->user_id}"),
+                    'method' => 'put',
                 ],
                 'dialog' => [
                     'attrs' => [
                         'id' => 'dialog-group-request',
                     ], 
-                    'title' => __('messages.groups.dialogs.request_participate_group'),
+                    'title' => __('messages.members.dialogs.' . (
+                        $group->isMember($user->member) ?
+                            (
+                                $group->isApprovedMember($user->member) ?
+                                    'leave_group_title' :
+                                    'requested_group_title'
+                            ) :
+                            'request_group_title'
+                    )),
                     'footer' => [
                         'buttonAccept' => [
                             'text' => __('actions.confirm'),
                             'attrs' => [
-                                'type' => 'button'
+                                'type' => 'submit'
                             ],
                         ],
                         'buttonCancel' => [
@@ -26,8 +53,8 @@
                                 'type' => 'button'
                             ],
                         ],                                
-                    ]                        
-                ]                        
+                    ]
+                ],                        
             ]
         ] : null,
     'tabBar' => [
