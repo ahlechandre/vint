@@ -15,4 +15,5 @@ return [
     'dashboard' => 'Dashboard',
     'homepage' => 'Página inicial',
     'my_groups' => 'Meus grupos',
+    'register' => 'Cadastre-se',
 ];

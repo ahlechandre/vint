@@ -13,18 +13,6 @@
 
 /**
  * -------------------------------------------------------
- * Rotas não autenticadas.
- * -------------------------------------------------------
- */
-Route::middleware('unauth')
-    ->group(function () {
-        // Registro de membro.
-        Route::get('register', 'RegisterController@create');        
-        Route::post('register', 'RegisterController@store');
-    });
-
-/**
- * -------------------------------------------------------
  * Rotas autenticadas.
  * -------------------------------------------------------
  */

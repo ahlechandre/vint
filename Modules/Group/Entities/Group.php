@@ -3,6 +3,8 @@
 namespace Modules\Group\Entities;
 
 use Modules\User\Entities\User;
+use Modules\Member\Entities\Member;
+use Modules\Member\Entities\Servant;
 use Modules\Project\Entities\Program;
 use Modules\Project\Entities\Project;
 use Illuminate\Database\Eloquent\Model;

@@ -1,4 +1,4 @@
-@extends('layouts.default', [
+@extends('layouts.auth', [
     'title' => __('actions.login')
 ])
 

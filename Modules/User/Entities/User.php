@@ -4,11 +4,11 @@ namespace Modules\User\Entities;
 
 use Hash;
 use Laravel\Passport\HasApiTokens;
+use Modules\Member\Entities\Member;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Modules\Group\Entities\Member;
 use Modules\System\Entities\Traits\EloquentVint;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {

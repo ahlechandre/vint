@@ -57,6 +57,7 @@ class RouteServiceProvider extends ServiceProvider
             'Group',
             'Project',
             'Product',
+            'Member',
         ];
 
         foreach ($modules as $module) {

@@ -11,6 +11,7 @@ return [
     'search' => 'search',
     'add' => 'add',
     'edit' => 'edit',
+    'forward' => 'arrow_forward',
 
     // Páginas.
     'homepage' => 'home',
@@ -45,7 +46,6 @@ return [
     'updated_at' => 'edit',
     'start_on' => 'event',
     'finish_on' => 'event',
-    'forward' => 'arrow_forward',
     'password' => 'vpn_key',
     'email' => 'mail_outline',
     'id' => 'details',
