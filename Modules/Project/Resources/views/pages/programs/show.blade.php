@@ -1,52 +1,46 @@
-@extends('layouts.master', [
-    'breadcrumbs' => [
-        [
-            'text' => __('resources.programs'),
-            'attrs' => [
-                'href' => url('programs')
-            ]
-        ],
-        [
-            'text' => $program->name,
-            'attrs' => [
-                'href' => url("programs/{$program->id}")
-            ]
-        ],
-    ],    
-    'topAppBarTabs' => [
-        'tabs' => [
-            [
-                'text' => __('headlines.about'),
-                'isActive' => $section === 'about',
-                'attrs' => [
-                    'href' => url("programs/{$program->id}?section=about")
-                ],
-            ],
-            [
-                'text' => __('resources.projects'),
-                'isActive' => $section === 'projects',
-                'attrs' => [
-                    'href' => url("programs/{$program->id}?section=projects")
-                ],
-            ],
-        ]
-    ],
+@extends('layouts.'. (
+    auth()->check() ? 'master' : 'default'
+), [
+    'title' => __('resources.programs').' / '.$program->name 
 ])
-@section('title', __('resources.programs') . " / {$program->name}")
 
 @section('main')
-    @layoutGridWithInner([
-        'modifiers' => ['layout-grid--dense']
+    @gridWithInner([
+        'grid' => [
+            'classes' => ['layout-grid--dense']
+        ]
     ])
-        @cell([
-            'when' => ['default' => 12]
-        ])
-            @if ($section === 'about')
-                {{-- "Sobre" --}}
-                @component('project::pages.programs.sections.about', [
-                    'program' => $program
-                ]) @endcomponent
-            @endif
+        {{-- Heading --}}
+        @cell
+            @headingProgram([
+                'program' => $program,
+                'tabActive' => 'about',
+            ]) @endheadingProgram
         @endcell
-    @endlayoutGridWithInner
+
+        @cell
+            {{-- Informações --}}
+            @foreach($program->getAttributes() as $attr => $value)
+                <p>
+                    {{ $attr }} => {{ $value }}
+                </p>
+            @endforeach
+
+            {{-- Editar --}}
+            @can('update', $program)
+                @fabFixed([
+                    'fab' => [
+                        'isLink' => true,
+                        'icon' => __('icons.edit'),
+                        'classes' => ['mdc-fab--extended'],
+                        'label' => __('actions.edit'),
+                        'attrs' => [
+                            'href' => url("programs/{$program->id}/edit"),
+                            'title' => __('messages.programs.forms.edit_title'),
+                        ],
+                    ]
+                ]) @endfabFixed
+            @endcan
+        @endcell
+    @endgridWithInner
 @endsection

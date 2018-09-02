@@ -104,6 +104,10 @@ trait BladeUtils
         'components.heading.heading' => 'heading',
         'components.heading.heading-group' => 'headingGroup',
         'components.heading.heading-member' => 'headingMember',
+        'components.heading.heading-program' => 'headingProgram',
+        'components.heading.heading-project' => 'headingProject',
+        'components.heading.heading-publication' => 'headingPublication',
+        'components.heading.heading-product' => 'headingProduct',
 
         // Pagination.
         'components.pagination.paginable' => 'paginable',        

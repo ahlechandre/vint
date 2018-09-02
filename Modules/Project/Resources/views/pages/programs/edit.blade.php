@@ -1,109 +1,48 @@
 @extends('layouts.master', [
-    'breadcrumbs' => [
-        [
-            'text' => __('resources.programs'),
-            'attrs' => [
-                'href' => url('programs')
-            ]
-        ],
-        [
-            'text' => $program->name,
-            'attrs' => [
-                'href' => url("programs/{$program->id}")
-            ],
-        ],
-        [
-            'text' => __('actions.edit'),
-            'attrs' => [
-                'href' => url("programs/{$program->id}/edit")
-            ]
-        ]
-    ],
+    'title' => __('resources.programs').' / '.$program->name.' / '.__('actions.edit') 
 ])
-@section('title', __('resources.programs') . " / {$program->id} / " . __('actions.edit'))
 
 @section('main')
-    @layoutGridWithInner([
-        'modifiers' => ['layout-grid--dense']
+    @gridWithInner([
+        'grid' => [
+            'classes' => ['layout-grid--dense']
+        ]
     ])
-        {{-- Formulário --}}
-        @cell([
-            'when' => ['default' => 12] 
-        ])
-            @cardWithForm([
-                'title' => $program->name,
-                'subtitle' => __('messages.programs.edit'),
-            ])
-                @form([
-                    'action' => url("programs/{$program->id}"),
-                    'method' => 'put',
-                    'attrs' => [
-                        'id' => 'form-program'
-                    ],
-                    'withCancel' => true,
-                    'withSubmit' => true,             
-                    'inputs' => [
-                        'view' => 'project::inputs.program',
-                        'props' => [
-                            'servants' => $servants,
-                            'name' => $program->name,
-                            'coordinatorUserId' => $program->coordinator_user_id,
-                            'description' => $program->description,
-                            'startOn' => $program->start_on
-                                ->format('Y-m-d'),
-                            'finishOn' => $program->finish_on ?
-                                $program->finish_on
-                                    ->format('Y-m-d') : null
-                        ],
-                    ]
-                ]) @endform
-            @endcard
+        {{-- Heading --}}
+        @cell
+            @heading([
+                'pretitle' => __('resources.programs'),
+                'title' => __('messages.programs.forms.edit_title'),
+            ]) @endheading
         @endcell
 
-        @can('delete', $program)
-            @cell([
-                'when' => ['default' => 12],
-                'modifiers' => ['mdc-layout-grid--align-right']
-            ])
-                @button([
-                    'text' => __('actions.delete'),
-                    'icon' => 'delete_outline',
-                    'attrs' => [
-                        'type' => 'button',
-                        'id' => 'dialog-activation-program-destroy'
-                    ]
-                ]) @endbutton
-            @endcell
-
-            {{-- Ao tentar remover --}}
+        {{-- Formulário --}}
+        @cell
             @form([
-                'method' => 'delete',
                 'action' => url("programs/{$program->id}"),
-            ])
-                {{-- Diálogo --}}
-                @dialog([
-                    'activation' => 'dialog-activation-program-destroy',
-                    'cancel' => [
-                        'text' => __('actions.cancel'),
-                        'attrs' => [
-                            'type' => 'button' 
-                        ],
+                'method' => 'put',
+                'attrs' => [
+                    'id' => 'form-program'
+                ],
+                'withCancel' => true,
+                'withSubmit' => true,                
+                'inputs' => [
+                    'view' => 'group::inputs.program',
+                    'props' => [
+                        'name' => $program->name,
+                        'startOn' => $program->start_on
+                            ->format('Y-m-d'),
+                        'finishOn' => $program->finish_on ?
+                            $program->finish_on
+                                ->format('Y-m-d') :
+                            null,
+                        'description' => $program->description,
+                        'coordinatorUserId' => $program->coordinator_user_id,
+                        'servantMembers' => $servantMembers,
                     ],
-                    'accept' => [
-                        'text' => __('actions.confirm'),
-                        'attrs' => [
-                            'type' => 'submit'
-                        ],
-                    ],
-                    'attrs' => [
-                        'id' => 'dialog-program-destroy'
-                    ],
-                    'title' => __('messages.programs.dialog.destroy_title')
-                ])
-                    {{ __('messages.programs.dialog.destroy_body') }}
-                @enddialog
-            @endform
-        @endcan
-    @endlayoutGridWithInner
+                ]
+            ]) @endform
+        @endcell
 
+    @endgridWithInner
 @endsection

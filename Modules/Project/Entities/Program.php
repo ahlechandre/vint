@@ -19,7 +19,6 @@ class Program extends Model
      */
     protected $fillable = [
         'name',
-        'coordinator_user_id',
         'description',
         'start_on',
         'finish_on'

@@ -1,90 +1,50 @@
-@extends('layouts.master', [
-    'breadcrumbs' => [
-        [
-            'text' => __('resources.programs'),
-            'attrs' => [
-                'href' => url('programs')
-            ],
-        ]
-    ]
+{{-- Layout --}}
+@extends('layouts.'.(
+    auth()->check() ? 'master' : 'default'
+), [
+    'title' => __('resources.programs')
 ])
-@section('title', __('resources.programs'))
 
+{{-- Conteúdo --}}
 @section('main')
-
-    {{-- Conteúdo --}}
-    @layoutGridWithInner([
-        'modifiers' => ['layout-grid--dense']
+    @gridWithInner([
+        'grid' => [
+            'classes' => ['layout-grid--dense']
+        ]
     ])
-        {{-- Títulos --}}
-        @cell([
-            'when' => ['default' => 12]
-        ])
-            @article([
+        @cell
+            {{-- Heading --}}
+            @heading([
                 'title' => __('resources.programs'),
-                'intro' => __('messages.programs.index'),
-            ]) @endarticle
+                'content' => __('messages.programs.subheading'),
+            ]) @endheading        
         @endcell
-
-        {{-- Mostra se o usuário pode atualizar solicitações --}}
-        @can('updateRequests', \Modules\Project\Entities\Program::class)
-            
-            {{-- Solicitações de programa --}}
-            @cell([
-                'when' => ['default' => 12],
-                'modifiers' => ['mdc-layout-grid--align-right']
-            ])
-                @buttonLink([
-                    'text' => __('headlines.requests') . (
-                        $programRequestsCount ? (
-                            $programRequestsCount < 99 ?
-                                " ({$programRequestsCount})" : ' (+99)'
-                        ) : ''
-                    ),
-                    'modifiers' => ['mdc-button--unelevated'],
-                    'attrs' => [
-                        'href' => url('program-requests')
-                    ],
-                ]) @endbuttonLink
-            @endcell
-        @endcan
-
-        {{-- Lista de recursos --}}
-        @cell([
-            'when' => ['default' => 12]
-        ])
+        
+        @cell
+            {{-- Paginável --}}
             @paginable([
-                'collection' => $programs,
-                'items' => $programs->map(function ($program) {
-                    return [
-                        'icon' => __('material_icons.program'),
-                        'meta' => [
-                            'icon' => __('material_icons.forward'),
-                        ],
-                        'text' => $program->name,
-                        'secondaryText' => $program->created_at
-                            ->diffForHumans(),
-                        'attrs' => [
-                            'href' => url("programs/{$program->id}"),
-                        ]
-                    ];
-                }),
-            ]) @endpaginable
-
-            {{-- FAB --}}
-            @can('create', \Modules\Project\Entities\Program::class)
-                @fab([
-                    'icon' => 'add',
-                    'label' => __('messages.programs.new'),
-                    'modifiers' => ['fab--fixed'],
-                    'attrs' => [
-                        'href' => url("programs/create"),
-                        'title' => __('messages.programs.new'),
-                        'alt' => __('messages.programs.new'),
-                    ],
-                ]) @endfab
-            @endcan            
-        @endcell
-    @endlayoutGridWithInner
-
+                'paginator' => $programs,
+                'list' => [
+                    'isNavigation' => true,
+                    'twoLine' => true,
+                    'items' => $programs->map(function ($program) {
+                        return [
+                            'icon' => __('icons.program'),
+                            'text' => [
+                                'primary' => $program->name,
+                                'secondary' => $program->created_at
+                                    ->diffForHumans(),
+                            ],
+                            'meta' => [
+                                'icon' => __('icons.show'),
+                            ],
+                            'attrs' => [
+                                'href' => url("programs/{$program->id}")
+                            ]
+                        ];
+                    }),
+                ]
+            ]) @endpaginable        
+        @endcell        
+    @endgridWithInner
 @endsection

@@ -11,41 +11,33 @@
 |
 */
 
+// ========================================================
+// Autenticado
+// ========================================================
+
 Route::middleware('auth')
     ->group(function () {
-        /**
-         * ----------------------------------------
-         * Programas
-         * ----------------------------------------
-         */
-        Route::resource('programs', 'ProgramController');
-        /**
-         * ----------------------------------------
-         * Programas / Solicitações
-         * ----------------------------------------
-         */
-        Route::get('program-requests', 'ProgramController@requests');
-        Route::put('program-requests/{program?}', 'ProgramController@approve');
-        Route::delete('program-requests/{program?}', 'ProgramController@deny');
-        /**
-         * ----------------------------------------
-         * Projetos
-         * ----------------------------------------
-         */
-        Route::resource('projects', 'ProjectController');
-        /**
-         * ----------------------------------------
-         * Projetos / Alunos
-         * ----------------------------------------
-         */
-        Route::resource('projects/{project}/students', 'ProjectStudentController')
-            ->only(['store', 'update', 'destroy']);            
-        /**
-         * ----------------------------------------
-         * Projetos / Solicitações
-         * ----------------------------------------
-         */
-        Route::get('project-requests', 'ProjectController@requests');
-        Route::put('project-requests/{project?}', 'ProjectController@approve');
-        Route::delete('project-requests/{project?}', 'ProjectController@deny');        
+
+        // Programas
+        Route::resource('programs', 'ProgramController')
+            ->only(['edit', 'update']);
+
+        // Projetos
+        Route::resource('projects', 'ProjectController')
+            ->only(['edit', 'update']);
+
     });
+
+// ========================================================
+// Público
+// ========================================================
+
+// Programas
+Route::resource('programs', 'ProgramController')
+    ->only(['index', 'show']);
+Route::get('programs/{program}/projects', 'ProgramController@projects');
+
+// Projetos
+Route::resource('project', 'ProjectController')
+    ->only(['index', 'show']);
+Route::get('projects/{project}/students', 'ProjectController@students');

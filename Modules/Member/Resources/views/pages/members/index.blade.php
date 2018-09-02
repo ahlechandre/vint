@@ -29,6 +29,7 @@
                     'twoLine' => true,
                     'items' => $members->map(function ($member) {
                         return [
+                            'icon' => __('icons.member'),
                             'text' => [
                                 'primary' => $member->user->name,
                                 'secondary' => $member->created_at

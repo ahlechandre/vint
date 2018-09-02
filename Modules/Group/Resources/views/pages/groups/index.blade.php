@@ -29,6 +29,7 @@
                     'twoLine' => true,
                     'items' => $groups->map(function ($group) {
                         return [
+                            'icon' => __('icons.group'),
                             'text' => [
                                 'primary' => $group->name,
                                 'secondary' => $group->created_at

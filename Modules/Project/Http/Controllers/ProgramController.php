@@ -46,73 +46,34 @@ class ProgramController extends Controller
      */
     public function index(Request $request)
     {
-        $user = $request->user();
         $perPage = self::$perPage;
         $query = $request->get('q');
         $index = $this->programs
-            ->index($user, $perPage, $query);
+            ->index($perPage, $query);
         
-        if (!$index->success) {
-            return abort($index->status);
-        }
-
         return view('project::pages.programs.index', [
-            'programs' => $index->data['programs'],
-            'programRequestsCount' => $index->data['programRequestsCount']
+            'programs' => $index->data['programs']
         ]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the resource.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  string  $id
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function projects(Request $request, $id)
     {
-        $user = $request->user();
-
-        // Verifica se o usuário pode realizar.
-        if ($user->cant('create', Program::class)) {
-            return abort(403);
-        }
-        // Professores para selecionar o coordenador.
-        $servants = Servant::professor()
-            ->with('member.user')
-            ->get();
-
-        if ($user->isMember()) {
-            return view('project::pages.programs.create', [
-                'servants' => $servants,
-            ]);
-        }
-        // Se o usuário não é membro, deve selecionar o grupo do novo programa.
-        $groups = Group::all();
-
-        return view('project::pages.programs.create', [
-            'servants' => $servants,
-            'groups' => $groups,
+        $perPage = self::$perPage;
+        $query = $request->get('q');
+        $programs = $this->programs
+            ->projects($id, $perPage, $query);
+        
+        return view('project::pages.programs.projects', [
+            'program' => $programs->data['program'],
+            'projects' => $programs->data['projects']
         ]);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Modules\Project\Http\Requests\ProgramRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(ProgramRequest $request)
-    {
-        $user = $request->user();
-        $inputs = $request->all();
-        $store = $this->programs
-            ->store($user, $inputs);
-        $redirectTo = 'programs/' . (
-            $store->data['program']->id ?? null
-        );
-
-        return redirect($redirectTo)
-            ->with('snackbar', $store->message);
     }
 
     /**
@@ -126,16 +87,9 @@ class ProgramController extends Controller
     {
         $user = $request->user();
         $program = Program::findOrFail($id);
-
-        // Verifica se usuário pode realizar.
-        if ($user->cant('view', $program)) {
-            return abort(403);
-        }
-        $section = $request->query('section', 'about');
     
         return view('project::pages.programs.show', [
-            'program' => $program,
-            'section' => $section
+            'program' => $program
         ]);
     }
 
@@ -155,13 +109,14 @@ class ProgramController extends Controller
         if ($user->cant('update', $program)) {
             return abort(403);
         }
-        // Professores para selecionar o coordenador.
-        $servants = Servant::professor()
+        $servantMembers = $program->group
+            ->servantMembers()
+            ->with('user')
             ->get();
 
         return view('project::pages.programs.edit', [
             'program' => $program,
-            'servants' => $servants
+            'servantMembers' => $servantMembers
         ]);
     }
 
@@ -181,75 +136,5 @@ class ProgramController extends Controller
 
         return redirect("programs/{$id}")
             ->with('snackbar', $update->message);
-    }
-
-    /**
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int|string  $id
-     * @return void
-     */
-    public function destroy(Request $request, $id)
-    {
-        $user = $request->user();
-        $destroy = $this->programs
-            ->destroy($user, $id);
-
-        return redirect('programs')
-            ->with('snackbar', $destroy->message);
-    }
-
-    /**
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function requests(Request $request)
-    {
-        $user = $request->user();
-        $perPage = self::$perPage;
-        $query = $request->get('q');
-        $index = $this->programs
-            ->requests($user, $perPage, $query);
-        
-        if (!$index->success) {
-            return abort($index->status);
-        }
-
-        return view('project::pages.programs.requests', [
-            'programs' => $index->data['programs']
-        ]);
-    }
-
-    /**
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  null|string  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function approve(Request $request, $id = null)
-    {
-        $user = $request->user();
-        $approve = $this->programs
-            ->approve($user, $id);
-
-        return redirect('program-requests')
-            ->with('snackbar', $approve->message);
-    }
-
-    /**
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  null|string  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function deny(Request $request, $id = null)
-    {
-        $user = $request->user();
-        $deny = $this->programs
-            ->deny($user, $id);
-
-        return redirect('program-requests')
-            ->with('snackbar', $deny->message);
     }
 }
