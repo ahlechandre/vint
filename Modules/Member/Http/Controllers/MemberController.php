@@ -7,10 +7,10 @@ use Illuminate\Http\Response;
 use Modules\Member\Entities\Role;
 use Modules\Group\Entities\Group;
 use Illuminate\Routing\Controller;
-use Modules\Group\Entities\Member;
-use Modules\Group\Http\Requests\MemberRequest;
-use Modules\Group\Repositories\MemberRepository;
-use Modules\Group\Http\Requests\MemberRoleRequest;
+use Modules\Member\Entities\Member;
+use Modules\Member\Http\Requests\MemberRequest;
+use Modules\Member\Repositories\MemberRepository;
+use Modules\Member\Http\Requests\MemberRoleRequest;
 
 class MemberController extends Controller
 {
@@ -47,19 +47,73 @@ class MemberController extends Controller
      */
     public function index(Request $request)
     {
-        $user = $request->user();
         $perPage = self::$perPage;
         $query = $request->get('q');
         $index = $this->members
-            ->index($user, $perPage, $query);
-        
-        if (!$index->success) {
-            return abort($index->status);
-        }
+            ->index($perPage, $query);
 
-        return view('group::pages.members.index', [
+        return view('member::pages.members.index', [
             'members' => $index->data['members'],
-            'memberRequestsCount' => $index->data['memberRequestsCount']
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $userId
+     * @return \Illuminate\Http\Response
+     */
+    public function programs(Request $request, $userId)
+    {
+        $perPage = self::$perPage;
+        $query = $request->get('q');
+        $programs = $this->members
+            ->programs($userId, $perPage, $query);
+
+        return view('member::pages.members.programs', [
+            'member' => $programs->data['member'],
+            'programs' => $programs->data['programs'],
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $userId
+     * @return \Illuminate\Http\Response
+     */
+    public function projects(Request $request, $userId)
+    {
+        $perPage = self::$perPage;
+        $query = $request->get('q');
+        $projects = $this->members
+            ->projects($userId, $perPage, $query);
+
+        return view('member::pages.members.projects', [
+            'member' => $projects->data['member'],
+            'projects' => $projects->data['projects'],
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $userId
+     * @return \Illuminate\Http\Response
+     */
+    public function publications(Request $request, $userId)
+    {
+        $perPage = self::$perPage;
+        $query = $request->get('q');
+        $publications = $this->members
+            ->publications($userId, $perPage, $query);
+
+        return view('member::pages.members.publications', [
+            'member' => $publications->data['member'],
+            'publications' => $publications->data['publications'],
         ]);
     }
 
@@ -73,43 +127,10 @@ class MemberController extends Controller
     public function show(Request $request, $userId)
     {
         $user = $request->user();
-        // Apenas membros aprovados.
         $member = Member::findOrFail($userId);
-
-        // Verifica se usuário pode realizar.
-        if ($user->cant('view', $member)) {
-            return abort(403);
-        }
-        $section = $request->query('section', 'about');
     
-        return view('group::pages.members.show', [
+        return view('member::pages.members.show', [
             'member' => $member,
-            'section' => $section
-        ]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  string  $userId
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Request $request, $userId)
-    {
-        $user = $request->user();
-        // Apenas aprovados.
-        $member = Member::findOrFail($userId);
-
-        // Verifica se o usuário pode realizar.
-        if ($user->cant('update', $member)) {
-            return abort(403);
-        }
-        $roles = Role::all();
-        
-        return view('group::pages.members.edit', [
-            'member' => $member,
-            'roles' => $roles
         ]);
     }
 
@@ -123,7 +144,7 @@ class MemberController extends Controller
     public function update(MemberRequest $request, $userId)
     {
         $user = $request->user();
-        $inputs = $request->sanitize();
+        $inputs = $request->all();
         $update = $this->members
             ->update($user, $userId, $inputs);
 
@@ -135,20 +156,15 @@ class MemberController extends Controller
      *
      * @param  \Modules\Group\Http\Requests\MemberRoleRequest  $request
      * @param  string  $userId
-     * @param  string  $id
+     * @param  string  $roleId
      * @return \Illuminate\Http\Response
      */
-    public function role(MemberRoleRequest $request, $userId, $id)
+    public function role(MemberRoleRequest $request, $userId, $roleId)
     {
         $user = $request->user();
         $inputs = $request->sanitize();
         $role = $this->members
-            ->role(
-                $user,
-                $userId,
-                $id,
-                $inputs
-            );
+            ->role($user, $userId, $roleId, $inputs);
 
         return redirect("members/{$userId}")
             ->with('snackbar', $role->message);

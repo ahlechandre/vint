@@ -8,7 +8,7 @@ use Illuminate\Routing\Controller;
 use Modules\Project\Http\Requests\ProgramRequest;
 use Modules\Project\Repositories\ProgramRepository;
 use Modules\Project\Entities\Program;
-use Modules\Group\Entities\Servant;
+use Modules\Member\Entities\Servant;
 use Modules\Group\Entities\Group;
 
 class ProgramController extends Controller

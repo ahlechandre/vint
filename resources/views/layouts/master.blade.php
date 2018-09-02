@@ -64,11 +64,76 @@
           [
             'icon' => __('icons.groups'),
             'text' => __('resources.groups'),
-            'active' => is_active_page('groups'),
+            'active' => is_active_page(['groups']),
             'attrs' => [
               'href' => url('groups')
             ],
-          ],                               
+          ],
+          [
+            'icon' => __('icons.members'),
+            'text' => __('resources.members'),
+            'active' => is_active_page(['members']),
+            'attrs' => [
+              'href' => url('members')
+            ],
+          ],
+          [
+            'icon' => __('icons.programs'),
+            'text' => __('resources.programs'),
+            'active' => is_active_page(['programs']),
+            'attrs' => [
+              'href' => url('programs')
+            ],
+          ],
+          [
+            'icon' => __('icons.projects'),
+            'text' => __('resources.projects'),
+            'active' => is_active_page(['projects']),
+            'attrs' => [
+              'href' => url('projects')
+            ],
+          ],
+          [
+            'icon' => __('icons.products'),
+            'text' => __('resources.products'),
+            'active' => is_active_page(['products']),
+            'attrs' => [
+              'href' => url('products')
+            ],
+          ],
+          [
+            'icon' => __('icons.publications'),
+            'text' => __('resources.publications'),
+            'active' => is_active_page(['publications']),
+            'attrs' => [
+              'href' => url('publications')
+            ],
+          ],
+          [
+            'dividerBefore' => true,
+            'icon' => __('icons.settings'),
+            'text' => __('headlines.settings'),
+            'active' => is_active_page('settings'),
+            'attrs' => [
+              'href' => url('settings')
+            ],
+          ],
+          [
+            'icon' => __('icons.profile'),
+            'text' => __('headlines.my_profile'),
+            'active' => is_active_page("members/{$user->id}"),
+            'attrs' => [
+              'href' => url("members/{$user->id}")
+            ],
+          ],
+          [
+            'dividerBefore' => true,
+            'icon' => __('icons.logout'),
+            'text' => __('actions.logout'),
+            'attrs' => [
+              'href' => url('logout')
+            ],
+          ],  
         ]
       ]    
     ]) @enddrawerModal

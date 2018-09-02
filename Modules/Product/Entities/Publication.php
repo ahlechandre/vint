@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\User\Entities\User;
 use Modules\Project\Entities\Project;
-use Modules\Group\Entities\Member;
+use Modules\Member\Entities\Member;
 
 class Publication extends Model
 {

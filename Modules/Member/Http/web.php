@@ -11,11 +11,10 @@
 |
 */
 
-/**
- * -------------------------------------------------------
- * Rotas não autenticadas.
- * -------------------------------------------------------
- */
+// ========================================================
+// Não autenticado
+// ========================================================
+
 Route::middleware('unauth')
     ->group(function () {
         // Registro de membro.
@@ -23,18 +22,25 @@ Route::middleware('unauth')
         Route::post('register', 'RegisterController@store');
     });
 
-/**
- * -------------------------------------------------------
- * Rotas autenticadas.
- * -------------------------------------------------------
- */
+// ========================================================
+// Autenticado
+// ========================================================
+
 Route::middleware('auth')
     ->group(function () {
-        
+        Route::resource('members', 'MemberController')
+            ->only(['update']);
+
+        // Membro > Papel
+        Route::put('members/{member}/role/{role}', 'MemberController@role');
     });
 
-/**
- * -------------------------------------------------------
- * Rotas públicas.
- * -------------------------------------------------------
- */
+// ========================================================
+// Público
+// ========================================================
+
+Route::resource('members', 'MemberController')
+    ->only(['index', 'show']);
+Route::get('members/{member}/programs', 'MemberController@programs');
+Route::get('members/{member}/projects', 'MemberController@projects');
+Route::get('members/{member}/publications', 'MemberController@publications');

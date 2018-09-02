@@ -7,46 +7,94 @@ use Modules\User\Entities\User;
 use Modules\Member\Entities\Role;
 use Modules\Group\Entities\Group;
 use Illuminate\Support\Facades\DB;
-use Modules\Group\Entities\Member;
-use Modules\Group\Entities\GroupRole;
+use Modules\Member\Entities\Member;
+use Modules\Member\Entities\GroupRole;
+use Modules\Project\Entities\Program;
+use Modules\Project\Entities\Project;
+use Modules\Product\Entities\Publication;
 
 class MemberRepository
 {
     /**
-     * Lista todos os grupos.
+     * Lista todos os membros.
      *
-     * @param  \Modules\User\Entities\User  $user
      * @param  null|int  $perPage
      * @param  null|string  $filter
      * @return stdClass
      */
-    public function index(User $user, $perPage = null, $filter = null)
+    public function index($perPage = null, $filter = null)
     {
-        // Verifica se o usuário pode realizar.
-        if ($user->cant('index', Member::class)) {
-            return repository_result(403);
-        }
-        $search = function ($filter, $scope) {
-            $filterLike = "%{$filter}%";
+        return repository_result(200, null, [
+            'members' => Member::orderBy('created_at')
+                ->with('user')
+                ->filterLike($filter)
+                ->simplePaginateOrGet($perPage),
+        ]);
+    }
 
-            return $scope->whereHas('user', function ($user) use ($filterLike) {
-                return $user->where('name', 'like', $filterLike);
-            });
-        };
-        // Escopo.
-        $scope = Member::with('user')
-            ->orderBy('created_at', 'desc');
-        // Escopo por filtro.
-        $query = $filter ?
-            $search($filter, $scope) :
-            $scope;
-        // Seleciona.
-        $members = $perPage ?
-            $query->simplePaginate($perPage) :
-            $query->get();
+    /**
+     * Lista todos os programas do membro.
+     *
+     * @param  int|string  $userId
+     * @param  null|int  $perPage
+     * @param  null|string  $filter
+     * @return stdClass
+     */
+    public function programs($userId, $perPage = null, $filter = null)
+    {
+        $member = Member::findOrFail($userId);
 
         return repository_result(200, null, [
-            'members' => $members,
+            'member' => $member,
+            'programs' => Program::approved()
+                ->ofMember($member)
+                ->orderBy('created_at')
+                ->filterLike($filter)
+                ->simplePaginateOrGet($perPage),
+        ]);
+    }
+
+    /**
+     * Lista todos os projetos do membro.
+     *
+     * @param  int|string  $userId
+     * @param  null|int  $perPage
+     * @param  null|string  $filter
+     * @return stdClass
+     */
+    public function projects($userId, $perPage = null, $filter = null)
+    {
+        $member = Member::findOrFail($userId);
+
+        return repository_result(200, null, [
+            'member' => $member,
+            'projects' => Project::approved()
+                ->ofMember($member)
+                ->orderBy('created_at')
+                ->filterLike($filter)
+                ->simplePaginateOrGet($perPage),
+        ]);
+    }
+
+    /**
+     * Lista todas as publicações do membro.
+     *
+     * @param  int|string  $userId
+     * @param  null|int  $perPage
+     * @param  null|string  $filter
+     * @return stdClass
+     */
+    public function publications($userId, $perPage = null, $filter = null)
+    {
+        $member = Member::findOrFail($userId);
+
+        return repository_result(200, null, [
+            'member' => $member,
+            'publications' => Publication::approved()
+                ->ofMember($member)
+                ->orderBy('created_at')
+                ->filterLike($filter)
+                ->simplePaginateOrGet($perPage),
         ]);
     }
 
@@ -66,7 +114,6 @@ class MemberRepository
         if ($user->cant('update', $member)) {
             return repository_result(403);
         }
-
         $update = function () use ($user, $inputs, $member) {
             // Atualiza os dados gerais.
             $member->update($inputs);
@@ -107,22 +154,21 @@ class MemberRepository
      *
      * @param  \Modules\User\Entities\User  $user
      * @param  int|string  $userId
-     * @param  int|string  $id
+     * @param  int|string  $roleId
      * @param  array  $inputs
      * @return stdClass
      */
-    public function role(User $user, $userId, $id, array $inputs)
+    public function role(User $user, $userId, $roleId, array $inputs)
     {
         // Acessa o membro.
         $member = Member::findOrFail($userId);
         // Acessa o novo papel do membro.
-        $role = Role::findOrFail($id);
+        $role = Role::findOrFail($roleId);
 
         // Verifica se o usuário pode realizar.
-        if ($user->cant('updateRole', [$member, $role])) {
+        if ($user->cant('update', $member)) {
             return repository_result(403);
         }
-
         $update = function () use ($user, $inputs, $member, $role) {
             // Atualiza o papel do membro.
             $member->role()->associate($role);

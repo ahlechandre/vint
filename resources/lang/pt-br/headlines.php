@@ -16,4 +16,6 @@ return [
     'homepage' => 'Página inicial',
     'my_groups' => 'Meus grupos',
     'register' => 'Cadastre-se',
+    'my_profile' => 'Meu perfil',
+    'settings' => 'Configurações',
 ];

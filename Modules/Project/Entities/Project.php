@@ -4,6 +4,7 @@ namespace Modules\Project\Entities;
 
 use Modules\User\Entities\User;
 use Modules\Group\Entities\Group;
+use Modules\Member\Entities\Member;
 use Modules\Member\Entities\Servant;
 use Modules\Member\Entities\Student;
 use Illuminate\Database\Eloquent\Model;
@@ -141,5 +142,21 @@ class Project extends Model
     public function scopeNotApproved($query)
     {
         return $query->where('is_approved', 0);
-    }    
+    }
+
+    /**
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  \Modules\Member\Entities\Member  $member
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOfMember($query, Member $member)
+    {
+        return $query->where('coordinator_user_id', $member->user_id)
+            ->orWhere('leader_user_id', $member->user_id)
+            ->orWhere('supporter_user_id', $member->user_id)
+            ->orWhereHas('students', function ($students) use ($member) {
+                return $students->where('student_user_id', $member->user_id);
+            });
+    }
 }

@@ -4,7 +4,7 @@ namespace Modules\Group\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Modules\User\Entities\User;
-use Modules\Group\Entities\Member;
+use Modules\Member\Entities\Member;
 use Modules\Member\Entities\Role;
 
 class MemberPolicy

@@ -8,11 +8,11 @@ use Illuminate\Routing\Controller;
 use Modules\Project\Http\Requests\ProjectRequest;
 use Modules\Project\Repositories\ProjectRepository;
 use Modules\Project\Entities\Project;
-use Modules\Group\Entities\Servant;
+use Modules\Member\Entities\Servant;
 use Modules\Group\Entities\Group;
-use Modules\Group\Entities\Collaborator;
+use Modules\Member\Entities\Collaborator;
 use Modules\Project\Entities\Program;
-use Modules\Group\Entities\Student;
+use Modules\Member\Entities\Student;
 
 class ProjectController extends Controller
 {

@@ -4,10 +4,11 @@ namespace Modules\Project\Entities;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Group\Entities\Servant;
+use Modules\Member\Entities\Servant;
 use Modules\Group\Entities\Group;
 use Modules\User\Entities\User;
 use Modules\System\Entities\Traits\EloquentVint;
+use Modules\Member\Entities\Member;
 
 class Program extends Model
 {
@@ -120,5 +121,16 @@ class Program extends Model
     public function scopeOfGroup($query, Group $group)
     {
         return $query->where('group_id', $group->id);
-    }    
+    }
+
+    /**
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  \Modules\Member\Entities\Member  $member
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOfMember($query, Member $member)
+    {
+        return $query->where('coordinator_user_id', $member->user_id);
+    }
 }

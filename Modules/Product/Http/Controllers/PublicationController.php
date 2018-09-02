@@ -10,7 +10,7 @@ use Modules\Project\Entities\Project;
 use Modules\Product\Entities\Publication;
 use Modules\Product\Http\Requests\PublicationRequest;
 use Modules\Product\Repositories\PublicationRepository;
-use Modules\Group\Entities\Member;
+use Modules\Member\Entities\Member;
 
 class PublicationController extends Controller
 {

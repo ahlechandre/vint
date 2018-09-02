@@ -3,7 +3,9 @@
     <div class="mdc-tab-scroller__scroll-area">
       <div class="mdc-tab-scroller__scroll-content">
         @foreach($tabs as $tab)
-          @tab($tab) @endtab
+          @if (!isset($tab['ignore']) || !$tab['ignore'])
+            @tab($tab) @endtab        
+          @endif
         @endforeach
       </div>
     </div>

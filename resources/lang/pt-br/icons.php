@@ -13,9 +13,12 @@ return [
     'edit' => 'edit',
     'forward' => 'arrow_forward',
     'view' => 'remove_red_eye',
+    'logout' => 'exit_to_app', 
 
     // Páginas.
     'homepage' => 'home',
+    'settings' => 'settings', 
+    'profile' => 'person_outline', 
 
     // Módulo / Usuários.
     'users' => 'person',

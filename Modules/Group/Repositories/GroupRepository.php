@@ -7,7 +7,7 @@ use Modules\User\Entities\User;
 use Modules\Group\Entities\Group;
 use Illuminate\Support\Facades\DB;
 use Modules\Member\Entities\Role;
-use Modules\Group\Entities\GroupRole;
+use Modules\Member\Entities\GroupRole;
 
 class GroupRepository
 {
