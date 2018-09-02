@@ -23,26 +23,18 @@
             @cell([
                 'classes' => ['mdc-layout-grid--align-right']
             ])
-                @if ($programRequestsCount > 0)
+                @if ($requestsCount > 0)
                     @button([
                         'isLink' => true,
                         'icon' => __('icons.forward'),
                         'text' => __('headlines.requests') . (
-                            $programRequestsCount > 99 ?
-                                ' (+99)' : " ($programRequestsCount)"
+                            $requestsCount > 99 ?
+                                ' (+99)' : " ($requestsCount)"
                         ),
                         'attrs' => [
-                            'href' => url("groups/{$group->id}/program-requests")
+                            'href' => url("groups/{$group->id}/programs-requests")
                         ]
                     ]) @endbutton
-                @else
-                    @button([
-                        'icon' => __('icons.forward'),
-                        'text' => __('headlines.requests'),
-                        'attrs' => [
-                            'disabled' => ''
-                        ]
-                    ]) @endbutton                
                 @endif
             @endcell
         @endcan
@@ -51,21 +43,30 @@
         @cell
             @paginable([
                 'paginator' => $programs,
-                'items' => $programs->map(function ($program) {
-                    return [
-                        'text' => [
-                            'primary' => $program->name,
-                            'secondary' => $program->created_at
-                                ->diffForHumans(),
-                        ],
-                        'meta' => [
-                            'icon' => __('icons.show'),
-                        ],
-                        'attrs' => [
-                            'href' => url("programs/{$program->id}")
-                        ]
-                    ];
-                }),
+                'list' => [
+                    'twoLine' => true,
+                    'nonInteractive' => true,
+                    'items' => $programs->map(function ($program) use ($user, $group) {
+                        return [
+                            'icon' => __('icons.program'),
+                            'text' => [
+                                'link' => url("programs/{$program->id}"),
+                                'primary' => $program->name,
+                                'secondary' => $program->created_at
+                                    ->diffForHumans(),
+                            ],
+                            'meta' => [
+                                'iconButton' => [
+                                    'isLink' => true,
+                                    'icon' => __('icons.show'),
+                                    'attrs' => [
+                                        'href' => url("programs/{$program->id}")
+                                    ]
+                                ]
+                            ],
+                        ];
+                    }),                    
+                ]
             ]) @endpaginable
 
             {{-- Novo --}}

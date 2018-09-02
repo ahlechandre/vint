@@ -62,12 +62,12 @@
                 'name' => 'coordinator_user_id',
                 'id' => 'textfield-program-coordinator',
             ],
-            'options' => $servants->map(function ($servant) use ($coordinatorUserId) {
+            'options' => $servantMembers->map(function ($member) use ($coordinatorUserId) {
                 return [
-                    'text' => "{$servant->member->user->name} / {$servant->siape}",
+                    'text' => "{$member->user->name} <{$member->user->email}>",
                     'attrs' => [
-                        'value' => $servant->member_user_id,
-                        'selected' => (int) $coordinatorUserId === $servant->member_user_id
+                        'value' => $member->user_id,
+                        'selected' => (int) $coordinatorUserId === $member->user_id
                     ],
                 ];
             })->prepend([

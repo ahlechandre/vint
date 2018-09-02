@@ -103,9 +103,6 @@
                                     ]
                                 ]
                             ),
-                            'attrs' => [
-                                'href' => url("members/{$member->user_id}")
-                            ]
                         ];
                     }),                    
                 ]

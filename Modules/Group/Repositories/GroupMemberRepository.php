@@ -130,10 +130,10 @@ class GroupMemberRepository
      *
      * @param  \Modules\User\Entities\User  $user
      * @param  int|string  $groupId
-     * @param  int|string  $memberUserId
+     * @param  null|int|string  $memberUserId
      * @return stdClass
      */
-    public function approve(User $user, $groupId, $memberUserId)
+    public function approve(User $user, $groupId, $memberUserId = null)
     {
         $group = Group::findOrFail($groupId);
 
@@ -169,16 +169,15 @@ class GroupMemberRepository
         ]);
     }
 
-
     /**
      * Tenta recusar membros no grupo.
      *
      * @param  \Modules\User\Entities\User  $user
      * @param  int|string  $groupId
-     * @param  int|string  $memberUserId
+     * @param  null|int|string  $memberUserId
      * @return stdClass
      */
-    public function deny(User $user, $groupId, $memberUserId)
+    public function deny(User $user, $groupId, $memberUserId = null)
     {
         $group = Group::findOrFail($groupId);
 

@@ -27,6 +27,11 @@ Route::middleware('auth')
         Route::put('groups/{group}/members-requests/{member?}', 'GroupMemberController@approve');
         Route::delete('groups/{group}/members-requests/{member?}', 'GroupMemberController@deny');
 
+        // Grupo > Solicitações de programas
+        Route::get('groups/{group}/programs-requests', 'GroupProgramController@requests');
+        Route::put('groups/{group}/programs-requests/{program?}', 'GroupProgramController@approve');
+        Route::delete('groups/{group}/programs-requests/{program?}', 'GroupProgramController@deny');
+
         // Grupo > Alternar Membro
         Route::put('groups/{group}/members-toggle/{member}', 'GroupMemberController@toggle');
 

@@ -149,5 +149,5 @@ class GroupMemberController extends Controller
 
         return redirect("groups/{$groupId}/members-requests")
             ->with('snackbar', $deny->message);
-    }     
+    }
 }

@@ -34,7 +34,7 @@
                         'finishOn' => old('finish_on'),
                         'description' => old('description'),
                         'coordinatorUserId' => old('coordinator_user_id'),
-                        'servants' => $servants,
+                        'servantMembers' => $servantMembers,
                     ],
                 ]
             ]) @endform        

@@ -3,8 +3,8 @@
 namespace Modules\Member\Entities;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Servant extends Model
 {
@@ -52,7 +52,7 @@ class Servant extends Model
         static::addGlobalScope('stillServant', function (Builder $builder) {
             $builder->whereHas('member', function ($member) {
                 return $member->whereHas('role', function ($role) {
-                    return $role->where('slug', 'servant');
+                    return $role->servant();
                 });
             });
         });

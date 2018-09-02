@@ -78,7 +78,7 @@ class Group extends Model
      *
      * @return void
      */
-    public function servants()
+    public function servantMembers()
     {
         return $this->membersApproved()
             ->whereHas('role', function ($role) {

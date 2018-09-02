@@ -46,6 +46,14 @@ return [
         ]
     ],
 
+
+    // Programas.
+    'programs' => [
+        'forms' => [
+            'create_title' => 'Novo programa'
+        ]
+    ],
+
     // 'register' => [
     //     'congrats' => 'Parabéns, :name!',
     //     'success' => 'Aliqua anim aliqua culpa voluptate ad id anim consequat dolor ipsum. Adipisicing exercitation non exercitation mollit labore pariatur. Reprehenderit ullamco velit ipsum minim dolore nostrud consequat.
