@@ -45,18 +45,64 @@
                 'paginator' => $members,
                 'list' => [
                     'twoLine' => true,
-                    'isNavigation' => true,
-                    'items' => $members->map(function ($member) {
+                    'nonInteractive' => true,
+                    'items' => $members->map(function ($member) use ($user, $group) {
                         return [
                             'icon' => __('icons.member'),
                             'text' => [
+                                'link' => url("members/{$member->user_id}"),
                                 'primary' => $member->user->name,
                                 'secondary' => $member->created_at
                                     ->diffForHumans(),
                             ],
-                            'meta' => [
-                                'icon' => __('icons.show'),
-                            ],
+                            'metas' => array_merge(
+                                auth()->check() && $user->can('detachMember', [$group, $member]) ? 
+                                [
+                                    [
+                                        'dialogContainer' => [
+                                            'iconButton' => [
+                                                'icon' => __('icons.deny')
+                                            ],
+                                            'form' => [
+                                                'action' => url("groups/{$group->id}/members/{$member->user_id}"),
+                                                'method' => 'delete'
+                                            ],
+                                            'dialog' => [
+                                                'title' => __('messages.groups.members.dialogs.remove_title'),
+                                                'attrs' => [
+                                                    'id' => "dialog-group-member-remove-{$member->user_id}"
+                                                ],
+                                                'footer' => [
+                                                    'buttonAccept' => [
+                                                        'text' => __('actions.confirm'),
+                                                        'attrs' => [
+                                                            'type' => 'submit' 
+                                                        ]
+                                                    ],
+                                                    'buttonCancel' => [
+                                                        'text' => __('actions.cancel'),
+                                                        'attrs' => [
+                                                            'type' => 'button' 
+                                                        ]
+                                                    ]                                                    
+                                                ]
+                                            ]
+                                        ]                                    
+                                    ]                                
+                                ] :
+                                [], 
+                                [
+                                    [
+                                        'iconButton' => [
+                                            'isLink' => true,
+                                            'icon' => __('icons.show'),
+                                            'attrs' => [
+                                                'href' => url("members/{$member->user_id}")
+                                            ]
+                                        ]
+                                    ]
+                                ]
+                            ),
                             'attrs' => [
                                 'href' => url("members/{$member->user_id}")
                             ]

@@ -96,6 +96,18 @@ class GroupPolicy
 
     /**
      *
+     * @param  \Modules\User\Entities\User  $user
+     * @param  \Modules\Group\Entities\Group  $group
+     * @param  \Modules\Member\Entities\Member  $member
+     * @return void
+     */
+    public function detachMember(User $user, Group $group, Member $member)
+    {
+        return $user->isManager() || $user->isCoordinatorUser($user);
+    }
+
+    /**
+     *
      * @param \Modules\User\Entities\User $user
      * @param \Modules\Group\Entities\Group $group
      * @return bool

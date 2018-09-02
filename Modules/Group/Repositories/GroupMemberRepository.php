@@ -92,6 +92,40 @@ class GroupMemberRepository
     }
 
     /**
+     *
+     * @param  \Modules\User\Entities\User  $user
+     * @param  int|string  $groupId
+     * @param  int|string  $memberUserId
+     * @return stdClass
+     */
+    public function detach(User $user, $groupId, $memberUserId)
+    {
+        $group = Group::findOrFail($groupId);
+        $member = Member::findOrFail($memberUserId);
+
+        // Verifica se o usuário pode realizar.
+        if ($user->cant('detachMember', [$group, $member])) {
+            return repository_result(403);
+        }
+        $detach = function () use ($group, $member) {
+            $group->members()
+                ->detach($member->user_id);
+        };
+
+        try {
+            // Tenta remover.
+            DB::transaction($detach);
+        } catch (Exception $exception) {
+            return repository_result(500);
+        }
+
+        return repository_result(200, __('messages.groups.members.detached'), [
+            'group' => $group,
+            'member' => $member
+        ]);
+    }
+
+    /**
      * Tenta aprovar membros no grupo.
      *
      * @param  \Modules\User\Entities\User  $user

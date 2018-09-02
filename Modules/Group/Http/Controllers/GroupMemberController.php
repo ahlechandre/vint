@@ -101,6 +101,21 @@ class GroupMemberController extends Controller
         return back()->with('snackbar', $toggle->message);
     }
 
+    /**
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $groupId
+     * @param  string  $memberUserId
+     * @return \Illuminate\Http\Response
+     */
+    public function detach(Request $request, $groupId, $memberUserId)
+    {
+        $user = $request->user();
+        $detach = $this->groupMembers
+            ->detach($user, $groupId, $memberUserId);
+
+        return back()->with('snackbar', $detach->message);
+    }
 
     /**
      *

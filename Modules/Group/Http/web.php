@@ -30,6 +30,9 @@ Route::middleware('auth')
         // Grupo > Alternar Membro
         Route::put('groups/{group}/members-toggle/{member}', 'GroupMemberController@toggle');
 
+        // Grupo > Remover membro
+        Route::delete('groups/{group}/members/{member}', 'GroupMemberController@detach');
+
         // Grupo > Programas
         Route::resource('groups/{group}/programs', 'GroupProgramController')
             ->only(['create', 'store']);
