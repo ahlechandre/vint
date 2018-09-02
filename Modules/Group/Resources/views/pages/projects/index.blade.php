@@ -14,7 +14,7 @@
         @cell
             @headingGroup([
                 'group' => $group,
-                'tabActive' => 'programs',
+                'tabActive' => 'projects',
             ]) @endheadingGroup
         @endcell
         
@@ -32,7 +32,7 @@
                                 ' (+99)' : " ($requestsCount)"
                         ),
                         'attrs' => [
-                            'href' => url("groups/{$group->id}/programs/requests")
+                            'href' => url("groups/{$group->id}/projects/requests")
                         ]
                     ]) @endbutton
                 @endif
@@ -42,17 +42,17 @@
         {{-- Paginável --}}
         @cell
             @paginable([
-                'paginator' => $programs,
+                'paginator' => $projects,
                 'list' => [
                     'twoLine' => true,
                     'nonInteractive' => true,
-                    'items' => $programs->map(function ($program) use ($user, $group) {
+                    'items' => $projects->map(function ($project) use ($user, $group) {
                         return [
-                            'icon' => __('icons.program'),
+                            'icon' => __('icons.project'),
                             'text' => [
-                                'link' => url("programs/{$program->id}"),
-                                'primary' => $program->name,
-                                'secondary' => $program->created_at
+                                'link' => url("projects/{$project->id}"),
+                                'primary' => $project->name,
+                                'secondary' => $project->created_at
                                     ->diffForHumans(),
                             ],
                             'meta' => [
@@ -60,7 +60,7 @@
                                     'isLink' => true,
                                     'icon' => __('icons.show'),
                                     'attrs' => [
-                                        'href' => url("programs/{$program->id}")
+                                        'href' => url("projects/{$project->id}")
                                     ]
                                 ]
                             ],
@@ -78,8 +78,8 @@
                         'classes' => ['mdc-fab--extended'],
                         'label' => __('actions.new'),
                         'attrs' => [
-                            'href' => url("groups/{$group->id}/programs/create"),
-                            'title' => __('messages.groups.programs.forms.create_title'),
+                            'href' => url("groups/{$group->id}/projects/create"),
+                            'title' => __('messages.groups.projects.forms.create_title'),
                         ],
                     ]
                 ]) @endfabFixed

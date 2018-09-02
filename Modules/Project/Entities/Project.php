@@ -4,31 +4,37 @@ namespace Modules\Project\Entities;
 
 use Modules\User\Entities\User;
 use Modules\Group\Entities\Group;
-use Modules\Group\Entities\Servant;
+use Modules\Member\Entities\Servant;
+use Modules\Member\Entities\Student;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Member\Entities\Collaborator;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Modules\Group\Entities\Collaborator;
-use Modules\Group\Entities\Student;
-use Illuminate\Database\Eloquent\Builder;
+use Modules\System\Entities\Traits\EloquentVint;
 
 class Project extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, EloquentVint;
 
     /**
      * @var array
      */
     protected $fillable = [
-        'program_id',
-        'coordinator_user_id',
-        'leader_user_id',
-        'supporter_user_id',
         'name',
         'description',
         'start_on',
         'finish_on'
     ];
-
+    
+    /**
+     * @var array
+     */
+    protected $filterable = [
+        'name',
+        'description',
+        'start_on',
+        'finish_on'
+    ];
+        
     /**
      * @var array
      */
@@ -37,21 +43,6 @@ class Project extends Model
         'start_on',
         'finish_on'
     ];
-
-    /**
-     * The "booting" method of the model.
-     *
-     * @return void
-     */
-    protected static function boot()
-    {
-        parent::boot();
-
-        // Escopo global de programas ativos.
-        static::addGlobalScope('active', function (Builder $builder) {
-            $builder->where('is_active', 1);
-        });
-    }
 
     /**
      *
@@ -80,6 +71,15 @@ class Project extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function program()
+    {
+        return $this->belongsTo(Program::class);
     }
 
     /**

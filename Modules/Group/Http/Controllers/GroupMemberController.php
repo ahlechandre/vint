@@ -130,7 +130,7 @@ class GroupMemberController extends Controller
         $approve = $this->groupMembers
             ->approve($user, $groupId, $memberUserId);
 
-        return redirect("groups/{$groupId}/members-requests")
+        return redirect("groups/{$groupId}/members/requests")
             ->with('snackbar', $approve->message);
     }
 
@@ -147,7 +147,7 @@ class GroupMemberController extends Controller
         $deny = $this->groupMembers
             ->deny($user, $groupId, $memberUserId);
 
-        return redirect("groups/{$groupId}/members-requests")
+        return redirect("groups/{$groupId}/members/requests")
             ->with('snackbar', $deny->message);
     }
 }

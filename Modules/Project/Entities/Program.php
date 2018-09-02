@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 use Modules\Group\Entities\Servant;
 use Modules\Group\Entities\Group;
 use Modules\User\Entities\User;
-use Illuminate\Database\Eloquent\Builder;
 use Modules\System\Entities\Traits\EloquentVint;
 
 class Program extends Model
@@ -44,21 +43,6 @@ class Program extends Model
         'start_on',
         'finish_on'
     ];
-
-    /**
-     * The "booting" method of the model.
-     *
-     * @return void
-     */
-    protected static function boot()
-    {
-        parent::boot();
-
-        // Escopo global de programas ativos.
-        static::addGlobalScope('active', function (Builder $builder) {
-            $builder->where('is_active', 1);
-        });
-    }
 
     /**
      *

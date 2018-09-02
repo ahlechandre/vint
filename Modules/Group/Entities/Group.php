@@ -88,6 +88,18 @@ class Group extends Model
 
     /**
      *
+     * @return void
+     */
+    public function collaboratorMembers()
+    {
+        return $this->membersApproved()
+            ->whereHas('role', function ($role) {
+                return $role->collaborator();
+            });
+    }
+
+    /**
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function programs()

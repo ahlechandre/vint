@@ -41,7 +41,7 @@
                     'classes' => ['mdc-button--unelevated']
                 ],
                 'form' => [
-                    'action' => url("groups/{$group->id}/programs-requests"),
+                    'action' => url("groups/{$group->id}/programs/requests"),
                     'method' => 'put'
                 ],
                 'dialog' => [
@@ -72,7 +72,7 @@
                     'text' => __('actions.deny_all'),
                 ],
                 'form' => [
-                    'action' => url("groups/{$group->id}/programs-requests"),
+                    'action' => url("groups/{$group->id}/programs/requests"),
                     'method' => 'delete'
                 ],
                 'dialog' => [
@@ -119,7 +119,7 @@
                                         'icon' => __('icons.approve')
                                     ],
                                     'form' => [
-                                        'action' => url("groups/{$group->id}/programs-requests/{$program->id}"),
+                                        'action' => url("groups/{$group->id}/programs/requests/{$program->id}"),
                                         'method' => 'put'
                                     ],
                                     'dialog' => [
@@ -150,7 +150,7 @@
                                         'icon' => __('icons.deny')
                                     ],
                                     'form' => [
-                                        'action' => url("groups/{$group->id}/programs-requests/{$program->id}"),
+                                        'action' => url("groups/{$group->id}/programs/requests/{$program->id}"),
                                         'method' => 'delete'
                                     ],
                                     'dialog' => [

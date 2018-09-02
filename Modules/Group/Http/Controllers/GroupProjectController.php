@@ -6,18 +6,18 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\Group\Entities\Group;
 use Illuminate\Routing\Controller;
-use Modules\Project\Entities\Program;
-use Modules\Group\Http\Requests\GroupProgramRequest;
-use Modules\Group\Repositories\GroupProgramRepository;
+use Modules\Project\Entities\Project;
+use Modules\Group\Http\Requests\GroupProjectRequest;
+use Modules\Group\Repositories\GroupProjectRepository;
 
-class GroupProgramController extends Controller
+class GroupProjectController extends Controller
 {
     /**
      * Repositório de dados.
      *
-     * @var \Modules\User\Repositories\GroupProgramRepository
+     * @var \Modules\User\Repositories\GroupProjectRepository
      */
-    protected $groupPrograms;
+    protected $groupProjects;
 
     /**
      * Quantidade de recursos por página.
@@ -29,12 +29,12 @@ class GroupProgramController extends Controller
     /**
      * Inicializa o controlador com a instância do repositório de dados.
      *
-     * @param \Modules\User\Repositories\GroupProgramRepository $groupPrograms
+     * @param \Modules\User\Repositories\GroupProjectRepository $groupProjects
      * @return void
      */
-    public function __construct(GroupProgramRepository $groupPrograms)
+    public function __construct(GroupProjectRepository $groupProjects)
     {
-        $this->groupPrograms = $groupPrograms;
+        $this->groupProjects = $groupProjects;
     }
 
     /**
@@ -48,19 +48,19 @@ class GroupProgramController extends Controller
     {
         $perPage = self::$perPage;
         $query = $request->get('q');
-        $index = $this->groupPrograms
+        $index = $this->groupProjects
             ->index($groupId, $perPage, $query);
         $user = $request->user();
         $group = $index->data['group'];
-        $requestsCount = $user && $user->can('updateRequests', [Program::class, $group]) ?
-            $group->programs()
+        $requestsCount = $user && $user->can('updateRequests', [Project::class, $group]) ?
+            $group->projects()
                 ->notApproved()
                 ->count() :
             null;
 
-        return view('group::pages.programs.index', [
+        return view('group::pages.projects.index', [
             'group' => $group,
-            'programs' => $index->data['programs'],
+            'projects' => $index->data['projects'],
             'requestsCount' => $requestsCount,
         ]);
     }
@@ -76,16 +76,16 @@ class GroupProgramController extends Controller
     {
         $query = $request->get('q');
         $user = $request->user();
-        $index = $this->groupPrograms
+        $index = $this->groupProjects
             ->requests($user, $groupId, null, $query);
 
         if (!$index->success) {
             return abort($index->status);
         }
 
-        return view('group::pages.programs.requests', [
+        return view('group::pages.projects.requests', [
             'group' => $index->data['group'],
-            'programs' => $index->data['programs']
+            'projects' => $index->data['projects']
         ]);
     }
 
@@ -102,16 +102,24 @@ class GroupProgramController extends Controller
         $group = Group::findOrFail($groupId);
 
         // Verifica se o usuário pode realizar.
-        if ($user->cant('create', [Program::class, $group])) {
+        if ($user->cant('create', [Project::class, $group])) {
             return abort(403);
         }
+        $projects = $group->projects()
+            ->approved()
+            ->get();
         $servantMembers = $group->servantMembers()
             ->with('user')
             ->get();
-        
-        return view('group::pages.programs.create', [
+        $collaboratorMembers = $group->collaboratorMembers()
+            ->with('user')
+            ->get();
+
+        return view('group::pages.projects.create', [
             'group' => $group,
+            'projects' => $projects,
             'servantMembers' => $servantMembers,
+            'collaboratorMembers' => $collaboratorMembers,
         ]);
     }
 
@@ -122,15 +130,15 @@ class GroupProgramController extends Controller
      * @param  string  $groupId
      * @return \Illuminate\Http\Response
      */
-    public function store(GroupProgramRequest $request, $groupId)
+    public function store(GroupProjectRequest $request, $groupId)
     {
         $user = $request->user();
         $inputs = $request->all();
-        $store = $this->groupPrograms
+        $store = $this->groupProjects
             ->store($user, $groupId, $inputs);
-        $redirectTo = isset($store->data['program']) ?
-            "programs/{$store->data['program']->id}" :
-            "groups/{$groupId}/programs"; 
+        $redirectTo = isset($store->data['project']) ?
+            "projects/{$store->data['project']->id}" :
+            "groups/{$groupId}/projects"; 
 
         return redirect($redirectTo)
             ->with('snackbar', $store->message);
@@ -140,16 +148,16 @@ class GroupProgramController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  string  $groupId
-     * @param  null|string  $programId
+     * @param  null|string  $projectId
      * @return \Illuminate\Http\Response
      */
-    public function approve(Request $request, $groupId, $programId = null)
+    public function approve(Request $request, $groupId, $projectId = null)
     {
         $user = $request->user();
-        $approve = $this->groupPrograms
-            ->approve($user, $groupId, $programId);
+        $approve = $this->groupProjects
+            ->approve($user, $groupId, $projectId);
 
-        return redirect("groups/{$groupId}/programs/requests")
+        return redirect("groups/{$groupId}/projects/requests")
             ->with('snackbar', $approve->message);
     }
 
@@ -157,16 +165,16 @@ class GroupProgramController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  string  $groupId
-     * @param  null|string  $programId
+     * @param  null|string  $projectId
      * @return \Illuminate\Http\Response
      */
-    public function deny(Request $request, $groupId, $programId = null)
+    public function deny(Request $request, $groupId, $projectId = null)
     {
         $user = $request->user();
-        $deny = $this->groupPrograms
-            ->deny($user, $groupId, $programId);
+        $deny = $this->groupProjects
+            ->deny($user, $groupId, $projectId);
 
-        return redirect("groups/{$groupId}/programs/requests")
+        return redirect("groups/{$groupId}/projects/requests")
             ->with('snackbar', $deny->message);
     }    
 }

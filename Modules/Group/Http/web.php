@@ -20,17 +20,11 @@ Route::middleware('auth')
     ->group(function () {
         // Grupos
         Route::resource('groups', 'GroupController')
-            ->only(['create', 'store', 'edit', 'update']);
+            ->only(['create', 'store', 'edit', 'update']);        
 
-        // Grupo > Solicitações de membros
-        Route::get('groups/{group}/members-requests', 'GroupMemberController@requests');
-        Route::put('groups/{group}/members-requests/{member?}', 'GroupMemberController@approve');
-        Route::delete('groups/{group}/members-requests/{member?}', 'GroupMemberController@deny');
-
-        // Grupo > Solicitações de programas
-        Route::get('groups/{group}/programs-requests', 'GroupProgramController@requests');
-        Route::put('groups/{group}/programs-requests/{program?}', 'GroupProgramController@approve');
-        Route::delete('groups/{group}/programs-requests/{program?}', 'GroupProgramController@deny');
+        // -------------------------------------------
+        // Membros
+        // -------------------------------------------
 
         // Grupo > Alternar Membro
         Route::put('groups/{group}/members-toggle/{member}', 'GroupMemberController@toggle');
@@ -38,14 +32,36 @@ Route::middleware('auth')
         // Grupo > Remover membro
         Route::delete('groups/{group}/members/{member}', 'GroupMemberController@detach');
 
+        // Grupo > Solicitações de membros
+        Route::get('groups/{group}/members/requests', 'GroupMemberController@requests');
+        Route::put('groups/{group}/members/requests/{member?}', 'GroupMemberController@approve');
+        Route::delete('groups/{group}/members/requests/{member?}', 'GroupMemberController@deny');
+
+        // -------------------------------------------
+        // Programas
+        // -------------------------------------------
+
         // Grupo > Programas
         Route::resource('groups/{group}/programs', 'GroupProgramController')
             ->only(['create', 'store']);
 
-        // Programas
-        Route::resource('programs', 'ProgramController')
-            ->only(['edit', 'update']);
+        // Grupo > Solicitações de programas
+        Route::get('groups/{group}/programs/requests', 'GroupProgramController@requests');
+        Route::put('groups/{group}/programs/requests/{program?}', 'GroupProgramController@approve');
+        Route::delete('groups/{group}/programs/requests/{program?}', 'GroupProgramController@deny');
 
+        // -------------------------------------------
+        // Projetos
+        // -------------------------------------------
+
+        // Grupo > Projetos
+        Route::resource('groups/{group}/projects', 'GroupProjectController')
+            ->only(['create', 'store']);            
+
+        // Grupo > Solicitações de projetos
+        Route::get('groups/{group}/projects/requests', 'GroupProjectController@requests');
+        Route::put('groups/{group}/projects/requests/{project?}', 'GroupProjectController@approve');
+        Route::delete('groups/{group}/projects/requests/{project?}', 'GroupProjectController@deny');
 
         // /**
         //  * ----------------------------------------
@@ -110,6 +126,5 @@ Route::resource('groups/{group}/members', 'GroupMemberController')
 // Grupo > Programas
 Route::get('groups/{group}/programs', 'GroupProgramController@index');
 
-// Programas
-Route::resource('programs', 'ProgramController')
-    ->only(['index', 'show']);
+// Grupo > Projetos
+Route::get('groups/{group}/projects', 'GroupProjectController@index');

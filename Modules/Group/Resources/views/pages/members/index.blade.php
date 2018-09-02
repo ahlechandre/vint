@@ -32,7 +32,7 @@
                                 ' (+99)' : " ($requestsCount)"
                         ),
                         'attrs' => [
-                            'href' => url("groups/{$group->id}/members-requests")
+                            'href' => url("groups/{$group->id}/members/requests")
                         ]
                     ]) @endbutton
                 @endcell

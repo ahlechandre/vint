@@ -106,10 +106,10 @@ class GroupProgramRepository
      *
      * @param  \Modules\User\Entities\User  $user
      * @param  int|string  $groupId
-     * @param  int|string  $memberUserId
+     * @param  null|int|string  $programId
      * @return stdClass
      */
-    public function deny(User $user, $groupId, $memberUserId)
+    public function deny(User $user, $groupId, $programId = null)
     {
         $group = Group::findOrFail($groupId);
 
