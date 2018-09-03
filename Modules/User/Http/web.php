@@ -11,25 +11,23 @@
 |
 */
 
+// ========================================================
+// Autenticado
+// ========================================================
+
 Route::middleware('auth')
     ->group(function () {
-        /**
-         * ----------------------------------------
-         * Dashboard 
-         * ----------------------------------------
-         */
+
+        // Painel de controle
         Route::get('/dashboard', 'DashboardController@index');
-        /**
-         * ----------------------------------------
-         * Usuários 
-         * ----------------------------------------
-         */
-        Route::put('users/{id}/password', 'UserController@password');
-        /**
-         * ----------------------------------------
-         * Usuários 
-         * ----------------------------------------
-         */
+
+        // --------------------------------------------------------
+        // Usuários
+        // --------------------------------------------------------
         Route::resource('users', 'UserController')
             ->except(['destroy']);
+        Route::put('users/{id}/password', 'UserController@password');
+
+        // Configurações
+        Route::get('settings', 'UserController@settings');
     });

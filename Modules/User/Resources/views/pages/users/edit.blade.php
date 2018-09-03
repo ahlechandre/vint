@@ -11,8 +11,8 @@
         {{-- Heading --}}
         @cell
             @heading([
-                'pretitle' => __('resources.users'),
-                'title' => __('messages.users.forms.edit_title'),
+                'pretitle' => __('headlines.settings'),
+                'title' => $userToEdit->name,
                 'tabBar' => [
                     'tabs' => [
                         [
@@ -21,6 +21,16 @@
                             'attrs' => [
                                 'href' => request()->fullUrlWithQuery([
                                     'section' => 'general'
+                                ])
+                            ]
+                        ],
+                        [
+                            'active' => $section === 'member',
+                            'label' => __('resources.member'),
+                            'ignore' => !$userToEdit->isMember(),
+                            'attrs' => [
+                                'href' => request()->fullUrlWithQuery([
+                                    'section' => 'member'
                                 ])
                             ]
                         ],
@@ -46,6 +56,12 @@
                     'userToEdit' => $userToEdit,
                     'userTypes' => $userTypes
                 ]) @endcomponent
+            @elseif ($section === 'member')
+                {{-- Tab "membro" ativa --}}
+                @component('user::pages.users.sections.edit-member', [
+                    'userToEdit' => $userToEdit,
+                    'roles' => $roles
+                ]) @endcomponent                
             @elseif ($section === 'security')
                 {{-- Tab "segurança" ativa --}}
                 @component('user::pages.users.sections.edit-security', [

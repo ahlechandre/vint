@@ -52,7 +52,6 @@ class UserRepository
             // para o usuário da requisição e que esteja disponível
             // para formulários.
             $role = UserType::ofUser($user)
-                ->forUsersForm()
                 ->findOrFail($inputs['user_type_id']);
             $userCreated = new User;
             $userCreated->fill($inputs);
@@ -93,7 +92,6 @@ class UserRepository
             // para o usuário da requisição e que esteja disponível
             // para formulários.            
             $userType = UserType::ofUser($user)
-                ->forUsersForm()
                 ->findOrFail($inputs['user_type_id']);
             // Atualiza os inputs com "mass assingment".
             $userToUpdate->update($inputs);

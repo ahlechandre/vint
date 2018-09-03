@@ -10,6 +10,7 @@ use Illuminate\Routing\Controller;
 use Modules\User\Http\Requests\UserRequest;
 use Modules\User\Repositories\UserRepository;
 use Modules\User\Http\Requests\UserPasswordRequest;
+use Auth;
 
 class UserController extends Controller
 {
@@ -135,6 +136,18 @@ class UserController extends Controller
      * @param  string  $id
      * @return \Illuminate\Http\Response
      */
+    public function settings(Request $request)
+    {
+        return $this->edit($request, $request->user()->id);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
+     */
     public function edit(Request $request, $id)
     {
         $user = $request->user();
@@ -147,9 +160,7 @@ class UserController extends Controller
         $section = $request->query('section', 'general');
 
         if ($section === 'general') {
-            $userTypes = UserType::ofUser($user)
-                ->forUsersForm()
-                ->get();
+            $userTypes = UserType::ofUser($user)->get();
 
             return view('user::pages.users.edit', [
                 'userToEdit' => $userToEdit,
@@ -178,7 +189,7 @@ class UserController extends Controller
         $update = $this->users
             ->update($user, (int) $id, $inputs);
 
-        return redirect("users/{$id}")
+        return redirect('dashboard')
             ->with('snackbar', $update->message);
     }
 
@@ -195,6 +206,16 @@ class UserController extends Controller
         $inputs = $request->all();
         $update = $this->users
             ->password($user, (int) $id, $inputs);
+
+        // Se a senha for atualizada com sucesso e o usuário da requisição
+        // for o mesmo do usuário atualizado, faz logout para refazer 
+        // o login com a sua nova senha.
+        if ($update->success && ($user->id === (int) $id)) {
+            Auth::logout();
+
+            return redirect('login')
+                ->with('snackbar', $update->message);
+        }
 
         return redirect("users/{$id}")
             ->with('snackbar', $update->message);

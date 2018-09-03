@@ -19,7 +19,7 @@ class UserRequest extends FormRequest
         $isUpdate = $this->method() === 'PUT';
 
         return [
-            'name' => 'required|alpha|min:2',
+            'name' => 'required|string|min:2',
             'username' => [
                 'required',
                 'regex:/' . __('patterns.username') . '/',

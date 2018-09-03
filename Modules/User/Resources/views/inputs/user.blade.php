@@ -16,10 +16,17 @@
         ]) @endtextfield
     @endcell
 
-    {{-- Papel --}}
+    {{-- Tipo de usuário --}}
     @cell([
         'when' => ['d' => 4, 't' => 4, 'p' => 4]
     ])
+        {{-- Se o usuário for membro, adiciona um campo escondido
+        para indicar o seu tipo apenas para passar na requisição.
+        Independente do tipo indicado aqui, a validação está no repositório. --}}
+        @if ($user->isMember())
+            <input type="hidden" name="user_type_id" value="{{ $user->user_type_id }}">
+        @endif
+
         @select([
             'label' => __('resources.user_type'),
             'helperText' => $validations['user_type_id'] ?? null,
@@ -27,6 +34,7 @@
                 'name' => 'user_type_id',
                 'id' => 'select-user-type',
                 'required' => '',
+                'disabled' => $user->isMember()
             ],
             'options' => $userTypes->map(function ($userType) use ($userTypeId) {
                 return [

@@ -120,6 +120,7 @@
           ],
           [
             'icon' => __('icons.profile'),
+            'ignore' => !$user->isMember(),
             'text' => __('headlines.my_profile'),
             'active' => is_active_page("members/{$user->id}"),
             'attrs' => [

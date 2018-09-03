@@ -42,8 +42,12 @@ class UserType extends Model
         if ($user->isAdmin()) {
             return $query;
         }
-        
-        return $query->where('id', '!=', self::ADMIN_SLUG);
+    
+        if ($user->isManager()) {
+            return $query->where('slug', '!=', self::ADMIN_SLUG);
+        }
+
+        return $query->whereNotIn('slug', [self::ADMIN_SLUG, self::MANAGER_SLUG]);
     }
 
     /**
