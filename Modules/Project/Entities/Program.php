@@ -2,13 +2,14 @@
 
 namespace Modules\Project\Entities;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Model;
-use Modules\Member\Entities\Servant;
-use Modules\Group\Entities\Group;
 use Modules\User\Entities\User;
-use Modules\System\Entities\Traits\EloquentVint;
+use Modules\Group\Entities\Group;
 use Modules\Member\Entities\Member;
+use Modules\Member\Entities\Servant;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\System\Entities\Traits\EloquentVint;
 
 class Program extends Model
 {
@@ -43,6 +44,21 @@ class Program extends Model
         'start_on',
         'finish_on'
     ];
+    
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+        
+        // Por padrão, seleciona apenas os programas aprovados. 
+        static::addGlobalScope('approved', function (Builder $builder) {
+            return $builder->where('is_approved', 1);
+        });
+    }
 
     /**
      *
@@ -89,16 +105,6 @@ class Program extends Model
     public function projects()
     {
         return $this->hasMany(Project::class);
-    }
-
-    /**
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeApproved($query)
-    {
-        return $query->where('is_approved', 1);
     }
 
     /**

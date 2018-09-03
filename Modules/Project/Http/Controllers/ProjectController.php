@@ -49,92 +49,75 @@ class ProjectController extends Controller
      */
     public function index(Request $request)
     {
-        $user = $request->user();
         $perPage = self::$perPage;
         $query = $request->get('q');
         $index = $this->projects
-            ->index($user, $perPage, $query);
-        
-        if (!$index->success) {
-            return abort($index->status);
-        }
+            ->index($perPage, $query);
 
         return view('project::pages.projects.index', [
-            'projects' => $index->data['projects'],
-            'projectRequestsCount' => $index->data['projectRequestsCount']
+            'projects' => $index->data['projects']
         ]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the resource.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  string  $id
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function students(Request $request, $id)
     {
-        $user = $request->user();
+        $perPage = self::$perPage;
+        $query = $request->get('q');
+        $students = $this->projects
+            ->students($id, $perPage, $query);
 
-        // Verifica se o usuário pode realizar.
-        if ($user->cant('create', Project::class)) {
-            return abort(403);
-        }
-        // Programas para selecionar o programa.
-        $programs = $user->isMember() ?
-            Program::ofGroup($user->member->group)
-                ->approved()
-                ->get() :
-            Program::approved()
-                ->get();
-        // Professores para selecionar o coordenador.
-        $professors = Servant::professor()
-            ->with('member.user')
-            ->get();
-        // Servidores para selecionar o orientador.
-        $servants = Servant::with('member.user')
-            ->get();
-        // Colaboradores para selecionar o apoiador.
-        $collaborators = Collaborator::with('member.user')
-            ->get();
+        return view('project::pages.projects.students', [
+            'project' => $students->data['project'],
+            'students' => $students->data['students']
+        ]);
+    }
 
-        if ($user->isMember()) {
-            return view('project::pages.projects.create', [
-                'programs' => $programs,
-                'professors' => $professors,
-                'servants' => $servants,
-                'collaborators' => $collaborators
-            ]);
-        }
-        // Se o usuário não é membro, deve selecionar o grupo do novo projeto.
-        $groups = Group::all();
 
-        return view('project::pages.projects.create', [
-            'programs' => $programs,
-            'professors' => $professors,
-            'servants' => $servants,
-            'collaborators' => $collaborators,
-            'groups' => $groups
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function publications(Request $request, $id)
+    {
+        $perPage = self::$perPage;
+        $query = $request->get('q');
+        $publications = $this->projects
+            ->publications($id, $perPage, $query);
+
+        return view('project::pages.projects.publications', [
+            'project' => $students->data['project'],
+            'publications' => $products->data['publications']
         ]);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Display a listing of the resource.
      *
-     * @param  \Modules\Project\Http\Requests\ProjectRequest  $request
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $id
      * @return \Illuminate\Http\Response
      */
-    public function store(ProjectRequest $request)
+    public function products(Request $request, $id)
     {
-        $user = $request->user();
-        $inputs = $request->all();
-        $store = $this->projects
-            ->store($user, $inputs);
-        $redirectTo = 'projects/' . (
-            $store->data['project']->id ?? null
-        );
+        $perPage = self::$perPage;
+        $query = $request->get('q');
+        $products = $this->projects
+            ->products($id, $perPage, $query);
 
-        return redirect($redirectTo)
-            ->with('snackbar', $store->message);
+        return view('project::pages.projects.products', [
+            'project' => $students->data['project'],
+            'products' => $products->data['products']
+        ]);
     }
 
     /**
@@ -149,33 +132,9 @@ class ProjectController extends Controller
         $user = $request->user();
         $project = Project::findOrFail($id);
 
-        // Verifica se usuário pode realizar.
-        if ($user->cant('view', $project)) {
-            return abort(403);
-        }
-        $section = $request->query('section', 'about');
-
-        switch ($section) {
-            case 'students': {
-                $studentsUserId = $project->students
-                    ->pluck('member_user_id');
-                $students = Student::with('member.user')
-                    ->whereNotIn('member_user_id', $studentsUserId)
-                    ->get();
-
-                return view('project::pages.projects.show', [
-                    'project' => $project,
-                    'students' => $students,
-                    'section' => $section
-                ]);                
-            }
-            default: {
-                return view('project::pages.projects.show', [
-                    'project' => $project,
-                    'section' => $section
-                ]);
-            }
-        }    
+        return view('project::pages.projects.show', [
+            'project' => $project
+        ]);
     }
 
     /**
@@ -194,30 +153,24 @@ class ProjectController extends Controller
         if ($user->cant('update', $project)) {
             return abort(403);
         }
-        // Programas para selecionar o programa.
-        $programs = $user->isMember() ?
-            Program::ofGroup($user->member->group)
-                ->approved()
-                ->get() :
-            Program::approved()
-                ->get();
-        // Professores para selecionar o coordenador.
-        $professors = Servant::professor()
-            ->with('member.user')
+        // Todos os programas do grupo.
+        $programs = $project->group->programs;
+        // Todos os membros servidores do grupo.
+        $servantMembers = $project->group
+            ->servantMembers()
+            ->with('user')
             ->get();
-        // Servidores para selecionar o orientador.
-        $servants = Servant::with('member.user')
-            ->get();
-        // Colaboradores para selecionar o apoiador.
-        $collaborators = Collaborator::with('member.user')
+        // Todos os colaboradores do grupo.
+        $collaboratorMembers = $project->group
+            ->collaboratorMembers()
+            ->with('user')
             ->get();
 
         return view('project::pages.projects.edit', [
             'project' => $project,
             'programs' => $programs,
-            'professors' => $professors,
-            'servants' => $servants,
-            'collaborators' => $collaborators
+            'servantMembers' => $servantMembers,
+            'collaboratorMembers' => $collaboratorMembers,
         ]);
     }
 
@@ -237,75 +190,5 @@ class ProjectController extends Controller
 
         return redirect("projects/{$id}")
             ->with('snackbar', $update->message);
-    }
-
-    /**
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int|string  $id
-     * @return void
-     */
-    public function destroy(Request $request, $id)
-    {
-        $user = $request->user();
-        $destroy = $this->projects
-            ->destroy($user, $id);
-
-        return redirect('projects')
-            ->with('snackbar', $destroy->message);
-    }
-
-    /**
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function requests(Request $request)
-    {
-        $user = $request->user();
-        $perPage = self::$perPage;
-        $query = $request->get('q');
-        $index = $this->projects
-            ->requests($user, $perPage, $query);
-        
-        if (!$index->success) {
-            return abort($index->status);
-        }
-
-        return view('project::pages.projects.requests', [
-            'projects' => $index->data['projects']
-        ]);
-    }
-
-    /**
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  null|string  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function approve(Request $request, $id = null)
-    {
-        $user = $request->user();
-        $approve = $this->projects
-            ->approve($user, $id);
-
-        return redirect('project-requests')
-            ->with('snackbar', $approve->message);
-    }
-
-    /**
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  null|string  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function deny(Request $request, $id = null)
-    {
-        $user = $request->user();
-        $deny = $this->projects
-            ->deny($user, $id);
-
-        return redirect('project-requests')
-            ->with('snackbar', $deny->message);
     }
 }

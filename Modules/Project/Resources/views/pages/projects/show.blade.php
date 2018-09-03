@@ -1,65 +1,46 @@
-@extends('layouts.master', [
-    'breadcrumbs' => [
-        [
-            'text' => __('resources.projects'),
-            'attrs' => [
-                'href' => url('projects')
-            ]
-        ],
-        [
-            'text' => $project->name,
-            'attrs' => [
-                'href' => url("projects/{$project->id}")
-            ]
-        ],
-    ],    
-    'topAppBarTabs' => [
-        'tabs' => [
-            [
-                'text' => __('headlines.about'),
-                'isActive' => $section === 'about',
-                'attrs' => [
-                    'href' => url("projects/{$project->id}?section=about")
-                ],
-            ],
-            [
-                'text' => __('resources.students'),
-                'isActive' => $section === 'students',
-                'attrs' => [
-                    'href' => url("projects/{$project->id}?section=students")
-                ],
-            ],
-            [
-                'text' => __('resources.publications'),
-                'isActive' => $section === 'publications',
-                'attrs' => [
-                    'href' => url("projects/{$project->id}?section=publications")
-                ],
-            ],
-        ]
-    ],
+@extends('layouts.'. (
+    auth()->check() ? 'master' : 'default'
+), [
+    'title' => __('resources.projects').' / '.$project->name 
 ])
-@section('title', __('resources.projects') . " / {$project->name}")
 
 @section('main')
-    @layoutGridWithInner([
-        'modifiers' => ['layout-grid--dense']
+    @gridWithInner([
+        'grid' => [
+            'classes' => ['layout-grid--dense']
+        ]
     ])
-        @cell([
-            'when' => ['default' => 12]
-        ])
-            @if ($section === 'about')
-                {{-- "Sobre" --}}
-                @component('project::pages.projects.sections.about', [
-                    'project' => $project
-                ]) @endcomponent
-            @elseif ($section === 'students')
-                {{-- "Alunos" --}}
-                @component('project::pages.projects.sections.students', [
-                    'project' => $project,
-                    'students' => $students,
-                ]) @endcomponent                
-            @endif
+        {{-- Heading --}}
+        @cell
+            @headingProject([
+                'project' => $project,
+                'tabActive' => 'about',
+            ]) @endheadingProject
         @endcell
-    @endlayoutGridWithInner
+
+        @cell
+            {{-- Informações --}}
+            @foreach($project->getAttributes() as $attr => $value)
+                <p>
+                    {{ $attr }} => {{ $value }}
+                </p>
+            @endforeach
+
+            {{-- Editar --}}
+            @can('update', $project)
+                @fabFixed([
+                    'fab' => [
+                        'isLink' => true,
+                        'icon' => __('icons.edit'),
+                        'classes' => ['mdc-fab--extended'],
+                        'label' => __('actions.edit'),
+                        'attrs' => [
+                            'href' => url("projects/{$project->id}/edit"),
+                            'title' => __('messages.projects.forms.edit_title'),
+                        ],
+                    ]
+                ]) @endfabFixed
+            @endcan
+        @endcell
+    @endgridWithInner
 @endsection

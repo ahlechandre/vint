@@ -25,7 +25,6 @@ class GroupProgramRepository
         return repository_result(200, null, [
             'group' => $group,
             'programs' => $group->programs()
-                ->approved()
                 ->filterLike($filter)
                 ->simplePaginateOrGet($perPage)
         ]);

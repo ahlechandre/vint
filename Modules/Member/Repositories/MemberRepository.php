@@ -46,8 +46,7 @@ class MemberRepository
 
         return repository_result(200, null, [
             'member' => $member,
-            'programs' => Program::approved()
-                ->ofMember($member)
+            'programs' => Program::ofMember($member)
                 ->orderBy('created_at')
                 ->filterLike($filter)
                 ->simplePaginateOrGet($perPage),
@@ -68,8 +67,7 @@ class MemberRepository
 
         return repository_result(200, null, [
             'member' => $member,
-            'projects' => Project::approved()
-                ->ofMember($member)
+            'projects' => Project::ofMember($member)
                 ->orderBy('created_at')
                 ->filterLike($filter)
                 ->simplePaginateOrGet($perPage),

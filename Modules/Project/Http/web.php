@@ -38,6 +38,8 @@ Route::resource('programs', 'ProgramController')
 Route::get('programs/{program}/projects', 'ProgramController@projects');
 
 // Projetos
-Route::resource('project', 'ProjectController')
+Route::resource('projects', 'ProjectController')
     ->only(['index', 'show']);
 Route::get('projects/{project}/students', 'ProjectController@students');
+Route::get('projects/{project}/publications', 'ProjectController@publications');
+Route::get('projects/{project}/products', 'ProjectController@products');

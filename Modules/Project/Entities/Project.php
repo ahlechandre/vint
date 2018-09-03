@@ -8,9 +8,12 @@ use Modules\Member\Entities\Member;
 use Modules\Member\Entities\Servant;
 use Modules\Member\Entities\Student;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Modules\Member\Entities\Collaborator;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\System\Entities\Traits\EloquentVint;
+use Modules\Product\Entities\Publication;
+use Modules\Product\Entities\Product;
 
 class Project extends Model
 {
@@ -44,6 +47,21 @@ class Project extends Model
         'start_on',
         'finish_on'
     ];
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+        
+        // Por padrão, seleciona apenas os programas aprovados. 
+        static::addGlobalScope('approved', function (Builder $builder) {
+            return $builder->where('is_approved', 1);
+        });
+    }
 
     /**
      *
@@ -122,6 +140,24 @@ class Project extends Model
             'project_id',
             'student_user_id'
         )->withPivot('is_scholarship');
+    }
+
+    /**
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function publications()
+    {
+        return $this->belongsToMany(Publication::class);
+    }
+
+    /**
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function products()
+    {
+        return $this->belongsToMany(Product::class);
     }
 
     /**
