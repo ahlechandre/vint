@@ -30,9 +30,11 @@ class MemberPolicy
      * @param  \Modules\User\Entities\User  $userToUpdate
      * @return bool
      */
-    public function update(User $user, User $userToUpdate)
+    public function update(User $user, Member $member)
     {
-        return false;
+        return $user->isManager() || (
+            $user->id === $member->user_id
+        );
     }
 
     /**

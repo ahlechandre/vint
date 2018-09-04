@@ -11,6 +11,7 @@ use Modules\User\Http\Requests\UserRequest;
 use Modules\User\Repositories\UserRepository;
 use Modules\User\Http\Requests\UserPasswordRequest;
 use Auth;
+use Modules\Member\Entities\Role;
 
 class UserController extends Controller
 {
@@ -159,20 +160,37 @@ class UserController extends Controller
         }
         $section = $request->query('section', 'general');
 
-        if ($section === 'general') {
-            $userTypes = UserType::ofUser($user)->get();
+        switch ($section) {
+            case 'general': {
+                $userTypes = UserType::ofUser($user)->get();
 
-            return view('user::pages.users.edit', [
-                'userToEdit' => $userToEdit,
-                'userTypes' => $userTypes,
-                'section' => $section
-            ]);
+                return view('user::pages.users.settings', [
+                    'userToEdit' => $userToEdit,
+                    'userTypes' => $userTypes,
+                ]);
+            }
+            case 'security': {
+                return view('user::pages.users.settings-security', [
+                    'userToEdit' => $userToEdit,
+                ]);
+            }
+            case 'member': {
+
+                // Verifica se o usuário a ser editado é membro.
+                if (!$userToEdit->isMember()) {
+                    return abort(404);
+                }
+                $roles = Role::all();
+
+                return view('user::pages.users.settings-member', [
+                    'userToEdit' => $userToEdit,
+                    'roles' => $roles
+                ]);
+            }            
+            default: {
+                return abort(404);
+            }
         }
-
-        return view('user::pages.users.edit', [
-            'userToEdit' => $userToEdit,
-            'section' => $section
-        ]);
     }
 
     /**

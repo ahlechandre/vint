@@ -1,38 +1,6 @@
-@layoutGridInner
+@gridInner
     {{-- Input para o papel --}}
     <input type="hidden" name="role_id" value="{{ $member->role_id }}">
-
-    {{-- Papel --}}
-    @cell([
-        'when' => ['d' => 12, 't' => 8, 'p' => 4],
-        'modifiers' => ['mdc-layout-grid--align-right']
-    ])
-        @menuAnchor
-            {{-- Button --}}
-            @button([
-                'text' => 'Alternar papel',
-                'icon' => 'keyboard_arrow_down',
-                'attrs' => [
-                    'id' => 'menu-member-roles',
-                    'type' => 'button'
-                ],
-            ]) @endbutton
-
-            {{-- Menu --}}
-            @menu
-                @foreach($roles as $role)
-                    @menuItem([
-                        'text' => $role->name,
-                        'attrs' => [
-                            'id' => "dialog-activation-member-role-{$role->slug}",
-                            'aria-disabled' => $role->id === $member->role_id ? 'true' : 'false',
-                            'tab-index' => $role->id === $member->role_id ? '-1' : '0'
-                        ]
-                    ]) @endmenuItem
-                @endforeach
-            @endmenu
-        @endmenuAnchor
-    @endcell
 
     {{-- CPF --}}
     @cell([
@@ -140,4 +108,4 @@
             ]) @endtextfield
         @endcell
     @endif
-@endlayoutGridInner
+@endgridInner

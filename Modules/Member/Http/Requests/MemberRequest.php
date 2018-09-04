@@ -100,7 +100,7 @@ class MemberRequest extends FormRequest
         $inputs = $this->all();
 
         if ($this->role->isServant()) {
-            $inputs['servant']['is_professor'] = isset($inputs['servant']['is_professor']) && $inputs['servant']['is_professor'];
+            $inputs['servant']['is_professor'] = sanitize_bool_input($inputs['servant'], 'is_professor');
         } 
 
         return $inputs;

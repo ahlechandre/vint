@@ -32,7 +32,7 @@ Route::middleware('auth')
             ->only(['update']);
 
         // Membro > Papel
-        Route::put('members/{member}/role/{role}', 'MemberController@role');
+        Route::put('members/{member}/roles/{role}', 'MemberController@role');
     });
 
 // ========================================================

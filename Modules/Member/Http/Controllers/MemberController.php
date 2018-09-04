@@ -144,7 +144,7 @@ class MemberController extends Controller
     public function update(MemberRequest $request, $userId)
     {
         $user = $request->user();
-        $inputs = $request->all();
+        $inputs = $request->sanitize();
         $update = $this->members
             ->update($user, $userId, $inputs);
 

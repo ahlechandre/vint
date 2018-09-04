@@ -1,5 +1,9 @@
 .menu .list .list-item {
   height: 48px;
+  
+  .mdc-list-item__graphic {
+    margin-right: 18px;
+  }
 }
 
 .list {

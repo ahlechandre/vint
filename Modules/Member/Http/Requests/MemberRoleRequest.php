@@ -21,9 +21,7 @@ class MemberRoleRequest extends FormRequest
     public function rules()
     {
         // Acessa o papel.
-        $this->role = Role::findOrFail(
-            $this->route('role')
-        );
+        $this->role = Role::findOrFail($this->route('role'));
 
         // Servidor.
         if ($this->role->isServant()) {

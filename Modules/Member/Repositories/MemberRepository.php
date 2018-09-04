@@ -135,9 +135,9 @@ class MemberRepository
             }
         };
 
+        DB::transaction($update);
         try {
             // Tenta atualizar.
-            DB::transaction($update);
         } catch (Exception $exception) {
             return repository_result(500);
         }
