@@ -36,6 +36,44 @@ class ProjectStudentController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request, $id)
+    {
+        $query = $request->get('q');
+        $students = $this->projectStudents
+            ->index($id, null, $query);
+        $project = $students->data['project'];
+        $students = $students->data['students'];        
+        $user = $request->user();  
+        
+        // Verifica se existe usuário autenticado e se ele
+        // pode criar alunos no projeto. Se puder, seleciona
+        // todos os membros alunos disponíveis.
+        if ($user && $user->can('createStudents', $project)) {
+            $studentMembers = $project->group
+                ->studentMembers()
+                ->whereNotIn('user_id', $students->pluck('member_user_id'))
+                ->get();
+
+            return view('project::pages.projects.students', [
+                'project' => $project,
+                'students' => $students,
+                'studentMembers' => $studentMembers
+            ]);
+        }
+
+        return view('project::pages.projects.students', [
+            'project' => $project,
+            'students' => $students
+        ]);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Modules\User\Http\Requests\ProjectStudentRequest  $request
@@ -49,7 +87,7 @@ class ProjectStudentController extends Controller
         $store = $this->projectStudents
             ->store($user, $projectId, $inputs);
 
-        return redirect("projects/{$projectId}?section=students")
+        return redirect("projects/{$projectId}/students")
             ->with('snackbar', $store->message);
     }
 
@@ -66,14 +104,9 @@ class ProjectStudentController extends Controller
         $user = $request->user();
         $inputs = $request->sanitize();
         $update = $this->projectStudents
-            ->update(
-                $user,
-                $projectId,
-                $id,
-                $inputs
-            );
+            ->update($user, $projectId, $id, $inputs);
 
-        return redirect("projects/{$projectId}?section=students")
+        return redirect("projects/{$projectId}/students")
             ->with('snackbar', $update->message);
     }
 
@@ -91,7 +124,7 @@ class ProjectStudentController extends Controller
         $update = $this->projectStudents
             ->destroy($user, $projectId, $id);
 
-        return redirect("projects/{$projectId}?section=students")
+        return redirect("projects/{$projectId}/students")
             ->with('snackbar', $update->message);
     }
 }

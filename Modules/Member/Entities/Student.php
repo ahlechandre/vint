@@ -4,10 +4,11 @@ namespace Modules\Member\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\System\Entities\Traits\EloquentVint;
 
 class Student extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, EloquentVint;
 
     /**
      * @var string
@@ -23,6 +24,14 @@ class Student extends Model
      * @var array
      */
     protected $fillable = [
+        'rga'
+    ];
+
+    /**
+     *
+     * @var array
+     */
+    protected $filterable = [
         'rga'
     ];
 

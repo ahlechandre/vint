@@ -76,7 +76,7 @@ class Group extends Model
 
     /**
      *
-     * @return void
+     * @return \Illuminate\Database\Query\Builder
      */
     public function servantMembers()
     {
@@ -88,13 +88,25 @@ class Group extends Model
 
     /**
      *
-     * @return void
+     * @return \Illuminate\Database\Query\Builder
      */
     public function collaboratorMembers()
     {
         return $this->membersApproved()
             ->whereHas('role', function ($role) {
                 return $role->collaborator();
+            });
+    }
+
+    /**
+     *
+     * @return \Illuminate\Database\Query\Builder
+     */
+    public function studentMembers()
+    {
+        return $this->membersApproved()
+            ->whereHas('role', function ($role) {
+                return $role->student();
             });
     }
 
@@ -127,7 +139,7 @@ class Group extends Model
             'coordinators',
             'group_id',
             'coordinator_user_id'
-        )->withPivot('is_vice');
+        )->withPivot('is_vice')->withTimestamps();
     }
 
     /**

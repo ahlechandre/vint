@@ -53,7 +53,7 @@ class CoordinatorRequest extends FormRequest
     public function sanitize()
     {
         $inputs = $this->all();
-        $inputs['is_vice'] = isset($inputs['is_vice']) && $inputs['is_vice'];
+        $inputs['is_vice'] = sanitize_bool_input($inputs, 'is_vice');
         
         return $inputs;
     }

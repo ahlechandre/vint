@@ -14,6 +14,7 @@ return [
     'forward' => 'arrow_forward',
     'view' => 'remove_red_eye',
     'logout' => 'exit_to_app', 
+    'delete' => 'delete_outlined', 
 
     // Páginas.
     'homepage' => 'home',

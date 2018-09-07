@@ -36,6 +36,43 @@ class CoordinatorController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $groupId
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request, $groupId)
+    {
+        $query = $request->get('q');
+        $index = $this->coordinators
+            ->index($groupId, null, $query);
+        $group = $index->data['group'];
+        $coordinators = $index->data['coordinators'];
+        $user = $request->user();
+
+        // Se existir usuário autenticado e ele puder criar 
+        // coordenadores, então seleciona todos os membros
+        // servidores disponíveis no grupo.
+        if ($user && $user->can('updateCoordinators', $group)) {
+            $group->servantMembers()
+                ->whereNotIn('user_id', $coordinators->pluck('member_user_id'))
+                ->get();
+
+            return view('group::pages.coordinators.index', [
+                'group' => $group,
+                'coordinators' => $coordinators,
+                'servantMembers' => $servantMembers,
+            ]);
+        }
+
+        return view('group::pages.coordinators.index', [
+            'group' => $group,
+            'coordinators' => $coordinators
+        ]);        
+    }
+    
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Modules\User\Http\Requests\CoordinatorRequest  $request
@@ -49,7 +86,7 @@ class CoordinatorController extends Controller
         $store = $this->coordinators
             ->store($user, $groupId, $inputs);
 
-        return redirect("groups/{$groupId}?section=coordinators")
+        return redirect("groups/{$groupId}/coordinators")
             ->with('snackbar', $store->message);
     }
 
@@ -58,22 +95,17 @@ class CoordinatorController extends Controller
      *
      * @param  \Modules\User\Http\Requests\CoordinatorRequest  $request
      * @param  string  $groupId
-     * @param  string  $id
+     * @param  string  $coordinatorUserId
      * @return \Illuminate\Http\Response
      */
-    public function update(CoordinatorRequest $request, $groupId, $id)
+    public function update(CoordinatorRequest $request, $groupId, $coordinatorUserId)
     {
         $user = $request->user();
         $inputs = $request->sanitize();
         $update = $this->coordinators
-            ->update(
-                $user,
-                $groupId,
-                $id,
-                $inputs
-            );
+            ->update($user, $groupId, $coordinatorUserId, $inputs);
 
-        return redirect("groups/{$groupId}?section=coordinators")
+        return redirect("groups/{$groupId}/coordinators")
             ->with('snackbar', $update->message);
     }
 
@@ -82,16 +114,16 @@ class CoordinatorController extends Controller
      *
      * @param  \Modules\User\Http\Requests\CoordinatorRequest  $request
      * @param  string  $groupId
-     * @param  string  $id
+     * @param  string  $coordinatorUserId
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $groupId, $id)
+    public function destroy(Request $request, $groupId, $coordinatorUserId)
     {
         $user = $request->user();
         $update = $this->coordinators
-            ->destroy($user, $groupId, $id);
+            ->destroy($user, $groupId, $coordinatorUserId);
 
-        return redirect("groups/{$groupId}?section=coordinators")
+        return redirect("groups/{$groupId}/coordinators")
             ->with('snackbar', $update->message);
     }
 }

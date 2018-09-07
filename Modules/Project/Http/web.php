@@ -26,6 +26,9 @@ Route::middleware('auth')
         Route::resource('projects', 'ProjectController')
             ->only(['edit', 'update']);
 
+        // Alunos de projeto
+        Route::resource('projects/{project}/students', 'ProjectStudentController')
+            ->only(['store', 'update', 'destroy']);
     });
 
 // ========================================================
@@ -40,6 +43,6 @@ Route::get('programs/{program}/projects', 'ProgramController@projects');
 // Projetos
 Route::resource('projects', 'ProjectController')
     ->only(['index', 'show']);
-Route::get('projects/{project}/students', 'ProjectController@students');
 Route::get('projects/{project}/publications', 'ProjectController@publications');
 Route::get('projects/{project}/products', 'ProjectController@products');
+Route::get('projects/{project}/students', 'ProjectStudentController@index');

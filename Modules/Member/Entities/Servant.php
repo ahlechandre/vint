@@ -5,10 +5,11 @@ namespace Modules\Member\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\System\Entities\Traits\EloquentVint;
 
 class Servant extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, EloquentVint;
 
     /**
      * @var string
@@ -26,6 +27,11 @@ class Servant extends Model
     protected $fillable = [
         'siape',
         'is_professor'
+    ];
+
+    protected $filterable = [
+        'siape',
+        'member.user.name'
     ];
 
     /**

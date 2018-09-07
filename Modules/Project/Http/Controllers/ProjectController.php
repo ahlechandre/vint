@@ -66,27 +66,6 @@ class ProjectController extends Controller
      * @param  string  $id
      * @return \Illuminate\Http\Response
      */
-    public function students(Request $request, $id)
-    {
-        $perPage = self::$perPage;
-        $query = $request->get('q');
-        $students = $this->projects
-            ->students($id, $perPage, $query);
-
-        return view('project::pages.projects.students', [
-            'project' => $students->data['project'],
-            'students' => $students->data['students']
-        ]);
-    }
-
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  string  $id
-     * @return \Illuminate\Http\Response
-     */
     public function publications(Request $request, $id)
     {
         $perPage = self::$perPage;

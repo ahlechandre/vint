@@ -69,27 +69,6 @@ class ProjectRepository
     }
 
     /**
-     * Lista todos os alunos do projeto.
-     *
-     * @param  string|int  $id
-     * @param  null|int  $perPage
-     * @param  null|string  $filter
-     * @return stdClass
-     */
-    public function students($id, $perPage = null, $filter = null)
-    {
-        $project = Project::findOrFail($id);
-
-        return repository_result(200, null, [
-            'project' => $project,
-            'students' => $project->students()
-                ->orderBy('created_at')
-                ->filterLike($filter)
-                ->simplePaginateOrGet($perPage),
-        ]);
-    }
-
-    /**
      * Tenta atualizar um projeto.
      *
      * @param  \Modules\User\Entities\User  $user

@@ -139,7 +139,7 @@ class Project extends Model
             'project_student',
             'project_id',
             'student_user_id'
-        )->withPivot('is_scholarship');
+        )->withPivot('is_scholarship')->withTimestamps();
     }
 
     /**

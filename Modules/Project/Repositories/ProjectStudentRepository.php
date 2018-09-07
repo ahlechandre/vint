@@ -9,6 +9,30 @@ use Modules\Project\Entities\Project;
 
 class ProjectStudentRepository
 {
+
+    /**
+     * Lista todos os alunos do projeto.
+     *
+     * @param  string|int  $id
+     * @param  null|int  $perPage
+     * @param  null|string  $filter
+     * @return stdClass
+     */
+    public function index($id, $perPage = null, $filter = null)
+    {
+        $project = Project::findOrFail($id);
+        $students = $project->students()
+            ->orderBy('project_student.created_at')
+            ->with('member.user')
+            ->filterLike($filter)
+            ->get();
+
+        return repository_result(200, null, [
+            'project' => $project,
+            'students' => $students
+        ]);
+    }
+
     /**
      * Tenta adicionar um coordenador no grupo.
      *
@@ -26,16 +50,22 @@ class ProjectStudentRepository
             return repository_result(403);
         }
         $store = function () use ($inputs, $project) {
+            // Verifica se o aluno indicado é um aluno do grupo.
+            $studentMember = $project->group
+                ->studentMembers()
+                ->findOrFail($inputs['student_user_id']);
+
             $project->students()
-                ->attach($inputs['student_user_id'], [
-                    'is_scholarship' => $inputs['is_scholarship']
+                ->syncWithoutDetaching([
+                    $studentMember->user_id => [
+                        'is_scholarship' => $inputs['is_scholarship']
+                    ]
                 ]);
         };
 
-        DB::transaction($store);
-
         try {
             // Tenta adicionar.
+            DB::transaction($store);
         } catch (Exception $exception) {
             return repository_result(500);
         }

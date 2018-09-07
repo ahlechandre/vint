@@ -53,7 +53,7 @@ class ProjectStudentRequest extends FormRequest
     public function sanitize()
     {
         $inputs = $this->all();
-        $inputs['is_scholarship'] = isset($inputs['is_scholarship']) && $inputs['is_scholarship'];
+        $inputs['is_scholarship'] = sanitize_bool_input($inputs, 'is_scholarship');
         
         return $inputs;
     }

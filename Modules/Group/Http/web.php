@@ -53,6 +53,13 @@ Route::middleware('auth')
         Route::get('groups/{group}/projects/requests', 'GroupProjectController@requests');
         Route::put('groups/{group}/projects/requests/{project?}', 'GroupProjectController@approve');
         Route::delete('groups/{group}/projects/requests/{project?}', 'GroupProjectController@deny');
+
+        // -------------------------------------------
+        // Coordenadores de grupo
+        // -------------------------------------------
+
+        Route::resource('groups/{group}/coordinators', 'CoordinatorController')
+            ->only(['store', 'update', 'destroy']);
     });
 
 // ========================================================
@@ -65,7 +72,11 @@ Route::middleware('auth')
 
 Route::resource('groups', 'GroupController')
     ->only(['index', 'show']);
+Route::resource('groups/{group}/coordinators', 'CoordinatorController')
+    ->only(['index']);
 Route::resource('groups/{group}/members', 'GroupMemberController')
     ->only(['index']);
-Route::get('groups/{group}/programs', 'GroupProgramController@index');
-Route::get('groups/{group}/projects', 'GroupProjectController@index');
+Route::resource('groups/{group}/programs', 'GroupProgramController')
+    ->only(['index']);
+Route::resource('groups/{group}/projects', 'GroupProjectController')
+    ->only(['index']);
