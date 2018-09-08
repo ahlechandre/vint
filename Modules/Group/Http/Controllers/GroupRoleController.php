@@ -40,22 +40,17 @@ class GroupRoleController extends Controller
      *
      * @param  \Modules\User\Http\Requests\GroupRoleRequest  $request
      * @param  string  $groupId
-     * @param  string  $id
+     * @param  string  $groupRoleId
      * @return \Illuminate\Http\Response
      */
-    public function update(GroupRoleRequest $request, $groupId, $id)
+    public function update(GroupRoleRequest $request, $groupId, $groupRoleId)
     {
         $user = $request->user();
         $inputs = $request->all();
         $update = $this->groupRoles
-            ->update(
-                $user,
-                (int) $groupId,
-                (int) $id,
-                $inputs
-            );
+            ->update($user, $groupId, $groupRoleId, $inputs);
 
-        return redirect("groups/{$groupId}?section=group-roles")
+        return redirect("groups/{$groupId}/edit?section=permissions")
             ->with('snackbar', $update->message);
     }
 }

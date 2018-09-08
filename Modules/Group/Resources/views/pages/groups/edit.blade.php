@@ -10,10 +10,10 @@
     ])
         {{-- Heading --}}
         @cell
-            @heading([
-                'pretitle' => __('resources.groups'),
-                'title' => __('messages.groups.forms.edit_title'),
-            ]) @endheading
+            @headingGroupEdit([
+                'group' => $group,
+                'tabActive' => 'general',
+            ]) @endheadingGroupEdit
         @endcell
 
         {{-- Formulário --}}

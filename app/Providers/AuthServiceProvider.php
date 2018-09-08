@@ -6,7 +6,7 @@ use Laravel\Passport\Passport;
 use Modules\User\Entities\User;
 use Modules\Group\Entities\Group;
 use Modules\Member\Entities\Member;
-use Modules\Member\Entities\GroupRole;
+use Modules\Group\Entities\GroupRole;
 use Modules\Project\Entities\Program;
 use Modules\Project\Entities\Project;
 use Modules\User\Policies\UserPolicy;

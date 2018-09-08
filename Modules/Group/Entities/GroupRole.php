@@ -2,6 +2,7 @@
 
 namespace Modules\Group\Entities;
 
+use Modules\Member\Entities\Role;
 use Illuminate\Database\Eloquent\Model;
 use Modules\System\Entities\Permission;
 

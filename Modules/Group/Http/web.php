@@ -60,6 +60,14 @@ Route::middleware('auth')
 
         Route::resource('groups/{group}/coordinators', 'CoordinatorController')
             ->only(['store', 'update', 'destroy']);
+
+        // -------------------------------------------
+        // Papéis no grupo
+        // -------------------------------------------
+
+        Route::resource('groups/{group}/group-roles', 'GroupRoleController')
+            ->only(['update']);
+
     });
 
 // ========================================================

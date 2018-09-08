@@ -55,7 +55,7 @@ class CoordinatorController extends Controller
         // coordenadores, então seleciona todos os membros
         // servidores disponíveis no grupo.
         if ($user && $user->can('updateCoordinators', $group)) {
-            $group->servantMembers()
+            $servantMembers = $group->servantMembers()
                 ->whereNotIn('user_id', $coordinators->pluck('member_user_id'))
                 ->get();
 

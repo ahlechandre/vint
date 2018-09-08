@@ -3,11 +3,9 @@
 namespace Modules\Group\Repositories;
 
 use Exception;
-use Illuminate\Support\Str;
 use Modules\User\Entities\User;
 use Modules\Group\Entities\Group;
 use Illuminate\Support\Facades\DB;
-use Modules\Group\Entities\Invite;
 
 class GroupRoleRepository
 {
@@ -16,15 +14,15 @@ class GroupRoleRepository
      *
      * @param  \Modules\User\Entities\User  $user
      * @param  int  $groupId
-     * @param  int  $id
+     * @param  int  $groupRoleId
      * @param  array  $inputs
      * @return stdClass
      */
-    public function update(User $user, $groupId, $id, array $inputs)
+    public function update(User $user, $groupId, $groupRoleId, array $inputs)
     {
         $group = Group::findOrFail($groupId);
         $groupRole = $group->groupRoles()
-            ->findOrFail($id);
+            ->findOrFail($groupRoleId);
 
         // Verifica se o usuário pode realizar.
         if ($user->cant('update', $groupRole)) {
@@ -35,10 +33,10 @@ class GroupRoleRepository
                 ->sync($inputs['permissions'] ?? []);
         };
 
-        DB::transaction($update);
 
         try {
             // Tenta atualizar.
+            DB::transaction($update);
         } catch (Exception $exception) {
             return repository_result(500);
         }

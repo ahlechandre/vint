@@ -54,8 +54,10 @@ class CoordinatorRepository
                 ->findOrFail($inputs['coordinator_user_id']);
 
             $group->coordinators()
-                ->syncWithoutDetaching($coordinatorMember->user_id, [
-                    'is_vice' => $inputs['is_vice']
+                ->syncWithoutDetaching([
+                    $coordinatorMember->user_id => [
+                        'is_vice' => $inputs['is_vice']
+                    ]                    
                 ]);
         };
 

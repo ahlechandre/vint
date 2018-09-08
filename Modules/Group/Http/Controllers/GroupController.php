@@ -133,10 +133,38 @@ class GroupController extends Controller
         if ($user->cant('update', $group)) {
             return abort(403);
         }
-
-        return view('group::pages.groups.edit', [
-            'group' => $group
-        ]);
+        $section = $request->query('section', 'general');
+        
+        switch ($section) {
+            case 'permissions': {
+                $groupRoles = $group->groupRoles()
+                    ->with('permissions')
+                    ->get();
+                $permissionsByResource = Permission::with('resource', 'action')
+                    ->get()
+                    ->groupBy('resource_id')
+                    ->map(function ($permissions) {
+                        return [
+                            'resource' => $permissions->first()->resource,
+                            'permissions' => $permissions
+                        ];
+                    });
+                
+                return view('group::pages.groups.edit-permissions', [
+                    'group' => $group,
+                    'groupRoles' => $groupRoles,
+                    'permissionsByResource' => $permissionsByResource
+                ]);
+            }
+            case 'general': {
+                return view('group::pages.groups.edit', [
+                    'group' => $group
+                ]);        
+            }
+            default: {
+                return abort(404);
+            }
+        }
     }
 
     /**
@@ -149,7 +177,7 @@ class GroupController extends Controller
     public function update(GroupRequest $request, $id)
     {
         $user = $request->user();
-        $inputs = $request->sanitize();
+        $inputs = $request->all();
         $update = $this->groups
             ->update($user, (int) $id, $inputs);
 

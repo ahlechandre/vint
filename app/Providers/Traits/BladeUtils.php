@@ -109,6 +109,7 @@ trait BladeUtils
         'components.heading.heading-publication' => 'headingPublication',
         'components.heading.heading-product' => 'headingProduct',
         'components.heading.heading-settings' => 'headingSettings',
+        'components.heading.heading-group-edit' => 'headingGroupEdit',
 
         // Pagination.
         'components.pagination.paginable' => 'paginable',        
