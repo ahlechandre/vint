@@ -1,105 +1,76 @@
 @extends('layouts.master', [
-    'breadcrumbs' => [
-        [
-            'text' => __('resources.products'),
-            'attrs' => [
-                'href' => url('products')
-            ]
-        ],
-        [
-            'text' => $product->name,
-            'attrs' => [
-                'href' => url("/products/{$product->id}")
-            ],
-        ],
-        [
-            'text' => __('actions.edit'),
-            'attrs' => [
-                'href' => url("/products/{$product->id}/edit")
-            ]
-        ]
-    ],
+    'title' => __('resources.products').' / '.$product->title.' / '.__('actions.edit') 
 ])
-@section('title', __('resources.products') . " / {$product->name} / " . __('actions.edit'))
 
 @section('main')
-    @layoutGridWithInner([
-        'modifiers' => ['layout-grid--dense']
+    @gridWithInner([
+        'grid' => [
+            'classes' => ['layout-grid--dense']
+        ]
     ])
-        @cell([
-            'when' => ['default' => 12] 
-        ])
-            @cardWithForm([
-                'title' => $product->name,
-                'subtitle' => __('messages.products.edit'),
-            ])
-                @form([
-                    'action' => url("products/{$product->id}"),
-                    'method' => 'put',
-                    'attrs' => [
-                        'id' => 'form-product'
-                    ],
-                    'withCancel' => true,
-                    'withSubmit' => true,                
-                    'inputs' => [
-                        'view' => 'product::inputs.product',
-                        'props' => [
-                            'title' => $product->title,
-                            'description' => $product->description,
-                            'url' => $product->url,
-                            'projectsId' => $product->projects()
-                                ->pluck('id')
-                                ->toArray(),
-                            'projects' => $projects,
-                        ],
-                    ]
-                ]) @endform
-            @endcard
+        {{-- Heading --}}
+        @cell
+            @heading([
+                'pretitle' => __('resources.products'),
+                'title' => __('messages.products.forms.edit_title'),
+            ]) @endheading
         @endcell
 
-        @can('delete', $product)
-            @cell([
-                'when' => ['default' => 12],
-                'modifiers' => ['mdc-layout-grid--align-right']
-            ])
-                @button([
-                    'text' => __('actions.delete'),
-                    'icon' => 'delete_outline',
-                    'attrs' => [
-                        'type' => 'button',
-                        'id' => 'dialog-activation-product-destroy'
-                    ]
-                ]) @endbutton
-            @endcell
-
-            {{-- Ao tentar remover --}}
+        {{-- Formulário --}}
+        @cell
             @form([
-                'method' => 'delete',
                 'action' => url("products/{$product->id}"),
-            ])
-                {{-- Diálogo --}}
-                @dialog([
-                    'activation' => 'dialog-activation-product-destroy',
-                    'cancel' => [
-                        'text' => __('actions.cancel'),
-                        'attrs' => [
-                            'type' => 'button' 
-                        ],
+                'method' => 'put',
+                'attrs' => [
+                    'id' => 'form-product',
+                    'data-vint-auto-init' => 'VintFormProduct'
+                ],
+                'withCancel' => true,
+                'withSubmit' => true,                
+                'inputs' => [
+                    'view' => 'product::inputs.product',
+                    'props' => [
+                        'title' => $product->title,
+                        'description' => $product->description,
+                        'url' => $product->url,
+                        'projects' => $product->projects
+                            ->load('group')
                     ],
-                    'accept' => [
-                        'text' => __('actions.confirm'),
-                        'attrs' => [
-                            'type' => 'submit'
-                        ],
-                    ],
+                ]
+            ]) @endform        
+        @endcell
+
+        {{-- Remover --}}
+        @cell
+            @dialogContainer([
+                'button' => [
+                    'text' => __('actions.delete')
+                ],
+                'form' => [
+                    'action' => url("products/{$product->id}"),
+                    'method' => 'delete',
+                ],
+                'dialog' => [
+                    'title' => __('messages.products.dialogs.delete_title'),
                     'attrs' => [
-                        'id' => 'dialog-product-destroy'
+                        'id' => 'dialog-product-delete'
                     ],
-                    'title' => __('messages.products.dialog.destroy_title')
-                ])
-                    {{ __('messages.products.dialog.destroy_body') }}
-                @enddialog
-            @endform
-        @endcan
-    @endlayoutGridWithInner
+                    'footer' => [
+                        'buttonAccept' => [
+                            'text' => __('actions.delete'),
+                            'attrs' => [
+                                'type' => 'submit'
+                            ]
+                        ],
+                        'buttonCancel' => [
+                            'text' => __('actions.cancel'),
+                            'attrs' => [
+                                'type' => 'button'
+                            ]
+                        ]                        
+                    ]
+                ]
+            ]) @enddialogContainer
+        @endcell 
+    @endgridWithInner
 @endsection

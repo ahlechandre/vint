@@ -195,4 +195,33 @@ class Project extends Model
                 return $students->where('student_user_id', $member->user_id);
             });
     }
+
+    /**
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  \Modules\Member\Entities\Member  $member
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeForMember($query, Member $member)
+    {
+        return $query->whereIn('group_id', $member->groupsApproved()
+            ->pluck('id')
+            ->toArray()
+        );
+    }
+
+    /**
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  \Modules\User\Entities\User  $user
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeForUser($query, User $user)
+    {
+        if (!$user->isMember()) {
+            return $query;
+        }
+
+        return $this->forMember($user->member);
+    }    
 }

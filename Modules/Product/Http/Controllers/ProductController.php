@@ -46,14 +46,9 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $user = $request->user();
-        $perPage = self::$perPage;
         $query = $request->get('q');
         $index = $this->products
-            ->index($user, $perPage, $query);
-        
-        if (!$index->success) {
-            return abort($index->status);
-        }
+            ->index(self::$perPage, $query);
 
         return view('product::pages.products.index', [
             'products' => $index->data['products']
@@ -74,12 +69,8 @@ class ProductController extends Controller
         if ($user->cant('create', Product::class)) {
             return abort(403);
         }
-        $projects = Project::approved()
-            ->get();
 
-        return view('product::pages.products.create', [
-            'projects' => $projects
-        ]);
+        return view('product::pages.products.create');
     }
 
     /**
@@ -118,11 +109,9 @@ class ProductController extends Controller
         if ($user->cant('view', $product)) {
             return abort(403);
         }
-        $section = $request->query('section', 'about');
 
         return view('product::pages.products.show', [
-            'product' => $product,
-            'section' => $section
+            'product' => $product
         ]);
     }
 
@@ -142,12 +131,9 @@ class ProductController extends Controller
         if ($user->cant('update', $product)) {
             return abort(403);
         }
-        $projects = Project::approved()
-            ->get();
 
         return view('product::pages.products.edit', [
             'product' => $product,
-            'projects' => $projects,
         ]);
     }
 

@@ -9,6 +9,10 @@ class VintSelect2 {
     COMPONENT: 'select--select2',
     SELECT: 'select__native-control',
   }
+  
+  static constants = {
+    PLACEHOLDER_DATASET: 'vintSelect2Placeholder'
+  }
 
   /**
    * 
@@ -33,7 +37,10 @@ class VintSelect2 {
    * @param {null|Object} options 
    */
   render(options) {
-    $(this.state.select).select2((options || this.state.options))
+    $(this.state.select).select2({
+      ...(options || this.state.options),
+      placeholder: this.state.element.dataset[VintSelect2.constants.PLACEHOLDER_DATASET]
+    })
   }  
 }
 

@@ -60,6 +60,16 @@ class Member extends Model
 
     /**
      *
+     * @return \Illuminate\Database\Query\Builder
+     */
+    public function groupsApproved()
+    {
+        return $this->groups()
+            ->wherePivot('is_approved', 1);
+    }
+
+    /**
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function role()

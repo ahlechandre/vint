@@ -80,8 +80,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapApiRoutes()
     {
         $modules = [
-            'System',
-            'User'
+            'Project'
         ];
 
         foreach ($modules as $module) {

@@ -6,18 +6,25 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\User\Entities\User;
 use Modules\Project\Entities\Project;
+use Modules\System\Entities\Traits\EloquentVint;
 
 class Product extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, EloquentVint;
 
     /**
      * @var array
      */
     protected $fillable = [
-        'title',
-        'description',
-        'url',
+        'title', 'description', 'url',
+    ];
+
+    /**
+     *
+     * @var array
+     */
+    protected $filterable = [
+        'title', 'description', 'url'
     ];
 
     /**

@@ -131,4 +131,21 @@ class ProjectRepository
             'project' => $project
         ]);
     }
+
+    /**
+     *
+     * @param  \Modules\User\Entities\User  $user
+     * @param  null|int  $perPage
+     * @param  null|int  $filter
+     * @return void
+     */
+    public function forUser(User $user, $perPage = null, $filter = null)
+    {
+        return repository_result(200, null, [
+            'projects' => Project::with('group')
+                ->forUser($user)
+                ->filterLike($filter)
+                ->simplePaginateOrGet($perPage)
+        ]);
+    }
 }

@@ -6,48 +6,28 @@ use Exception;
 use Modules\User\Entities\User;
 use Illuminate\Support\Facades\DB;
 use Modules\Product\Entities\Product;
+use Modules\Project\Entities\Project;
 
 class ProductRepository
 {
     /**
-     * Lista todos os grupos.
+     * Lista todos os produtos.
      *
-     * @param  \Modules\User\Entities\User  $user
      * @param  null|int  $perPage
      * @param  null|string  $filter
      * @return stdClass
      */
-    public function index(User $user, $perPage = null, $filter = null)
+    public function index($perPage = null, $filter = null)
     {
-        // Verifica se o usuário pode realizar.
-        if ($user->cant('index', Product::class)) {
-            return repository_result(403);
-        }
-        $search = function ($filter, $scope) {
-            $filterLike = "%{$filter}%";
-
-            return $scope->where([
-                ['title', 'like', $filterLike],
-            ]);
-        };
-        // Escopo.
-        $scope = Product::orderBy('created_at', 'desc');
-        // Escopo por filtro.
-        $query = $filter ?
-            $search($filter, $scope) :
-            $scope;
-        // Seleciona.
-        $products = $perPage ?
-            $query->simplePaginate($perPage) :
-            $query->get();
-
         return repository_result(200, null, [
-            'products' => $products
+            'products' => Product::orderBy('created_at')
+                ->filterLike($filter)
+                ->simplePaginateOrGet($perPage)
         ]);
     }
 
     /**
-     * Tenta criar um novo grupo.
+     * Tenta criar um novo produto.
      *
      * @param  \Modules\User\Entities\User  $user
      * @param  array  $inputs
@@ -71,8 +51,13 @@ class ProductRepository
                 ->associate($user);
             // Salva o produto.
             $product->save();
+            // Verifica se todos os projetos indicados estão disponíveis
+            // para o usuário.
+            $projects = Project::forUser($user)
+                ->findOrFail($inputs['projects']);
             // Associa os projetos.
-            $product->projects()->sync($inputs['projects']);
+            $product->projects()
+                ->sync($projects->pluck('id'));
         };
 
         try {
@@ -88,7 +73,7 @@ class ProductRepository
     }
 
     /**
-     * Tenta atualizar um usuário.
+     * Tenta atualizar um produto.
      *
      * @param  \Modules\User\Entities\User  $user
      * @param  int  $id
@@ -106,8 +91,13 @@ class ProductRepository
         $update = function () use ($user, $inputs, $product) {
             // Atualiza os campos por input.
             $product->update($inputs);
-            // Sincroniza os projetos.
-            $product->projects()->sync($inputs['projects']);
+            // Verifica se todos os projetos indicados estão disponíveis
+            // para o usuário.
+            $projects = Project::forUser($user)
+                ->findOrFail($inputs['projects']);
+            // Associa os projetos.
+            $product->projects()
+                ->sync($projects->pluck('id'));
         };
 
         try {
@@ -123,7 +113,7 @@ class ProductRepository
     }
 
     /**
-     * Tenta atualizar um usuário.
+     * Tenta remover um produto.
      *
      * @param  \Modules\User\Entities\User  $user
      * @param  int  $id

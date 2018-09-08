@@ -1,64 +1,66 @@
-@extends('layouts.master', [
-    'breadcrumbs' => [
-        [
-            'text' => __('resources.products'),
-            'attrs' => [
-                'href' => url('products')
-            ],
-        ]
-    ]
+{{-- Layout --}}
+@extends('layouts.'.(
+    auth()->check() ? 'master' : 'default'
+), [
+    'title' => __('resources.products')
 ])
-@section('title', __('resources.products'))
 
+{{-- Conteúdo --}}
 @section('main')
-
-    {{-- Conteúdo --}}
-    @layoutGridWithInner([
-        'modifiers' => ['layout-grid--dense']
+    @gridWithInner([
+        'grid' => [
+            'classes' => ['layout-grid--dense']
+        ]
     ])
-        {{-- Títulos --}}
-        @cell([
-            'when' => ['default' => 12]
-        ])
-            @article([
+        @cell
+            {{-- Heading --}}
+            @heading([
                 'title' => __('resources.products'),
-                'intro' => __('messages.products.index'),
-            ]) @endarticle
+                'content' => __('messages.products.subheading'),
+            ]) @endheading
         @endcell
-
-        {{-- Lista de recursos --}}
-        @cell([
-            'when' => ['default' => 12]
-        ])
+        
+        @cell
+            {{-- Paginável --}}
             @paginable([
-            'collection' => $products,
-            'items' => $products->map(function ($product) use ($user) {
-                return [
-                    'icon' => __('material_icons.product'),
-                    'meta' => 'arrow_forwar',
-                    'text' => $product->title,
-                    'secondaryText' => $product->created_at
-                        ->diffForHumans(),
-                    'attrs' => [
-                        'href' => url("/products/{$product->id}"),
-                    ],
-                ];
-            }),
+                'paginator' => $products,
+                'list' => [
+                    'isNavigation' => true,
+                    'twoLine' => true,
+                    'items' => $products->map(function ($product) {
+                        return [
+                            'icon' => __('icons.product'),
+                            'text' => [
+                                'primary' => $product->title,
+                                'secondary' => $product->created_at
+                                    ->diffForHumans(),
+                            ],
+                            'meta' => [
+                                'icon' => __('icons.show'),
+                            ],
+                            'attrs' => [
+                                'href' => url("products/{$product->id}")
+                            ]
+                        ];
+                    }),                    
+                ]
             ]) @endpaginable
         @endcell
-    @endlayoutGridWithInner
-
-    {{-- FAB --}}
-    @if ($user->can('create', \Modules\Product\Entities\Product::class))
-        @fab([
-            'icon' => 'add',
-            'label' => __('messages.products.new'),
-            'modifiers' => ['fab--fixed'],
-            'attrs' => [
-                'href' => url("/products/create"),
-                'title' => __('messages.products.new'),
-                'alt' => __('messages.products.new'),
-            ],
-        ]) @endfab
-    @endif
+        
+        {{-- Novo --}}
+        @can('create', \Modules\Product\Entities\Product::class)
+            @fabFixed([
+                'fab' => [
+                    'isLink' => true,
+                    'icon' => __('icons.add'),
+                    'classes' => ['mdc-fab--extended'],
+                    'label' => __('actions.new'),
+                    'attrs' => [
+                        'href' => url('products/create'),
+                        'title' => __('messages.products.forms.create_title'),
+                    ],
+                ]
+            ]) @endfabFixed
+        @endcan
+    @endgridWithInner
 @endsection

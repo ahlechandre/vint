@@ -1,52 +1,46 @@
 @extends('layouts.master', [
-    'breadcrumbs' => [
-        [
-            'text' => __('resources.products'),
-            'attrs' => [
-                'href' => url('products')
-            ]
-        ],
-        [
-            'text' => __('actions.create'),
-            'attrs' => [
-                'href' => url('/products/create')
-            ]
-        ]
-    ],
+    'title' => __('resources.products').' / '.__('actions.new') 
 ])
-@section('title', __('resources.products') . ' / ' . __('actions.create'))
 
 @section('main')
-    @layoutGridWithInner([
-        'modifiers' => ['layout-grid--dense']
+    @gridWithInner([
+        'grid' => [
+            'classes' => ['layout-grid--dense']
+        ]
     ])
-        @cell([
-            'when' => ['default' => 12] 
-        ])
-            @cardWithForm([
-                'title' => __('resources.products'),
-                'subtitle' => __('messages.products.create'),
-            ])
-                @form([
-                    'action' => url('products'),
-                    'method' => 'post',
-                    'attrs' => [
-                        'id' => 'form-product'
-                    ],
-                    'withCancel' => true,
-                    'withSubmit' => true,  
-                    'inputs' => [
-                        'view' => 'product::inputs.product',
-                        'props' => [
-                            'title' => old('title'),
-                            'description' => old('description'),
-                            'url' => old('url'),
-                            'projectsId' => old('projects'),
-                            'projects' => $projects,
-                        ],
-                    ]
-                ]) @endform
-            @endcard
+        {{-- Heading --}}
+        @cell
+            @heading([
+                'pretitle' => __('resources.products'),
+                'title' => __('messages.products.forms.create_title'),
+            ]) @endheading
         @endcell
-    @endlayoutGridWithInner
+
+        {{-- Formulário --}}
+        @cell
+            @form([
+                'action' => url('products'),
+                'method' => 'post',
+                'attrs' => [
+                    'id' => 'form-product',
+                    'data-vint-auto-init' => 'VintFormProduct'
+                ],
+                'withCancel' => true,
+                'withSubmit' => true,                
+                'inputs' => [
+                    'view' => 'product::inputs.product',
+                    'props' => [
+                        'title' => old('title'),
+                        'description' => old('description'),
+                        'url' => old('url'),
+                        'projects' => old('projects') ?
+                            \Modules\Project\Entities\Project::forUser($user)
+                                ->with('group')
+                                ->find(old('projects'))
+                        : null
+                    ],
+                ]
+            ]) @endform        
+        @endcell    
+    @endgridWithInner
 @endsection

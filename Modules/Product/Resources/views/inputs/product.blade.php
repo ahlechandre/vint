@@ -1,4 +1,4 @@
-@layoutGridInner
+@gridInner
     {{-- Titulo --}}
     @cell([
         'when' => ['d' => 12, 't' => 8, 'p' => 4]
@@ -51,20 +51,29 @@
     @endcell
 
     {{-- Projetos --}}
-    @cell([
-        'when' => ['d' => 12, 't' => 8, 'p' => 4]
-    ])
-        @foreach($projects as $project)
-            @checkbox([
-                'label' => $project->name,
-                'attrs' => [
-                    'name' => 'projects[]',
-                    'value' => $project->id,
-                    'checked' => $projectsId ?
-                        in_array($project->id, $projectsId) : false
-                ],
-            ]) @endcheckbox
-        @endforeach
-    @endcell   
-
-@endlayoutGridInner
+    @cell
+        @select2([
+            'label' => __('resources.projects'),
+            'componentAttrs' => [
+                'id' => 'select-product-projects',
+                'data-vint-select2-placeholder' => __('attrs.products.placeholders.projects'),
+            ], 
+            'helperText' => $validations['projects'] ?? null,
+            'attrs' => [
+                'multiple' => '',
+                'name' => 'projects[]'
+            ],
+            'options' => $projects ?
+                $projects->map(function ($project) {
+                    return [
+                        'text' => "{$project->name} / {$project->group->name}",
+                        'attrs' => [
+                            'value' => $project->id,
+                            'selected' => '',
+                        ],
+                    ];
+                }) : null
+        ]) @endselect2    
+    @endcell
+    
+@endgridInner
