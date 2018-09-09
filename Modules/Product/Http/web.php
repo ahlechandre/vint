@@ -13,18 +13,28 @@
 
 Route::middleware('auth')
     ->group(function () {
-        /**
-         * ----------------------------------------
-         * Produtos
-         * ----------------------------------------
-         */
-        Route::resource('products', 'ProductController');
+        // --------------------------------------------------
+        // Produtos
+        // --------------------------------------------------
+        Route::resource('products', 'ProductController')
+            ->except(['index', 'show']);
 
-        /**
-         * ----------------------------------------
-         * Publicações
-         * ----------------------------------------
-         */
-        Route::resource('publications', 'PublicationController');
+        // --------------------------------------------------
+        // Publicações
+        // --------------------------------------------------
+        Route::resource('publications', 'PublicationController')
+            ->except(['index', 'show']);
 
     });
+
+// --------------------------------------------------
+// Produtos
+// --------------------------------------------------
+Route::resource('products', 'ProductController')
+    ->only(['index', 'show']);
+
+// --------------------------------------------------
+// Publicações
+// --------------------------------------------------
+Route::resource('publications', 'PublicationController')
+    ->only(['index', 'show']);

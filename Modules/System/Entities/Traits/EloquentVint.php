@@ -17,12 +17,24 @@ trait EloquentVint
             return $query;
         }
 
+        // Campos filtráveis.
         array_reduce($this->filterable, function ($isNotFirst, $field) use ($query, $filter) {
             return $isNotFirst ?
                 $query->orWhere($field, 'like', "%{$filter}%") :
                 $query->where($field, 'like', "%{$filter}%");
         }, false);
 
+        // Relações filtráveis.
+        if (isset($this->filterableRelations)) {
+            $selectRelation = function ($query) use ($filter) {
+                return $query->filterLike($filter);
+            };
+
+            array_reduce($this->filterableRelations, function ($initial, $relation) use ($query, $selectRelation) {
+                $query->orWhereHas($relation, $selectRelation);
+            });
+        }
+        
         return $query;
     }
 

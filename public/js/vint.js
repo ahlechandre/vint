@@ -13365,6 +13365,10 @@ var _VintFormProduct = __webpack_require__(48);
 
 var _VintFormProduct2 = _interopRequireDefault(_VintFormProduct);
 
+var _VintFormPublication = __webpack_require__(55);
+
+var _VintFormPublication2 = _interopRequireDefault(_VintFormPublication);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
@@ -13374,7 +13378,8 @@ exports.default = {
   VintMenuAnchor: _VintMenuAnchor2.default,
   VintSelect2: _VintSelect2.default,
   VintTextarea: _VintTextarea2.default,
-  VintFormProduct: _VintFormProduct2.default
+  VintFormProduct: _VintFormProduct2.default,
+  VintFormPublication: _VintFormPublication2.default
 };
 
 /***/ }),
@@ -23004,6 +23009,105 @@ exports.default = VintFormProduct;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var VintFormPublication = function () {
+  function VintFormPublication(element) {
+    _classCallCheck(this, VintFormPublication);
+
+    this.state = {
+      element: element,
+      projectsSelectEl: element.querySelector('#' + VintFormPublication.constansts.PROJECTS_SELECT_ID),
+      membersSelectEl: element.querySelector('#' + VintFormPublication.constansts.MEMBERS_SELECT_ID)
+    };
+    this.renderProjectsSelect();
+    this.renderMembersSelect();
+  }
+
+  _createClass(VintFormPublication, [{
+    key: 'renderProjectsSelect',
+    value: function renderProjectsSelect() {
+      new window.vint.VintSelect2(this.state.projectsSelectEl).render({
+        ajax: {
+          url: VintFormPublication.constansts.PROJECTS_API_URL,
+          headers: window.vint.request.getDefaultHeaders(),
+          processResults: function processResults(response) {
+            return {
+              results: response.data.map(function (item) {
+                return {
+                  id: item.id,
+                  text: item.name + ' / ' + item.group.name
+                };
+              })
+            };
+          },
+          data: function data(params) {
+            return {
+              q: params.term,
+              'per-page': VintFormPublication.constansts.PER_PAGE
+            };
+          }
+        }
+      });
+    }
+  }, {
+    key: 'renderMembersSelect',
+    value: function renderMembersSelect() {
+      new window.vint.VintSelect2(this.state.membersSelectEl).render({
+        ajax: {
+          url: VintFormPublication.constansts.MEMBERS_API_URL,
+          headers: window.vint.request.getDefaultHeaders(),
+          processResults: function processResults(response) {
+            return {
+              results: response.data.map(function (member) {
+                return {
+                  id: member.user_id,
+                  text: member.user.name + ' <' + member.user.email + '>'
+                };
+              })
+            };
+          },
+          data: function data(params) {
+            return {
+              q: params.term,
+              'per-page': VintFormPublication.constansts.PER_PAGE
+            };
+          }
+        }
+      });
+    }
+  }]);
+
+  return VintFormPublication;
+}();
+
+VintFormPublication.constansts = {
+  PROJECTS_API_URL: '/api/projects-for-user',
+  MEMBERS_API_URL: '/api/members-for-user',
+  PROJECTS_SELECT_ID: 'select-publication-projects',
+  MEMBERS_SELECT_ID: 'select-publication-members',
+  PER_PAGE: 15
+};
+exports.default = VintFormPublication;
 
 /***/ })
 /******/ ]);

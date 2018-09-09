@@ -61,7 +61,8 @@
             'helperText' => $validations['projects'] ?? null,
             'attrs' => [
                 'multiple' => '',
-                'name' => 'projects[]'
+                'name' => 'projects[]',
+                'required' => ''
             ],
             'options' => $projects ?
                 $projects->map(function ($project) {

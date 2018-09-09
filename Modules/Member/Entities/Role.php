@@ -4,10 +4,11 @@ namespace Modules\Member\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\System\Entities\Traits\EloquentVint;
 
 class Role extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, EloquentVint;
 
     const SERVANT_SLUG = 'servant';
     const STUDENT_SLUG = 'student';
@@ -18,6 +19,14 @@ class Role extends Model
      */
     protected $fillable = [
         'name', 'slug', 'description'
+    ];
+
+    /**
+     *
+     * @var array
+     */
+    protected $filterable = [
+        'name', 'description'
     ];
 
     /**

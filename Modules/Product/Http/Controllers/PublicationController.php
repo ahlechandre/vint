@@ -47,16 +47,10 @@ class PublicationController extends Controller
      */
     public function index(Request $request)
     {
-        $user = $request->user();
-        $perPage = self::$perPage;
         $query = $request->get('q');
         $index = $this->publications
-            ->index($user, $perPage, $query);
+            ->index(self::$perPage, $query);
         
-        if (!$index->success) {
-            return abort($index->status);
-        }
-
         return view('product::pages.publications.index', [
             'publications' => $index->data['publications']
         ]);
@@ -76,15 +70,8 @@ class PublicationController extends Controller
         if ($user->cant('create', Publication::class)) {
             return abort(403);
         }
-        $projects = Project::approved()
-            ->get();
-        $members = Member::with('user')
-            ->get();
 
-        return view('product::pages.publications.create', [
-            'projects' => $projects,
-            'members' => $members
-        ]);
+        return view('product::pages.publications.create');
     }
 
     /**
@@ -123,11 +110,9 @@ class PublicationController extends Controller
         if ($user->cant('view', $publication)) {
             return abort(403);
         }
-        $section = $request->query('section', 'about');
 
         return view('product::pages.publications.show', [
-            'publication' => $publication,
-            'section' => $section
+            'publication' => $publication
         ]);
     }
 
@@ -147,15 +132,9 @@ class PublicationController extends Controller
         if ($user->cant('update', $publication)) {
             return abort(403);
         }
-        $projects = Project::approved()
-            ->get();
-        $members = Member::with('user')
-            ->get();
 
         return view('product::pages.publications.edit', [
             'publication' => $publication,
-            'projects' => $projects,
-            'members' => $members,
         ]);
     }
 

@@ -1,53 +1,50 @@
 @extends('layouts.master', [
-    'breadcrumbs' => [
-        [
-            'text' => __('resources.publications'),
-            'attrs' => [
-                'href' => url('publications')
-            ]
-        ],
-        [
-            'text' => __('actions.create'),
-            'attrs' => [
-                'href' => url('/publications/create')
-            ]
-        ]
-    ],
+    'title' => __('resources.publications').' / '.__('actions.new') 
 ])
-@section('title', __('resources.publications') . ' / ' . __('actions.create'))
 
 @section('main')
-    @layoutGridWithInner([
-        'modifiers' => ['layout-grid--dense']
+    @gridWithInner([
+        'grid' => [
+            'classes' => ['layout-grid--dense']
+        ]
     ])
-        @cell([
-            'when' => ['default' => 12] 
-        ])
-            @cardWithForm([
-                'title' => __('resources.publications'),
-                'subtitle' => __('messages.publications.create'),
-            ])
-                @form([
-                    'action' => url('publications'),
-                    'method' => 'post',
-                    'attrs' => [
-                        'id' => 'form-publication'
-                    ],
-                    'withCancel' => true,
-                    'withSubmit' => true,  
-                    'inputs' => [
-                        'view' => 'product::inputs.publication',
-                        'props' => [
-                            'reference' => old('reference'),
-                            'url' => old('url'),
-                            'projectsId' => old('projects'),
-                            'membersUserId' => old('projects'),
-                            'projects' => $projects,
-                            'members' => $members,
-                        ],
-                    ]
-                ]) @endform
-            @endcard
+        {{-- Heading --}}
+        @cell
+            @heading([
+                'pretitle' => __('resources.publications'),
+                'title' => __('messages.publications.forms.create_title'),
+            ]) @endheading
         @endcell
-    @endlayoutGridWithInner
+
+        {{-- Formulário --}}
+        @cell
+            @form([
+                'action' => url('publications'),
+                'method' => 'post',
+                'attrs' => [
+                    'id' => 'form-publication',
+                    'data-vint-auto-init' => 'VintFormPublication'
+                ],
+                'withCancel' => true,
+                'withSubmit' => true,                
+                'inputs' => [
+                    'view' => 'product::inputs.publication',
+                    'props' => [
+                        'reference' => old('reference'),
+                        'url' => old('url'),
+                        'projects' => old('projects') ?
+                            \Modules\Project\Entities\Project::forUser($user)
+                                ->with('group')
+                                ->find(old('projects'))
+                        : null,
+                        'members' => old('members') ?
+                            \Modules\Member\Entities\Member::forUser($user)
+                                ->with('user')
+                                ->find(old('members'))
+                        : null                        
+                    ],
+                ]
+            ]) @endform        
+        @endcell    
+    @endgridWithInner
 @endsection

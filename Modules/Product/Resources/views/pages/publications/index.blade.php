@@ -1,64 +1,66 @@
-@extends('layouts.master', [
-    'breadcrumbs' => [
-        [
-            'text' => __('resources.publications'),
-            'attrs' => [
-                'href' => url('publications')
-            ],
-        ]
-    ]
+{{-- Layout --}}
+@extends('layouts.'.(
+    auth()->check() ? 'master' : 'default'
+), [
+    'title' => __('resources.publications')
 ])
-@section('title', __('resources.publications'))
 
+{{-- Conteúdo --}}
 @section('main')
-
-    {{-- Conteúdo --}}
-    @layoutGridWithInner([
-        'modifiers' => ['layout-grid--dense']
+    @gridWithInner([
+        'grid' => [
+            'classes' => ['layout-grid--dense']
+        ]
     ])
-        {{-- Títulos --}}
-        @cell([
-            'when' => ['default' => 12]
-        ])
-            @article([
+        @cell
+            {{-- Heading --}}
+            @heading([
                 'title' => __('resources.publications'),
-                'intro' => __('messages.publications.index'),
-            ]) @endarticle
+                'content' => __('messages.publications.subheading'),
+            ]) @endheading
         @endcell
-
-        {{-- Lista de recursos --}}
-        @cell([
-            'when' => ['default' => 12]
-        ])
+        
+        @cell
+            {{-- Paginável --}}
             @paginable([
-            'collection' => $publications,
-            'items' => $publications->map(function ($publication) use ($user) {
-                return [
-                    'icon' => __('material_icons.publication'),
-                    'meta' => 'arrow_forwar',
-                    'text' => $publication->reference,
-                    'secondaryText' => $publication->created_at
-                        ->diffForHumans(),
-                    'attrs' => [
-                        'href' => url("/publications/{$publication->id}"),
-                    ],
-                ];
-            }),
+                'paginator' => $publications,
+                'list' => [
+                    'isNavigation' => true,
+                    'twoLine' => true,
+                    'items' => $publications->map(function ($publication) {
+                        return [
+                            'icon' => __('icons.publication'),
+                            'text' => [
+                                'primary' => $publication->reference,
+                                'secondary' => $publication->created_at
+                                    ->diffForHumans(),
+                            ],
+                            'meta' => [
+                                'icon' => __('icons.show'),
+                            ],
+                            'attrs' => [
+                                'href' => url("publications/{$publication->id}")
+                            ]
+                        ];
+                    }),
+                ]
             ]) @endpaginable
         @endcell
-    @endlayoutGridWithInner
-
-    {{-- FAB --}}
-    @if ($user->can('create', \Modules\Product\Entities\Publication::class))
-        @fab([
-            'icon' => 'add',
-            'label' => __('messages.publications.new'),
-            'modifiers' => ['fab--fixed'],
-            'attrs' => [
-                'href' => url("/publications/create"),
-                'title' => __('messages.publications.new'),
-                'alt' => __('messages.publications.new'),
-            ],
-        ]) @endfab
-    @endif
+        
+        {{-- Novo --}}
+        @can('create', \Modules\Product\Entities\Publication::class)
+            @fabFixed([
+                'fab' => [
+                    'isLink' => true,
+                    'icon' => __('icons.add'),
+                    'classes' => ['mdc-fab--extended'],
+                    'label' => __('actions.new'),
+                    'attrs' => [
+                        'href' => url('publications/create'),
+                        'title' => __('messages.publications.forms.create_title'),
+                    ],
+                ]
+            ]) @endfabFixed
+        @endcan
+    @endgridWithInner
 @endsection

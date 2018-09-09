@@ -5,6 +5,7 @@ import VintMenuAnchor from './menu/VintMenuAnchor'
 import VintSelect2 from './select/VintSelect2'
 import VintTextarea from './text-field/VintTextarea'
 import VintFormProduct from './form/VintFormProduct'
+import VintFormPublication from './form/VintFormPublication'
 
 export default {
   VintDialogActivation,
@@ -14,4 +15,5 @@ export default {
   VintSelect2,
   VintTextarea,
   VintFormProduct,
+  VintFormPublication,
 }

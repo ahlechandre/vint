@@ -6,48 +6,29 @@ use Exception;
 use Modules\User\Entities\User;
 use Illuminate\Support\Facades\DB;
 use Modules\Product\Entities\Publication;
+use Modules\Project\Entities\Project;
+use Modules\Member\Entities\Member;
 
 class PublicationRepository
 {
     /**
-     * Lista todos os grupos.
+     * Lista todos os produtos.
      *
-     * @param  \Modules\User\Entities\User  $user
      * @param  null|int  $perPage
      * @param  null|string  $filter
      * @return stdClass
      */
-    public function index(User $user, $perPage = null, $filter = null)
+    public function index($perPage = null, $filter = null)
     {
-        // Verifica se o usuário pode realizar.
-        if ($user->cant('index', Publication::class)) {
-            return repository_result(403);
-        }
-        $search = function ($filter, $scope) {
-            $filterLike = "%{$filter}%";
-
-            return $scope->where([
-                ['reference', 'like', $filterLike],
-            ]);
-        };
-        // Escopo.
-        $scope = Publication::orderBy('created_at', 'desc');
-        // Escopo por filtro.
-        $query = $filter ?
-            $search($filter, $scope) :
-            $scope;
-        // Seleciona.
-        $publications = $perPage ?
-            $query->simplePaginate($perPage) :
-            $query->get();
-
         return repository_result(200, null, [
-            'publications' => $publications
+            'publications' => Publication::orderBy('created_at')
+                ->filterLike($filter)
+                ->simplePaginateOrGet($perPage)
         ]);
     }
 
     /**
-     * Tenta criar um novo grupo.
+     * Tenta criar um nova publicação.
      *
      * @param  \Modules\User\Entities\User  $user
      * @param  array  $inputs
@@ -62,7 +43,7 @@ class PublicationRepository
             return repository_result(403);
         }
         $store = function () use ($user, $inputs, &$publication) {
-            // Nova publicação.
+            // Novo produto.
             $publication = new Publication;
             // Preenche os campos indicados por input.
             $publication->fill($inputs);
@@ -71,12 +52,23 @@ class PublicationRepository
                 ->associate($user);
             // Salva o produto.
             $publication->save();
+            // Verifica se todos os projetos indicados estão disponíveis
+            // para o usuário.
+            $projects = Project::forUser($user)
+                ->findOrFail($inputs['projects']);
             // Associa os projetos.
             $publication->projects()
-                ->sync($inputs['projects']);
-            // Associa os membros.
-            $publication->members()
-                ->sync($inputs['members'] ?? []);
+                ->sync($projects->pluck('id'));
+            
+            if (isset($inputs['members'])) {
+                // Verifica se todos os membros indicados estão disponíveis
+                // para o usuário.
+                $members = Member::forUser($user)
+                    ->findOrFail($inputs['members']);
+                // Associa os membros.
+                $publication->members()
+                    ->sync($members->pluck('user_id'));
+            }
         };
 
         try {
@@ -92,7 +84,7 @@ class PublicationRepository
     }
 
     /**
-     * Tenta atualizar um usuário.
+     * Tenta atualizar uma publicação.
      *
      * @param  \Modules\User\Entities\User  $user
      * @param  int  $id
@@ -110,12 +102,29 @@ class PublicationRepository
         $update = function () use ($user, $inputs, $publication) {
             // Atualiza os campos por input.
             $publication->update($inputs);
-            // Sincroniza os projetos.
+            // Verifica se todos os projetos indicados estão disponíveis
+            // para o usuário.
+            $projects = Project::forUser($user)
+                ->findOrFail($inputs['projects']);
+            // Associa os projetos.
             $publication->projects()
-                ->sync($inputs['projects']);
-            // Sincroniza os membros.
+                ->sync($projects->pluck('id'));
+
+            // Se existem membros.
+            if (isset($inputs['members'])) {
+                // Verifica se todos os membros indicados estão disponíveis
+                // para o usuário.
+                $members = Member::forUser($user)
+                    ->findOrFail($inputs['members']);
+                // Associa os membros.
+                $publication->members()
+                    ->sync($members->pluck('user_id'));
+
+                return;
+            }
+            // Se não existem membros, remova-os.
             $publication->members()
-                ->sync($inputs['members'] ?? []);                
+                ->sync([]);            
         };
 
         try {
@@ -131,7 +140,7 @@ class PublicationRepository
     }
 
     /**
-     * Tenta atualizar um usuário.
+     * Tenta remover uma publicação.
      *
      * @param  \Modules\User\Entities\User  $user
      * @param  int  $id
@@ -158,5 +167,5 @@ class PublicationRepository
         }
 
         return repository_result(200, __('messages.publications.deleted'));
-    }
+    }    
 }

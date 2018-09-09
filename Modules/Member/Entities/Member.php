@@ -35,9 +35,16 @@ class Member extends Model
      * @var array
      */
     protected $filterable = [
-        'user.name',
-        'role.name',
         'description'
+    ];
+
+    /**
+     *
+     * @var array
+     */
+    protected $filterableRelations = [
+        'user',
+        'role',
     ];
 
     /**
@@ -139,4 +146,25 @@ class Member extends Model
     {
         return $this->role->isCollaborator();
     }
+
+    /**
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  \Modules\User\Entities\User  $user
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeForUser($query, User $user)
+    {
+        if (!$user->isMember()) {
+            return $query;
+        }
+        $groupsId = $user->member
+            ->groupsApproved()
+            ->pluck('id');
+
+        return $query->whereHas('groups', function ($groups) use ($groupsId) {
+            return $groups->wherePivot('is_approved', 1)
+                ->whereIn('id', $groupsId);
+        });
+    }    
 }

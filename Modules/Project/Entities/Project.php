@@ -223,5 +223,5 @@ class Project extends Model
         }
 
         return $this->forMember($user->member);
-    }    
+    }
 }

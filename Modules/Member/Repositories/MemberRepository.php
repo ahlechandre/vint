@@ -218,4 +218,21 @@ class MemberRepository
             'role' => $role
         ]);
     }
+
+    /**
+     *
+     * @param  \Modules\User\Entities\User  $user
+     * @param  null|int  $perPage
+     * @param  null|int  $filter
+     * @return void
+     */
+    public function forUser(User $user, $perPage = null, $filter = null)
+    {
+        return repository_result(200, null, [
+            'members' => Member::forUser($user)
+                ->with('user')
+                ->filterLike($filter)
+                ->simplePaginateOrGet($perPage)
+        ]);
+    }    
 }

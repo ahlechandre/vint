@@ -7,17 +7,24 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\User\Entities\User;
 use Modules\Project\Entities\Project;
 use Modules\Member\Entities\Member;
+use Modules\System\Entities\Traits\EloquentVint;
 
 class Publication extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, EloquentVint;
 
     /**
      * @var array
      */
     protected $fillable = [
-        'reference',
-        'url',
+        'reference', 'url'
+    ];
+
+    /**
+     * @var array
+     */
+    protected $filterable = [
+        'reference', 'url'
     ];
 
     /**
