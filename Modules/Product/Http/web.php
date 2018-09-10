@@ -32,9 +32,13 @@ Route::middleware('auth')
 // --------------------------------------------------
 Route::resource('products', 'ProductController')
     ->only(['index', 'show']);
+Route::get('products/{product}/projects', 'ProductController@projects');
 
 // --------------------------------------------------
 // Publicações
 // --------------------------------------------------
 Route::resource('publications', 'PublicationController')
     ->only(['index', 'show']);
+Route::get('publications/{publication}/projects', 'PublicationController@projects');
+Route::get('publications/{publication}/members', 'PublicationController@members');
+

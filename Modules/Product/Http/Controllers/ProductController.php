@@ -56,6 +56,26 @@ class ProductController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function projects(Request $request, $id)
+    {
+        $perPage = self::$perPage;
+        $query = $request->get('q');
+        $projects = $this->products
+            ->projects($id, $perPage, $query);
+
+        return view('product::pages.products.projects', [
+            'product' => $projects->data['product'],
+            'projects' => $projects->data['projects']
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -104,11 +124,6 @@ class ProductController extends Controller
     {
         $user = $request->user();
         $product = Product::findOrFail($id);
-
-        // Verifica se usuário pode realizar.
-        if ($user->cant('view', $product)) {
-            return abort(403);
-        }
 
         return view('product::pages.products.show', [
             'product' => $product

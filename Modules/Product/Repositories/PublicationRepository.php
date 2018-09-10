@@ -28,6 +28,48 @@ class PublicationRepository
     }
 
     /**
+     * Lista todos projetos da publicação.
+     *
+     * @param  string|int  $id
+     * @param  null|int  $perPage
+     * @param  null|string  $filter
+     * @return stdClass
+     */
+    public function projects($id, $perPage = null, $filter = null)
+    {
+        $publication = Publication::findOrFail($id);
+
+        return repository_result(200, null, [
+            'publication' => $publication,
+            'projects' => $publication->projects()
+                ->orderBy('created_at')
+                ->filterLike($filter)
+                ->simplePaginate($perPage)
+        ]);
+    }
+
+    /**
+     * Lista todos membros da publicação.
+     *
+     * @param  string|int  $id
+     * @param  null|int  $perPage
+     * @param  null|string  $filter
+     * @return stdClass
+     */
+    public function members($id, $perPage = null, $filter = null)
+    {
+        $publication = Publication::findOrFail($id);
+
+        return repository_result(200, null, [
+            'publication' => $publication,
+            'members' => $publication->members()
+                ->with('user')
+                ->filterLike($filter)
+                ->simplePaginate($perPage)
+        ]);
+    }
+
+    /**
      * Tenta criar um nova publicação.
      *
      * @param  \Modules\User\Entities\User  $user

@@ -57,6 +57,46 @@ class PublicationController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function projects(Request $request, $id)
+    {
+        $perPage = self::$perPage;
+        $query = $request->get('q');
+        $projects = $this->publications
+            ->projects($id, $perPage, $query);
+
+        return view('product::pages.publications.projects', [
+            'publication' => $projects->data['publication'],
+            'projects' => $projects->data['projects']
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function members(Request $request, $id)
+    {
+        $perPage = self::$perPage;
+        $query = $request->get('q');
+        $members = $this->publications
+            ->members($id, $perPage, $query);
+
+        return view('product::pages.publications.members', [
+            'publication' => $members->data['publication'],
+            'members' => $members->data['members']
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -105,11 +145,6 @@ class PublicationController extends Controller
     {
         $user = $request->user();
         $publication = Publication::findOrFail($id);
-
-        // Verifica se usuário pode realizar.
-        if ($user->cant('view', $publication)) {
-            return abort(403);
-        }
 
         return view('product::pages.publications.show', [
             'publication' => $publication

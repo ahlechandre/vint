@@ -26,6 +26,16 @@ return [
      * --------------------------------------------------
      */
 
+   // Produtos.
+    'products' => [
+        'name' => 'Produto #:id'
+    ],
+
+   // Publicações.
+   'publications' => [
+        'name' => 'Publicação #:id'
+    ],
+
     // Usuários.
     'users' => [
         'forms' => [

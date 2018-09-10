@@ -27,6 +27,27 @@ class ProductRepository
     }
 
     /**
+     * Lista todos projetos do produto.
+     *
+     * @param  string|int  $id
+     * @param  null|int  $perPage
+     * @param  null|string  $filter
+     * @return stdClass
+     */
+    public function projects($id, $perPage = null, $filter = null)
+    {
+        $product = Product::findOrFail($id);
+
+        return repository_result(200, null, [
+            'product' => $product,
+            'projects' => $product->projects()
+                ->orderBy('created_at')
+                ->filterLike($filter)
+                ->simplePaginate($perPage)
+        ]);
+    }
+
+    /**
      * Tenta criar um novo produto.
      *
      * @param  \Modules\User\Entities\User  $user
