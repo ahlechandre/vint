@@ -22,6 +22,13 @@
                 ]
             ], 
             [
+                'active' => $tabActive === 'groups',
+                'label' => __('resources.groups'),
+                'attrs' => [
+                    'href' => url("members/{$member->user_id}/groups")
+                ]
+            ],            
+            [
                 'active' => $tabActive === 'programs',
                 'ignore' => !$member->isServant(),
                 'label' => __('resources.programs'),

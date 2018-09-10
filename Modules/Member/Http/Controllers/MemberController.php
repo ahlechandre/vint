@@ -84,6 +84,26 @@ class MemberController extends Controller
      * @param  string  $userId
      * @return \Illuminate\Http\Response
      */
+    public function groups(Request $request, $userId)
+    {
+        $perPage = self::$perPage;
+        $query = $request->get('q');
+        $groups = $this->members
+            ->groups($userId, $perPage, $query);
+
+        return view('member::pages.members.groups', [
+            'member' => $groups->data['member'],
+            'groups' => $groups->data['groups'],
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $userId
+     * @return \Illuminate\Http\Response
+     */
     public function projects(Request $request, $userId)
     {
         $perPage = self::$perPage;

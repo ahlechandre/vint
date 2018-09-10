@@ -43,4 +43,5 @@ Route::resource('members', 'MemberController')
     ->only(['index', 'show']);
 Route::get('members/{member}/programs', 'MemberController@programs');
 Route::get('members/{member}/projects', 'MemberController@projects');
+Route::get('members/{member}/groups', 'MemberController@groups');
 Route::get('members/{member}/publications', 'MemberController@publications');

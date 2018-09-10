@@ -2,10 +2,12 @@
 
 namespace Modules\Member\Entities;
 
+use Modules\User\Entities\User;
+use Modules\Group\Entities\Group;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Modules\User\Entities\User;
 use Modules\System\Entities\Traits\EloquentVint;
+use Modules\Product\Entities\Publication;
 
 class Member extends Model
 {
@@ -118,6 +120,16 @@ class Member extends Model
     public function collaborator()
     {
         return $this->hasOne(Collaborator::class);
+    }
+
+    /**
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function publications()
+    {
+        return $this->belongsToMany(Publication::class)
+            ->withTimestamps();
     }
 
     /**

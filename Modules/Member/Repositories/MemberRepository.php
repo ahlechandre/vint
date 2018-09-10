@@ -33,6 +33,27 @@ class MemberRepository
     }
 
     /**
+     * Lista todos os grupos do membro.
+     *
+     * @param  int|string  $userId
+     * @param  null|int  $perPage
+     * @param  null|string  $filter
+     * @return stdClass
+     */
+    public function groups($userId, $perPage = null, $filter = null)
+    {
+        $member = Member::findOrFail($userId);
+
+        return repository_result(200, null, [
+            'member' => $member,
+            'groups' => $member->groupsApproved()
+                ->orderBy('name')
+                ->filterLike($filter)
+                ->simplePaginateOrGet($perPage),
+        ]);
+    }
+
+    /**
      * Lista todos os programas do membro.
      *
      * @param  int|string  $userId
@@ -88,11 +109,9 @@ class MemberRepository
 
         return repository_result(200, null, [
             'member' => $member,
-            'publications' => Publication::approved()
-                ->ofMember($member)
-                ->orderBy('created_at')
+            'publications' => $member->publications()
                 ->filterLike($filter)
-                ->simplePaginateOrGet($perPage),
+                ->simplePaginate($perPage),
         ]);
     }
 
