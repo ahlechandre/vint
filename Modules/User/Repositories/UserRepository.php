@@ -95,6 +95,12 @@ class UserRepository
                 ->findOrFail($inputs['user_type_id']);
             // Atualiza os inputs com "mass assingment".
             $userToUpdate->update($inputs);
+
+            // Atualiza "is_active" se necessitar.
+            if ((int) $inputs['is_active'] !== $userToUpdate->is_active) {
+                $userToUpdate->is_active = !$userToUpdate->is_active;
+                $userToUpdate->save();
+            }
             // Atualiza o tipo sem "mass assignament".
             $userToUpdate->userType()
                 ->associate($userType)

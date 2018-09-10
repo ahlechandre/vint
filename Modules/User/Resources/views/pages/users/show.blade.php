@@ -18,71 +18,63 @@
             ]) @endheading
         @endcell
 
-        {{-- Card --}}
-        @cell
-            @cardShowInfo([
-                'cells' => [
+        {{-- Geral --}}
+        @cell([
+            'when' => ['d' => 6, 't' => 4]
+        ])
+            @cardShow([
+                'data' => [
                     [
-                        'left' => [
-                            'list' => [
-                                'classes' => ['mdc-list--non-interactive'],
-                                'twoLine' => true,
-                                'items' => [
-                                    [
-                                        'text' => [
-                                            'primary' => __('attrs.email'),
-                                            'secondary' => $userToShow->email,
-                                        ]
-                                    ],
-                                    [
-                                        'text' => [
-                                            'primary' => __('attrs.username'),
-                                            'secondary' => $userToShow->username,
-                                        ]
-                                    ],
-                                    [
-                                        'text' => [
-                                            'primary' => __('resources.user_type'),
-                                            'secondary' => $userToShow->userType->name,
-                                        ]
-                                    ]
-                                ],
-                            ]
-                        ],
-                        'right' => [
-                            'list' => [
-                                'classes' => [
-                                    'mdc-list--non-interactive',
-                                    'list--text-right-tablet',
-                                ],
-                                'twoLine' => true,
-                                'items' => [
-                                    [
-                                        'text' => [
-                                            'primary' => __('attrs.created_at'),
-                                            'secondary' => $userToShow->created_at
-                                                ->diffForHumans(),
-                                        ]
-                                    ],
-                                    [
-                                        'text' => [
-                                            'primary' => __('attrs.updated_at'),
-                                            'secondary' => $userToShow->created_at
-                                                ->diffForHumans(),
-                                        ]
-                                    ],
-                                    [
-                                        'text' => [
-                                            'primary' => __('attrs.is_active'),
-                                            'secondary' => __("messages.attrs.is_active.{$userToShow->is_active}"),
-                                        ]
-                                    ]                                                  
-                                ],
-                            ]                            
-                        ],
+                        'label' => __('attrs.name'),
+                        'value' => $userToShow->name
+                    ],
+                    [
+                        'label' => __('attrs.username'),
+                        'value' => $userToShow->username
+                    ],
+                    [
+                        'label' => __('attrs.email'),
+                        'value' => $userToShow->email
                     ]
                 ]
-            ]) @endcardShowInfo
+            ]) @endcardShow
+        @endcell
+
+        {{-- Atividade --}}
+        @cell([
+            'when' => ['d' => 6, 't' => 4]
+        ])
+            @cardShow([
+                'data' => [
+                    [
+                        'label' => __('attrs.is_active'),
+                        'value' => __("messages.attrs.is_active.{$userToShow->is_active}")
+                    ],
+                    [
+                        'label' => __('attrs.created_at'),
+                        'value' => $userToShow->created_at
+                            ->diffForHumans()
+                    ],
+                    [
+                        'label' => __('attrs.updated_at'),
+                        'value' => $userToShow->updated_at
+                            ->diffForHumans()
+                    ],
+                ]
+            ]) @endcardShow
+        @endcell
+
+        {{-- Tipo de usuário --}}
+        @cell
+            @cardShow([
+                'data' => [
+                    [
+                        'label' => __('resources.user_type'),
+                        'value' => $userToShow->userType->name,
+                        'link' => url("users/{$userToShow->id}/edit"),
+                    ],
+                ]
+            ]) @endcardShow
         @endcell
 
         {{-- Editar --}}
@@ -91,8 +83,6 @@
                 'fab' => [
                     'isLink' => true,
                     'icon' => __('icons.edit'),
-                    'classes' => ['mdc-fab--extended'],
-                    'label' => __('actions.edit'),
                     'attrs' => [
                         'href' => url("users/{$userToShow->id}/edit"),
                         'title' => __('messages.users.forms.edit_title'),

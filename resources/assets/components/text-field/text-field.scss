@@ -1,11 +1,3 @@
-.mdc-text-field:not(.mdc-text-field--disabled):not(.mdc-text-field--outlined):not(.mdc-text-field--focused) .mdc-text-field__input {
-  border-bottom-color: transparent!important;
-
-  &:hover {
-    border-bottom-color: transparent!important;
-  }
-}
-
 .text-field {
   width: 100%;
   margin-top: 0;
@@ -27,10 +19,6 @@
   .text-field__input {
     background-color: whitesmoke;
   } 
-
-  &:not(.mdc-text-field--focused) {
-    border-bottom-color: transparent!important;
-  }
 
   .mdc-floating-label {
     background-color: whitesmoke;

@@ -74,6 +74,15 @@ class GroupMemberRepository
             return repository_result(403);
         }
         $toggle = function () use ($group, $member) {
+            // Se o membro é coordenador do grupo e estiver saindo,
+            // deve ser removido da coordenação.
+            $isCoordinator = $group->coordinators
+                ->contains('member_user_id', $member->user_id);
+
+            if ($isCoordinator) {
+                $group->coordinators()
+                    ->detach($member->user_id);
+            }
             $group->members()
                 ->toggle($member->user_id);
         };
@@ -108,6 +117,15 @@ class GroupMemberRepository
             return repository_result(403);
         }
         $detach = function () use ($group, $member) {
+            // Se o membro é coordenador do grupo e estiver saindo,
+            // deve ser removido da coordenação.
+            $isCoordinator = $group->coordinators
+                ->contains('member_user_id', $member->user_id);
+
+            if ($isCoordinator) {
+                $group->coordinators()
+                    ->detach($member->user_id);
+            }            
             $group->members()
                 ->detach($member->user_id);
         };

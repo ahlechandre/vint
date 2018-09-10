@@ -43,7 +43,7 @@ class GroupPolicy
      */
     public function update(User $user, Group $group)
     {
-        return $user->isManager() || $group->isCoordinatorUser($user);
+        return $user->isManager();
     }
 
     /**
@@ -55,7 +55,7 @@ class GroupPolicy
      */
     public function createCoordinators(User $user, Group $group)
     {
-        return $user->isManager() || $group->isCoordinatorUser($user);
+        return $user->isManager();
     }
 
     /**
@@ -67,7 +67,7 @@ class GroupPolicy
      */
     public function deleteCoordinators(User $user, Group $group)
     {
-        return $user->isManager() || $group->isCoordinatorUser($user);
+        return $user->isManager();
     }
 
     /**
@@ -79,7 +79,7 @@ class GroupPolicy
      */
     public function updateCoordinators(User $user, Group $group)
     {
-        return $user->isManager() || $group->isCoordinatorUser($user);
+        return $user->isManager();
     }
     
     /**
@@ -103,7 +103,7 @@ class GroupPolicy
      */
     public function detachMember(User $user, Group $group, Member $member)
     {
-        return $user->isManager() || $user->isCoordinatorUser($user);
+        return $user->isManager();
     }
 
     /**
@@ -114,7 +114,7 @@ class GroupPolicy
      */
     public function updateMembersRequests(User $user, Group $group)
     {
-        return $user->isManager() || $group->isCoordinatorUser($user);
+        return $user->isManager();
     }
 
 }

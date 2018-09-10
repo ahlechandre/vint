@@ -125,11 +125,7 @@
                 @fabFixed([
                     'fab' => [
                         'icon' => __('icons.add'),
-                        'classes' => [
-                            'mdc-fab--extended',
-                            'dialog-activation'
-                        ],
-                        'label' => __('actions.new'),
+                        'classes' => ['dialog-activation'],
                         'attrs' => [
                             'title' => __('messages.groups.coordinators.create'),
                             'data-dialog-activation' => 'dialog-coordinators-create',

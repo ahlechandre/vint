@@ -47,7 +47,7 @@ return [
     'file' => 'Arquivo',
     'cpf' => 'CPF',
     'siape' => 'SIAPE',
-    'is_professor' => 'Sou professor(a)',
+    'is_professor' => 'É professor',
     'rga' => 'RGA',
     'start_on' => 'Início em',
     'finish_on' => 'Finaliza em',

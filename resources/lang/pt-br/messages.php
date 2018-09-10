@@ -12,7 +12,11 @@ return [
         'is_active' => [
             '0' => 'Não',
             '1' => 'Sim',
-        ]
+        ],
+        'is_professor' => [
+            '0' => 'Não',
+            '1' => 'Sim',
+        ]        
     ],
 
     /**

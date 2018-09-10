@@ -75,8 +75,6 @@
                     'fab' => [
                         'isLink' => true,
                         'icon' => __('icons.add'),
-                        'classes' => ['mdc-fab--extended'],
-                        'label' => __('actions.new'),
                         'attrs' => [
                             'href' => url("groups/{$group->id}/projects/create"),
                             'title' => __('messages.groups.projects.forms.create_title'),
