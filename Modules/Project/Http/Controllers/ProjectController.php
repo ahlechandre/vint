@@ -74,8 +74,8 @@ class ProjectController extends Controller
             ->publications($id, $perPage, $query);
 
         return view('project::pages.projects.publications', [
-            'project' => $students->data['project'],
-            'publications' => $products->data['publications']
+            'project' => $publications->data['project'],
+            'publications' => $publications->data['publications']
         ]);
     }
 
@@ -94,7 +94,7 @@ class ProjectController extends Controller
             ->products($id, $perPage, $query);
 
         return view('project::pages.projects.products', [
-            'project' => $students->data['project'],
+            'project' => $products->data['project'],
             'products' => $products->data['products']
         ]);
     }

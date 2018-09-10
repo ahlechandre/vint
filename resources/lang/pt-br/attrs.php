@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'created_by' => 'Adicionado por',
     'id' => 'Identificador',
     'name' => 'Nome',
     'title' => 'Título',

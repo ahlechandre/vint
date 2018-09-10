@@ -107,5 +107,5 @@
                 ],
             ]
         ]) @endfabFixed
-    @endcan    
+    @endcan
 @endsection

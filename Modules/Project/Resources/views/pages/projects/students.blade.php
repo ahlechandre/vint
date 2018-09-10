@@ -36,7 +36,7 @@
                         ],
                         'metas' => [
                             [
-                                'ignore' => $user->cant('updateStudents', $project),
+                                'ignore' => !auth()->check() || $user->cant('updateStudents', $project),
                                 'dialogContainer' => [
                                     'iconButton' => [
                                         'icon' => __('icons.edit'),
@@ -74,10 +74,10 @@
                                 ],
                             ],             
                             [
-                                'ignore' => $user->cant('deleteStudents', $project),
+                                'ignore' => !auth()->check() || $user->cant('deleteStudents', $project),
                                 'dialogContainer' => [
                                     'iconButton' => [
-                                        'icon' => __('icons.delete'),
+                                        'icon' => __('icons.remove'),
                                     ],
                                     'form' => [
                                         'action' => url("projects/{$project->id}/students/{$student->member_user_id}"),
@@ -125,11 +125,7 @@
                 @fabFixed([
                     'fab' => [
                         'icon' => __('icons.add'),
-                        'classes' => [
-                            'mdc-fab--extended',
-                            'dialog-activation'
-                        ],
-                        'label' => __('actions.new'),
+                        'classes' => ['dialog-activation'],
                         'attrs' => [
                             'title' => __('messages.projects.students.create'),
                             'data-dialog-activation' => 'dialog-project-student-create',

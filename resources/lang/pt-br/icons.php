@@ -15,6 +15,7 @@ return [
     'view' => 'remove_red_eye',
     'logout' => 'exit_to_app', 
     'delete' => 'delete_outlined', 
+    'remove' => 'close', 
 
     // Páginas.
     'homepage' => 'home',

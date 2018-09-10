@@ -43,7 +43,7 @@ class ProjectRepository
             'publications' => $project->publications()
                 ->orderBy('created_at')
                 ->filterLike($filter)
-                ->simplePaginateOrGet($perPage),
+                ->simplePaginate($perPage),
         ]);
     }
 
@@ -64,7 +64,7 @@ class ProjectRepository
             'products' => $project->products()
                 ->orderBy('created_at')
                 ->filterLike($filter)
-                ->simplePaginateOrGet($perPage),
+                ->simplePaginate($perPage),
         ]);
     }
 

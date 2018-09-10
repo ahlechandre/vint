@@ -9,6 +9,7 @@ return [
 
     // Atributos.
     'attrs' => [
+        'empty' => 'Não indicado',
         'is_active' => [
             '0' => 'Não',
             '1' => 'Sim',
