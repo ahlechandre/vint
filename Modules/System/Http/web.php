@@ -11,6 +11,9 @@
 |
 */
 
+// -------------------------------------------------------
+// Autenticado.
+// -------------------------------------------------------
 Route::middleware('auth')
     ->group(function () {
         /**
@@ -29,6 +32,9 @@ Route::middleware('auth')
         ]);
     });
 
+// -------------------------------------------------------
+// Não autenticado.
+// -------------------------------------------------------
 Route::middleware('unauth')
     ->group(function () {
         /**
@@ -47,3 +53,14 @@ Route::middleware('unauth')
             ->name('login');
         Route::post('/login', '\App\Http\Controllers\Auth\LoginController@authenticate');
     });
+
+// -------------------------------------------------------
+// Público.
+// -------------------------------------------------------
+Route::get('search', 'SearchController@index');
+Route::get('search/members', 'SearchController@members');
+Route::get('search/groups', 'SearchController@groups');
+Route::get('search/programs', 'SearchController@programs');
+Route::get('search/projects', 'SearchController@projects');
+Route::get('search/products', 'SearchController@products');
+Route::get('search/publications', 'SearchController@publications');

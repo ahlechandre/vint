@@ -4,6 +4,8 @@ return [
     // Navegação.
     'about' => 'Sobre',
     'security' => 'Segurança',
+    'all' => 'Todos',
+    'search' => 'Busca',
     'personal' => 'Pessoal',
     'auth' => 'Autenticação',
     'password' => 'Senha',

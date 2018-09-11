@@ -20,33 +20,13 @@
             ]) @endheading
         @endcell
         
+        {{-- Paginável --}}
         @cell
-            {{-- Paginável --}}
-            @paginable([
-                'paginator' => $products,
-                'list' => [
-                    'isNavigation' => true,
-                    'twoLine' => true,
-                    'items' => $products->map(function ($product) {
-                        return [
-                            'icon' => __('icons.product'),
-                            'text' => [
-                                'primary' => $product->title,
-                                'secondary' => $product->created_at
-                                    ->diffForHumans(),
-                            ],
-                            'meta' => [
-                                'icon' => __('icons.show'),
-                            ],
-                            'attrs' => [
-                                'href' => url("products/{$product->id}")
-                            ]
-                        ];
-                    }),                    
-                ]
-            ]) @endpaginable
+            @paginableProducts([
+                'products' => $products,
+            ]) @endpaginableProducts
         @endcell
-        
+
         {{-- Novo --}}
         @can('create', \Modules\Product\Entities\Product::class)
             @fabFixed([

@@ -20,31 +20,11 @@
             ]) @endheading        
         @endcell
         
+        {{-- Paginável --}}
         @cell
-            {{-- Paginável --}}
-            @paginable([
-                'paginator' => $groups,
-                'list' => [
-                    'isNavigation' => true,
-                    'twoLine' => true,
-                    'items' => $groups->map(function ($group) {
-                        return [
-                            'icon' => __('icons.group'),
-                            'text' => [
-                                'primary' => $group->name,
-                                'secondary' => $group->created_at
-                                    ->diffForHumans(),
-                            ],
-                            'meta' => [
-                                'icon' => __('icons.show'),
-                            ],
-                            'attrs' => [
-                                'href' => url("groups/{$group->id}")
-                            ]
-                        ];
-                    }),                    
-                ]
-            ]) @endpaginable        
+            @paginableGroups([
+                'groups' => $groups,
+            ]) @endpaginableGroups 
         @endcell
         
         {{-- Novo --}}

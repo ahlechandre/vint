@@ -1,30 +1,29 @@
-{{-- Layout --}}
 @extends('layouts.'.(
     auth()->check() ? 'master' : 'default'
 ), [
-    'title' => __('resources.projects')
+    'title' => __('headlines.search')
 ])
 
-{{-- Conteúdo --}}
 @section('main')
     @gridWithInner([
         'grid' => [
             'classes' => ['layout-grid--dense']
         ]
     ])
+        {{-- Heading --}}
         @cell
-            {{-- Heading --}}
-            @heading([
-                'title' => __('resources.projects'),
-                'content' => __('messages.projects.subheading'),
-            ]) @endheading        
+            @headingSearch([
+                'term' => $term,
+                'tabActive' => 'projects',
+            ]) @endheadingSearch
         @endcell
-        
+
         {{-- Paginável --}}
         @cell
             @paginableProjects([
+                'withoutSearch' => true,
                 'projects' => $projects,
-            ]) @endpaginableProjects
-        @endcell
+            ]) @endpaginableProjects        
+        @endcell        
     @endgridWithInner
 @endsection

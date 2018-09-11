@@ -1,29 +1,30 @@
-{{-- Layout --}}
 @extends('layouts.'.(
     auth()->check() ? 'master' : 'default'
 ), [
-    'title' => __('resources.members')
+    'title' => __('headlines.search')
 ])
 
-{{-- Conteúdo --}}
 @section('main')
     @gridWithInner([
         'grid' => [
             'classes' => ['layout-grid--dense']
         ]
     ])
+        {{-- Heading --}}
         @cell
-            {{-- Heading --}}
-            @heading([
-                'title' => __('resources.members'),
-                'content' => __('messages.members.subheading'),
-            ]) @endheading        
+            @headingSearch([
+                'term' => $term,
+                'tabActive' => 'members',
+            ]) @endheadingSearch
         @endcell
-        
+
+        {{-- Paginável --}}
         @cell
             @paginableMembers([
+                'withoutSearch' => true,
                 'members' => $members,
             ]) @endpaginableMembers
-        @endcell        
+        @endcell
+
     @endgridWithInner
 @endsection

@@ -111,9 +111,17 @@ trait BladeUtils
         'components.heading.heading-product' => 'headingProduct',
         'components.heading.heading-settings' => 'headingSettings',
         'components.heading.heading-group-edit' => 'headingGroupEdit',
+        'components.heading.heading-search' => 'headingSearch',
 
         // Pagination.
-        'components.pagination.paginable' => 'paginable',        
+        'components.pagination.paginable' => 'paginable',
+        'components.pagination.paginable-members' => 'paginableMembers',
+        'components.pagination.paginable-groups' => 'paginableGroups',
+        'components.pagination.paginable-programs' => 'paginablePrograms',
+        'components.pagination.paginable-projects' => 'paginableProjects',
+        'components.pagination.paginable-products' => 'paginableProducts',
+        'components.pagination.paginable-publications' => 'paginablePublications',
+        
     ];
 
     /**

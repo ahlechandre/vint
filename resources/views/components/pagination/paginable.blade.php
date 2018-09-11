@@ -1,28 +1,30 @@
 <div class="paginable{{ set_classes($classes ?? []) }}"{{ set_attrs($attrs ?? []) }}>
 
     @gridInner
-        {{-- Busca --}}
-        @cell([
-            'classes' => ['mdc-layout-grid--align-right']
-        ])
-            @form([
-                'method' => 'get',
-                'action' => url()->current(),
+        @if (!isset($withoutSearch) || !$withoutSearch)
+            {{-- Busca --}}
+            @cell([
+                'classes' => ['mdc-layout-grid--align-right']
             ])
-                @textfield([
-                    'label' => __('actions.search'),
-                    'iconLeading' => __('icons.search'),
-                    'classes' => ['mdc-text-field--with-leading-icon'],
-                    'attrs' => [
-                        'type' => 'search',
-                        'name' => 'q',
-                        'id' => 'textfield-search',
-                        'autocomplete' => 'off',
-                        'value' => request()->query('q')
-                    ]
-                ]) @endtextfield                        
-            @endform
-        @endcell
+                @form([
+                    'method' => 'get',
+                    'action' => url()->current(),
+                ])
+                    @textfield([
+                        'label' => __('actions.search'),
+                        'iconLeading' => __('icons.search'),
+                        'classes' => ['mdc-text-field--with-leading-icon'],
+                        'attrs' => [
+                            'type' => 'search',
+                            'name' => 'q',
+                            'id' => 'textfield-search',
+                            'autocomplete' => 'off',
+                            'value' => request()->query('q')
+                        ]
+                    ]) @endtextfield                        
+                @endform
+            @endcell        
+        @endif
         
         @if ($paginator->isEmpty())
             @cell
@@ -37,55 +39,57 @@
                 @list($list) @endlist                    
             @endcell
 
-            {{-- Página anterior --}}
-            @cell([
-                'when' => ['d' => 6, 't' => 4, 'p' => 2]
-            ])
+            @if (!isset($withoutActions) || !$withoutActions)
                 {{-- Página anterior --}}
-                @if ($paginator->previousPageUrl())
-                    @button([
-                        'isLink' => true,
-                        'text' => __('headlines.previous_page'),
-                        'attrs' => [
-                            'href' => $paginator->appends(request()->query())
-                                ->previousPageUrl(),
-                        ]
-                    ]) @endbutton
-                @else
-                    @button([
-                        'text' => __('headlines.previous_page'),
-                        'attrs' => [
-                            'disabled' => ''
-                        ]
-                    ]) @endbutton
-                @endif
+                @cell([
+                    'when' => ['d' => 6, 't' => 4, 'p' => 2]
+                ])
+                    {{-- Página anterior --}}
+                    @if ($paginator->previousPageUrl())
+                        @button([
+                            'isLink' => true,
+                            'text' => __('headlines.previous_page'),
+                            'attrs' => [
+                                'href' => $paginator->appends(request()->query())
+                                    ->previousPageUrl(),
+                            ]
+                        ]) @endbutton
+                    @else
+                        @button([
+                            'text' => __('headlines.previous_page'),
+                            'attrs' => [
+                                'disabled' => ''
+                            ]
+                        ]) @endbutton
+                    @endif
 
-            @endcell
+                @endcell
 
-            {{-- Página próxima --}}
-            @cell([
-                'when' => ['d' => 6, 't' => 4, 'p' => 2],
-                'classes' => ['mdc-layout-grid--align-right']
-            ])
-                {{-- Próxima página --}}
-                @if ($paginator->nextPageUrl())
-                    @button([
-                        'isLink' => true,
-                        'text' => __('headlines.next_page'),
-                        'attrs' => [
-                            'href' => $paginator->appends(request()->query())
-                                ->nextPageUrl(),
-                        ]
-                    ]) @endbutton
-                @else
-                    @button([
-                        'text' => __('headlines.next_page'),
-                        'attrs' => [
-                            'disabled' => ''
-                        ]
-                    ]) @endbutton
-                @endif
-            @endcell
+                {{-- Página próxima --}}
+                @cell([
+                    'when' => ['d' => 6, 't' => 4, 'p' => 2],
+                    'classes' => ['mdc-layout-grid--align-right']
+                ])
+                    {{-- Próxima página --}}
+                    @if ($paginator->nextPageUrl())
+                        @button([
+                            'isLink' => true,
+                            'text' => __('headlines.next_page'),
+                            'attrs' => [
+                                'href' => $paginator->appends(request()->query())
+                                    ->nextPageUrl(),
+                            ]
+                        ]) @endbutton
+                    @else
+                        @button([
+                            'text' => __('headlines.next_page'),
+                            'attrs' => [
+                                'disabled' => ''
+                            ]
+                        ]) @endbutton
+                    @endif
+                @endcell            
+            @endif
         @endif                
     @endgridInner
         

@@ -1,30 +1,29 @@
-{{-- Layout --}}
 @extends('layouts.'.(
     auth()->check() ? 'master' : 'default'
 ), [
-    'title' => __('resources.programs')
+    'title' => __('headlines.search')
 ])
 
-{{-- Conteúdo --}}
 @section('main')
     @gridWithInner([
         'grid' => [
             'classes' => ['layout-grid--dense']
         ]
     ])
+        {{-- Heading --}}
         @cell
-            {{-- Heading --}}
-            @heading([
-                'title' => __('resources.programs'),
-                'content' => __('messages.programs.subheading'),
-            ]) @endheading        
+            @headingSearch([
+                'term' => $term,
+                'tabActive' => 'programs',
+            ]) @endheadingSearch
         @endcell
-        
+
         {{-- Paginável --}}
         @cell
             @paginablePrograms([
+                'withoutSearch' => true,
                 'programs' => $programs,
-            ]) @endpaginablePrograms
-        @endcell
+            ]) @endpaginablePrograms        
+        @endcell        
     @endgridWithInner
 @endsection

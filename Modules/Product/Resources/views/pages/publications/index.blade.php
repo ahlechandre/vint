@@ -19,32 +19,12 @@
                 'content' => __('messages.publications.subheading'),
             ]) @endheading
         @endcell
-        
+
+        {{-- Paginável --}}
         @cell
-            {{-- Paginável --}}
-            @paginable([
-                'paginator' => $publications,
-                'list' => [
-                    'isNavigation' => true,
-                    'twoLine' => true,
-                    'items' => $publications->map(function ($publication) {
-                        return [
-                            'icon' => __('icons.publication'),
-                            'text' => [
-                                'primary' => $publication->reference,
-                                'secondary' => $publication->created_at
-                                    ->diffForHumans(),
-                            ],
-                            'meta' => [
-                                'icon' => __('icons.show'),
-                            ],
-                            'attrs' => [
-                                'href' => url("publications/{$publication->id}")
-                            ]
-                        ];
-                    }),
-                ]
-            ]) @endpaginable
+            @paginablePublications([
+                'publications' => $publications,
+            ]) @endpaginablePublications        
         @endcell
         
         {{-- Novo --}}
