@@ -1,7 +1,8 @@
 @extends('layouts.'.(
     auth()->check() ? 'master' : 'default'
 ), [
-    'title' => __('headlines.search')
+    'title' => __('headlines.search'),
+    'searchVisible' => true,
 ])
 
 @section('main')

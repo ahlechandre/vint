@@ -1,8 +1,8 @@
-<header class="mdc-top-app-bar{{ set_classes($classes ?? []) }}"{{ set_attrs($attrs ?? []) }} data-mdc-auto-init="MDCTopAppBar">
+<header class="top-app-bar mdc-top-app-bar{{ set_classes($classes ?? []) }}"{{ set_attrs($attrs ?? []) }} data-mdc-auto-init="MDCTopAppBar">
     @foreach($rows as $row)
-        <div class="mdc-top-app-bar__row{{ set_classes($row['classes'] ?? []) }}"{{ set_attrs($row['attrs'] ?? []) }}>
+        <div class="top-app-bar__row mdc-top-app-bar__row{{ set_classes($row['classes'] ?? []) }}"{{ set_attrs($row['attrs'] ?? []) }}>
             @foreach($row['sections'] as $section)
-                <section class="mdc-top-app-bar__section{{ set_classes($section['classes'] ?? []) }}"{{ set_attrs($section['attrs'] ?? []) }}>
+                <section class="top-app-bar__section mdc-top-app-bar__section{{ set_classes($section['classes'] ?? []) }}"{{ set_attrs($section['attrs'] ?? []) }}>
                     @if ($section['menu'] ?? false)
                         <a class="material-icons mdc-top-app-bar__navigation-icon{{ set_classes($section['menu']['classes'] ?? []) }}"{{ set_attrs($section['menu']['attrs'] ?? []) }}>{{ $section['menu']['icon'] }}</a>
                     @endif
@@ -15,6 +15,10 @@
                         @foreach($section['actions'] as $action)
                             <a class="material-icons mdc-top-app-bar__action-item{{ set_classes($action['classes'] ?? []) }}"{{ set_attrs($action['attrs'] ?? []) }}>{{ $action['icon'] }}</a>
                         @endforeach
+                    @endif
+
+                    @if ($section['component'] ?? false)
+                        @component($section['component']['view'], $section['component']['props'] ?? []) @endcomponent
                     @endif
                 </section>
             @endforeach

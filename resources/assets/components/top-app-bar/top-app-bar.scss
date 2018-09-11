@@ -1,6 +1,49 @@
 @import '../animation/animation';
+@import '~@material/top-app-bar/mdc-top-app-bar';
 
 a.mdc-top-app-bar__title {
   color: $mdc-theme-on-primary;
   letter-spacing: 0.5rem;
+}
+
+// Search
+$row-search-bg: #ffffff;
+$row-search-color: #212121;
+
+.top-app-bar__row--search {
+  @include mdc-top-app-bar-fill-color($row-search-bg);
+  @include mdc-top-app-bar-icon-ink-color($row-search-color);
+}
+
+.top-app-bar__section--text-field,
+.top-app-bar__form,
+.top-app-bar__text-field {
+  width: 100%;
+}
+
+.top-app-bar__text-field {
+  border: none;
+  font-size: 1.5rem;
+  outline: none;
+  margin-left: 26px;
+}
+
+.top-app-bar--with-search {
+  .top-app-bar__row {
+    display: flex;
+  }
+  
+  .top-app-bar__row--search {
+    display: none;
+  }
+}
+
+.top-app-bar--with-search-visible {
+  .top-app-bar__row {
+    display: none;
+  }
+
+  .top-app-bar__row--search {
+    display: flex;
+  }
 }

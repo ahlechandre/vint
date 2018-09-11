@@ -16,6 +16,7 @@
   <body class="mdc-typography mdc-theme theme typography">
     {{-- Top App Bar --}}
     @topAppBarDefault([
+      'searchVisible' => $searchVisible ?? false,
       'menu' => [
         'icon' => __('icons.back'),
         'attrs' => [

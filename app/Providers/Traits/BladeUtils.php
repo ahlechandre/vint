@@ -81,8 +81,6 @@ trait BladeUtils
 
         // Top App Bar.
         'material.top-app-bar.top-app-bar' => 'topAppBar',
-        'material.top-app-bar.top-app-bar-home' => 'topAppBarHome',
-        'material.top-app-bar.top-app-bar-default' => 'topAppBarDefault',
 
         /**
          * -------------------------------------
@@ -121,6 +119,10 @@ trait BladeUtils
         'components.pagination.paginable-projects' => 'paginableProjects',
         'components.pagination.paginable-products' => 'paginableProducts',
         'components.pagination.paginable-publications' => 'paginablePublications',
+
+        // Top app bar.
+        'components.top-app-bar.top-app-bar-home' => 'topAppBarHome',
+        'components.top-app-bar.top-app-bar-default' => 'topAppBarDefault',
         
     ];
 

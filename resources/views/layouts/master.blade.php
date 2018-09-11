@@ -16,6 +16,7 @@
   <body class="mdc-typography mdc-theme theme typography">
     {{-- Top App Bar --}}
     @topAppBarHome([
+      'searchVisible' => $searchVisible ?? false,
       'menu' => [
         'icon' => 'menu',
         'classes' => ['drawer-activation'],
