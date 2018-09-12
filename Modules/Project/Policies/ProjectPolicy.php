@@ -2,9 +2,10 @@
 
 namespace Modules\Project\Policies;
 
-use Illuminate\Auth\Access\HandlesAuthorization;
 use Modules\User\Entities\User;
+use Modules\Group\Entities\Group;
 use Modules\Project\Entities\Project;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ProjectPolicy
 {
@@ -23,73 +24,17 @@ class ProjectPolicy
     }
 
     /**
-     * Determine whether the user can index.
-     *
-     * @param  \Modules\User\Entities\User  $user
-     * @return bool
-     */
-    public function index(User $user)
-    {
-        return true;
-    }
-
-    /**
-     * Determine whether the user can view.
-     *
-     * @param  \Modules\User\Entities\User  $user
-     * @param  \Modules\User\Entities\User  $userToView
-     * @return bool
-     */
-    public function view(User $user, Project $project)
-    {
-        return true;
-    }
-
-    /**
      * Determine whether the user can create.
      *
      * @param  \Modules\User\Entities\User  $user
+     * @param  \Modules\Group\Entities\Group  $group
      * @return bool
      */
-    public function create(User $user)
+    public function create(User $user, Group $group)
     {
-        return true;
-    }
-
-    /**
-     * Determine whether the user can update.
-     *
-     * @param  \Modules\User\Entities\User  $user
-     * @param  \Modules\User\Entities\User  $userToUpdate
-     * @return bool
-     */
-    public function createStudents(User $user, Project $project)
-    {
-        return false;
-    }
-
-    /**
-     * Determine whether the user can update.
-     *
-     * @param  \Modules\User\Entities\User  $user
-     * @param  \Modules\User\Entities\User  $userToUpdate
-     * @return bool
-     */
-    public function updateStudents(User $user, Project $project)
-    {
-        return false;
-    }
-
-    /**
-     * Determine whether the user can update.
-     *
-     * @param  \Modules\User\Entities\User  $user
-     * @param  \Modules\User\Entities\User  $userToUpdate
-     * @return bool
-     */
-    public function deleteStudents(User $user, Project $project)
-    {
-        return false;
+        return $user->isManager() ||
+            $group->hasCoordinatorUser($user) ||
+            $group->allowsForUser('projects.create', $user);
     }
 
     /**
@@ -101,7 +46,23 @@ class ProjectPolicy
      */
     public function update(User $user, Project $project)
     {
-        return true;
+        $group = $project->group;
+
+        if ($user->isManager() || $group->hasCoordinatorUser($user)) {
+            return true;
+        }
+        $canUpdate = $group->allowsForUser('projects.update', $user);
+
+        if (!$canUpdate) {
+            return false;
+        }
+        $isRelated = $project->user_id === $user->id ||
+            $project->coordinator_id === $user->id ||
+            $project->leader_user_id === $user->id ||
+            $project->supporter_user_id === $user->id ||
+            $project->students()->find($user->id);
+
+        return $isRelated;
     }
 
     /**
@@ -112,7 +73,31 @@ class ProjectPolicy
      */
     public function delete(User $user, Project $project)
     {
-        return false;
+        return $user->isManager();
+    }
+
+    /**
+     *
+     * @param  \Modules\User\Entities\User  $user
+     * @param  \Modules\User\Entities\User  $userToUpdate
+     * @return bool
+     */
+    public function updateRequests(User $user, Group $group)
+    {
+        return $user->isManager() ||
+            $group->isCoordinatorUser($user) ||
+            $group->allowsForUser('projects_requests.update', $user);
+    }
+
+    /**
+     *
+     * @param  \Modules\User\Entities\User  $user
+     * @param  \Modules\User\Entities\User  $userToUpdate
+     * @return bool
+     */
+    public function createStudents(User $user, Project $project)
+    {
+        return $this->update($user, $project);
     }
 
     /**
@@ -122,9 +107,9 @@ class ProjectPolicy
      * @param  \Modules\User\Entities\User  $userToUpdate
      * @return bool
      */
-    public function updateRequests(User $user)
+    public function updateStudents(User $user, Project $project)
     {
-        return false;
+        return $this->update($user, $project);
     }
 
     /**
@@ -134,8 +119,8 @@ class ProjectPolicy
      * @param  \Modules\User\Entities\User  $userToUpdate
      * @return bool
      */
-    public function indexRequests(User $user)
+    public function deleteStudents(User $user, Project $project)
     {
-        return false;
+        return $this->update($user, $project);
     }
 }

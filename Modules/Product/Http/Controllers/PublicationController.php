@@ -47,9 +47,9 @@ class PublicationController extends Controller
      */
     public function index(Request $request)
     {
-        $query = $request->get('q');
+        $term = $request->get('q');
         $index = $this->publications
-            ->index(self::$perPage, $query);
+            ->index(self::$perPage, $term);
         
         return view('product::pages.publications.index', [
             'publications' => $index->data['publications']
@@ -66,9 +66,9 @@ class PublicationController extends Controller
     public function projects(Request $request, $id)
     {
         $perPage = self::$perPage;
-        $query = $request->get('q');
+        $term = $request->get('q');
         $projects = $this->publications
-            ->projects($id, $perPage, $query);
+            ->projects($id, $perPage, $term);
 
         return view('product::pages.publications.projects', [
             'publication' => $projects->data['publication'],
@@ -86,9 +86,9 @@ class PublicationController extends Controller
     public function members(Request $request, $id)
     {
         $perPage = self::$perPage;
-        $query = $request->get('q');
+        $term = $request->get('q');
         $members = $this->publications
-            ->members($id, $perPage, $query);
+            ->members($id, $perPage, $term);
 
         return view('product::pages.publications.members', [
             'publication' => $members->data['publication'],

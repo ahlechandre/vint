@@ -24,7 +24,7 @@ class GroupProgramController extends Controller
      *
      * @var int
      */
-    static public $perPage = 10;
+    static public $perPage = 15;
 
     /**
      * Inicializa o controlador com a instância do repositório de dados.
@@ -46,13 +46,14 @@ class GroupProgramController extends Controller
      */
     public function index(Request $request, $groupId)
     {
-        $perPage = self::$perPage;
-        $query = $request->get('q');
+        $term = $request->get('q');
         $index = $this->groupPrograms
-            ->index($groupId, $perPage, $query);
+            ->index($groupId, self::$perPage, $term);
         $user = $request->user();
         $group = $index->data['group'];
-        $requestsCount = $user && $user->can('updateRequests', [Program::class, $group]) ?
+        // Verifica se o usuário pode atualizar solicitações de programas.
+        $canUpdateRequests = $user && $user->can('updateRequests', [Program::class, $group]);
+        $requestsCount = $canUpdateRequests ?
             $group->programs()
                 ->notApproved()
                 ->count() :
@@ -74,10 +75,10 @@ class GroupProgramController extends Controller
      */
     public function requests(Request $request, $groupId)
     {
-        $query = $request->get('q');
+        $term = $request->get('q');
         $user = $request->user();
         $index = $this->groupPrograms
-            ->requests($user, $groupId, null, $query);
+            ->requests($user, $groupId, null, $term);
 
         if (!$index->success) {
             return abort($index->status);

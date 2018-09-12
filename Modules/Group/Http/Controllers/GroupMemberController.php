@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Group\Repositories\GroupMemberRepository;
+use Modules\Member\Entities\Member;
 
 
 class GroupMemberController extends Controller
@@ -50,7 +51,7 @@ class GroupMemberController extends Controller
         $user = $request->user();
         $group = $index->data['group'];
         // Verifica se o usuário pode atualizar solicitações de membros.
-        $canUpdateRequests = $user && $user->can('updateMembersRequests', $group);
+        $canUpdateRequests = $user && $user->can('updateRequests', [Member::class, $group]);
         $requestsCount = $canUpdateRequests ?
             $group->membersNotApproved()->count() :
             null;
@@ -71,10 +72,10 @@ class GroupMemberController extends Controller
      */
     public function requests(Request $request, $groupId)
     {
-        $query = $request->get('q');
+        $term = $request->get('q');
         $user = $request->user();
         $index = $this->groupMembers
-            ->requests($user, $groupId, null, $query);
+            ->requests($user, $groupId, null, $term);
 
         if (!$index->success) {
             return abort($index->status);

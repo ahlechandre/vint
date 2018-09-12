@@ -55,7 +55,7 @@ class GroupPolicy
      */
     public function createCoordinators(User $user, Group $group)
     {
-        return $user->isManager() || $group->hasCoordinatorUser($user);
+        return $this->update($user, $group);
     }
 
     /**
@@ -67,7 +67,7 @@ class GroupPolicy
      */
     public function deleteCoordinators(User $user, Group $group)
     {
-        return $user->isManager() || $group->hasCoordinatorUser($user);
+        return $this->update($user, $group);
     }
 
     /**
@@ -79,7 +79,7 @@ class GroupPolicy
      */
     public function updateCoordinators(User $user, Group $group)
     {
-        return $user->isManager() || $group->hasCoordinatorUser($user);
+        return $this->update($user, $group);
     }
     
     /**
@@ -110,18 +110,5 @@ class GroupPolicy
             $group->hasCoordinatorUser($user) && 
             !$group->hasCoordinatorUser($member->user)
         );
-    }
-
-    /**
-     *
-     * @param \Modules\User\Entities\User $user
-     * @param \Modules\Group\Entities\Group $group
-     * @return bool
-     */
-    public function updateMembersRequests(User $user, Group $group)
-    {
-        return $user->isManager() ||
-            $group->hasCoordinatorUser($user) ||
-            $group->allowsForUser('members_requests.update', $user);
     }
 }

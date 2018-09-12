@@ -46,9 +46,9 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $user = $request->user();
-        $query = $request->get('q');
+        $term = $request->get('q');
         $index = $this->products
-            ->index(self::$perPage, $query);
+            ->index(self::$perPage, $term);
 
         return view('product::pages.products.index', [
             'products' => $index->data['products']
@@ -65,9 +65,9 @@ class ProductController extends Controller
     public function projects(Request $request, $id)
     {
         $perPage = self::$perPage;
-        $query = $request->get('q');
+        $term = $request->get('q');
         $projects = $this->products
-            ->projects($id, $perPage, $query);
+            ->projects($id, $perPage, $term);
 
         return view('product::pages.products.projects', [
             'product' => $projects->data['product'],

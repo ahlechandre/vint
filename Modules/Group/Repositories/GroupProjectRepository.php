@@ -15,10 +15,10 @@ class GroupProjectRepository
      *
      * @param  string|int  $groupId
      * @param  null|int  $perPage
-     * @param  null|string  $filter
+     * @param  null|string  $term
      * @return stdClass
      */
-    public function index($groupId, $perPage = null, $filter = null)
+    public function index($groupId, $perPage = null, $term = null)
     {
         $group = Group::findOrFail($groupId);
 
@@ -26,7 +26,7 @@ class GroupProjectRepository
             'group' => $group,
             'projects' => $group->projects()
                 ->approved()
-                ->filterLike($filter)
+                ->filterLike($term)
                 ->simplePaginateOrGet($perPage)
         ]);
     }
@@ -37,10 +37,10 @@ class GroupProjectRepository
      * @param  \Modules\User\Entities\User  $user
      * @param  string|int  $groupId
      * @param  null|int  $perPage
-     * @param  null|string  $filter
+     * @param  null|string  $term
      * @return stdClass
      */
-    public function requests(User $user, $groupId, $perPage = null, $filter = null)
+    public function requests(User $user, $groupId, $perPage = null, $term = null)
     {
         $group = Group::findOrFail($groupId);
 
@@ -52,7 +52,7 @@ class GroupProjectRepository
             'group' => $group,
             'projects' => $group->projects()
                 ->notApproved()
-                ->filterLike($filter)
+                ->filterLike($term)
                 ->simplePaginateOrGet($perPage)
         ]);
     }

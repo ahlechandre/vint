@@ -22,7 +22,7 @@ class CoordinatorController extends Controller
      *
      * @var int
      */
-    static public $perPage = 10;
+    static public $perPage = 15;
 
     /**
      * Inicializa o controlador com a instância do repositório de dados.
@@ -44,9 +44,9 @@ class CoordinatorController extends Controller
      */
     public function index(Request $request, $groupId)
     {
-        $query = $request->get('q');
+        $term = $request->get('q');
         $index = $this->coordinators
-            ->index($groupId, null, $query);
+            ->index($groupId, null, $term);
         $group = $index->data['group'];
         $coordinators = $index->data['coordinators'];
         $user = $request->user();

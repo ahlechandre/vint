@@ -38,14 +38,16 @@ class MemberPolicy
     }
 
     /**
-     * Determine whether the user can update.
      *
-     * @param  \Modules\User\Entities\User  $user
-     * @param  \Modules\User\Entities\User  $userToUpdate
+     * @param \Modules\User\Entities\User $user
+     * @param \Modules\Group\Entities\Group $group
      * @return bool
      */
-    public function updateRole(User $user, Member $member, Role $role)
+    public function updateRequests(User $user, Group $group)
     {
-        return false;
+        return $user->isManager() ||
+            $group->hasCoordinatorUser($user) ||
+            $group->allowsForUser('members_requests.update', $user);
     }
+
 }

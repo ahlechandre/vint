@@ -15,15 +15,15 @@ class CoordinatorRepository
      *
      * @param  int|string  $groupId
      * @param  null|int  $perPage
-     * @param  null|int  $filter
+     * @param  null|int  $term
      * @return stdClass
      */
-    public function index($groupId, $perPage = null, $filter = null)
+    public function index($groupId, $perPage = null, $term = null)
     {
         $group = Group::findOrFail($groupId);
         $coordinators = $group->coordinators()
             ->with('member.user')
-            ->filterLike($filter)
+            ->filterLike($term)
             ->get();
 
         return repository_result(200, null, [

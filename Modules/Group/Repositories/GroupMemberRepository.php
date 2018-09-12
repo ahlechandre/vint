@@ -15,10 +15,10 @@ class GroupMemberRepository
      *
      * @param  string|int  $groupId
      * @param  null|int  $perPage
-     * @param  null|string  $filter
+     * @param  null|string  $term
      * @return stdClass
      */
-    public function index($groupId, $perPage = null, $filter = null)
+    public function index($groupId, $perPage = null, $term = null)
     {
         $group = Group::findOrFail($groupId);
 
@@ -26,7 +26,7 @@ class GroupMemberRepository
             'group' => $group,
             'members' => $group->membersApproved()
                 ->with('user')
-                ->filterLike($filter)
+                ->filterLike($term)
                 ->simplePaginateOrGet($perPage)
         ]);
     }
@@ -37,14 +37,14 @@ class GroupMemberRepository
      * @param  \Modules\User\Entities\User  $user
      * @param  string|int  $groupId
      * @param  null|int  $perPage
-     * @param  null|string  $filter
+     * @param  null|string  $term
      * @return stdClass
      */
-    public function requests(User $user, $groupId, $perPage = null, $filter = null)
+    public function requests(User $user, $groupId, $perPage = null, $term = null)
     {
         $group = Group::findOrFail($groupId);
 
-        if ($user->cant('updateMembersRequests', $group)) {
+        if ($user->cant('updateRequests', [Member::class, $group])) {
             return repository_result(403);
         }
         
@@ -52,7 +52,7 @@ class GroupMemberRepository
             'group' => $group,
             'members' => $group->membersNotApproved()
                 ->with('user')
-                ->filterLike($filter)
+                ->filterLike($term)
                 ->simplePaginateOrGet($perPage)
         ]);
     }
@@ -156,7 +156,7 @@ class GroupMemberRepository
         $group = Group::findOrFail($groupId);
 
         // Verifica se o usuário pode realizar.
-        if ($user->cant('updateMembersRequests', $group)) {
+        if ($user->cant('updateRequests', [Member::class, $group])) {
             return repository_result(403);
         }
         $members = $memberUserId ?
@@ -200,7 +200,7 @@ class GroupMemberRepository
         $group = Group::findOrFail($groupId);
 
         // Verifica se o usuário pode realizar.
-        if ($user->cant('updateMembersRequests', $group)) {
+        if ($user->cant('updateRequests', [Member::class, $group])) {
             return repository_result(403);
         }
         $members = $memberUserId ?

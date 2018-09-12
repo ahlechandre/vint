@@ -19,7 +19,7 @@
         @endcell
         
         {{-- Solicitações --}}
-        @can('updateMembersRequests', $group)
+        @can('updateRequests', [\Modules\Member\Entities\Member::class, $group])
             @if ($requestsCount > 0)
                 @cell([
                     'classes' => ['mdc-layout-grid--align-right']

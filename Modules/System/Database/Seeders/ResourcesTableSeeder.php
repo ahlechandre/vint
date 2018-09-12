@@ -24,16 +24,6 @@ class ResourcesTableSeeder extends Seeder
             'description' => 'Recurso de projetos',
         ],
         [
-            'name' => 'Produtos',
-            'slug' => Resource::SLUG_PRODUCTS,
-            'description' => 'Recurso de produtos',
-        ],
-        [
-            'name' => 'Publicações',
-            'slug' => Resource::SLUG_PUBLICATIONS,
-            'description' => 'Recurso de publicações',
-        ],
-        [
             'name' => 'Solicitações de membros',
             'slug' => Resource::SLUG_MEMBERS_REQUESTS,
             'description' => 'Recurso de solicitações de membros em grupos',

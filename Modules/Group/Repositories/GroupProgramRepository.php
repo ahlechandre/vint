@@ -15,17 +15,17 @@ class GroupProgramRepository
      *
      * @param  string|int  $groupId
      * @param  null|int  $perPage
-     * @param  null|string  $filter
+     * @param  null|string  $term
      * @return stdClass
      */
-    public function index($groupId, $perPage = null, $filter = null)
+    public function index($groupId, $perPage = null, $term = null)
     {
         $group = Group::findOrFail($groupId);
 
         return repository_result(200, null, [
             'group' => $group,
             'programs' => $group->programs()
-                ->filterLike($filter)
+                ->filterLike($term)
                 ->simplePaginateOrGet($perPage)
         ]);
     }
@@ -36,10 +36,10 @@ class GroupProgramRepository
      * @param  \Modules\User\Entities\User  $user
      * @param  string|int  $groupId
      * @param  null|int  $perPage
-     * @param  null|string  $filter
+     * @param  null|string  $term
      * @return stdClass
      */
-    public function requests(User $user, $groupId, $perPage = null, $filter = null)
+    public function requests(User $user, $groupId, $perPage = null, $term = null)
     {
         $group = Group::findOrFail($groupId);
 
@@ -51,7 +51,7 @@ class GroupProgramRepository
             'group' => $group,
             'programs' => $group->programs()
                 ->notApproved()
-                ->filterLike($filter)
+                ->filterLike($term)
                 ->simplePaginateOrGet($perPage)
         ]);
     }

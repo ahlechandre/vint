@@ -31,6 +31,6 @@ class GroupRolePolicy
      */
     public function update(User $user, GroupRole $groupRole)
     {
-        return false;
+        return $user->can('update', $groupRole->group);
     }
 }
