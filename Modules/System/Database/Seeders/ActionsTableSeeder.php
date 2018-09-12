@@ -15,16 +15,6 @@ class ActionsTableSeeder extends Seeder
      */
     protected $actions = [
         [
-            'name' => 'Indexar',
-            'slug' => 'index',
-            'description' => 'Ação para indexar os recursos',
-        ],
-        [
-            'name' => 'Mostrar',
-            'slug' => 'view',
-            'description' => 'Ação para mostrar um recurso',
-        ],
-        [
             'name' => 'Criar',
             'slug' => 'create',
             'description' => 'Ação para criar um recurso',

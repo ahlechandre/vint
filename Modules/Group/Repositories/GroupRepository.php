@@ -7,7 +7,7 @@ use Modules\User\Entities\User;
 use Modules\Group\Entities\Group;
 use Illuminate\Support\Facades\DB;
 use Modules\Member\Entities\Role;
-use Modules\Member\Entities\GroupRole;
+use Modules\Group\Entities\GroupRole;
 
 class GroupRepository
 {
@@ -15,14 +15,14 @@ class GroupRepository
      * Lista todos os grupos.
      *
      * @param  null|int  $perPage
-     * @param  null|string  $filter
+     * @param  null|string  $term
      * @return stdClass
      */
-    public function index($perPage = null, $filter = null)
+    public function index($perPage = null, $term = null)
     {
         return repository_result(200, null, [
             'groups' => Group::orderBy('created_at', 'desc')
-                ->filterLike($filter)
+                ->filterLike($term)
                 ->simplePaginateOrGet($perPage)
         ]);
     }

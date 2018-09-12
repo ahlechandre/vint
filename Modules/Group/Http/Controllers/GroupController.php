@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\Group\Entities\Group;
 use Illuminate\Routing\Controller;
-use Modules\Member\Entities\Member;
-use Modules\Member\Entities\Servant;
 use Modules\System\Entities\Permission;
 use Modules\Group\Http\Requests\GroupRequest;
 use Modules\Group\Repositories\GroupRepository;
@@ -31,7 +29,7 @@ class GroupController extends Controller
      *
      * @var int
      */
-    static public $perPage = 10;
+    static public $perPage = 15;
 
     /**
      * Inicializa o controlador com a instância do repositório de dados.
@@ -52,10 +50,9 @@ class GroupController extends Controller
      */
     public function index(Request $request)
     {
-        $perPage = self::$perPage;
-        $query = $request->get('q');
+        $term = $request->get('q');
         $index = $this->groups
-            ->index($perPage, $query);
+            ->index(self::$perPage, $term);
 
         return view('group::pages.groups.index', [
             'groups' => $index->data['groups']

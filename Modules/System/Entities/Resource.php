@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Resource extends Model
 {
+    const SLUG_PROGRAMS = 'programs';
+    const SLUG_PROJECTS = 'projects';
+    const SLUG_PRODUCTS = 'products';
+    const SLUG_PUBLICATIONS = 'publications';
+    const SLUG_MEMBERS_REQUESTS = 'members_requests';
+    const SLUG_PROGRAMS_REQUESTS = 'programs_requests';
+    const SLUG_PROJECTS_REQUESTS = 'projects_requests';
+
     /**
      * @var array
      */

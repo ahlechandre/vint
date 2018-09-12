@@ -146,22 +146,25 @@
     </div>
 
     {{-- Erros de validação --}}
-    {{-- @snackbar([
+    @if ($errors->any())
+      @snackbar([
+        'classes' => ['mdc-snackbar--align-start'],
         'attrs' => [
             'data-vint-auto-init' => 'VintSnackbar',
-            'data-vint-snackbar-message' => 'Snackbar funcionando',
+            'data-vint-snackbar-message' => $errors->first(),
             'data-vint-snackbar-action-text' => 'Ok',
         ]
-    ]) @endsnackbar --}}
+      ]) @endsnackbar    
+    @endif
 
     {{-- Snackbars --}}
     @if (session('snackbar'))
       @snackbar([
-          'attrs' => [
-              'data-vint-auto-init' => 'VintSnackbar',
-              'data-vint-snackbar-message' => session('snackbar'),
-              'data-vint-snackbar-action-text' => 'Ok',
-          ]
+        'attrs' => [
+            'data-vint-auto-init' => 'VintSnackbar',
+            'data-vint-snackbar-message' => session('snackbar'),
+            'data-vint-snackbar-action-text' => 'Ok',
+        ]
       ]) @endsnackbar    
     @endif    
     {{-- MDC --}}

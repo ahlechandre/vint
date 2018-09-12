@@ -19,15 +19,15 @@ class MemberRepository
      * Lista todos os membros.
      *
      * @param  null|int  $perPage
-     * @param  null|string  $filter
+     * @param  null|string  $term
      * @return stdClass
      */
-    public function index($perPage = null, $filter = null)
+    public function index($perPage = null, $term = null)
     {
         return repository_result(200, null, [
             'members' => Member::orderBy('created_at')
                 ->with('user')
-                ->filterLike($filter)
+                ->filterLike($term)
                 ->simplePaginateOrGet($perPage),
         ]);
     }
@@ -37,10 +37,10 @@ class MemberRepository
      *
      * @param  int|string  $userId
      * @param  null|int  $perPage
-     * @param  null|string  $filter
+     * @param  null|string  $term
      * @return stdClass
      */
-    public function groups($userId, $perPage = null, $filter = null)
+    public function groups($userId, $perPage = null, $term = null)
     {
         $member = Member::findOrFail($userId);
 
@@ -48,7 +48,7 @@ class MemberRepository
             'member' => $member,
             'groups' => $member->groupsApproved()
                 ->orderBy('name')
-                ->filterLike($filter)
+                ->filterLike($term)
                 ->simplePaginateOrGet($perPage),
         ]);
     }
@@ -58,10 +58,10 @@ class MemberRepository
      *
      * @param  int|string  $userId
      * @param  null|int  $perPage
-     * @param  null|string  $filter
+     * @param  null|string  $term
      * @return stdClass
      */
-    public function programs($userId, $perPage = null, $filter = null)
+    public function programs($userId, $perPage = null, $term = null)
     {
         $member = Member::findOrFail($userId);
 
@@ -69,7 +69,7 @@ class MemberRepository
             'member' => $member,
             'programs' => Program::ofMember($member)
                 ->orderBy('created_at')
-                ->filterLike($filter)
+                ->filterLike($term)
                 ->simplePaginateOrGet($perPage),
         ]);
     }
@@ -79,10 +79,10 @@ class MemberRepository
      *
      * @param  int|string  $userId
      * @param  null|int  $perPage
-     * @param  null|string  $filter
+     * @param  null|string  $term
      * @return stdClass
      */
-    public function projects($userId, $perPage = null, $filter = null)
+    public function projects($userId, $perPage = null, $term = null)
     {
         $member = Member::findOrFail($userId);
 
@@ -90,7 +90,7 @@ class MemberRepository
             'member' => $member,
             'projects' => Project::ofMember($member)
                 ->orderBy('created_at')
-                ->filterLike($filter)
+                ->filterLike($term)
                 ->simplePaginateOrGet($perPage),
         ]);
     }
@@ -100,17 +100,17 @@ class MemberRepository
      *
      * @param  int|string  $userId
      * @param  null|int  $perPage
-     * @param  null|string  $filter
+     * @param  null|string  $term
      * @return stdClass
      */
-    public function publications($userId, $perPage = null, $filter = null)
+    public function publications($userId, $perPage = null, $term = null)
     {
         $member = Member::findOrFail($userId);
 
         return repository_result(200, null, [
             'member' => $member,
             'publications' => $member->publications()
-                ->filterLike($filter)
+                ->filterLike($term)
                 ->simplePaginate($perPage),
         ]);
     }
@@ -242,15 +242,15 @@ class MemberRepository
      *
      * @param  \Modules\User\Entities\User  $user
      * @param  null|int  $perPage
-     * @param  null|int  $filter
+     * @param  null|int  $term
      * @return void
      */
-    public function forUser(User $user, $perPage = null, $filter = null)
+    public function forUser(User $user, $perPage = null, $term = null)
     {
         return repository_result(200, null, [
             'members' => Member::forUser($user)
                 ->with('user')
-                ->filterLike($filter)
+                ->filterLike($term)
                 ->simplePaginateOrGet($perPage)
         ]);
     }    

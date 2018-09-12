@@ -15,14 +15,14 @@ class PublicationRepository
      * Lista todos os produtos.
      *
      * @param  null|int  $perPage
-     * @param  null|string  $filter
+     * @param  null|string  $term
      * @return stdClass
      */
-    public function index($perPage = null, $filter = null)
+    public function index($perPage = null, $term = null)
     {
         return repository_result(200, null, [
             'publications' => Publication::orderBy('created_at')
-                ->filterLike($filter)
+                ->filterLike($term)
                 ->simplePaginateOrGet($perPage)
         ]);
     }
@@ -32,10 +32,10 @@ class PublicationRepository
      *
      * @param  string|int  $id
      * @param  null|int  $perPage
-     * @param  null|string  $filter
+     * @param  null|string  $term
      * @return stdClass
      */
-    public function projects($id, $perPage = null, $filter = null)
+    public function projects($id, $perPage = null, $term = null)
     {
         $publication = Publication::findOrFail($id);
 
@@ -43,7 +43,7 @@ class PublicationRepository
             'publication' => $publication,
             'projects' => $publication->projects()
                 ->orderBy('created_at')
-                ->filterLike($filter)
+                ->filterLike($term)
                 ->simplePaginate($perPage)
         ]);
     }
@@ -53,10 +53,10 @@ class PublicationRepository
      *
      * @param  string|int  $id
      * @param  null|int  $perPage
-     * @param  null|string  $filter
+     * @param  null|string  $term
      * @return stdClass
      */
-    public function members($id, $perPage = null, $filter = null)
+    public function members($id, $perPage = null, $term = null)
     {
         $publication = Publication::findOrFail($id);
 
@@ -64,7 +64,7 @@ class PublicationRepository
             'publication' => $publication,
             'members' => $publication->members()
                 ->with('user')
-                ->filterLike($filter)
+                ->filterLike($term)
                 ->simplePaginate($perPage)
         ]);
     }

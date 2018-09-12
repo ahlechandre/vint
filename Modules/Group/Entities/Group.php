@@ -177,24 +177,6 @@ class Group extends Model
     }
 
     /**
-     * 
-     * @param  \Illuminate\Database\Query\Builder  $query
-     * @param  \Modules\User\Entities\User  $user
-     * @return \Illuminate\Database\Query\Builder
-     */
-    public function scopeRequestedBy($query, User $user)
-    {
-        // Retorna todos os grupos que o membero do usuário
-        // indicado está relacionado mas não está aprovado.
-        return $query->whereHas('members', function ($member) use ($user) {
-            return $member->where([
-                ['user_id', $user->id],
-                ['is_approved', 0]
-            ]);
-        });
-    }
-
-    /**
      *
      * @param  \Modules\Member\Entities\Servant  $servant
      * @return bool
@@ -210,7 +192,7 @@ class Group extends Model
      * @param  \Modules\User\Entities\User  $user
      * @return bool
      */
-    public function isCoordinatorUser(User $user)
+    public function hasCoordinatorUser(User $user)
     {
         return $this->coordinators()
             ->find($user->id) ? true : false;
@@ -248,5 +230,30 @@ class Group extends Model
     {
         return $this->membersNotApproved()
             ->find($member->user_id) ? true : false;
-    }    
+    }
+
+    /**
+     *
+     * @param  string  $permissionSlug
+     * @param  \Modules\User\Entities\User  $user
+     * @return bool
+     */
+    public function allowsForUser($permissionSlug, User $user)
+    {
+        // Se não é membro, permite.
+        if (!$user->isMember()) {
+            return true;
+        }
+        $explode = explode('.', $permissionSlug);
+        $resource = $explode[0];
+        $action = $explode[1];
+        $groupRole = $this->groupRoles()
+            ->where('role_id', $user->member->role_id)
+            ->first();
+        return $groupRole->permissions
+            ->load('action', 'resource')
+            ->where('action.slug', $action)
+            ->where('resource.slug', $resource)
+            ->first() ? true : false;
+    }
 }

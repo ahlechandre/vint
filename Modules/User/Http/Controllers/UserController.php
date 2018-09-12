@@ -27,7 +27,7 @@ class UserController extends Controller
      *
      * @var int
      */
-    static public $perPage = 30;
+    static public $perPage = 15;
 
     /**
      * Inicializa o controlador com a instância do repositório de dados.
@@ -49,10 +49,9 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $user = $request->user();
-        $perPage = self::$perPage;
-        $query = $request->get('q');
+        $term = $request->get('q');
         $index = $this->users
-            ->index($user, $perPage, $query);
+            ->index($user, self::$perPage, $term);
         
         if (!$index->success) {
             return abort($index->status);
@@ -207,6 +206,11 @@ class UserController extends Controller
         $update = $this->users
             ->update($user, (int) $id, $inputs);
 
+        if ($update->data['userUpdated']->isMember()) {
+            return redirect("members/{$id}")
+                ->with('snackbar', $update->message);
+        }
+        
         return redirect('dashboard')
             ->with('snackbar', $update->message);
     }

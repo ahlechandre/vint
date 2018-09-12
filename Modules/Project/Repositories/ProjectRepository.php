@@ -14,14 +14,14 @@ class ProjectRepository
      * Lista todos os projetos.
      *
      * @param  null|int  $perPage
-     * @param  null|string  $filter
+     * @param  null|string  $term
      * @return stdClass
      */
-    public function index($perPage = null, $filter = null)
+    public function index($perPage = null, $term = null)
     {
         return repository_result(200, null, [
             'projects' => Project::orderBy('created_at')
-                ->filterLike($filter)
+                ->filterLike($term)
                 ->simplePaginateOrGet($perPage),
         ]);
     }
@@ -31,10 +31,10 @@ class ProjectRepository
      *
      * @param  string|int  $id
      * @param  null|int  $perPage
-     * @param  null|string  $filter
+     * @param  null|string  $term
      * @return stdClass
      */
-    public function publications($id, $perPage = null, $filter = null)
+    public function publications($id, $perPage = null, $term = null)
     {
         $project = Project::findOrFail($id);
 
@@ -42,7 +42,7 @@ class ProjectRepository
             'project' => $project,
             'publications' => $project->publications()
                 ->orderBy('created_at')
-                ->filterLike($filter)
+                ->filterLike($term)
                 ->simplePaginate($perPage),
         ]);
     }
@@ -52,10 +52,10 @@ class ProjectRepository
      *
      * @param  string|int  $id
      * @param  null|int  $perPage
-     * @param  null|string  $filter
+     * @param  null|string  $term
      * @return stdClass
      */
-    public function products($id, $perPage = null, $filter = null)
+    public function products($id, $perPage = null, $term = null)
     {
         $project = Project::findOrFail($id);
 
@@ -63,7 +63,7 @@ class ProjectRepository
             'project' => $project,
             'products' => $project->products()
                 ->orderBy('created_at')
-                ->filterLike($filter)
+                ->filterLike($term)
                 ->simplePaginate($perPage),
         ]);
     }
@@ -136,15 +136,15 @@ class ProjectRepository
      *
      * @param  \Modules\User\Entities\User  $user
      * @param  null|int  $perPage
-     * @param  null|int  $filter
+     * @param  null|int  $term
      * @return void
      */
-    public function forUser(User $user, $perPage = null, $filter = null)
+    public function forUser(User $user, $perPage = null, $term = null)
     {
         return repository_result(200, null, [
             'projects' => Project::with('group')
                 ->forUser($user)
-                ->filterLike($filter)
+                ->filterLike($term)
                 ->simplePaginateOrGet($perPage)
         ]);
     }

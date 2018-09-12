@@ -14,14 +14,14 @@ class ProgramRepository
      * Lista todos os programas.
      *
      * @param  null|int  $perPage
-     * @param  null|string  $filter
+     * @param  null|string  $term
      * @return stdClass
      */
-    public function index($perPage = null, $filter = null)
+    public function index($perPage = null, $term = null)
     {
         return repository_result(200, null, [
             'programs' => Program::orderBy('created_at')
-                ->filterLike($filter)
+                ->filterLike($term)
                 ->simplePaginateOrGet($perPage),
         ]);
     }
@@ -31,10 +31,10 @@ class ProgramRepository
      *
      * @param  string|int  $id
      * @param  null|int  $perPage
-     * @param  null|string  $filter
+     * @param  null|string  $term
      * @return stdClass
      */
-    public function projects($id, $perPage = null, $filter = null)
+    public function projects($id, $perPage = null, $term = null)
     {
         $program = Program::findOrFail($id);
 
@@ -42,7 +42,7 @@ class ProgramRepository
             'program' => $program,
             'projects' => $program->projects()
                 ->orderBy('created_at')
-                ->filterLike($filter)
+                ->filterLike($term)
                 ->simplePaginateOrGet($perPage),
         ]);
     }

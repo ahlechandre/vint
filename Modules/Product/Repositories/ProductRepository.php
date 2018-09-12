@@ -14,14 +14,14 @@ class ProductRepository
      * Lista todos os produtos.
      *
      * @param  null|int  $perPage
-     * @param  null|string  $filter
+     * @param  null|string  $term
      * @return stdClass
      */
-    public function index($perPage = null, $filter = null)
+    public function index($perPage = null, $term = null)
     {
         return repository_result(200, null, [
             'products' => Product::orderBy('created_at')
-                ->filterLike($filter)
+                ->filterLike($term)
                 ->simplePaginateOrGet($perPage)
         ]);
     }
@@ -31,10 +31,10 @@ class ProductRepository
      *
      * @param  string|int  $id
      * @param  null|int  $perPage
-     * @param  null|string  $filter
+     * @param  null|string  $term
      * @return stdClass
      */
-    public function projects($id, $perPage = null, $filter = null)
+    public function projects($id, $perPage = null, $term = null)
     {
         $product = Product::findOrFail($id);
 
@@ -42,7 +42,7 @@ class ProductRepository
             'product' => $product,
             'projects' => $product->projects()
                 ->orderBy('created_at')
-                ->filterLike($filter)
+                ->filterLike($term)
                 ->simplePaginate($perPage)
         ]);
     }

@@ -14,69 +14,39 @@ class ResourcesTableSeeder extends Seeder
      */
     protected $resources = [
         [
-            'name' => 'Membros',
-            'slug' => 'members',
-            'description' => 'Recurso de membros',
-        ],
-        [
-            'name' => 'Papéis de membros',
-            'slug' => 'members_roles',
-            'description' => 'Recurso de papéis de membros',
-        ],
-        [
-            'name' => 'Solicitações de membro',
-            'slug' => 'member_requests',
-            'description' => 'Recurso de solicitações de membros',
-        ],
-        [
-            'name' => 'Solicitações de programa',
-            'slug' => 'program_requests',
-            'description' => 'Recurso de solicitações de programas',
-        ],
-        [
-            'name' => 'Solicitações de projeto',
-            'slug' => 'project_requests',
-            'description' => 'Recurso de solicitações de projetos',
-        ],
-        [
-            'name' => 'Convites',
-            'slug' => 'invites',
-            'description' => 'Recurso de convites',
-        ],
-        [
             'name' => 'Programas',
-            'slug' => 'programs',
+            'slug' => Resource::SLUG_PROGRAMS,
             'description' => 'Recurso de programas',
         ],
         [
             'name' => 'Projetos',
-            'slug' => 'projects',
+            'slug' => Resource::SLUG_PROJECTS,
             'description' => 'Recurso de projetos',
         ],
         [
-            'name' => 'Publicações',
-            'slug' => 'publications',
-            'description' => 'Recurso de publicações',
-        ],
-        [
             'name' => 'Produtos',
-            'slug' => 'products',
+            'slug' => Resource::SLUG_PRODUCTS,
             'description' => 'Recurso de produtos',
         ],
         [
-            'name' => 'Status de programas',
-            'slug' => 'program_status',
-            'description' => 'Recurso de status de programas',
+            'name' => 'Publicações',
+            'slug' => Resource::SLUG_PUBLICATIONS,
+            'description' => 'Recurso de publicações',
         ],
         [
-            'name' => 'Status de projetos',
-            'slug' => 'project_status',
-            'description' => 'Recurso de status de projetos',
+            'name' => 'Solicitações de membros',
+            'slug' => Resource::SLUG_MEMBERS_REQUESTS,
+            'description' => 'Recurso de solicitações de membros em grupos',
         ],
         [
-            'name' => 'Status de publicações',
-            'slug' => 'publication_status',
-            'description' => 'Recurso de status de publicações',
+            'name' => 'Solicitações de programas',
+            'slug' => Resource::SLUG_PROGRAMS_REQUESTS,
+            'description' => 'Recurso de solicitações de programas em grupos',
+        ],
+        [
+            'name' => 'Solicitações de projetos',
+            'slug' => Resource::SLUG_PROJECTS_REQUESTS,
+            'description' => 'Recurso de solicitações de projetos em grupos',
         ],
     ];
 

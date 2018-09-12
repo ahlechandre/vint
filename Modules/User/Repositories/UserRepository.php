@@ -15,10 +15,10 @@ class UserRepository
      *
      * @param  \Modules\User\Entities\User  $user
      * @param  null|int  $perPage
-     * @param  null|string  $filter
+     * @param  null|string  $term
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function index(User $user, $perPage = null, $filter = null)
+    public function index(User $user, $perPage = null, $term = null)
     {
         // Verifica se o usuário pode realizar.
         if ($user->cant('index', User::class)) {
@@ -26,7 +26,7 @@ class UserRepository
         }
 
         return repository_result(200, null, [
-            'users' => User::filterLike($filter)
+            'users' => User::filterLike($term)
                 ->orderBy('created_at', 'desc')
                 ->simplePaginateOrGet($perPage)
         ]);

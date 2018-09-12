@@ -43,7 +43,7 @@ class GroupPolicy
      */
     public function update(User $user, Group $group)
     {
-        return $user->isManager();
+        return $user->isManager() || $group->hasCoordinatorUser($user);
     }
 
     /**
@@ -55,7 +55,7 @@ class GroupPolicy
      */
     public function createCoordinators(User $user, Group $group)
     {
-        return $user->isManager();
+        return $user->isManager() || $group->hasCoordinatorUser($user);
     }
 
     /**
@@ -67,7 +67,7 @@ class GroupPolicy
      */
     public function deleteCoordinators(User $user, Group $group)
     {
-        return $user->isManager();
+        return $user->isManager() || $group->hasCoordinatorUser($user);
     }
 
     /**
@@ -79,7 +79,7 @@ class GroupPolicy
      */
     public function updateCoordinators(User $user, Group $group)
     {
-        return $user->isManager();
+        return $user->isManager() || $group->hasCoordinatorUser($user);
     }
     
     /**
@@ -103,7 +103,13 @@ class GroupPolicy
      */
     public function detachMember(User $user, Group $group, Member $member)
     {
-        return $user->isManager();
+        // Só pode remover um membro do grupo se o usuário for gerente
+        // ou o usuário é coordenador e o membro a ser removido não
+        // é um coordenador.
+        return $user->isManager() || (
+            $group->hasCoordinatorUser($user) && 
+            !$group->hasCoordinatorUser($member->user)
+        );
     }
 
     /**
@@ -114,7 +120,8 @@ class GroupPolicy
      */
     public function updateMembersRequests(User $user, Group $group)
     {
-        return $user->isManager();
+        return $user->isManager() ||
+            $group->hasCoordinatorUser($user) ||
+            $group->allowsForUser('members_requests.update', $user);
     }
-
 }

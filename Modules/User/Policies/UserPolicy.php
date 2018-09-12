@@ -68,10 +68,9 @@ class UserPolicy
         // 1. O usuário for ele mesmo.
         // 2. O usuário é gerente e o usuário a ser atualizado 
         // não é administrador.
-        return (
-            $user->id === $userToUpdate->id
-        ) || (
-            !$userToUpdate->isAdmin() && $user->isManager()
-        );
+        $isSameUser = $user->id === $userToUpdate->id;
+        $managerUpdatingNotAdmin = $user->isManager() && !$userToUpdate->isAdmin();
+        
+        return $isSameUser || $managerUpdatingNotAdmin; 
     }
 }
