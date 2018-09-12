@@ -144,7 +144,26 @@
     <div class="top-app-bar--fixed-adjust mdc-top-app-bar--fixed-adjust">
       @yield('main')
     </div>
-    
+
+    {{-- Erros de validação --}}
+    {{-- @snackbar([
+        'attrs' => [
+            'data-vint-auto-init' => 'VintSnackbar',
+            'data-vint-snackbar-message' => 'Snackbar funcionando',
+            'data-vint-snackbar-action-text' => 'Ok',
+        ]
+    ]) @endsnackbar --}}
+
+    {{-- Snackbars --}}
+    @if (session('snackbar'))
+      @snackbar([
+          'attrs' => [
+              'data-vint-auto-init' => 'VintSnackbar',
+              'data-vint-snackbar-message' => session('snackbar'),
+              'data-vint-snackbar-action-text' => 'Ok',
+          ]
+      ]) @endsnackbar    
+    @endif    
     {{-- MDC --}}
     <script src="{{ asset('js/material-components-web.js') }}" defer></script>
     {{-- VINT --}}

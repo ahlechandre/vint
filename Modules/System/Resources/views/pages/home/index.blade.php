@@ -522,6 +522,16 @@
             </div>            
         @endcell
 
+        @cell
+            @snackbar([
+                'attrs' => [
+                    'data-vint-auto-init' => 'VintSnackbar',
+                    'data-vint-snackbar-message' => 'Snackbar funcionando',
+                    'data-vint-snackbar-action-text' => 'Ok',
+                ]
+            ]) @endsnackbar
+        @endcell
+
         {{-- Spacing --}}
         @cell @endcell
         @cell @endcell

@@ -74,6 +74,9 @@ trait BladeUtils
         'material.shape.shape-button' => 'shapeButton',
         'material.shape.shape-card' => 'shapeCard',
 
+        // Shape.
+        'material.snackbars.snackbar' => 'snackbar',
+
         // Tab bars.
         'material.tabs.tab-bar' => 'tabBar',
         'material.tabs.tab' => 'tab',

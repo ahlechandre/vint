@@ -7,6 +7,7 @@ import VintTextarea from './text-field/VintTextarea'
 import VintFormProduct from './form/VintFormProduct'
 import VintFormPublication from './form/VintFormPublication'
 import VintTopAppBarWithSearch from './top-app-bar/VintTopAppBarWithSearch'
+import VintSnackbar from './snackbar/VintSnackbar'
 
 export default {
   VintDialogActivation,
@@ -18,4 +19,5 @@ export default {
   VintFormProduct,
   VintFormPublication,
   VintTopAppBarWithSearch,
+  VintSnackbar,
 }
