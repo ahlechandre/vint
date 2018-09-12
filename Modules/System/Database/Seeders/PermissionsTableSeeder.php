@@ -35,15 +35,12 @@ class PermissionsTableSeeder extends Seeder
             Action::SLUG_DELETE
         ],
         Resource::SLUG_MEMBERS_REQUESTS => [
-            Action::SLUG_VIEW,
             Action::SLUG_UPDATE
         ],
         Resource::SLUG_PROGRAMS_REQUESTS => [
-            Action::SLUG_VIEW,
             Action::SLUG_UPDATE
         ],
         Resource::SLUG_PROJECTS_REQUESTS => [
-            Action::SLUG_VIEW,
             Action::SLUG_UPDATE
         ],
     ];

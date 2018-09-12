@@ -22,7 +22,7 @@ class GroupMemberController extends Controller
      *
      * @var int
      */
-    static public $perPage = 10;
+    static public $perPage = 15;
 
     /**
      * Inicializa o controlador com a instância do repositório de dados.
@@ -44,13 +44,14 @@ class GroupMemberController extends Controller
      */
     public function index(Request $request, $groupId)
     {
-        $perPage = self::$perPage;
-        $query = $request->get('q');
+        $term = $request->get('q');
         $index = $this->groupMembers
-            ->index($groupId, $perPage, $query);
+            ->index($groupId, self::$perPage, $term);
         $user = $request->user();
         $group = $index->data['group'];
-            $requestsCount = $user && $user->can('updateMembersRequests', $group) ?
+        // Verifica se o usuário pode atualizar solicitações de membros.
+        $canUpdateRequests = $user && $user->can('updateMembersRequests', $group);
+        $requestsCount = $canUpdateRequests ?
             $group->membersNotApproved()->count() :
             null;
 
