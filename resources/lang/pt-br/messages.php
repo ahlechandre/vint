@@ -9,7 +9,7 @@ return [
 
     // Usuários.
     'users' => [
-        'index' => 'Lista de usuários mais recentes',
+        'index' => 'Lista de usuários mais recentes.',
         'create' => 'Novo usuário',
         'created' => 'Usuário criado',
         'edit' => 'Editar o usuário',

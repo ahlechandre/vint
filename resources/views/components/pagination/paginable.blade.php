@@ -36,7 +36,9 @@
         @else
             {{-- Lista --}}
             @cell
-                @list($list) @endlist                    
+                @list(component_with_classes($list, [
+                    'mdc-list--avatar-list'
+                ])) @endlist
             @endcell
 
             @if (!isset($withoutActions) || !$withoutActions)

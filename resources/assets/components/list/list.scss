@@ -12,6 +12,13 @@
   }
 }
 
+.mdc-list--avatar-list {
+  .mdc-list-item__graphic {
+    color: $mdc-theme-primary;
+    background-color: rgba(0, 0, 0, .1);
+  }    
+}
+
 .list--paginable {
   .list-item {
     border-radius: 4px;

@@ -9,7 +9,7 @@
     <title>{{ $title }}</title>
     {{-- Material icons --}}
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500i" rel="stylesheet">
     {{-- MDC + App --}}
     <link rel="stylesheet" href="{{ asset('css/vint.css') }}">
   </head>
@@ -160,6 +160,7 @@
     {{-- Snackbars --}}
     @if (session('snackbar'))
       @snackbar([
+        'classes' => ['mdc-snackbar--align-start'],
         'attrs' => [
             'data-vint-auto-init' => 'VintSnackbar',
             'data-vint-snackbar-message' => session('snackbar'),

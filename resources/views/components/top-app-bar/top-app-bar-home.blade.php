@@ -30,9 +30,19 @@
                                 'href' => '#',
                                 'title' => 'buscar'
                             ]
-                        ]
+                        ],
+                        [
+                            'icon' => 'more_vert',
+                            'classes' => [
+                                'material-icons',
+                            ],
+                            'attrs' => [
+                                'href' => '#',
+                                'title' => __('headlines.options')
+                            ]
+                        ]                        
                     ]
-                ]                        
+                ]                
             ]          
         ],
         [

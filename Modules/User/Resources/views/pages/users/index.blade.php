@@ -14,7 +14,7 @@
             {{-- Heading --}}
             @heading([
                 'title' => __('resources.users'),
-                'content' => __('messages.users.subheading'),
+                'content' => __('messages.users.index'),
             ]) @endheading        
         @endcell
         
@@ -52,8 +52,6 @@
                 'fab' => [
                     'isLink' => true,
                     'icon' => __('icons.add'),
-                    'classes' => ['mdc-fab--extended'],
-                    'label' => __('actions.new'),
                     'attrs' => [
                         'href' => url('users/create'),
                         'title' => __('messages.users.forms.create_title'),

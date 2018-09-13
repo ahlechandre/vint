@@ -29,34 +29,39 @@
         @gridInner
             {{-- Quebra de linha. --}}
             @cell @endcell
+            @cell @endcell
 
-            @cell([
-                'classes' => ['mdc-layout-grid--align-right']
-            ])
-                {{-- Cancelar --}}
-                @if ($withCancel ?? false)
-                    @button([
-                        'isLink' => true,
-                        'text' => __('actions.cancel'),
-                        'attrs' => [
-                            'href' => $action
-                        ],
-                    ]) @endbutton        
-                @endif
-
-                {{-- Submeter --}}
-                @if ($withSubmit ?? false)
+            {{-- Submeter --}}
+            @if ($withSubmit ?? false)
+                @cell
                     @button([
                         'text' => __('actions.save'),
                         'icon' => 'check',
-                        'classes' => ['mdc-button--outlined'],
+                        'classes' => [
+                            'button--full-width',
+                            'mdc-button--unelevated'
+                        ],
                         'attrs' => [
                             'type' => 'submit'
                         ]
+                    ]) @endbutton                    
+                @endcell
+            @endif
+
+            {{-- Cancelar --}}
+            @if ($withCancel ?? false)
+                @cell
+                    @button([
+                        'isLink' => true,
+                        'text' => __('actions.cancel'),
+                        'classes' => ['button--full-width'],
+                        'attrs' => [
+                            'href' => $action
+                        ],
                     ]) @endbutton
-                @endif
+                @endcell
+            @endif
             
-            @endcell
         @endgridInner
     
     @endif
