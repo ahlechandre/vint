@@ -16,7 +16,7 @@
             {{-- Heading --}}
             @heading([
                 'title' => __('resources.products'),
-                'content' => __('messages.products.subheading'),
+                'content' => __('messages.products.index'),
             ]) @endheading
         @endcell
         

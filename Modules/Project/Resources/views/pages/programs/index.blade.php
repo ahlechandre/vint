@@ -16,7 +16,7 @@
             {{-- Heading --}}
             @heading([
                 'title' => __('resources.programs'),
-                'content' => __('messages.programs.subheading'),
+                'content' => __('messages.programs.index'),
             ]) @endheading        
         @endcell
         

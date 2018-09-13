@@ -1,6 +1,6 @@
 @heading([
     'pretitle' => __('headlines.search'),
-    'title' => $term,
+    'title' => "\"{$term}\"",
     'tabBar' => [
         'tabs' => [
             [

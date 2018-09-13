@@ -9,18 +9,27 @@
         ]
     ])
         @cell
-            @cardLogin([
-                'title' => __('actions.login'),
-                'subtitle' => __('messages.actions.login_subtitle'),
+            {{-- Login card --}}
+            @card([
+                'classes' => ['card--login']
             ])
-                @form([
-                    'action' => url('login'),
-                    'method' => 'post',
-                    'inputs' => [
-                        'view' => 'system::inputs.login'
-                    ]
-                ]) @endform
-            @endcardLogin
+                @cardHeader
+                    @heading([
+                        'title' => __('messages.login.card_title'),
+                        'content' => __('messages.login.redirect'),
+                    ]) @endheading                
+                @endcardHeader
+
+                @cardContent
+                    @form([
+                        'action' => url('login'),
+                        'method' => 'post',
+                        'inputs' => [
+                            'view' => 'system::inputs.login'
+                        ]
+                    ]) @endform                
+                @endcardContent            
+            @endcard
         @endcell
     @endgridWithInner
 @endsection 

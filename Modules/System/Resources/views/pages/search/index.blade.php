@@ -21,11 +21,11 @@
 
         {{-- Verifica se existe ao menos um recurso com resultado --}}
         @if (!$firstWithResult)
-            <h4 class="mdc-typography--headline4">
-                {{ __('messages.search.not_found', [
-                    'term' => $term
-                ]) }}
-            </h4>
+            @cell
+                @component('components.pagination.paginator-empty', [
+                    'search' => $term
+                ]) @endcomponent            
+            @endcell
         @else
             @foreach ($resources as $resource)
                 @if (!$resource['items']->isEmpty())

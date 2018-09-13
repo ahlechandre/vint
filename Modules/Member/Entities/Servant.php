@@ -29,9 +29,20 @@ class Servant extends Model
         'is_professor'
     ];
 
+    /**
+     *
+     * @var array
+     */
     protected $filterable = [
         'siape',
-        'member.user.name'
+    ];
+
+    /**
+     *
+     * @var array
+     */
+    protected $filterableRelations = [
+        'member',
     ];
 
     /**

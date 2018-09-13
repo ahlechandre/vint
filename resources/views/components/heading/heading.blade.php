@@ -8,7 +8,7 @@
                 </p>
             @endif
 
-            <h1 class="heading__title-text mdc-typography--headline3">{{ $title }}</h1>
+            <h1 class="heading__title-text mdc-typography--headline4">{{ $title }}</h1>
         </div>
 
         @if ($action ?? false)
@@ -26,7 +26,7 @@
     
     @if ($content ?? false)
         <div class="heading__content">
-            <p class="heading__content-text mdc-typography--headline6">{{ $content }}</p>
+            <p class="heading__content-text mdc-typography--headline7">{{ $content }}</p>
         </div>
     @endif
 

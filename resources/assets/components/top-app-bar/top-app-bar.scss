@@ -3,13 +3,12 @@
 
 .top-app-bar {
   @include mdc-top-app-bar-fill-color(#ffffff);
-  @include mdc-top-app-bar-icon-ink-color(#000000);
+  @include mdc-top-app-bar-icon-ink-color(#212121);
 }
 
 a.mdc-top-app-bar__title {
-  color: #000000;
+  color: #212121;
   font-family: 'Roboto Mono', monospace;
-  font-style: italic;
   letter-spacing: 0.5rem;
 }
 
@@ -20,7 +19,7 @@ a.mdc-top-app-bar__title {
 // Search
 .top-app-bar__row--search {
   @include mdc-top-app-bar-fill-color(#ffffff);
-  @include mdc-top-app-bar-icon-ink-color(#000000);
+  @include mdc-top-app-bar-icon-ink-color(#212121);
 }
 
 .top-app-bar__section--text-field,
@@ -53,5 +52,6 @@ a.mdc-top-app-bar__title {
 
   .top-app-bar__row--search {
     display: flex;
+    animation: FadeInFromBottom .075s linear;
   }
 }

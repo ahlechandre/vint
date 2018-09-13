@@ -12,7 +12,7 @@
         @cell
             @heading([
                 'pretitle' => __('resources.products'),
-                'title' => __('messages.products.forms.create_title'),
+                'title' => __('messages.products.create'),
             ]) @endheading
         @endcell
 

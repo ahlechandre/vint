@@ -28,19 +28,9 @@
                             ],
                             'attrs' => [
                                 'href' => '#',
-                                'title' => 'buscar'
+                                'title' => __('actions.search')
                             ]
                         ],
-                        [
-                            'icon' => 'more_vert',
-                            'classes' => [
-                                'material-icons',
-                            ],
-                            'attrs' => [
-                                'href' => '#',
-                                'title' => __('headlines.options')
-                            ]
-                        ]                        
                     ]
                 ]                
             ]          

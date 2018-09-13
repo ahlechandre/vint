@@ -20,106 +20,107 @@
         
         {{-- Paginável --}}
         @cell
-            @list([
-                'twoLine' => true,
-                'nonInteractive' => true,
-                'items' => $coordinators->map(function ($coordinator) use ($user, $group) {
-                    return [
-                        'icon' => __('icons.coordinator'),
-                        'text' => [
-                            'link' => url("members/{$coordinator->member_user_id}"),
-                            'primary' => $coordinator->member
-                                ->user
-                                ->name,
-                            'secondary' => $coordinator->created_at
-                                ->diffForHumans(),
-                        ],
-                        'metas' => [
-                            [
-                                'ignore' => $user->cant('updateCoordinators', $group),
-                                'dialogContainer' => [
-                                    'iconButton' => [
-                                        'icon' => __('icons.edit'),
-                                    ],
-                                    'form' => [
-                                        'action' => url("groups/{$group->id}/coordinators/{$coordinator->member_user_id}"),
-                                        'method' => 'put'
-                                    ],
-                                    'dialog' => [
-                                        'title' => __('messages.coordinators.dialogs.update_title'),
-                                        'attrs' => [
-                                            'id' => "dialog-coordinators-edit-{$coordinator->member_user_id}"
+            @paginable([
+                'paginator' => $coordinators,
+                'list' => [
+                    'twoLine' => true,
+                    'nonInteractive' => true,
+                    'items' => $coordinators->map(function ($coordinator) use ($user, $group) {
+                        return [
+                            'icon' => __('icons.coordinator'),
+                            'text' => [
+                                'link' => url("members/{$coordinator->member_user_id}"),
+                                'primary' => $coordinator->member
+                                    ->user
+                                    ->name,
+                                'secondary' => $coordinator->created_at
+                                    ->diffForHumans(),
+                            ],
+                            'metas' => [
+                                [
+                                    'ignore' => $user->cant('updateCoordinators', $group),
+                                    'dialogContainer' => [
+                                        'iconButton' => [
+                                            'icon' => __('icons.edit'),
                                         ],
-                                        'component' => [
-                                            'view' => 'group::inputs.coordinator-update',
-                                            'props' => [
-                                                'coordinator' => $coordinator
-                                            ],
+                                        'form' => [
+                                            'action' => url("groups/{$group->id}/coordinators/{$coordinator->member_user_id}"),
+                                            'method' => 'put'
                                         ],
-                                        'footer' => [
-                                            'buttonAccept' => [
-                                                'text' => __('actions.update'),
-                                                'attrs' => [
-                                                    'type' => 'submit'
-                                                ]
+                                        'dialog' => [
+                                            'title' => __('dialogs.coordinators.edit_title'),
+                                            'attrs' => [
+                                                'id' => "dialog-coordinators-edit-{$coordinator->member_user_id}"
                                             ],
-                                            'buttonCancel' => [
-                                                'text' => __('actions.cancel'),
-                                                'attrs' => [
-                                                    'type' => 'button'
-                                                ]
-                                            ]                        
+                                            'component' => [
+                                                'view' => 'group::inputs.coordinator-update',
+                                                'props' => [
+                                                    'coordinator' => $coordinator
+                                                ],
+                                            ],
+                                            'footer' => [
+                                                'buttonAccept' => [
+                                                    'text' => __('actions.update'),
+                                                    'attrs' => [
+                                                        'type' => 'submit'
+                                                    ]
+                                                ],
+                                                'buttonCancel' => [
+                                                    'text' => __('actions.cancel'),
+                                                    'attrs' => [
+                                                        'type' => 'button'
+                                                    ]
+                                                ]                        
+                                            ]
                                         ]
-                                    ]
-                                ],
-                            ],                            
-                            [
-                                'ignore' => $user->cant('deleteCoordinators', $group),
-                                'dialogContainer' => [
-                                    'iconButton' => [
-                                        'icon' => __('icons.delete'),
                                     ],
-                                    'form' => [
-                                        'action' => url("groups/{$group->id}/coordinators/{$coordinator->member_user_id}"),
-                                        'method' => 'delete'
-                                    ],
-                                    'dialog' => [
-                                        'title' => __('messages.coordinators.dialogs.delete_title'),
-                                        'attrs' => [
-                                            'id' => "dialog-coordinators-delete-{$coordinator->member_user_id}"
+                                ],                            
+                                [
+                                    'ignore' => $user->cant('deleteCoordinators', $group),
+                                    'dialogContainer' => [
+                                        'iconButton' => [
+                                            'icon' => __('icons.remove'),
                                         ],
-                                        'footer' => [
-                                            'buttonAccept' => [
-                                                'text' => __('actions.confirm'),
-                                                'attrs' => [
-                                                    'type' => 'submit'
-                                                ]
+                                        'form' => [
+                                            'action' => url("groups/{$group->id}/coordinators/{$coordinator->member_user_id}"),
+                                            'method' => 'delete'
+                                        ],
+                                        'dialog' => [
+                                            'title' => __('dialogs.coordinators.remove_title'),
+                                            'attrs' => [
+                                                'id' => "dialog-coordinators-delete-{$coordinator->member_user_id}"
                                             ],
-                                            'buttonCancel' => [
-                                                'text' => __('actions.cancel'),
-                                                'attrs' => [
-                                                    'type' => 'button'
-                                                ]
-                                            ]                        
+                                            'footer' => [
+                                                'buttonAccept' => [
+                                                    'text' => __('actions.confirm'),
+                                                    'attrs' => [
+                                                        'type' => 'submit'
+                                                    ]
+                                                ],
+                                                'buttonCancel' => [
+                                                    'text' => __('actions.cancel'),
+                                                    'attrs' => [
+                                                        'type' => 'button'
+                                                    ]
+                                                ]                        
+                                            ]
                                         ]
-                                    ]
-                                ],
-                            ],                            
-                            [
-                                'iconButton' => [
-                                    'isLink' => true, 
-                                    'icon' => __('icons.show'),
-                                    'attrs' => [
-                                        'href' => url("members/{$coordinator->member_user_id}")
+                                    ],
+                                ],                            
+                                [
+                                    'iconButton' => [
+                                        'isLink' => true, 
+                                        'icon' => __('icons.show'),
+                                        'attrs' => [
+                                            'href' => url("members/{$coordinator->member_user_id}")
+                                        ]
                                     ]
                                 ]
-                            ]
-                        ],
-                    ];
-                }),                
-            ])
-            @endlist
-
+                            ],
+                        ];
+                    }),                
+                ]
+            ]) @endpaginable
             {{-- Novo --}}
             @can('createCoordinators', $group)
                 @fabFixed([

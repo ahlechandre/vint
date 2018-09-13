@@ -55,7 +55,7 @@ class VintTopAppBarWithSearch {
     for (let i = 0; i < this.state.closeSearchElements.length; i++) {
       this.state.closeSearchElements[i].addEventListener('click', this.closeSearch)
     }
-    this.state.textFieldElement.addEventListener('blur', this.closeSearch)
+    // this.state.textFieldElement.addEventListener('blur', this.closeSearch)
     this.state.element.addEventListener('keyup', event => {
       // Esc.
       if (event.keyCode === 27) {

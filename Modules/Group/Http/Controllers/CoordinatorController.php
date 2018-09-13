@@ -46,7 +46,7 @@ class CoordinatorController extends Controller
     {
         $term = $request->get('q');
         $index = $this->coordinators
-            ->index($groupId, null, $term);
+            ->index($groupId, self::$perPage, $term);
         $group = $index->data['group'];
         $coordinators = $index->data['coordinators'];
         $user = $request->user();

@@ -16,8 +16,8 @@
             {{-- Heading --}}
             @heading([
                 'title' => __('resources.projects'),
-                'content' => __('messages.projects.subheading'),
-            ]) @endheading        
+                'content' => __('messages.projects.index'),
+            ]) @endheading
         @endcell
         
         {{-- Paginável --}}

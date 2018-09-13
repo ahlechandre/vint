@@ -8,4 +8,6 @@
   <div class="mdc-line-ripple"></div>
 </div>
 
-@textfieldHelperText($helperText ?? []) @endtextfieldHelperText
+@if ($helperText ?? false)
+  @textfieldHelperText($helperText) @endtextfieldHelperText
+@endif

@@ -7,13 +7,12 @@
                 'name' => 'email',
                 'type' => 'email',
                 'required' => '',
-                'autocomplete' => 'off',
             ],
-            'helperText' => [
+            'helperText' => isset($errors->get('auth')[0]) ? [
                 'isPersistent' => true,
-                'isValidation' => $errors->get('auth')[0] ?? false,
-                'text' => $errors->get('auth')[0] ?? null,
-            ]
+                'isValidation' => true,
+                'text' => $errors->get('auth')[0],
+            ] : null
         ]) @endtextfield
     @endcell
 
@@ -29,13 +28,15 @@
         ]) @endtextfield
     @endcell 
 
+    {{-- Espaçamento --}}
+    @cell @endcell
+
     {{-- Cadastre-se --}}
     @cell([
         'when' => ['d' => 6, 't' => 4, 'p' => 2]
     ])
         @button([
             'isLink' => true,
-            'classes' => ['mdc-button--outlined'],
             'text' => __('actions.signup'),
             'attrs' => [
                 'href' => url('register')
@@ -50,7 +51,8 @@
     ])
         @button([
             'text' => __('actions.signin'),
-            'classes' => ['mdc-button--unelevated'],
+            'classes' => ['mdc-button--outlined'],
+            'icon' => __('icons.forward'),
             'attrs' => [
                 'type' => 'submit'
             ]

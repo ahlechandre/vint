@@ -3,8 +3,8 @@
 return [
     // Paginação.
     'pagination' => [
-        'is_empty' => 'Nenhum resultado',
-        'is_empty_search' => 'Nenhum resultado para ":query"',
+        'is_empty' => 'Nenhum resultado...',
+        'is_empty_search' => 'Nenhum resultado para ":query"...',
     ],
 
     // Usuários.
@@ -28,17 +28,19 @@ return [
     
     // Login.
     'login' => [
-        'redirect' => 'Faça login para continuar',
+        'card_title' => 'Login',
+        'redirect' => 'Faça login para continuar.',
     ],
 
     // Membros.
     'members' => [
+        'index' => 'Lista de membros mais recentes.',
         'register' => 'Preencha os seus dados para participar do VINT',
     ],
 
     // Programas.
     'programs' => [
-        'index' => 'Lista de programas mais recentes',
+        'index' => 'Lista de programas mais recentes.',
         'create' => 'Novo programa',
         'created' => 'Programa criado',
         'edit' => 'Editar o programa',
@@ -47,7 +49,7 @@ return [
 
     // Projetos.
     'projects' => [
-        'index' => 'Lista de projetos mais recentes',
+        'index' => 'Lista de projetos mais recentes.',
         'create' => 'Novo projeto',
         'created' => 'Projeto criado',
         'edit' => 'Editar o projeto',
@@ -56,7 +58,7 @@ return [
 
     // Produtos.
     'products' => [
-        'index' => 'Lista de produtos mais recentes',
+        'index' => 'Lista de produtos mais recentes.',
         'create' => 'Novo produto',
         'created' => 'Produto criado',
         'edit' => 'Editar o produto',
@@ -66,7 +68,7 @@ return [
 
     // Publicações.
     'publications' => [
-        'index' => 'Lista de publicações mais recentes',
+        'index' => 'Lista de publicações mais recentes.',
         'create' => 'Nova publicação',
         'created' => 'Publicação criada',
         'edit' => 'Editar a publicação',

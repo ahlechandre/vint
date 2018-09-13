@@ -24,7 +24,7 @@ class CoordinatorRepository
         $coordinators = $group->coordinators()
             ->with('member.user')
             ->filterLike($term)
-            ->get();
+            ->simplePaginate($perPage);
 
         return repository_result(200, null, [
             'group' => $group,

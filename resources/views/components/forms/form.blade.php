@@ -31,34 +31,37 @@
             @cell @endcell
             @cell @endcell
 
+            {{-- Cancelar --}}
+            @if ($withCancel ?? false)
+                @cell([
+                    'when' => ['d' => 6, 't' => 4, 'p' => 2],
+                ])
+                    @button([
+                        'isLink' => true,
+                        'text' => __('actions.cancel'),
+                        'attrs' => [
+                            'href' => $action
+                        ],
+                    ]) @endbutton
+                @endcell
+            @endif
+
             {{-- Submeter --}}
             @if ($withSubmit ?? false)
-                @cell
+                @cell([
+                    'when' => ['d' => 6, 't' => 4, 'p' => 2],
+                    'classes' => ['mdc-layout-grid--align-right']
+                ])
                     @button([
                         'text' => __('actions.save'),
                         'icon' => 'check',
                         'classes' => [
-                            'button--full-width',
-                            'mdc-button--unelevated'
+                            'mdc-button--outlined'
                         ],
                         'attrs' => [
                             'type' => 'submit'
                         ]
                     ]) @endbutton                    
-                @endcell
-            @endif
-
-            {{-- Cancelar --}}
-            @if ($withCancel ?? false)
-                @cell
-                    @button([
-                        'isLink' => true,
-                        'text' => __('actions.cancel'),
-                        'classes' => ['button--full-width'],
-                        'attrs' => [
-                            'href' => $action
-                        ],
-                    ]) @endbutton
                 @endcell
             @endif
             

@@ -16,8 +16,8 @@
             {{-- Heading --}}
             @heading([
                 'title' => __('resources.members'),
-                'content' => __('messages.members.subheading'),
-            ]) @endheading        
+                'content' => __('messages.members.index'),
+            ]) @endheading
         @endcell
         
         @cell

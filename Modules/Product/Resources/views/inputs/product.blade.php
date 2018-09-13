@@ -1,7 +1,7 @@
 @gridInner
     {{-- Titulo --}}
     @cell([
-        'when' => ['d' => 12, 't' => 8, 'p' => 4]
+        'when' => ['d' => 6, 't' => 8, 'p' => 4]
     ])
         @textfield([
             'label' => __('attrs.title'),
@@ -18,7 +18,7 @@
 
     {{-- URL --}}
     @cell([
-        'when' => ['d' => 12, 't' => 8, 'p' => 4]
+        'when' => ['d' => 6, 't' => 8, 'p' => 4]
     ])
         @textfield([
             'label' => __('attrs.url'),

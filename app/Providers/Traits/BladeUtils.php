@@ -95,7 +95,6 @@ trait BladeUtils
         'components.cards.card-header' => 'cardHeader',
         'components.cards.card-content' => 'cardContent',
         'components.cards.card-paper' => 'cardPaper',
-        'components.cards.card-login' => 'cardLogin',
         'components.cards.card-show' => 'cardShow',
         'components.cards.card-description' => 'cardDescription',
 

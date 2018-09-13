@@ -1,8 +1,4 @@
 @gridInner 
-    @cell
-        {{ __('messages.coordinators.dialogs.update_body') }}
-    @endcell
-
     {{-- Coordenador --}}
     @cell([
         'when' => [
