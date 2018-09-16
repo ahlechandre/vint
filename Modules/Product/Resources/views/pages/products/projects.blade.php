@@ -1,7 +1,11 @@
 @extends('layouts.'. (
     auth()->check() ? 'master' : 'default'
 ), [
-    'title' => __('resources.products').' / '.$product->id 
+    'title' => get_breadcrumb([
+        __('resources.products'),
+        $product->title,
+        __('resources.projects'),
+    ])
 ])
 
 @section('main')

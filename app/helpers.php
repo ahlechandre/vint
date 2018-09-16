@@ -1,6 +1,18 @@
 <?php
 
 /**
+ *
+ * @param  array  $items
+ * @return void
+ */
+function get_breadcrumb($items)
+{
+    return array_reduce($items, function ($initial, $item) {
+        return empty($initial) ? $item : $initial . " > {$item}";
+    }, '');
+}
+
+/**
  * Define os atributos de elementos HTML.
  *
  * @param array $attrs

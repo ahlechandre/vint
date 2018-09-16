@@ -6,7 +6,12 @@
             return [
                 'text' => [
                     'primary' => $item['label'],
-                    'secondary' => $item['value'] ?? __('messages.attrs.empty'),
+                    'secondary' => isset($item['value']) ?
+                        (
+                            $item['value'] === 0 ?
+                                __('attrs.count_zero') : $item['value']
+                        ) :
+                        __('attrs.empty'),
                 ],
                 'meta' => isset($item['link']) ? [
                     'iconButton' => [

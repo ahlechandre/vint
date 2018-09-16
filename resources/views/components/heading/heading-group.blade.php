@@ -1,7 +1,7 @@
 @heading([
     'pretitle' => __('resources.groups'),
     'title' => $group->name,
-    'action' => auth()->check() && $user->isMember() ?
+    'action' => $user && $user->isMember() ?
         [
             'dialogContainer' => [
                 'button' => $group->isMember($user->member) ?
@@ -14,7 +14,7 @@
                             ] :
                             [
                                 'icon' => __('icons.requested_group'),
-                                'text' => __('actions.requested_group'),
+                                'text' => __('headlines.requested_group'),
                                 'classes' => ['mdc-button--outlined']
                             ]
                     ) :
@@ -31,14 +31,23 @@
                     'attrs' => [
                         'id' => 'dialog-group-request',
                     ], 
-                    'title' => __('messages.members.dialogs.' . (
+                    'title' => __('dialogs.members.' . (
                         $group->isMember($user->member) ?
                             (
                                 $group->isApprovedMember($user->member) ?
                                     'leave_group_title' :
-                                    'requested_group_title'
+                                    'request_group_cancel_title'
                             ) :
                             'request_group_title'
+                    )),
+                    'text' => __('dialogs.members.' . (
+                        $group->isMember($user->member) ?
+                            (
+                                $group->isApprovedMember($user->member) ?
+                                    'leave_group_body' :
+                                    'request_group_cancel_body'
+                            ) :
+                            'request_group_body'
                     )),
                     'footer' => [
                         'buttonAccept' => [

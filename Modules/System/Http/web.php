@@ -49,9 +49,9 @@ Route::middleware('unauth')
          * Login
          * ---------------------------------------
          */
-        Route::get('/login', '\App\Http\Controllers\Auth\LoginController@login')
+        Route::get('/login', '\App\Http\Controllers\Auth\LoginController@showLoginForm')
             ->name('login');
-        Route::post('/login', '\App\Http\Controllers\Auth\LoginController@authenticate');
+        Route::post('/login', '\App\Http\Controllers\Auth\LoginController@login');
     });
 
 // -------------------------------------------------------

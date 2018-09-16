@@ -1,5 +1,8 @@
 @extends('layouts.master', [
-    'title' => __('resources.publications').' / '.__('actions.new') 
+    'title' => get_breadcrumb([
+        __('resources.publications'),
+        __('actions.new')
+    ]) 
 ])
 
 @section('main')
@@ -12,7 +15,7 @@
         @cell
             @heading([
                 'pretitle' => __('resources.publications'),
-                'title' => __('messages.publications.forms.create_title'),
+                'title' => __('messages.publications.create'),
             ]) @endheading
         @endcell
 

@@ -14,6 +14,7 @@ return [
     'forward' => 'arrow_forward',
     'view' => 'remove_red_eye',
     'logout' => 'exit_to_app', 
+    'logoin' => 'exit_to_app', 
     'delete' => 'delete_outlined', 
     'remove' => 'close', 
 
@@ -23,8 +24,8 @@ return [
     'profile' => 'person_outline', 
 
     // Módulo / Usuários.
-    'users' => 'person',
-    'user' => 'person',
+    'users' => 'person_outline',
+    'user' => 'person_outline',
     'user_types' => 'account_circle',
     'user_type' => 'account_circle',
     'dashboard' => 'dashboard',

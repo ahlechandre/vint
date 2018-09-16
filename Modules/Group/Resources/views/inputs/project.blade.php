@@ -51,7 +51,7 @@
 
     {{-- Coordenador --}}
     @cell([
-        'when' => ['d' => 4, 't' => 8, 'p' => 4]
+        'when' => ['d' => 6, 't' => 8, 'p' => 4]
     ])
         @select([
             'label' => __('attrs.coordinator'),
@@ -80,9 +80,38 @@
         ]) @endselect
     @endcell
 
+    {{-- Programa --}}
+    @cell([
+        'when' => ['d' => 6, 't' => 8, 'p' => 4]
+    ])
+        @select([
+            'label' => __('resources.program'),
+            'helperText' => $validations['program_id'] ?? null,
+            'attrs' => [
+                'name' => 'program_id',
+                'id' => 'textfield-project-program',
+            ],
+            'options' => $programs->map(function ($program) use ($programId) {
+                return [
+                    'text' => $program->name,
+                    'attrs' => [
+                        'value' => $program->id,
+                        'selected' => (int) $programId === $program->id
+                    ],
+                ];
+            })->prepend([
+                'text' => '',
+                'attrs' => [
+                    'value' => '',
+                    'selected' => '',
+                ],
+            ])
+        ]) @endselect
+    @endcell
+
     {{-- Orientador --}}
     @cell([
-        'when' => ['d' => 4, 't' => 8, 'p' => 4]
+        'when' => ['d' => 6, 't' => 8, 'p' => 4]
     ])
         @select([
             'label' => __('attrs.leader'),
@@ -111,7 +140,7 @@
 
     {{-- Apoiador --}}
     @cell([
-        'when' => ['d' => 4, 't' => 8, 'p' => 4]
+        'when' => ['d' => 6, 't' => 8, 'p' => 4]
     ])
         @select([
             'label' => __('attrs.supporter'),
@@ -138,35 +167,6 @@
         ]) @endselect
     @endcell
 
-    {{-- Programa --}}
-    @cell([
-        'when' => ['d' => 12, 't' => 8, 'p' => 4]
-    ])
-        @select([
-            'label' => __('resources.program'),
-            'helperText' => $validations['program_id'] ?? null,
-            'attrs' => [
-                'name' => 'program_id',
-                'id' => 'textfield-project-program',
-            ],
-            'options' => $programs->map(function ($program) use ($programId) {
-                return [
-                    'text' => $program->name,
-                    'attrs' => [
-                        'value' => $program->id,
-                        'selected' => (int) $programId === $program->id
-                    ],
-                ];
-            })->prepend([
-                'text' => '',
-                'attrs' => [
-                    'value' => '',
-                    'selected' => '',
-                ],
-            ])
-        ]) @endselect
-    @endcell
-
     {{-- Description --}}
     @cell([
         'when' => ['d' => 12, 't' => 8, 'p' => 4]
@@ -179,7 +179,6 @@
                 'id' => 'textfield-project-description',
                 'required' => '',
                 'cols' => 100,
-                'rows' => 6,
                 'value' => $description
             ],
         ]) @endtextarea

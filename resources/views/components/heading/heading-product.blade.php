@@ -1,8 +1,6 @@
 @heading([
     'pretitle' => __('resources.products'),
-    'title' => __("messages.products.name", [
-        'id' => $product->id
-    ]),
+    'title' => $product->title,
     'tabBar' => [
         'tabs' => [
             [

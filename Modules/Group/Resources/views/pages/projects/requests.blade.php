@@ -1,7 +1,11 @@
 @extends('layouts.'. (
     auth()->check() ? 'master' : 'default'
 ), [
-    'title' => __('resources.groups').' / '.$group->name 
+    'title' => get_breadcrumb([
+        __('resources.groups'),
+        $group->name,
+        __('resources.projects_requests')
+    ]) 
 ])
 
 @section('main')
@@ -38,14 +42,17 @@
                 'button' => [
                     'icon' => __('icons.approve'),
                     'text' => __('actions.approve_all'),
-                    'classes' => ['mdc-button--unelevated']
+                    'classes' => ['mdc-button--outlined']
                 ],
                 'form' => [
                     'action' => url("groups/{$group->id}/projects/requests"),
                     'method' => 'put'
                 ],
                 'dialog' => [
-                    'title' => __('messages.groups.projects.dialogs.approve_all_title'),
+                    'title' => __('dialogs.projects_requests.approve_all_title', [
+                        'count' => $projects->count()
+                    ]),
+                    'text' => __('dialogs.projects_requests.approve_all_body'),
                     'attrs' => [
                         'id' => 'dialog-group-projects-requests-approve-all'
                     ],
@@ -76,7 +83,9 @@
                     'method' => 'delete'
                 ],
                 'dialog' => [
-                    'title' => __('messages.groups.projects.dialogs.deny_all_title'),
+                    'title' => __('dialogs.projects_requests.deny_all_title', [
+                        'count' => $projects->count()
+                    ]),
                     'attrs' => [
                         'id' => 'dialog-group-projects-requests-deny-all'
                     ],
@@ -126,7 +135,10 @@
                                         'attrs' => [
                                             'id' => "dialog-group-project-request-approve-{$project->id}"
                                         ],
-                                        'title' => __('messages.groups.projects.dialogs.approve'),
+                                        'title' => __('dialogs.projects_requests.approve_title', [
+                                            'name' => $project->name
+                                        ]),
+                                        'text' => __('dialogs.projects_requests.approve_body'),
                                         'footer' => [
                                             'buttonAccept' => [
                                                 'text' => __('actions.confirm'),
@@ -157,7 +169,9 @@
                                         'attrs' => [
                                             'id' => "dialog-group-project-request-deny-{$project->id}"
                                         ],
-                                        'title' => __('messages.groups.projects.dialogs.deny'),
+                                        'title' => __('dialogs.projects_requests.deny_title', [
+                                            'name' => $project->name
+                                        ]),
                                         'footer' => [
                                             'buttonAccept' => [
                                                 'text' => __('actions.confirm'),

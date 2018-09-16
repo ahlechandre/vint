@@ -2,10 +2,11 @@
 
 namespace Modules\Group\Policies;
 
-use Illuminate\Auth\Access\HandlesAuthorization;
 use Modules\User\Entities\User;
-use Modules\Member\Entities\Member;
+use Modules\Group\Entities\Group;
 use Modules\Member\Entities\Role;
+use Modules\Member\Entities\Member;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class MemberPolicy
 {
@@ -44,7 +45,7 @@ class MemberPolicy
      * @return bool
      */
     public function updateRequests(User $user, Group $group)
-    {
+    {        
         return $user->isManager() ||
             $group->hasCoordinatorUser($user) ||
             $group->allowsForUser('members_requests.update', $user);

@@ -6,6 +6,7 @@ return [
     'dashboard' =>          'Dashboard',
     'general' =>            'Geral',
     'homepage' =>           'Página inicial',
+    'login' =>              'Entrar',
     'my_groups' =>          'Meus grupos',
     'my_profile' =>         'Meu perfil',
     'next_page' =>          'Próxima',

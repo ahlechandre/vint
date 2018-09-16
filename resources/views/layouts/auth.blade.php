@@ -9,7 +9,6 @@
     <title>{{ $title }}</title>
     {{-- Material icons --}}
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
     {{-- MDC + App --}}
     <link rel="stylesheet" href="{{ asset('css/vint.css') }}">
   </head>
@@ -28,7 +27,7 @@
         'attrs' => [
           'href' => url('/')
         ],
-        'text' => 'LONTANO',
+        'text' => 'VINT',
       ]
     ]) @endtopAppBarDefault
 
@@ -37,6 +36,30 @@
         @yield('main')    
     </div>
     
+    {{-- Erros de validação --}}
+    @if ($errors->any())
+      @snackbar([
+        'classes' => ['mdc-snackbar--align-start'],
+        'attrs' => [
+            'data-vint-auto-init' => 'VintSnackbar',
+            'data-vint-snackbar-message' => $errors->first(),
+            'data-vint-snackbar-action-text' => 'Ok',
+        ]
+      ]) @endsnackbar    
+    @endif
+
+    {{-- Snackbars --}}
+    @if (session('snackbar'))
+      @snackbar([
+        'classes' => ['mdc-snackbar--align-start'],
+        'attrs' => [
+            'data-vint-auto-init' => 'VintSnackbar',
+            'data-vint-snackbar-message' => session('snackbar'),
+            'data-vint-snackbar-action-text' => 'Ok',
+        ]
+      ]) @endsnackbar    
+    @endif
+        
     {{-- MDC --}}
     <script src="{{ asset('js/material-components-web.js') }}" defer></script>
     {{-- VINT --}}

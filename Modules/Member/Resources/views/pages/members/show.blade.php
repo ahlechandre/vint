@@ -1,7 +1,10 @@
 @extends('layouts.'. (
     auth()->check() ? 'master' : 'default'
 ), [
-    'title' => __('resources.members').' / '.$member->user->name 
+    'title' => get_breadcrumb([
+        __('resources.members'),
+        $member->user->name        
+    ]) 
 ])
 
 @section('main')

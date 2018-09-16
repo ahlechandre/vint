@@ -93,10 +93,8 @@
                 'id' => 'textfield-program-description',
                 'required' => '',
                 'cols' => 100,
-                'rows' => 6,
                 'value' => $description
             ],
         ]) @endtextarea
     @endcell
-
 @endgridInner

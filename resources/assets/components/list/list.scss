@@ -15,8 +15,14 @@
 .mdc-list--avatar-list {
   .mdc-list-item__graphic {
     color: $mdc-theme-primary;
-    background-color: rgba(0, 0, 0, .1);
+    background-color: $theme-primary-light;
   }    
+}
+
+.list-item__graphic--letter {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 100;
 }
 
 .list--paginable {

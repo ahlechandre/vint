@@ -1,7 +1,11 @@
 @extends('layouts.'. (
     auth()->check() ? 'master' : 'default'
 ), [
-    'title' => __('resources.groups').' / '.$group->name 
+    'title' => get_breadcrumb([
+        __('resources.groups'),
+        $group->name,
+        __('resources.members_requests'),
+    ]) 
 ])
 
 @section('main')
@@ -38,14 +42,17 @@
                 'button' => [
                     'icon' => __('icons.approve'),
                     'text' => __('actions.approve_all'),
-                    'classes' => ['mdc-button--unelevated']
+                    'classes' => ['mdc-button--outlined']
                 ],
                 'form' => [
                     'action' => url("groups/{$group->id}/members/requests"),
                     'method' => 'put'
                 ],
                 'dialog' => [
-                    'title' => __('messages.groups.members.dialogs.approve_all_title'),
+                    'title' => __('dialogs.members_requests.approve_all_title', [
+                        'count' => $members->count()
+                    ]),
+                    'text' => __('dialogs.members_requests.approve_all_body'),
                     'attrs' => [
                         'id' => 'dialog-group-members-requests-approve-all'
                     ],
@@ -76,7 +83,9 @@
                     'method' => 'delete'
                 ],
                 'dialog' => [
-                    'title' => __('messages.groups.members.dialogs.deny_all_title'),
+                    'title' => __('dialogs.members_requests.deny_all_title', [
+                        'count' => $members->count()
+                    ]),
                     'attrs' => [
                         'id' => 'dialog-group-members-requests-deny-all'
                     ],
@@ -126,7 +135,10 @@
                                         'attrs' => [
                                             'id' => "dialog-group-member-request-approve-{$member->user_id}"
                                         ],
-                                        'title' => __('messages.groups.members.dialogs.approve'),
+                                        'title' => __('dialogs.members_requests.approve_title'),
+                                        'text' => __('dialogs.members_requests.approve_body', [
+                                            'name' => $member->user->name ?? null
+                                        ]),
                                         'footer' => [
                                             'buttonAccept' => [
                                                 'text' => __('actions.confirm'),
@@ -157,7 +169,7 @@
                                         'attrs' => [
                                             'id' => "dialog-group-member-request-deny-{$member->user_id}"
                                         ],
-                                        'title' => __('messages.groups.members.dialogs.deny'),
+                                        'title' => __('dialogs.members_requests.deny_title'),
                                         'footer' => [
                                             'buttonAccept' => [
                                                 'text' => __('actions.confirm'),

@@ -244,6 +244,11 @@ class Group extends Model
         if (!$user->isMember()) {
             return true;
         }
+
+        // Se não é membro aprovado do grupo.
+        if (!$this->membersApproved()->find($user->id)) {
+            return false;
+        }
         $explode = explode('.', $permissionSlug);
         $resource = $explode[0];
         $action = $explode[1];

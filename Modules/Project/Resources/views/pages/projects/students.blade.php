@@ -1,7 +1,11 @@
 @extends('layouts.'. (
     auth()->check() ? 'master' : 'default'
 ), [
-    'title' => __('resources.projects').' / '.$project->name 
+    'title' => get_breadcrumb([
+        __('resources.projects'),
+        $project->name,
+        __('resources.students'),
+    ]) 
 ])
 
 @section('main')
@@ -20,105 +24,107 @@
         
         {{-- Paginável --}}
         @cell
-            @list([
-                'twoLine' => true,
-                'nonInteractive' => true,
-                'items' => $students->map(function ($student) use ($user, $project) {
-                    return [
-                        'icon' => __('icons.student'),
-                        'text' => [
-                            'link' => url("members/{$student->member_user_id}"),
-                            'primary' => $student->member
-                                ->user
-                                ->name,
-                            'secondary' => $student->created_at
-                                ->diffForHumans(),
-                        ],
-                        'metas' => [
-                            [
-                                'ignore' => !auth()->check() || $user->cant('updateStudents', $project),
-                                'dialogContainer' => [
-                                    'iconButton' => [
-                                        'icon' => __('icons.edit'),
-                                    ],
-                                    'form' => [
-                                        'action' => url("projects/{$project->id}/students/{$student->member_user_id}"),
-                                        'method' => 'put'
-                                    ],
-                                    'dialog' => [
-                                        'title' => __('messages.projects.students.dialogs.update_title'),
-                                        'attrs' => [
-                                            'id' => "dialog-students-edit-{$student->member_user_id}"
+            @paginable([
+                'paginator' => $students,
+                'list' => [
+                    'twoLine' => true,
+                    'nonInteractive' => true,
+                    'items' => $students->map(function ($student) use ($user, $project) {
+                        return [
+                            'icon' => __('icons.student'),
+                            'text' => [
+                                'link' => url("members/{$student->member_user_id}"),
+                                'primary' => $student->member
+                                    ->user
+                                    ->name,
+                                'secondary' => $student->created_at
+                                    ->diffForHumans().", ".__("attrs.is_scholarship_value.{$student->pivot->is_scholarship}"),
+                            ],
+                            'metas' => [
+                                [
+                                    'ignore' => !auth()->check() || $user->cant('updateStudents', $project),
+                                    'dialogContainer' => [
+                                        'iconButton' => [
+                                            'icon' => __('icons.edit'),
                                         ],
-                                        'component' => [
-                                            'view' => 'project::inputs.project-student-update',
-                                            'props' => [
-                                                'student' => $student
-                                            ],
+                                        'form' => [
+                                            'action' => url("projects/{$project->id}/students/{$student->member_user_id}"),
+                                            'method' => 'put'
                                         ],
-                                        'footer' => [
-                                            'buttonAccept' => [
-                                                'text' => __('actions.update'),
-                                                'attrs' => [
-                                                    'type' => 'submit'
-                                                ]
+                                        'dialog' => [
+                                            'title' => __('messages.projects.students.dialogs.update_title'),
+                                            'attrs' => [
+                                                'id' => "dialog-students-edit-{$student->member_user_id}"
                                             ],
-                                            'buttonCancel' => [
-                                                'text' => __('actions.cancel'),
-                                                'attrs' => [
-                                                    'type' => 'button'
-                                                ]
-                                            ]         
+                                            'component' => [
+                                                'view' => 'project::inputs.project-student-update',
+                                                'props' => [
+                                                    'student' => $student
+                                                ],
+                                            ],
+                                            'footer' => [
+                                                'buttonAccept' => [
+                                                    'text' => __('actions.update'),
+                                                    'attrs' => [
+                                                        'type' => 'submit'
+                                                    ]
+                                                ],
+                                                'buttonCancel' => [
+                                                    'text' => __('actions.cancel'),
+                                                    'attrs' => [
+                                                        'type' => 'button'
+                                                    ]
+                                                ]         
+                                            ]
                                         ]
-                                    ]
-                                ],
-                            ],             
-                            [
-                                'ignore' => !auth()->check() || $user->cant('deleteStudents', $project),
-                                'dialogContainer' => [
-                                    'iconButton' => [
-                                        'icon' => __('icons.remove'),
                                     ],
-                                    'form' => [
-                                        'action' => url("projects/{$project->id}/students/{$student->member_user_id}"),
-                                        'method' => 'delete'
-                                    ],
-                                    'dialog' => [
-                                        'title' => __('messages.projects.students.dialogs.delete_title'),
-                                        'attrs' => [
-                                            'id' => "dialog-students-delete-{$student->member_user_id}"
+                                ],             
+                                [
+                                    'ignore' => !auth()->check() || $user->cant('deleteStudents', $project),
+                                    'dialogContainer' => [
+                                        'iconButton' => [
+                                            'icon' => __('icons.remove'),
                                         ],
-                                        'footer' => [
-                                            'buttonAccept' => [
-                                                'text' => __('actions.confirm'),
-                                                'attrs' => [
-                                                    'type' => 'submit'
-                                                ]
+                                        'form' => [
+                                            'action' => url("projects/{$project->id}/students/{$student->member_user_id}"),
+                                            'method' => 'delete'
+                                        ],
+                                        'dialog' => [
+                                            'title' => __('messages.projects.students.dialogs.delete_title'),
+                                            'attrs' => [
+                                                'id' => "dialog-students-delete-{$student->member_user_id}"
                                             ],
-                                            'buttonCancel' => [
-                                                'text' => __('actions.cancel'),
-                                                'attrs' => [
-                                                    'type' => 'button'
-                                                ]
-                                            ]                        
+                                            'footer' => [
+                                                'buttonAccept' => [
+                                                    'text' => __('actions.confirm'),
+                                                    'attrs' => [
+                                                        'type' => 'submit'
+                                                    ]
+                                                ],
+                                                'buttonCancel' => [
+                                                    'text' => __('actions.cancel'),
+                                                    'attrs' => [
+                                                        'type' => 'button'
+                                                    ]
+                                                ]                        
+                                            ]
                                         ]
-                                    ]
-                                ],
-                            ],     
-                            [
-                                'iconButton' => [
-                                    'isLink' => true, 
-                                    'icon' => __('icons.show'),
-                                    'attrs' => [
-                                        'href' => url("members/{$student->member_user_id}")
+                                    ],
+                                ],     
+                                [
+                                    'iconButton' => [
+                                        'isLink' => true, 
+                                        'icon' => __('icons.show'),
+                                        'attrs' => [
+                                            'href' => url("members/{$student->member_user_id}")
+                                        ]
                                     ]
                                 ]
-                            ]
-                        ],
-                    ];
-                }),                
-            ])
-            @endlist
+                            ],
+                        ];
+                    }),                
+                ]
+            ]) @endpaginable
 
             {{-- Novo --}}
             @can('createStudents', $project)

@@ -29,7 +29,7 @@
         'attrs' => [
           'href' => url('/')
         ],
-        'text' => 'LONTANO',
+        'text' => 'VINT',
       ]
     ]) @endtopAppBarHome
 

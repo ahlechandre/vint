@@ -14,6 +14,8 @@ a.mdc-top-app-bar__title {
 
 .top-app-bar--fixed-adjust {
   margin-bottom: 100px;
+  // Fixa problema de responsividade.
+  overflow-x: hidden;
 }
 
 // Search

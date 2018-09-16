@@ -28,7 +28,7 @@
                     'twoLine' => true,
                     'items' => $users->map(function ($userToShow) {
                         return [
-                            'icon' => __('icons.member'),
+                            'letter' => substr($userToShow->name, 0, 1),
                             'text' => [
                                 'primary' => $userToShow->name,
                                 'secondary' => $userToShow->created_at

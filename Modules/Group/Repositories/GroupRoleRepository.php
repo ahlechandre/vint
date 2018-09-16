@@ -41,7 +41,7 @@ class GroupRoleRepository
             return repository_result(500);
         }
 
-        return repository_result(200, __('messages.group_roles.updated'), [
+        return repository_result(200, __('messages.groups.permissions_updated'), [
             'group' => $group,
             'groupRole' => $groupRole
         ]);

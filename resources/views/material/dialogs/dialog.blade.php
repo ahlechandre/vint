@@ -15,6 +15,11 @@
         @if ($component ?? false)
             @component($component['view'], $component['props'] ?? []) @endcomponent
         @endif
+        @if ($text ?? false)
+            <p>
+                {!! nl2br($text) !!}
+            </p>
+        @endif
         {{ $slot }}
     </section>
     <footer class="mdc-dialog__footer">

@@ -40,49 +40,38 @@ class LoginController extends Controller
     }
 
     /**
-     * Mostra o formulário de login.
      * 
      * @return \Illuminate\Http\Response
      */
-    public function login() 
+    public function showLoginForm() 
     {
         return view('system::pages.auth.login');
     }
 
     /**
-     * Tenta autenticar o usuário.
+     * Get the needed authorization credentials from the request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return array
      */
-    public function authenticate(Request $request) 
+    protected function credentials(Request $request)
     {
-        $credentials = [
-            'email' => $request->get('email'),
-            'password' => $request->get('password'),
+        return [
+            'email' => $request->input('email'),
+            'password' => $request->input('password'),
             'is_active' => 1
         ];
-        $remember = $request->get('remember_me') ? true : false;
+    } 
 
-        // Tenta autenticar o usuário com as credenciais fornecidas.
-        if (Auth::attempt($credentials, $remember)) {
-            return redirect($this->redirectTo);
-        }
+    // /**
+    //  * 
+    //  * @return Response
+    //  */
+    // public function logout() 
+    // {
+    //     Auth::logout();
 
-        return redirect('/login')->withErrors([
-            'auth' => 'E-mail ou senha inválidos'
-        ]);
-    }
-
-    /**
-     * 
-     * @return Response
-     */
-    public function logout() 
-    {
-        Auth::logout();
-
-        return redirect('/login')
-            ->with('status', 'Faça login para continuar');
-    }
+    //     return redirect('/login')
+    //         ->with('status', 'Faça login para continuar');
+    // }
 }

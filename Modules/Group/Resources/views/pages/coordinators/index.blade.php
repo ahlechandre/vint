@@ -1,7 +1,11 @@
 @extends('layouts.'. (
     auth()->check() ? 'master' : 'default'
 ), [
-    'title' => __('resources.groups').' / '.$group->name 
+    'title' => get_breadcrumb([
+        __('resources.groups'),
+        $group->name,
+        __('resources.coordinators'),
+    ])
 ])
 
 @section('main')
@@ -38,7 +42,7 @@
                             ],
                             'metas' => [
                                 [
-                                    'ignore' => $user->cant('updateCoordinators', $group),
+                                    'ignore' => !$user || $user->cant('updateCoordinators', $group),
                                     'dialogContainer' => [
                                         'iconButton' => [
                                             'icon' => __('icons.edit'),
@@ -53,7 +57,7 @@
                                                 'id' => "dialog-coordinators-edit-{$coordinator->member_user_id}"
                                             ],
                                             'component' => [
-                                                'view' => 'group::inputs.coordinator-update',
+                                                'view' => 'group::inputs.coordinator-edit',
                                                 'props' => [
                                                     'coordinator' => $coordinator
                                                 ],
@@ -76,7 +80,7 @@
                                     ],
                                 ],                            
                                 [
-                                    'ignore' => $user->cant('deleteCoordinators', $group),
+                                    'ignore' => !$user || $user->cant('deleteCoordinators', $group),
                                     'dialogContainer' => [
                                         'iconButton' => [
                                             'icon' => __('icons.remove'),
@@ -140,7 +144,7 @@
                     'method' => 'post'
                 ])
                     @dialog([
-                        'title' => __('messages.coordinators.dialogs.create_title'),
+                        'title' => __('dialogs.coordinators.create_title'),
                         'attrs' => [
                             'id' => 'dialog-coordinators-create'
                         ],

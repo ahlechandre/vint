@@ -84,6 +84,12 @@ class GroupProjectController extends Controller
             return abort($index->status);
         }
 
+        // Redireciona para todos os programas caso não existam solicitações.
+        if ($index->data['projects']->isEmpty()) {
+            return redirect("groups/{$groupId}/projects")
+                ->with('snackbar', __('messages.groups.projects_requests_empty'));
+        }
+
         return view('group::pages.projects.requests', [
             'group' => $index->data['group'],
             'projects' => $index->data['projects']
@@ -106,8 +112,8 @@ class GroupProjectController extends Controller
         if ($user->cant('create', [Project::class, $group])) {
             return abort(403);
         }
-        $projects = $group->projects()
-            ->approved()
+        $programs = $group->programs()
+            ->orderBy('created_at', 'desc')
             ->get();
         $servantMembers = $group->servantMembers()
             ->with('user')
@@ -118,7 +124,7 @@ class GroupProjectController extends Controller
 
         return view('group::pages.projects.create', [
             'group' => $group,
-            'projects' => $projects,
+            'programs' => $programs,
             'servantMembers' => $servantMembers,
             'collaboratorMembers' => $collaboratorMembers,
         ]);
@@ -137,7 +143,8 @@ class GroupProjectController extends Controller
         $inputs = $request->all();
         $store = $this->groupProjects
             ->store($user, $groupId, $inputs);
-        $redirectTo = isset($store->data['project']) ?
+        $createdAndApproved = isset($store->data['project']) && $store->data['project']->is_approved;
+        $redirectTo = $createdAndApproved ?
             "projects/{$store->data['project']->id}" :
             "groups/{$groupId}/projects"; 
 

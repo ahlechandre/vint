@@ -85,7 +85,7 @@ class ProjectPolicy
     public function updateRequests(User $user, Group $group)
     {
         return $user->isManager() ||
-            $group->isCoordinatorUser($user) ||
+            $group->hasCoordinatorUser($user) ||
             $group->allowsForUser('projects_requests.update', $user);
     }
 

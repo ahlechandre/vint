@@ -81,7 +81,7 @@ class ProgramPolicy
     public function updateRequests(User $user, Group $group)
     {
         return $user->isManager() ||
-            $group->isCoordinatorUser($user) ||
+            $group->hasCoordinatorUser($user) ||
             $group->allowsForUser('programs_requests.update', $user);
     }
 }

@@ -1,7 +1,11 @@
 @extends('layouts.'. (
     auth()->check() ? 'master' : 'default'
 ), [
-    'title' => __('resources.groups').' / '.$group->name 
+    'title' => get_breadcrumb([
+        __('resources.groups'),
+        $group->name,
+        __('resources.programs_requests')
+    ]) 
 ])
 
 @section('main')
@@ -38,14 +42,17 @@
                 'button' => [
                     'icon' => __('icons.approve'),
                     'text' => __('actions.approve_all'),
-                    'classes' => ['mdc-button--unelevated']
+                    'classes' => ['mdc-button--outlined']
                 ],
                 'form' => [
                     'action' => url("groups/{$group->id}/programs/requests"),
                     'method' => 'put'
                 ],
                 'dialog' => [
-                    'title' => __('messages.groups.programs.dialogs.approve_all_title'),
+                    'title' => __('dialogs.programs_requests.approve_all_title', [
+                        'count' => $programs->count()
+                    ]),
+                    'text' => __('dialogs.programs_requests.approve_all_body'),
                     'attrs' => [
                         'id' => 'dialog-group-programs-requests-approve-all'
                     ],
@@ -76,7 +83,9 @@
                     'method' => 'delete'
                 ],
                 'dialog' => [
-                    'title' => __('messages.groups.programs.dialogs.deny_all_title'),
+                    'title' => __('dialogs.programs_requests.deny_all_title', [
+                        'count' => $programs->count()
+                    ]),
                     'attrs' => [
                         'id' => 'dialog-group-programs-requests-deny-all'
                     ],
@@ -126,7 +135,10 @@
                                         'attrs' => [
                                             'id' => "dialog-group-program-request-approve-{$program->id}"
                                         ],
-                                        'title' => __('messages.groups.programs.dialogs.approve'),
+                                        'title' => __('dialogs.programs_requests.approve_title', [
+                                            'name' => $program->name
+                                        ]),
+                                        'text' => __('dialogs.programs_requests.approve_body'),
                                         'footer' => [
                                             'buttonAccept' => [
                                                 'text' => __('actions.confirm'),
@@ -157,7 +169,9 @@
                                         'attrs' => [
                                             'id' => "dialog-group-program-request-deny-{$program->id}"
                                         ],
-                                        'title' => __('messages.groups.programs.dialogs.deny'),
+                                        'title' => __('dialogs.programs_requests.deny_title', [
+                                            'name' => $program->name
+                                        ]),
                                         'footer' => [
                                             'buttonAccept' => [
                                                 'text' => __('actions.confirm'),

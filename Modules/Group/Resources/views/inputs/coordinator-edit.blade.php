@@ -33,7 +33,7 @@
         ]
     ])
         @checkbox([
-            'label' => __('atts.is_vice_coordinator'),
+            'label' => __('attrs.is_vice_coordinator'),
             'attrs' => [
                 'name' => 'is_vice',
                 'id' => "checkbox-group-update-coordinator-is-vice-{$coordinator->member_user_id}",

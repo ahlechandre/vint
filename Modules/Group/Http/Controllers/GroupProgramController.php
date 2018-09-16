@@ -84,6 +84,12 @@ class GroupProgramController extends Controller
             return abort($index->status);
         }
 
+        // Redireciona para todos os programas caso não existam solicitações.
+        if ($index->data['programs']->isEmpty()) {
+            return redirect("groups/{$groupId}/programs")
+                ->with('snackbar', __('messages.groups.programs_requests_empty'));
+        }
+
         return view('group::pages.programs.requests', [
             'group' => $index->data['group'],
             'programs' => $index->data['programs']
@@ -129,7 +135,8 @@ class GroupProgramController extends Controller
         $inputs = $request->all();
         $store = $this->groupPrograms
             ->store($user, $groupId, $inputs);
-        $redirectTo = isset($store->data['program']) ?
+        $createdAndApproved = isset($store->data['program']) && $store->data['program']->is_approved;
+        $redirectTo = $createdAndApproved ?
             "programs/{$store->data['program']->id}" :
             "groups/{$groupId}/programs"; 
 

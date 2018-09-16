@@ -47,13 +47,14 @@ class GroupMemberRepository
         if ($user->cant('updateRequests', [Member::class, $group])) {
             return repository_result(403);
         }
+        $members = $group->membersNotApproved()
+            ->with('user')
+            ->filterLike($term)
+            ->simplePaginateOrGet($perPage);
         
         return repository_result(200, null, [
             'group' => $group,
-            'members' => $group->membersNotApproved()
-                ->with('user')
-                ->filterLike($term)
-                ->simplePaginateOrGet($perPage)
+            'members' => $members
         ]);
     }
 
@@ -94,7 +95,7 @@ class GroupMemberRepository
             return repository_result(500);
         }
 
-        return repository_result(200, __('messages.groups.members.toggle'), [
+        return repository_result(200, __('messages.groups.member_toggled'), [
             'group' => $group,
             'member' => $member
         ]);
@@ -137,7 +138,7 @@ class GroupMemberRepository
             return repository_result(500);
         }
 
-        return repository_result(200, __('messages.groups.members.detached'), [
+        return repository_result(200, __('messages.groups.member_detached'), [
             'group' => $group,
             'member' => $member
         ]);
@@ -181,8 +182,11 @@ class GroupMemberRepository
         } catch (Exception $exception) {
             return repository_result(500);
         }
+        $message = __('messages.groups.'.(
+            $members->count() > 1 ? 'members_approved' : 'member_approved'
+        ));
 
-        return repository_result(200, __('messages.groups.members.approved'), [
+        return repository_result(200, $message, [
             'group' => $group
         ]);
     }
@@ -223,8 +227,11 @@ class GroupMemberRepository
         } catch (Exception $exception) {
             return repository_result(500);
         }
+        $message = __('messages.groups.'.(
+            $members->count() > 1 ? 'members_denied' : 'member_denied'
+        ));
 
-        return repository_result(200, __('messages.groups.members.denied'), [
+        return repository_result(200, $message, [
             'group' => $group
         ]);
     } 

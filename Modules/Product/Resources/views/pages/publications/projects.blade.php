@@ -1,7 +1,13 @@
 @extends('layouts.'. (
     auth()->check() ? 'master' : 'default'
 ), [
-    'title' => __('resources.publications').' / '.$publication->id 
+    'title' => get_breadcrumb([
+        __('resources.publications'),
+        __('messages.publications.name', [
+            'id' => $publication->id
+        ]),
+        __('resources.projects'),
+    ]) 
 ])
 
 @section('main')

@@ -25,7 +25,10 @@
                         'action' => url('login'),
                         'method' => 'post',
                         'inputs' => [
-                            'view' => 'system::inputs.login'
+                            'view' => 'system::inputs.login',
+                            'props' => [
+                                'email' => old('email')
+                            ]
                         ]
                     ]) @endform                
                 @endcardContent            

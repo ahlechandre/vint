@@ -1,7 +1,11 @@
 @extends('layouts.'. (
     auth()->check() ? 'master' : 'default'
 ), [
-    'title' => __('resources.groups').' / '.$group->name 
+    'title' => get_breadcrumb([
+        __('resources.groups'),
+        $group->name,
+        __('resources.members'),
+    ]) 
 ])
 
 @section('main')
@@ -21,12 +25,11 @@
         {{-- Solicitações --}}
         @can('updateRequests', [\Modules\Member\Entities\Member::class, $group])
             @if ($requestsCount > 0)
-                @cell([
-                    'classes' => ['mdc-layout-grid--align-right']
-                ])
+                @cell
                     @button([
                         'isLink' => true,
                         'icon' => __('icons.forward'),
+                        'classes' => ['mdc-button--outlined'],
                         'text' => __('headlines.requests') . (
                             $requestsCount > 99 ?
                                 ' (+99)' : " ($requestsCount)"
@@ -48,7 +51,7 @@
                     'nonInteractive' => true,
                     'items' => $members->map(function ($member) use ($user, $group) {
                         return [
-                            'icon' => __('icons.member'),
+                            'letter' => substr($member->user->name, 0, 1),
                             'text' => [
                                 'link' => url("members/{$member->user_id}"),
                                 'primary' => $member->user->name,
@@ -56,7 +59,7 @@
                                     ->diffForHumans(),
                             ],
                             'metas' => array_merge(
-                                auth()->check() && $user->can('detachMember', [$group, $member]) ? 
+                                $user && $user->can('detachMember', [$group, $member]) ? 
                                 [
                                     [
                                         'dialogContainer' => [
@@ -68,7 +71,8 @@
                                                 'method' => 'delete'
                                             ],
                                             'dialog' => [
-                                                'title' => __('messages.groups.members.dialogs.remove_title'),
+                                                'title' => __('dialogs.groups.detach_member_title'),
+                                                'text' => __('dialogs.groups.detach_member_body'),
                                                 'attrs' => [
                                                     'id' => "dialog-group-member-remove-{$member->user_id}"
                                                 ],

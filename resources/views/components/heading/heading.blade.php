@@ -1,16 +1,6 @@
 <div class="heading">
 
     <div class="heading__primary">
-        <div class="heading__title">
-            @if ($pretitle ?? false)
-                <p class="heading__pretitle-text">
-                    {{ $pretitle }}
-                </p>
-            @endif
-
-            <h1 class="heading__title-text mdc-typography--headline4">{{ $title }}</h1>
-        </div>
-
         @if ($action ?? false)
             <div class="heading__action">
                 @if ($action['button'] ?? false)
@@ -21,7 +11,17 @@
                     @dialogContainer($action['dialogContainer']) @enddialogContainer
                 @endif
             </div>
-        @endif    
+        @endif
+        
+        <div class="heading__title">
+            @if ($pretitle ?? false)
+                <p class="heading__pretitle-text">
+                    {{ $pretitle }}
+                </p>
+            @endif
+
+            <h1 class="heading__title-text mdc-typography--headline4">{{ $title }}</h1>
+        </div>    
     </div>    
     
     @if ($content ?? false)

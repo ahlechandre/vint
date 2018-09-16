@@ -44,7 +44,6 @@
                 'id' => 'textfield-product-description',
                 'required' => '',
                 'cols' => 100,
-                'rows' => 6,
                 'value' => $description
             ],
         ]) @endtextarea

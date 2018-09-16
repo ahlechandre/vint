@@ -1,7 +1,11 @@
 @extends('layouts.'. (
     auth()->check() ? 'master' : 'default'
 ), [
-    'title' => __('resources.groups').' / '.$group->name 
+    'title' => get_breadcrumb([
+        __('resources.groups'),
+        $group->name,
+        __('resources.programs'),
+    ])
 ])
 
 @section('main')
@@ -20,13 +24,12 @@
         
         {{-- Solicitações --}}
         @can('updateRequests', [\Modules\Project\Entities\Program::class, $group])
-            @cell([
-                'classes' => ['mdc-layout-grid--align-right']
-            ])
-                @if ($requestsCount > 0)
+            @if ($requestsCount > 0)
+                @cell
                     @button([
                         'isLink' => true,
                         'icon' => __('icons.forward'),
+                        'classes' => ['mdc-button--outlined'],
                         'text' => __('headlines.requests') . (
                             $requestsCount > 99 ?
                                 ' (+99)' : " ($requestsCount)"
@@ -35,8 +38,8 @@
                             'href' => url("groups/{$group->id}/programs/requests")
                         ]
                     ]) @endbutton
-                @endif
-            @endcell
+                @endcell
+            @endif
         @endcan
 
         {{-- Paginável --}}

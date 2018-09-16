@@ -25,9 +25,9 @@ class GroupProjectRepository
         return repository_result(200, null, [
             'group' => $group,
             'projects' => $group->projects()
-                ->approved()
+                ->orderBy('created_at', 'desc')
                 ->filterLike($term)
-                ->simplePaginateOrGet($perPage)
+                ->simplePaginate($perPage)
         ]);
     }
 
@@ -95,8 +95,11 @@ class GroupProjectRepository
         } catch (Exception $exception) {
             return repository_result(500);
         }
+        $message = $projects->count() > 1 ?
+            __('messages.groups.projects_approved') :
+            __('messages.groups.project_approved');
 
-        return repository_result(200, __('messages.groups.projects.approved'), [
+        return repository_result(200, $message, [
             'group' => $group
         ]);
     }
@@ -139,8 +142,11 @@ class GroupProjectRepository
         } catch (Exception $exception) {
             return repository_result(500);
         }
+        $message = $projects->count() > 1 ?
+            __('messages.groups.projects_denied') :
+            __('messages.groups.project_denied');
 
-        return repository_result(200, __('messages.groups.projects.denied'), [
+        return repository_result(200, $message, [
             'group' => $group
         ]);
     }
@@ -173,7 +179,6 @@ class GroupProjectRepository
             // O programa do projeto.
             if (isset($inputs['program_id'])) {
                 $program = $group->programs()
-                    ->approved()
                     ->findOrFail($inputs['program_id']);
                 $project->program()->associate($program);
             }
@@ -214,8 +219,11 @@ class GroupProjectRepository
         } catch (Exception $exception) {
             return repository_result(500);
         }
+        $message = $project->is_approved ?
+            __('messages.projects.created') :
+            __('messages.projects.requested');
 
-        return repository_result(200, __('messages.projects.created'), [
+        return repository_result(200, $message, [
             'project' => $project
         ]);
     }

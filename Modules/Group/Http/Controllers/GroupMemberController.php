@@ -81,6 +81,12 @@ class GroupMemberController extends Controller
             return abort($index->status);
         }
 
+        // Redireciona para todos os membros caso não existam solicitações.
+        if ($index->data['members']->isEmpty()) {
+            return redirect("groups/{$groupId}/members")
+                ->with('snackbar', __('messages.groups.members_requests_empty'));
+        }
+
         return view('group::pages.members.requests', [
             'group' => $index->data['group'],
             'members' => $index->data['members']

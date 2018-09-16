@@ -4,7 +4,9 @@
 
 <a class="list-item mdc-list-item{{ set_classes($classes ?? []) }}{{ isset($active) && $active ? ' mdc-list-item--activated' : '' }}"{{ set_attrs($attrs ?? []) }} data-mdc-auto-init="MDCRipple">
     @if ($icon ?? false)
-        <span class="mdc-list-item__graphic material-icons" aria-hidden="true">{{ $icon }}</span>    
+        <span class="mdc-list-item__graphic material-icons" aria-hidden="true">{{ $icon }}</span>
+    @elseif ($letter ?? false)
+        <span class="mdc-list-item__graphic list-item__graphic--letter typography--mono" aria-hidden="true">{{ $letter }}</span>
     @endif
 
     @if (is_string($text))

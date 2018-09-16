@@ -45,6 +45,12 @@ return [
     'program' => 'Programa',
     'projects' => 'Projetos',
     'project' => 'Projeto',
+    'members_requests' => 'Solicitações de membros',
+    'member_request' => 'Solicitação de membro',
+    'projects_requests' => 'Solicitações de projetos',
+    'project_request' => 'Solicitação de projeto',
+    'programs_requests' => 'Solicitações de programas',
+    'program_request' => 'Solicitação de programa',
 
     // ----------------------------------------
     // Produto.

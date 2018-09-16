@@ -4,13 +4,13 @@
         @if (!isset($withoutSearch) || !$withoutSearch)
             {{-- Busca --}}
             @cell([
-                'classes' => ['mdc-layout-grid--align-right']
+                'classes' => ['layout-grid--align-right-tablet']
             ])
                 @form([
                     'method' => 'get',
                     'action' => url()->current(),
                 ])
-                    @textfield([
+                    @textfieldOutlined([
                         'label' => __('actions.search'),
                         'iconLeading' => __('icons.search'),
                         'classes' => ['mdc-text-field--with-leading-icon'],
@@ -21,7 +21,7 @@
                             'autocomplete' => 'off',
                             'value' => request()->query('q')
                         ]
-                    ]) @endtextfield                        
+                    ]) @endtextfieldOutlined
                 @endform
             @endcell        
         @endif

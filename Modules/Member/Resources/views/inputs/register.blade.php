@@ -28,7 +28,7 @@
             'helperText' => $validations['username'] ?? [
                 'isPersistent' => true,
                 'isValidation' => false,
-                'message' => __('messages.helpers.username'),
+                'text' => __('attrs.helpers.username'),
             ],
             'attrs' => [
                 'type' => 'text',
@@ -67,7 +67,7 @@
             'helperText' => $validations['password'] ?? [
                 'isPersistent' => true,
                 'isValidation' => false,
-                'message' => __('messages.helpers.password'),
+                'text' => __('attrs.helpers.password'),
             ],
             'attrs' => [
                 'type' => 'password',
@@ -88,7 +88,7 @@
             'helperText' => $validations['member.cpf'] ?? [
                 'isPersistent' => true,
                 'isValidation' => false,
-                'message' => __('messages.helpers.cpf'),
+                'text' => __('attrs.helpers.cpf'),
             ],
             'attrs' => [
                 'type' => 'text',
@@ -112,7 +112,7 @@
             'helperText' => $validations['member.description'] ?? [
                 'isPersistent' => true,
                 'isValidation' => false,
-                'message' => __('messages.helpers.member.description'),
+                'text' => __('attrs.helpers.members.description'),
             ],
             'attrs' => [
                 'name' => 'member[description]',
@@ -134,7 +134,7 @@
                 'helperText' => $validations['servant.siape'] ?? [
                     'isPersistent' => true,
                     'isValidation' => false,
-                    'message' => __('messages.helpers.siape'),
+                    'text' => __('attrs.helpers.siape'),
                 ],
                 'attrs' => [
                     'type' => 'text',
@@ -171,7 +171,7 @@
                 'helperText' => $validations['student.rga'] ?? [
                     'isPersistent' => true,
                     'isValidation' => false,
-                    'message' => __('messages.helpers.rga'),
+                    'text' => __('attrs.helpers.rga'),
                 ],
                 'attrs' => [
                     'type' => 'text',

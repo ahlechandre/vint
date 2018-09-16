@@ -4,7 +4,11 @@
 
 .heading__primary {
   display: flex;
-  justify-content: space-between;
+  flex-flow: column nowrap;
+}
+
+.heading__action {
+  margin-left: auto;
 }
 
 .heading__pretitle-text {

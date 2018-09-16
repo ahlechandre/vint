@@ -1,6 +1,6 @@
 @gridInner
     @cell
-        {{ __('messages.coordinators.dialogs.create_body') }}
+        {{ __('dialogs.coordinators.create_body') }}
     @endcell
 
     {{-- Coordenador --}}
@@ -43,7 +43,7 @@
         ]
     ])
         @checkbox([
-            'label' => __('atts.is_vice_coordinator'),
+            'label' => __('attrs.is_vice_coordinator'),
             'attrs' => [
                 'name' => 'is_vice',
                 'id' => 'checkbox-group-create-coordinator-is-vice',

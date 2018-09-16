@@ -7,11 +7,12 @@
                 'name' => 'email',
                 'type' => 'email',
                 'required' => '',
+                'value' => $email
             ],
-            'helperText' => isset($errors->get('auth')[0]) ? [
+            'helperText' => $errors->any() ? [
                 'isPersistent' => true,
                 'isValidation' => true,
-                'text' => $errors->get('auth')[0],
+                'text' => $errors->first(),
             ] : null
         ]) @endtextfield
     @endcell

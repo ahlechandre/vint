@@ -69,10 +69,6 @@
             @cardShow([
                 'data' => [
                     [
-                        'label' => __('attrs.is_active'),
-                        'value' => __("messages.attrs.is_active.{$group->is_active}")
-                    ],
-                    [
                         'label' => __('attrs.created_at'),
                         'value' => $group->created_at
                             ->diffForHumans()

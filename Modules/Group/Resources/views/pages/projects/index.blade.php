@@ -1,7 +1,11 @@
 @extends('layouts.'. (
     auth()->check() ? 'master' : 'default'
 ), [
-    'title' => __('resources.groups').' / '.$group->name 
+    'title' => get_breadcrumb([
+        __('resources.groups'),
+        $group->name,
+        __('resources.projects'),
+    ]) 
 ])
 
 @section('main')
@@ -19,14 +23,13 @@
         @endcell
         
         {{-- Solicitações --}}
-        @can('updateRequests', [\Modules\Project\Entities\Program::class, $group])
-            @cell([
-                'classes' => ['mdc-layout-grid--align-right']
-            ])
-                @if ($requestsCount > 0)
+        @can('updateRequests', [\Modules\Project\Entities\Project::class, $group])
+            @if ($requestsCount > 0)
+                @cell
                     @button([
                         'isLink' => true,
                         'icon' => __('icons.forward'),
+                        'classes' => ['mdc-button--outlined'],
                         'text' => __('headlines.requests') . (
                             $requestsCount > 99 ?
                                 ' (+99)' : " ($requestsCount)"
@@ -35,8 +38,8 @@
                             'href' => url("groups/{$group->id}/projects/requests")
                         ]
                     ]) @endbutton
-                @endif
-            @endcell
+                @endcell
+            @endif
         @endcan
 
         {{-- Paginável --}}
@@ -70,7 +73,7 @@
             ]) @endpaginable
 
             {{-- Novo --}}
-            @can('create', [\Modules\Project\Entities\Program::class, $group])
+            @can('create', [\Modules\Project\Entities\Project::class, $group])
                 @fabFixed([
                     'fab' => [
                         'isLink' => true,

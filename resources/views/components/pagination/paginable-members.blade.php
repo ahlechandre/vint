@@ -7,7 +7,7 @@
         'twoLine' => true,
         'items' => $members->map(function ($member) {
             return [
-                'icon' => __('icons.member'),
+                'letter' => substr($member->user->name, 0, 1),
                 'text' => [
                     'primary' => $member->user->name,
                     'secondary' => $member->created_at

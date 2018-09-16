@@ -22,10 +22,10 @@ class ProjectStudentRepository
     {
         $project = Project::findOrFail($id);
         $students = $project->students()
-            ->orderBy('project_student.created_at')
+            ->orderBy('project_student.created_at', 'desc')
             ->with('member.user')
             ->filterLike($filter)
-            ->get();
+            ->simplePaginate($perPage);
 
         return repository_result(200, null, [
             'project' => $project,

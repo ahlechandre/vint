@@ -7,6 +7,11 @@ return [
         'is_empty_search' => 'Nenhum resultado para ":query"...',
     ],
 
+    // Registro de membros.
+    'register' => [
+        'created' => 'Cadastro realizado',
+    ],
+
     // Usuários.
     'users' => [
         'index' => 'Lista de usuários mais recentes.',
@@ -23,9 +28,33 @@ return [
         'created' => 'Grupo criado',
         'edit' => 'Editar o grupo',
         'updated' => 'Grupo atualizado',
-        'detached_member' => 'Membro removido',
+        'permissions_updated' => 'Permissões atualizadas',
+        'members_requests_empty' => 'Nenhuma solicitação de membro',
+        'programs_requests_empty' => 'Nenhuma solicitação de programa',
+        'projects_requests_empty' => 'Nenhuma solicitação de projeto',
+        'member_detached' => 'Membro removido',
+        'member_approved' => 'Membro aprovado',
+        'member_denied' => 'Membro recusado',
+        'members_approved' => 'Membros aprovados',
+        'members_denied' => 'Membros recusados',        
+        'member_toggled' => 'Participação atualizada',
+        'program_approved' => 'Programa aprovado',
+        'program_denied' => 'Programa recusado',
+        'programs_approved' => 'Programas aprovados',
+        'programs_denied' => 'Programas recusados',
+        'project_approved' => 'Projeto aprovado',
+        'project_denied' => 'Projeto recusado',
+        'projects_approved' => 'Projetos aprovados',
+        'projects_denied' => 'Projetos recusados',        
     ],
     
+    // Coordenadores.
+    'coordinators' => [
+        'created' => 'Coordenador adicionado',
+        'updated' => 'Coordenador atualizado',
+        'deleted' => 'Coordenador removido',
+    ],
+
     // Login.
     'login' => [
         'card_title' => 'Login',
@@ -43,6 +72,7 @@ return [
         'index' => 'Lista de programas mais recentes.',
         'create' => 'Novo programa',
         'created' => 'Programa criado',
+        'requested' => 'Programa solicitado',
         'edit' => 'Editar o programa',
         'updated' => 'Programa atualizado',
     ],
@@ -52,6 +82,7 @@ return [
         'index' => 'Lista de projetos mais recentes.',
         'create' => 'Novo projeto',
         'created' => 'Projeto criado',
+        'requested' => 'Projeto solicitado',
         'edit' => 'Editar o projeto',
         'updated' => 'Projeto atualizado',
     ],

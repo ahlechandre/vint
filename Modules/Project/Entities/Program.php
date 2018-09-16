@@ -114,7 +114,8 @@ class Program extends Model
      */
     public function scopeNotApproved($query)
     {
-        return $query->where('is_approved', 0);
+        return $query->withoutGlobalScope('approved')
+            ->where('is_approved', 0);
     }
 
     /**

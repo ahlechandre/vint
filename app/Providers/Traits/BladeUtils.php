@@ -47,6 +47,7 @@ trait BladeUtils
         'material.inputs.switch' => 'materialSwitch',
         'material.inputs.select' => 'select',
         'material.inputs.text-field' => 'textfield',
+        'material.inputs.text-field-outlined' => 'textfieldOutlined',
         'material.inputs.textarea' => 'textarea',      
         'material.inputs.select2' => 'select2',      
         'material.inputs.text-field-helper-text' => 'textfieldHelperText',

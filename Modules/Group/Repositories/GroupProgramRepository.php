@@ -25,8 +25,9 @@ class GroupProgramRepository
         return repository_result(200, null, [
             'group' => $group,
             'programs' => $group->programs()
+                ->orderBy('created_at', 'desc')
                 ->filterLike($term)
-                ->simplePaginateOrGet($perPage)
+                ->simplePaginate($perPage)
         ]);
     }
 
@@ -46,13 +47,13 @@ class GroupProgramRepository
         if ($user->cant('updateRequests', [Program::class, $group])) {
             return repository_result(403);
         }
-        
+
         return repository_result(200, null, [
             'group' => $group,
             'programs' => $group->programs()
                 ->notApproved()
                 ->filterLike($term)
-                ->simplePaginateOrGet($perPage)
+                ->get()
         ]);
     }
 
@@ -94,8 +95,11 @@ class GroupProgramRepository
         } catch (Exception $exception) {
             return repository_result(500);
         }
+        $message = $programs->count() > 1 ?
+            __('messages.groups.programs_approved') :
+            __('messages.groups.program_approved');
 
-        return repository_result(200, __('messages.groups.programs.approved'), [
+        return repository_result(200, $message, [
             'group' => $group
         ]);
     }
@@ -138,8 +142,11 @@ class GroupProgramRepository
         } catch (Exception $exception) {
             return repository_result(500);
         }
+        $message = $programs->count() > 1 ?
+            __('messages.groups.programs_denied') :
+            __('messages.groups.program_denied');
 
-        return repository_result(200, __('messages.groups.programs.denied'), [
+        return repository_result(200, $message, [
             'group' => $group
         ]);
     }
@@ -168,6 +175,11 @@ class GroupProgramRepository
             $program->group()->associate($group);
             // O usuário criador.
             $program->user()->associate($user);
+            // Associa o coordenador, como um servidor aprovado no grupo.
+            $coordinatorMember = $group->servantMembers()
+                ->findOrFail($inputs['coordinator_user_id']);
+            $program->coordinator()
+                ->associate($coordinatorMember->servant);
             // Preenche os dados indicados por inputs.
             $program->fill($inputs);
             // O programa não precisa ser aprovado se o usuário
@@ -184,8 +196,11 @@ class GroupProgramRepository
         } catch (Exception $exception) {
             return repository_result(500);
         }
+        $message = $program->is_approved ?
+            __('messages.programs.created') :
+            __('messages.programs.requested');
 
-        return repository_result(200, __('messages.programs.created'), [
+        return repository_result(200, $message, [
             'program' => $program
         ]);
     }
