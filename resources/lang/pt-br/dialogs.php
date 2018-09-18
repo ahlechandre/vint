@@ -113,7 +113,7 @@ return [
     // -----------------------------------------------------    
     'products' => [
         // Apagar.
-        'delete_title' => 'Apagar o produto?',
+        'delete_title' => 'Apagar permanentemente ":title"?',
     ],
 
     // -----------------------------------------------------
@@ -121,6 +121,6 @@ return [
     // -----------------------------------------------------    
     'publications' => [
         // Apagar.
-        'delete_title' => 'Apagar a publicação?',
+        'delete_title' => 'Apagar a permanentemente a publicação?',
     ],
 ];

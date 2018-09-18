@@ -1,5 +1,10 @@
 @extends('layouts.master', [
-    'title' => __('resources.groups').' / '.$group->name.' / '.__('actions.edit') 
+    'title' => get_breadcrumb([
+        __('resources.groups'),
+        $group->name,
+        __('actions.edit'),
+        __('resources.permissions'),
+    ])
 ])
 
 @section('main')

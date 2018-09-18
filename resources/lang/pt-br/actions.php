@@ -8,7 +8,7 @@ return [
     'confirm' =>                'Confirmar',    
     'cancel' =>                 'Cancelar',
     'create' =>                 'Criar',
-    'delete' =>                 'Remover',
+    'delete' =>                 'Apagar',
     'deny_all' =>               'Recusar todos',
     'deny' =>                   'Recusar',
     'details' =>                'Ver detalhes',

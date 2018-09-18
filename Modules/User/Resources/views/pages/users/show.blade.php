@@ -1,6 +1,9 @@
 {{-- Layout --}}
 @extends('layouts.master', [
-    'title' => __('resources.users').' / '.$userToShow->name
+    'title' => get_breadcrumb([
+        __('resources.users'), 
+        $userToShow->name,
+    ])
 ])
 
 {{-- Conteúdo --}}

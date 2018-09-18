@@ -174,9 +174,8 @@ class Member extends Model
             ->groupsApproved()
             ->pluck('id');
 
-        return $query->whereHas('groups', function ($groups) use ($groupsId) {
-            return $groups->wherePivot('is_approved', 1)
-                ->whereIn('id', $groupsId);
+        return $query->whereHas('groupsApproved', function ($groups) use ($groupsId) {
+            return $groups->whereIn('id', $groupsId);
         });
-    }    
+    }
 }

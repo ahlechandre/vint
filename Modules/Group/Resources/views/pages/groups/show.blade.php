@@ -1,7 +1,10 @@
 @extends('layouts.'. (
     auth()->check() ? 'master' : 'default'
 ), [
-    'title' => __('resources.groups').' / '.$group->name 
+    'title' => get_breadcrumb([
+        __('resources.groups'),
+        $group->name,
+    ]) 
 ])
 
 @section('main')

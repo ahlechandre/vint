@@ -10,7 +10,11 @@
     @elseif ($iconButton ?? false)
         @iconButton(component_with_classes($iconButton, [
             'dialog-container__activation'
-        ])) @endiconButton        
+        ])) @endiconButton
+    @elseif ($fabFixed ?? false)
+        @fabFixed(component_with_classes($fabFixed, [
+            'dialog-container__activation'
+        ])) @endfabFixed                
     @endif
 
     @if ($form ?? false)

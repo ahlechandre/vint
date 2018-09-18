@@ -1,5 +1,10 @@
 @extends('layouts.master', [
-    'title' => __('resources.users').' / '.$userToEdit->name.' / '.__('actions.edit') 
+    'title' => get_breadcrumb([
+        __('resources.users'), 
+        $userToEdit->name,
+        __('headlines.settings'), 
+        __('headlines.security'), 
+    ])  
 ])
 
 @section('main')

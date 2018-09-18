@@ -15,7 +15,7 @@ return [
     'view' => 'remove_red_eye',
     'logout' => 'exit_to_app', 
     'logoin' => 'exit_to_app', 
-    'delete' => 'delete_outlined', 
+    'delete' => 'delete_outline', 
     'remove' => 'close', 
 
     // Páginas.

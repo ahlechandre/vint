@@ -1,5 +1,11 @@
 @extends('layouts.master', [
-    'title' => __('resources.publications').' / '.$publication->id.' / '.__('actions.edit') 
+    'title' => get_breadcrumb([
+        __('resources.products'),
+        __('messages.publications.name', [
+            'id' => $publication->id
+        ]),
+        __('actions.edit')        
+    ]) 
 ])
 
 @section('main')
@@ -12,7 +18,7 @@
         @cell
             @heading([
                 'pretitle' => __('resources.publications'),
-                'title' => __('messages.publications.forms.edit_title'),
+                'title' => __('messages.publications.edit'),
             ]) @endheading
         @endcell
 
@@ -44,15 +50,22 @@
         {{-- Remover --}}
         @cell
             @dialogContainer([
-                'button' => [
-                    'text' => __('actions.delete')
+                'fabFixed' => [
+                    'fab' => [
+                        'icon' => __('icons.delete'),
+                        'label' => __('actions.delete'),
+                        'classes' => ['mdc-fab--extended'],
+                        'attrs' => [
+                            'type' => 'button',
+                        ],     
+                    ]
                 ],
                 'form' => [
                     'action' => url("publications/{$publication->id}"),
                     'method' => 'delete',
                 ],
                 'dialog' => [
-                    'title' => __('messages.publications.dialogs.delete_title'),
+                    'title' => __('dialogs.publications.delete_title'),
                     'attrs' => [
                         'id' => 'dialog-publication-delete'
                     ],

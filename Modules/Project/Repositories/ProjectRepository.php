@@ -145,7 +145,7 @@ class ProjectRepository
             'projects' => Project::with('group')
                 ->forUser($user)
                 ->filterLike($term)
-                ->simplePaginateOrGet($perPage)
+                ->simplePaginate($perPage)
         ]);
     }
 }

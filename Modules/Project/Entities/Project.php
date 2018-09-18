@@ -213,6 +213,10 @@ class Project extends Model
             return $query;
         }
 
-        return $this->forMember($user->member);
+        return $query->whereIn('group_id', $user->member
+            ->groupsApproved()
+            ->pluck('id')
+            ->toArray()
+        );
     }
 }

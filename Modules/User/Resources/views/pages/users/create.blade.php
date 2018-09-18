@@ -1,5 +1,8 @@
 @extends('layouts.master', [
-    'title' => __('resources.users').' / '.__('actions.new') 
+    'title' => get_breadcrumb([
+        __('resources.users'), 
+        __('actions.new'), 
+    ])  
 ])
 
 @section('main')

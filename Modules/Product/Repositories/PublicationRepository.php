@@ -113,9 +113,9 @@ class PublicationRepository
             }
         };
 
+        DB::transaction($store);
         try {
             // Tenta criar.
-            DB::transaction($store);
         } catch (Exception $exception) {
             return repository_result(500);
         }

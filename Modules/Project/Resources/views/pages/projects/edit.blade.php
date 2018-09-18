@@ -1,5 +1,9 @@
 @extends('layouts.master', [
-    'title' => __('resources.projects').' / '.$project->name.' / '.__('actions.edit') 
+    'title' => get_breadcrumb([
+        __('resources.projects'),
+        $project->name,
+        __('actions.edit')        
+    ]) 
 ])
 
 @section('main')
@@ -12,7 +16,7 @@
         @cell
             @heading([
                 'pretitle' => __('resources.projects'),
-                'title' => __('messages.projects.forms.edit_title'),
+                'title' => __('messages.projects.edit'),
             ]) @endheading
         @endcell
 

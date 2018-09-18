@@ -93,6 +93,7 @@ return [
         'create' => 'Novo produto',
         'created' => 'Produto criado',
         'edit' => 'Editar o produto',
+        'deleted' => 'Produto apagado',
         'updated' => 'Produto atualizado',
         'name' => 'Produto #:id'
     ],
@@ -102,6 +103,7 @@ return [
         'index' => 'Lista de publicações mais recentes.',
         'create' => 'Nova publicação',
         'created' => 'Publicação criada',
+        'deleted' => 'Publicação apagada',
         'edit' => 'Editar a publicação',
         'updated' => 'Publicação atualizada',
         'name' => 'Publicação #:id',

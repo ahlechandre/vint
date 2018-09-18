@@ -52,6 +52,8 @@
                 'fab' => [
                     'isLink' => true,
                     'icon' => __('icons.add'),
+                    'classes' => ['mdc-fab--extended'],
+                    'label' => __('actions.new'),
                     'attrs' => [
                         'href' => url('users/create'),
                         'title' => __('messages.users.forms.create_title'),

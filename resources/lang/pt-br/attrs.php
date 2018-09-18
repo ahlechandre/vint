@@ -1,6 +1,17 @@
 <?php
 
 return [
+    'products' => [
+        'placeholders' => [
+            'projects' => 'Selecione os projetos do produto'
+        ]
+    ],
+    'publications' => [
+        'placeholders' => [
+            'projects' => 'Selecione os projetos da publicação',
+            'members' => 'Selecione os membros da publicação'
+        ]
+    ],    
     'reference' => 'Referência',
     'helpers' => [
         'username' => 'Exemplo: nome_de_usuário.',

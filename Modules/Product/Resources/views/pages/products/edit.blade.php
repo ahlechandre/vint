@@ -1,5 +1,9 @@
 @extends('layouts.master', [
-    'title' => __('resources.products').' / '.$product->title.' / '.__('actions.edit') 
+    'title' => get_breadcrumb([
+        __('resources.products'),
+        $product->title,
+        __('actions.edit')        
+    ])  
 ])
 
 @section('main')
@@ -12,7 +16,7 @@
         @cell
             @heading([
                 'pretitle' => __('resources.products'),
-                'title' => __('messages.products.forms.edit_title'),
+                'title' => __('messages.products.edit'),
             ]) @endheading
         @endcell
 
@@ -43,15 +47,24 @@
         {{-- Remover --}}
         @cell
             @dialogContainer([
-                'button' => [
-                    'text' => __('actions.delete')
+                'fabFixed' => [
+                    'fab' => [
+                        'icon' => __('icons.delete'),
+                        'label' => __('actions.delete'),
+                        'classes' => ['mdc-fab--extended'],
+                        'attrs' => [
+                            'type' => 'button',
+                        ],     
+                    ]
                 ],
                 'form' => [
                     'action' => url("products/{$product->id}"),
                     'method' => 'delete',
                 ],
                 'dialog' => [
-                    'title' => __('messages.products.dialogs.delete_title'),
+                    'title' => __('dialogs.products.delete_title', [
+                        'title' => $product->title
+                    ]),
                     'attrs' => [
                         'id' => 'dialog-product-delete'
                     ],

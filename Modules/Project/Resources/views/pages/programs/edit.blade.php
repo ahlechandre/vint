@@ -1,5 +1,9 @@
 @extends('layouts.master', [
-    'title' => __('resources.programs').' / '.$program->name.' / '.__('actions.edit') 
+    'title' => get_breadcrumb([
+        __('resources.programs'),
+        $program->name,
+        __('actions.edit')        
+    ]) 
 ])
 
 @section('main')
@@ -12,7 +16,7 @@
         @cell
             @heading([
                 'pretitle' => __('resources.programs'),
-                'title' => __('messages.programs.forms.edit_title'),
+                'title' => __('messages.programs.edit'),
             ]) @endheading
         @endcell
 
