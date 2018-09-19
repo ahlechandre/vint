@@ -9,18 +9,20 @@
     <title>{{ $title }}</title>
     {{-- Material icons --}}
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500i" rel="stylesheet">
     {{-- MDC + App --}}
     <link rel="stylesheet" href="{{ asset('css/vint.css') }}">
   </head>
   <body class="mdc-typography mdc-theme theme typography">
     {{-- Top App Bar --}}
-    @topAppBarDefault([
+    @topAppBarHome([
       'searchVisible' => $searchVisible ?? false,
       'menu' => [
         'icon' => __('icons.back'),
         'attrs' => [
-          'href' => url('/'),
-          'title' => __('actions.back_to_home')
+          'href' => url()->previous() === request()->fullUrl() ?
+            url('/') : url()->previous(),
+          'title' => __('actions.back')
         ]
       ],
       'title' => [
@@ -29,13 +31,13 @@
         ],
         'text' => 'VINT',
       ]
-    ]) @endtopAppBarDefault
+    ]) @endtopAppBarHome
 
     {{-- Conteúdo da página --}}
     <div class="top-app-bar--fixed-adjust mdc-top-app-bar--fixed-adjust">
-        @yield('main')    
+      @yield('main')
     </div>
-    
+
     {{-- Erros de validação --}}
     @if ($errors->any())
       @snackbar([
@@ -58,8 +60,7 @@
             'data-vint-snackbar-action-text' => 'Ok',
         ]
       ]) @endsnackbar    
-    @endif
-        
+    @endif    
     {{-- MDC --}}
     <script src="{{ asset('js/material-components-web.js') }}" defer></script>
     {{-- VINT --}}

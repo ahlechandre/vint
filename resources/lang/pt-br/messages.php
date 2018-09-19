@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'homepage' => [
+        'intro' => 'Conheça novos grupos de pesquisa e extensão e ajude a gerenciar aqueles que você faz parte.'
+    ],
+
     // Paginação.
     'pagination' => [
         'is_empty' => 'Nenhum resultado...',

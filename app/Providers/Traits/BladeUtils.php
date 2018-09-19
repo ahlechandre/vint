@@ -123,6 +123,9 @@ trait BladeUtils
         'components.pagination.paginable-products' => 'paginableProducts',
         'components.pagination.paginable-publications' => 'paginablePublications',
 
+        // Footer.
+        'components.footer.footer-default' => 'footerDefault',
+
         // Top app bar.
         'components.top-app-bar.top-app-bar-home' => 'topAppBarHome',
         'components.top-app-bar.top-app-bar-default' => 'topAppBarDefault',

@@ -13,10 +13,11 @@
     {{-- MDC + App --}}
     <link rel="stylesheet" href="{{ asset('css/vint.css') }}">
   </head>
-  <body class="mdc-typography mdc-theme theme typography">
+  <body class="mdc-typography mdc-theme theme typography{{ isset($withoutAnimation) && $withoutAnimation ? ' theme--without-animation' : '' }}">
     {{-- Top App Bar --}}
     @topAppBarHome([
       'searchVisible' => $searchVisible ?? false,
+      'themeDark' => $topAppBarThemeDark ?? false,
       'menu' => [
         'icon' => 'menu',
         'classes' => ['drawer-activation'],
@@ -46,16 +47,6 @@
         'isNavigation' => true,
         'items' => [
           [
-            'dividerBefore' => true,
-            'icon' => __('icons.login'),
-            'text' => __('headlines.login'),
-            'active' => is_active_page('login'),
-            'attrs' => [
-              'href' => url('/login')
-            ],
-          ],
-          [
-            'dividerBefore' => true,
             'icon' => __('icons.homepage'),
             'text' => __('headlines.homepage'),
             'active' => is_active_page('/'),
@@ -111,6 +102,15 @@
               'href' => url('publications')
             ],
           ],
+          [
+            'dividerBefore' => true,
+            'icon' => __('icons.register'),
+            'text' => __('headlines.register'),
+            'active' => is_active_page(['register']),
+            'attrs' => [
+              'href' => url('/register')
+            ],
+          ],            
         ]
       ]    
     ]) @enddrawerModal
@@ -118,8 +118,24 @@
     {{-- Conteúdo da página --}}
     <div class="top-app-bar--fixed-adjust mdc-top-app-bar--fixed-adjust">
       @yield('main')
-    </div>
 
+      @if (!isset($withoutLoginAction) || !$withoutLoginAction)
+        @fabFixed([
+            'fab' => [
+                'isLink' => true,
+                'icon' => __('icons.login'),
+                'classes' => ['mdc-fab--extended'],
+                'label' => __('actions.login'),
+                'attrs' => [
+                    'href' => url('login'),
+                    'title' => __('actions.login'),
+                ],
+            ]
+        ]) @endfabFixed      
+      @endif      
+    </div>
+    {{-- Footer --}}
+    @footerDefault @endfooterDefault
     {{-- Erros de validação --}}
     @if ($errors->any())
       @snackbar([
@@ -142,7 +158,7 @@
             'data-vint-snackbar-action-text' => 'Ok',
         ]
       ]) @endsnackbar    
-    @endif    
+    @endif
     {{-- MDC --}}
     <script src="{{ asset('js/material-components-web.js') }}" defer></script>
     {{-- VINT --}}

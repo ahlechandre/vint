@@ -1,6 +1,7 @@
 @extends('layouts.'. (
     auth()->check() ? 'master' : 'default'
 ), [
+    'withoutAnimation' => true,
     'title' => get_breadcrumb([
         __('resources.groups'),
         $group->name,

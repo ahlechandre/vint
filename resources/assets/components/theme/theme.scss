@@ -1,10 +1,26 @@
 body.theme {
   margin: 0;
   padding: 0;
-  // background-color: rgba(0, 0, 0, .025);
 }
 
 a {
   text-decoration: none;
   color: $mdc-theme-primary;
+}
+
+.footer {
+  background-color: rgba(0, 0, 0, .02);
+
+  .footer__block {
+    opacity: .6;
+  }
+
+  h1, h2, h3, h4, h5, h6, p {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+  }
+
+  a {
+    color: #000000;
+  }
 }

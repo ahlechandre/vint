@@ -17,6 +17,7 @@ return [
     'logoin' => 'exit_to_app', 
     'delete' => 'delete_outline', 
     'remove' => 'close', 
+    'register' => 'person_add', 
 
     // Páginas.
     'homepage' => 'home',

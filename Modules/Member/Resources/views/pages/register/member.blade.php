@@ -1,4 +1,4 @@
-@extends('layouts.auth', [
+@extends('layouts.search', [
     'title' => __('resources.members').' / '.__('headlines.register') 
 ])
 

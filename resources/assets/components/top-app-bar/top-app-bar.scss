@@ -1,21 +1,39 @@
 @import '../animation/animation';
 @import '~@material/top-app-bar/mdc-top-app-bar';
 
-.top-app-bar {
+.top-app-bar:not(.top-app-bar--theme-dark) {
   @include mdc-top-app-bar-fill-color(#ffffff);
   @include mdc-top-app-bar-icon-ink-color(#212121);
+
+  a.mdc-top-app-bar__title {
+    color: #212121;
+  }  
+}
+
+.top-app-bar--theme-dark {
+  @include mdc-top-app-bar-fill-color(#202124);
+  @include mdc-top-app-bar-icon-ink-color(#ffffff);
+
+  a.mdc-top-app-bar__title {
+    color: #ffffff;
+  }  
 }
 
 a.mdc-top-app-bar__title {
-  color: #212121;
   font-family: 'Roboto Mono', monospace;
   letter-spacing: 0.5rem;
 }
 
 .top-app-bar--fixed-adjust {
-  margin-bottom: 100px;
+  min-height: 100vh;
   // Fixa problema de responsividade.
   overflow-x: hidden;
+}
+
+.theme:not(.theme--without-animation) {
+  .top-app-bar--fixed-adjust {
+    animation: FadeInFromBottom .15s linear;
+  }
 }
 
 // Search
@@ -54,6 +72,11 @@ a.mdc-top-app-bar__title {
 
   .top-app-bar__row--search {
     display: flex;
-    animation: FadeInFromBottom .075s linear;
+  }
+
+  &.top-app-bar--with-animation {
+    .top-app-bar__row--search {
+      animation: FadeInFromBottom .1s linear;
+    }  
   }
 }

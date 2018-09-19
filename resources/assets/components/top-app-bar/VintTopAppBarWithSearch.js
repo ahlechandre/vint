@@ -1,6 +1,7 @@
 class VintTopAppBarWithSearch {
 
   static constants = {
+    WITH_ANIMATION_CLASS: 'top-app-bar--with-animation',
     SEARCH_VISIBLE_CLASS: 'top-app-bar--with-search-visible',
     OPEN_SEARCH_CLASS: 'top-app-bar__open-search',
     CLOSE_SEARCH_CLASS: 'top-app-bar__close-search',
@@ -39,6 +40,9 @@ class VintTopAppBarWithSearch {
     this.state.element.classList.add(
       VintTopAppBarWithSearch.constants.SEARCH_VISIBLE_CLASS
     )
+    this.state.element.classList.add(
+      VintTopAppBarWithSearch.constants.WITH_ANIMATION_CLASS
+    )    
     this.setInputFocus()
   }
 

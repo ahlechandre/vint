@@ -1,6 +1,4 @@
-@extends('layouts.'.(
-    auth()->check() ? 'master' : 'default'
-), [
+@extends('layouts.search', [
     'title' => __('headlines.search'),
     'searchVisible' => true,
 ])

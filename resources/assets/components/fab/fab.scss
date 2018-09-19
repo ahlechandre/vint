@@ -5,5 +5,10 @@
   bottom: 2rem;
   right: 2.5rem;
   z-index: 1;
-  animation: FadeFromScale0 .175s linear;
+}
+
+.theme:not(.theme--without-animation) {
+  .fab-fixed {
+    animation: FadeFromScale0Delay .3s linear;
+  }
 }

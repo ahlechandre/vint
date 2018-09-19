@@ -2,6 +2,8 @@
     'classes' => [
         'mdc-elevation--z3',
         'top-app-bar--with-search',
+        isset($themeDark) && $themeDark ?
+            'top-app-bar--theme-dark' : '',
         isset($searchVisible) && $searchVisible ?
             'top-app-bar--with-search-visible' : '',        
     ],
