@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'explore' =>                'Explorar',
+    'see_all' =>                'Ver todos',
     'add' =>                    'Adicionar',
     'approve_all' =>            'Aprovar todos',
     'approve' =>                'Aprovar',

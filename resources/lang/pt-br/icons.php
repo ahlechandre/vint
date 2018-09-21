@@ -2,6 +2,7 @@
 
 return [
     // Ações.
+    'explore' => 'explore',
     'back' => 'arrow_back',
     'approve' => 'check',
     'approve_all' => 'check',

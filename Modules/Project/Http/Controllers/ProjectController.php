@@ -109,6 +109,19 @@ class ProjectController extends Controller
     public function show(Request $request, $id)
     {
         $user = $request->user();
+
+        if (!$user) {
+            $project = Project::withoutGlobalScope('approved')
+                ->findOrFail($id);
+
+            if (!$project->is_approved && $user->cant('update', $project)) {
+                return abort(404);
+            }
+
+            return view('project::pages.projects.show', [
+                'project' => $project
+            ]);            
+        }
         $project = Project::findOrFail($id);
 
         return view('project::pages.projects.show', [

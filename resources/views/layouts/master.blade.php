@@ -145,6 +145,8 @@
       @yield('main')
     </div>
 
+    {{-- Footer --}}
+    @footerDefault @endfooterDefault
     {{-- Erros de validação --}}
     @if ($errors->any())
       @snackbar([

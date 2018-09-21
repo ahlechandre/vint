@@ -1,4 +1,6 @@
-@card
+@card([
+    'classes' => ['mdc-card--outlined']
+])
     @list([
         'twoLine' => true,
         'nonInteractive' => true,

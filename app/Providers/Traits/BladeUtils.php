@@ -98,6 +98,9 @@ trait BladeUtils
         'components.cards.card-paper' => 'cardPaper',
         'components.cards.card-show' => 'cardShow',
         'components.cards.card-description' => 'cardDescription',
+        
+        // Count
+        'components.count.count' => 'count',
 
         // Forms.
         'components.forms.form' => 'form',

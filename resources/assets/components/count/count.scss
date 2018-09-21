@@ -1,0 +1,45 @@
+.count {
+  background-color: white;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  padding: 24px;
+}
+
+.count__body {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;  
+}
+
+.count__primary {
+  display: flex;
+  flex-flow: column nowrap;
+  text-align: center;
+}
+
+.count__value {
+  margin: 6px 0;
+  font-weight: 100;
+}
+
+.count__title {
+  color: rgba(0, 0, 0, .7);
+  margin: 6px 0;
+}
+
+.count__header {
+  padding: 12px 0 24px;
+}
+
+.count__icon {
+  font-size: 4rem;
+  color: rgba(0, 0, 0, .1);
+}
+
+.count__actions {
+  // border-top: 1px solid rgba(0, 0, 0, .1);
+  display: flex;
+  justify-content: flex-end;
+  padding: 6px;
+}

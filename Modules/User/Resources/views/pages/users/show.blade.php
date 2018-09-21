@@ -51,7 +51,7 @@
                 'data' => [
                     [
                         'label' => __('attrs.is_active'),
-                        'value' => __("messages.attrs.is_active.{$userToShow->is_active}")
+                        'value' => __("attrs.is_active_value.{$userToShow->is_active}")
                     ],
                     [
                         'label' => __('attrs.created_at'),

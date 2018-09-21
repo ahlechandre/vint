@@ -20,8 +20,7 @@
       'menu' => [
         'icon' => __('icons.back'),
         'attrs' => [
-          'href' => url()->previous() === request()->fullUrl() ?
-            url('/') : url()->previous(),
+          'href' => url('/'),
           'title' => __('actions.back')
         ]
       ],
@@ -61,6 +60,8 @@
         ]
       ]) @endsnackbar    
     @endif    
+    {{-- Footer --}}
+    @footerDefault @endfooterDefault
     {{-- MDC --}}
     <script src="{{ asset('js/material-components-web.js') }}" defer></script>
     {{-- VINT --}}

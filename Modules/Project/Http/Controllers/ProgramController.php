@@ -86,6 +86,19 @@ class ProgramController extends Controller
     public function show(Request $request, $id)
     {
         $user = $request->user();
+
+        if ($user) {
+            $program = Program::withoutGlobalScope('approved')
+                ->findOrFail($id);
+            
+            if (!$program->is_approved && $user->cant('update', $program)) {
+                return abort(404);
+            }
+
+            return view('project::pages.programs.show', [
+                'program' => $program
+            ]);            
+        }
         $program = Program::findOrFail($id);
     
         return view('project::pages.programs.show', [

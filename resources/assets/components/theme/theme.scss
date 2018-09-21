@@ -8,6 +8,16 @@ a {
   color: $mdc-theme-primary;
 }
 
+// Sections
+.theme__section {
+  padding: 24px 0;
+}
+
+.theme__section--lighteen {
+  background-color: rgba(0, 0, 0, .02);
+}
+
+// Footer
 .footer {
   background-color: rgba(0, 0, 0, .02);
 

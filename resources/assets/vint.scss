@@ -1,12 +1,17 @@
-$mdc-theme-primary: #ff5722;
-$mdc-theme-secondary: #2962ff;
+$mdc-theme-primary: #2196f3;
+$mdc-theme-secondary: #ff5722;
 $mdc-theme-on-primary: #ffffff;
 $mdc-theme-on-secondary: #ffffff;
 $theme-bg: #fff;
 $theme-validation: #f44336;
-$theme-primary-light: #fbe9e7;
+$theme-primary-light: #e3f2fd;
 $theme-primary-title: #202124;
 $theme-secondary-title: #444444;
+$theme-font-mono: 'Roboto Mono', monospace;
+$md-blue: #2196f3;
+$md-red: #f44336;
+$md-green: #4caf50;
+$md-amber: #ffc107;
 
 // Material Components Web.
 @import '~@material/button/mdc-button';
@@ -61,3 +66,5 @@ $theme-secondary-title: #444444;
 @import './components/button/button';
 @import './components/button/button';
 @import './components/homepage/homepage';
+@import './components/count/count';
+@import './components/typography/typography';

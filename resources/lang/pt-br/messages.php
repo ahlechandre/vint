@@ -1,6 +1,15 @@
 <?php
 
 return [
+    'dashboard' => [
+        'latest_groups' => 'Últimos grupos',
+        'latest_members' => 'Últimos membros',
+        'latest_programs' => 'Últimos programas',
+        'latest_projects' => 'Últimos projetos',
+        'latest_products' => 'Últimos produtos',
+        'latest_publications' => 'Últimas publicações',
+    ],
+
     'homepage' => [
         'intro' => 'Conheça novos grupos de pesquisa e extensão e ajude a gerenciar aqueles que você faz parte.'
     ],

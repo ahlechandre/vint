@@ -1,25 +1,8 @@
 @import '../animation/animation';
 @import '~@material/top-app-bar/mdc-top-app-bar';
 
-.top-app-bar:not(.top-app-bar--theme-dark) {
-  @include mdc-top-app-bar-fill-color(#ffffff);
-  @include mdc-top-app-bar-icon-ink-color(#212121);
-
-  a.mdc-top-app-bar__title {
-    color: #212121;
-  }  
-}
-
-.top-app-bar--theme-dark {
-  @include mdc-top-app-bar-fill-color(#202124);
-  @include mdc-top-app-bar-icon-ink-color(#ffffff);
-
-  a.mdc-top-app-bar__title {
-    color: #ffffff;
-  }  
-}
-
 a.mdc-top-app-bar__title {
+  color: $mdc-theme-on-primary;
   font-family: 'Roboto Mono', monospace;
   letter-spacing: 0.5rem;
 }

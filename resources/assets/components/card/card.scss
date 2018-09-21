@@ -2,6 +2,25 @@
   padding: 1rem;
 }
 
+// Card with list
+.card--with-list {
+  .card__header {
+    padding: 24px 16px;
+
+    .card__header-title {
+      margin: 0;
+    }
+  }
+  
+  .card__content {
+    padding: 0;
+    height: 240px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
+// Login
 .card--login {
   margin-top: 60px;
 

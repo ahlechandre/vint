@@ -35,18 +35,6 @@ class ProductRequest extends FormRequest
      *
      * @return array
      */
-    public function messages()
-    {
-        return [
-            'required' => __('validations.required'),
-            'unique' => __('validations.unique'),
-        ];
-    }
-
-    /**
-     *
-     * @return array
-     */
     public function attributes()
     {
         return [
