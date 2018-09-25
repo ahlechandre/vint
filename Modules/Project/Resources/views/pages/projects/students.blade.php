@@ -52,7 +52,7 @@
                                             'method' => 'put'
                                         ],
                                         'dialog' => [
-                                            'title' => __('messages.projects.students.dialogs.update_title'),
+                                            'title' => __('dialogs.projects.students.edit_title'),
                                             'attrs' => [
                                                 'id' => "dialog-students-edit-{$student->member_user_id}"
                                             ],
@@ -90,7 +90,7 @@
                                             'method' => 'delete'
                                         ],
                                         'dialog' => [
-                                            'title' => __('messages.projects.students.dialogs.delete_title'),
+                                            'title' => __('dialogs.projects.students.remove_title'),
                                             'attrs' => [
                                                 'id' => "dialog-students-delete-{$student->member_user_id}"
                                             ],
@@ -145,7 +145,7 @@
                     'method' => 'post'
                 ])
                     @dialog([
-                        'title' => __('messages.projects.students.dialogs.create_title'),
+                        'title' => __('dialogs.projects.students.create_title'),
                         'attrs' => [
                             'id' => 'dialog-project-student-create'
                         ],

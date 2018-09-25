@@ -1,9 +1,4 @@
 @gridInner
-    {{-- Descrição --}}
-    @cell
-        {{ __('messages.projects.students.create_body') }}
-    @endcell
-
     {{-- Coordenador --}}
     @cell
         @select([

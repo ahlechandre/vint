@@ -106,6 +106,11 @@ return [
         // Apagar.
         'delete_title' => 'Apagar o projeto?',
         'delete_body' => 'Todos os produtos e publicações relacionados permanecerão sem este projeto. Esta ação é permanente.',
+        'students' => [
+            'create_title' => 'Adicionar aluno?',
+            'edit_title' => 'Editar aluno.',
+            'remove_title' => 'Remover aluno.',
+        ]
     ],
 
     // -----------------------------------------------------

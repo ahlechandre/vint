@@ -54,7 +54,7 @@
             ],
           ],
           [
-            'ignore' => !$user->isAdmin(),
+            'ignore' => $user->cant('index', \Modules\User\Entities\User::class),
             'icon' => __('icons.users'),
             'text' => __('resources.users'),
             'active' => is_active_page(['users']),

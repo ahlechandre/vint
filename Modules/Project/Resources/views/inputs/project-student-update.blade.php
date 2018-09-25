@@ -1,9 +1,4 @@
 @gridInner
-    {{-- Descrição --}}
-    @cell
-        {{ __('messages.projects.students.dialogs.update_title') }}
-    @endcell
-
     {{-- Coordenador --}}
     @cell
         @select([

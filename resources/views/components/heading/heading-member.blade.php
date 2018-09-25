@@ -8,7 +8,8 @@
                 'icon' => __('icons.settings'),
                 'text' => __('headlines.settings'),
                 'attrs' => [
-                    'href' => url('settings')
+                    'href' => $user->id === $member->user_id ?
+                        url('settings') : url("users/{$member->user_id}/edit")
                 ],
             ]
         ] : null,
